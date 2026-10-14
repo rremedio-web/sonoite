@@ -99,7 +99,7 @@ A deeper map (all three runtimes, query flags, gotchas) is in [`CLAUDE.md`](CLAU
 I worked as **creative director and product owner**. The implementation was done by AI coding agents working under explicit gates. The process is documented in the repo, because that's where most of the craft went.
 
 - **Orchestration.** A Claude model (Fable 5.1) acted as orchestrator: it wrote the specs with exact acceptance criteria, checked diffs, ran the browser verification and kept project memory. Implementation went to the Codex and Cursor CLIs against those specs. Every change was a numbered prompt commit (up to `Prompt #247`).
-- **Independent review rounds.** Before major changes, two reviewer models (Fable and Astra) received the same read-only brief and evidence sheets and reviewed separately. A synthesis document then recorded where they converged and disagreed, and the build followed the convergence. See `docs/qa/track5-ledger-2026-10-02/` (rounds A → B → C) and `docs/qa/aesthetic-review-round2-2026-10-01/`.
+- **Independent review rounds.** Before major changes, two reviewer models from different vendors (Claude Fable 5.1 and GPT-6 Astra) received the same read-only brief and evidence sheets and reviewed separately. A synthesis document then recorded where they converged and disagreed, and the build followed the convergence. See `docs/qa/track5-ledger-2026-10-02/` (rounds A → B → C) and `docs/qa/aesthetic-review-round2-2026-10-01/`.
 - **Listening as data.** Because most models can't hear, Gemini did listening passes over the masters. Its timings were then **graded against measurement** (0.25 s resolution) before anything was scored to them (`docs/qa/gemini-listening-2026-10-01/`).
 - **Owner-gated passes.** Nothing became the default without my judging it live. Every trial shipped behind a URL flag (`?ledger=1`, `?proposal=stage`, …) with the previous film intact, so A/B comparison was always one click away.
 - **Specialist agents.** `.claude/agents/` holds seven role prompts used for focused reviews: noir cinematographer, look-dev director, audiovisual synergy mapper, JS expert, and others.
@@ -119,7 +119,7 @@ npm run build        # Vite → dist/ (WordPress always serves dist/)
 npm run test:full    # full Jest suite
 ```
 
-**As a WordPress theme.** Clone into `wp-content/themes/sonoite-theme`, run `npm ci && npm run build`, then activate it. The front page boots Track 1. Use `?track=horas-mortas` or `?track=nao-querer-nada` for the other films. Tracks come from the `track` post type, with audio in the media library.
+**As a WordPress theme.** Clone into `wp-content/themes/sonoite-theme`, run `npm ci && npm run build`, then activate it. The front page boots Track 1. Use `?track=horas-mortas` or `?track=nao-querer-nada` for the other films. Tracks come from the `track` post type, with audio in the media library. Their slugs must match the film registry (`sonoite`, `horas-mortas`, `nao-querer-nada`) for the chamber films to boot.
 
 **As a static site (no WordPress).** The album audio is not distributed in this repo. Point the export at a folder containing the MP3s:
 
@@ -129,7 +129,7 @@ node scripts/build-static-prototype.mjs --out dist-static --uploads /path/to/alb
 npx serve dist-static          # or deploy the folder to Vercel / Netlify
 ```
 
-Useful flags on any route: `?track=<slug>`, `?quality=cinema`, `?ledger=1` (Track 4/5 state ledgers), `?proposal=intimate|chamber|afterimage|stage`, `?debug=1`. The full list is parsed in `src/js/prototype/film-flags.js`.
+Useful flags on any route: `?track=<slug>`, `?quality=cinema`, `?ledger=1` (Track 5 state ledger), `?ledger=f` or `?ledger=a` (Track 4 ledger arms), `?proposal=intimate|chamber|afterimage|stage`, `?debug=1`. The full list is parsed in `src/js/prototype/film-flags.js`.
 
 ---
 

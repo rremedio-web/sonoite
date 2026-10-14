@@ -10,6 +10,10 @@
  * Query windows are half-open `[startTime, endTime)` in absolute seconds.
  * The Track 5 recut phrase range ends at bar 195 (existing authored span); no
  * synthetic tail bars are required beyond that schedule.
+ *
+ * experience.js builds it from the phrase table in films/nao-querer-nada.js only
+ * when `?recut=1`, the `lightarc` film flag and an active ShotDirector all hold;
+ * a table that fails validate() is logged and left unused.
  */
 
 function downbeatTimeForBar(beatGrid, bar) {

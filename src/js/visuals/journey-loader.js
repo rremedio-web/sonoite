@@ -1,6 +1,9 @@
 /**
- * Journey Loader Utility
- * Handles loading of journey JSON files from the phase42 assets directory
+ * Journey JSON loader shared by the legacy runtime (three-experience.js) and Path B (prototype/experience.js).
+ * loadJourneyByTrackId() resolves an id/slug, fetches phase42/{slug}.json (phase42/reduced/ first under
+ * prefers-reduced-motion), coerces the phase42/v1.2 shapes to one, then appends {slug}-enriched-moments.json.
+ * Path B reads only palette, meta and the hero/prototype_chamber structure elements; the moment merge and
+ * the Track 5 camera-spline injection matter only to the legacy runtime.
  * @module journey-loader
  */
 
@@ -162,18 +165,15 @@ function mergeEnrichedMoments(baseJourney, enrichedData) {
 
 /**
  * Load a journey by track ID (without file extension)
- * @param {string} trackId - The track ID (e.g., '02_paralisia_do_sono')
+ * @param {string|number} trackId - sonoiteData.tracks[].id (Path B), slug (legacy runtime) or '02_paralisia_do_sono' form
  * @returns {Promise<Object>} The parsed journey JSON data
  */
 export async function loadJourneyByTrackId(trackId) {
-  // Try phase42 slug first, then v1.2 track file
   const slug = trackIdToSlug(trackId);
   const themeUrl = (typeof window !== 'undefined' && window.sonoiteData?.themeUrl) || '';
 
   // MP-01: Log journey resolution
   dlog(`[MP-01] Journey load: trackId=${trackId}, slug=${slug}`);
-  // Always log resolved slug/path so we can trace fallback behaviour even without debug flags
-  console.error('[JourneyLoader] loadJourneyByTrackId', { trackId, slug, themeUrl });
 
   // REDUCED-MOTION-01: Check for reduced-motion preference
   const reducedMotionFlag = typeof window !== 'undefined' && window.SONOITE_REDUCED_MOTION === true;
@@ -188,7 +188,6 @@ export async function loadJourneyByTrackId(trackId) {
       if (window.SONOITE_DEBUG) {
         dlog(`[REDUCED-MOTION-01] Trying reduced-motion variant: ${reducedPath}`);
       }
-      console.error('[JourneyLoader] Fetching reduced variant', reducedPath);
       const r = await fetch(reducedPath);
 
       if (r.ok) {
@@ -224,7 +223,6 @@ export async function loadJourneyByTrackId(trackId) {
   const journeyPath = `${themeUrl}/public/assets/journeys/phase42/${slug}.json`;
   try {
     dlog(`[MP-01] Trying: ${journeyPath}`);
-    console.error('[JourneyLoader] Fetching journey', journeyPath);
     const r = await fetch(journeyPath, { cache: 'no-store' });
     dlog(`[MP-01] HTTP status: ${r.status}`);
 
@@ -244,7 +242,6 @@ export async function loadJourneyByTrackId(trackId) {
       const structureCount = merged.structureElements?.length || 0;
       const momentCount = merged.moments?.length || 0;
       dlog(`[MP-01] Journey OK: slug=${slug}, status=${r.status}, flow=${flowType}, structures=${structureCount}, moments=${momentCount}`);
-      console.error('[JourneyLoader] Journey loaded', { slug, status: r.status, flowType, structureCount, momentCount });
 
       return merged;
     }
@@ -253,7 +250,8 @@ export async function loadJourneyByTrackId(trackId) {
     dwarn(`[MP-01] Journey fetch failed: ${e.message}`);
   }
 
-  // v1.2 fallback by track_XX_slug.json
+  // Vestigial "v1.2 fallback": loadJourneyJson() looks in phase42/, which has no track_*.json (v1.2
+  // files live in v1.2/ as track_0N_name.json), so this throws. Both runtimes catch it and use defaults.
   const trackFile = `track_${trackId}.json`;
   dlog(`[MP-01] Falling back to v1.2: ${trackFile}`);
   const v12 = await loadJourneyJson(trackFile);
@@ -264,7 +262,6 @@ export async function loadJourneyByTrackId(trackId) {
   const flowType = coerced.flow?.type || 'none';
   const structureCount = coerced.structureElements?.length || 0;
   dlog(`[MP-01] Journey OK (v1.2): file=${trackFile}, flow=${flowType}, structures=${structureCount}`);
-  console.error('[JourneyLoader] Journey loaded (v1.2)', { trackFile, flowType, structureCount, moments: coerced.moments?.length || 0 });
 
   return coerced;
 }

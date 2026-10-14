@@ -6,6 +6,11 @@
  * Fire is implied by light only — glow seeds, breath flicker, breathing shadows.
  *
  * Light counts: cinema/high 7, balanced 5, safe 3 (ring uses one consolidated PointLight).
+ *
+ * Not part of the default Track 1 route: since September the quiet scene (usesQuietScene() in
+ * experience.js) is the Track 1 default and setupChamberPracticals() skips this rig. It runs only
+ * with `?scene=original`, and never with a `?proposal=` or `?practicals=0`. chamber-sodium.js also
+ * reuses the pure Kelvin and candle-breath helpers. See docs/qa/TRACK1_QUIET_SCENE_STUDY_2026-09-05.md.
  */
 
 /** HUSH window — dims fill practicals, cools color (~400K). */

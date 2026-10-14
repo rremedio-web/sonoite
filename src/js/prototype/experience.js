@@ -1,3 +1,13 @@
+/**
+ * Path B chamber-film runtime. ReliquaryPrototypeExperience performs one built track as an
+ * authored, audio-reactive film around a GLTF hero relic; main.js boots it and exposes it as
+ * window.SonoitePrototype. Module order: entry routing constants, chamber defaults, the
+ * CHAMBER_VARIANTS table (the three film variants take their timelines from films/), phase and
+ * event defaults, inline shaders, helpers, then the class. buildChamberConfig() deep-merges the
+ * variant timeline over the journey JSON's prototype_chamber params and replaces arrays wholesale,
+ * so the code timeline wins unless the variant's timelineTrackSlugs exclude the loaded track.
+ * Start reading at init() and render() in the class.
+ */
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
@@ -61,6 +71,9 @@ import { createChamberPracticals, samplePracticalWarmWrap, sampleFlameFlicker, s
 import { createChamberSodium, sampleSodiumHazeArc, isSodiumAtmosphereBlackout, sampleSodiumLightLevel, sampleSodiumState, sampleIrisExposureOvershoot, SODIUM_V3_GRAIN_BLACKOUT_LEVEL, SODIUM_V3_GRAIN_BLACKOUT_MAX, SODIUM_COLOR_RUN, applySodiumDiffuseWrap } from './chamber-sodium.js';
 
 const DEFAULT_PROOF_DURATION_SECONDS = 96;
+// Track 5 slug (Path B's original pilot). Despite the name it is not the entry film: isTrack5Film(),
+// the ShotDirector beat-grid fallback and the resolveTrack() fallback chain key off it.
+// DEFAULT_ENTRY_TRACK_SLUG is what the front page boots.
 const DEFAULT_TRACK_SLUG = 'nao-querer-nada';
 const DEFAULT_ENTRY_TRACK_SLUG = 'sonoite';
 const TRACK_DEFAULT_VARIANT = Object.freeze({
@@ -83,96 +96,15 @@ const resolveDefaultChamberVariant = (urlParams) => {
     }
     return 'track5-cinema';
 };
+
+// ── Chamber defaults ─────────────────────────────────────────────────────────────
+// Palette, enums, dust lattice, quality modes and the base hero/chamber config.
 const DEFAULT_PALETTE = {
     primary: '#000000',
     secondary: '#151927',
     accent: '#32395e',
     fog: '#10131d'
 };
-
-const EMPTY_EVENT_PARAMS = Object.freeze({});
-
-const DEFAULT_EVENT_PRESETS = Object.freeze({
-    camera_push: {
-        attackSeconds: 1.6,
-        holdSeconds: 5.8,
-        releaseSeconds: 6.8,
-        params: EMPTY_EVENT_PARAMS
-    },
-    camera_reset: {
-        attackSeconds: 0.22,
-        holdSeconds: 5.4,
-        releaseSeconds: 7.6,
-        params: EMPTY_EVENT_PARAMS
-    },
-    post_crush: {
-        attackSeconds: 0.12,
-        holdSeconds: 0.08,
-        releaseSeconds: 0.42,
-        params: {
-            vignetteDarknessBoost: 0.26,
-            vignetteOffsetDrop: 0.16,
-            vignetteSoftnessDrop: 0.08,
-            bloomDrop: 0.04,
-            grainBoost: 0.018
-        }
-    },
-    material_reveal: {
-        attackSeconds: 0.6,
-        holdSeconds: 5.8,
-        releaseSeconds: 8.2,
-        params: {
-            roughnessDelta: -0.22,
-            clearcoatDelta: 0.24,
-            clearcoatRoughnessDelta: -0.24,
-            sheenDelta: 0.08,
-            envMapIntensityDelta: 0.1,
-            rimBoost: 0.18
-        }
-    },
-    room_open: {
-        attackSeconds: 0.28,
-        holdSeconds: 5.6,
-        releaseSeconds: 7.8,
-        params: {
-            thresholdBoost: 0.18,
-            supportBoost: 0.22,
-            pressureRelief: 0.08,
-            shellOpacityBoost: 0.06,
-            floorOpacityBoost: 0.055,
-            fillBoost: 0.038,
-            backBoost: 0.032,
-            vignetteDarknessLift: 0.12,
-            vignetteOffsetLift: 0.11,
-            vignetteSoftnessLift: 0.08
-        }
-    },
-    room_tighten: {
-        attackSeconds: 0.3,
-        holdSeconds: 6.0,
-        releaseSeconds: 7.2,
-        params: {
-            thresholdBoost: 0.08,
-            supportDrop: 0.08,
-            pressureBoost: 0.16,
-            shellOpacityDrop: 0.02,
-            floorOpacityDrop: 0.035,
-            fillDrop: 0.012,
-            keyAngleTighten: 0.08,
-            vignetteDarknessBoost: 0.14,
-            vignetteOffsetDrop: 0.12,
-            vignetteSoftnessDrop: 0.05
-        }
-    },
-    black_gap: {
-        attackSeconds: 0.12,
-        holdSeconds: 0.08,
-        releaseSeconds: 0.22,
-        params: {
-            maskOpacity: 1.0
-        }
-    }
-});
 
 const DARKNESS_MODE = Object.freeze({
     SACRISTY: 'sacristy',
@@ -276,6 +208,8 @@ const DEFAULT_HERO_CONFIG = {
     iridescenceIOR: 1.16
 };
 
+// Merge base for every route: buildChamberConfig() layers the journey's prototype_chamber
+// params, the variant's chamber block and its timeline over this.
 const DEFAULT_CHAMBER_CONFIG = {
     darknessMode: DARKNESS_MODE.SACRISTY,
     environmentIntensity: 0.004,
@@ -482,6 +416,10 @@ const DEFAULT_CHAMBER_CONFIG = {
     }
 };
 
+// ── Chamber variants ─────────────────────────────────────────────────────────────
+// Chosen by ?probe=, then ?variant=, else TRACK_DEFAULT_VARIANT (see resolveChamberVariant).
+// Most entries deepMerge a parent: hard-light -> reliquary-observed -> track5-cinema, which is
+// the parent of the probes, the RELEASE2 A/B pair and the Track 1 / Track 4 films.
 const HARD_LIGHT_VARIANT = {
     label: 'hard light study',
     hero: {
@@ -1418,10 +1356,11 @@ CHAMBER_VARIANTS['track5-cinema-hush'] = deepMerge(CHAMBER_VARIANTS['track5-cine
     }
 });
 
-// Track 1 "Sonoite" v1 — CONSECRATE chamber (Prompt #205). Reuses the Track 5
-// cinema dress; identity comes from its own light-led timeline + grade phases.
-// Reach: ?prototype=1&track=sonoite&variant=sonoite-cinema. The old default
-// runtime Track 1 is untouched (proposal G-gates, docs/qa/TRACK1_CHAMBER_PROPOSAL).
+// Track 1 "Sonoite" — CONSECRATE chamber (v1 Prompt #205, now v3.4b). The front-page
+// entry film: `/` or `?track=sonoite` selects it via TRACK_DEFAULT_VARIANT.
+// Reuses the Track 5 cinema dress; identity comes from the films/sonoite.js timeline plus
+// the grade phases below. usesQuietScene() adds the September quiet scene on this variant
+// for the sonoite track unless `?scene=original` (the pre-September look).
 CHAMBER_VARIANTS['sonoite-cinema'] = deepMerge(CHAMBER_VARIANTS['track5-cinema'], {
     label: 'Track 1 consecrate chamber (v3.4b)',
     displayLabel: 'Sonoite',
@@ -1514,7 +1453,7 @@ CHAMBER_VARIANTS['sonoite-cinema'] = deepMerge(CHAMBER_VARIANTS['track5-cinema']
 });
 
 // Track 4 "Horas Mortas" v2 — THE DARK IS TOO BIG FOR THE LAMP (2026-08-14).
-// Reach: ?prototype=1&track=horas-mortas&variant=horas-mortas-cinema
+// Reach: `/?track=horas-mortas` (TRACK_DEFAULT_VARIANT selects this variant).
 CHAMBER_VARIANTS['horas-mortas-cinema'] = deepMerge(CHAMBER_VARIANTS['track5-cinema'], {
     label: 'Track 4 persist chamber (v2)',
     displayLabel: 'Horas mortas',
@@ -1630,6 +1569,10 @@ CHAMBER_VARIANTS['horas-mortas-cinema'] = deepMerge(CHAMBER_VARIANTS['track5-cin
     timeline: HORAS_MORTAS_CHAMBER_FILM_TIMELINE
 });
 
+// ── Phase and event defaults ─────────────────────────────────────────────────────
+// The five phase names with fallback windows (parsePhaseWindows overrides each from the
+// journey's meta phase strings), and per-type envelopes that normalizeEventBeats merges
+// under each authored event beat.
 const DEFAULT_PHASE_WINDOWS = [
     { name: 'VOID', start: 0, end: 96 },
     { name: 'AWAKENING', start: 96, end: 216 },
@@ -1817,6 +1760,9 @@ const DEFAULT_EVENT_BEAT_PRESETS = Object.freeze({
     }
 });
 
+// ── Inline shaders ───────────────────────────────────────────────────────────────
+// Post passes (grain, vignette, blackout, grade, dither, film plate) are wired in
+// setupPostProcessing; the floor-memory and shell shaders dress the chamber surfaces.
 const ChamberGrainShader = {
     uniforms: {
         tDiffuse: { value: null },
@@ -2387,6 +2333,9 @@ const ChamberShellShader = {
     `
 };
 
+// ── Module helpers ───────────────────────────────────────────────────────────────
+// Math, deepMerge (arrays replace), phase/anchor/event-beat parsing and envelopes, canvas
+// textures and timed-curve sampling used by the class below.
 function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
 }
@@ -2639,90 +2588,6 @@ function sampleEventEnvelope(beat, elapsed) {
     );
 }
 
-function parseAuthoredTime(at, trackDuration = 0) {
-    if (typeof at === 'string') {
-        const parts = at.split(':');
-        if (parts.length === 2) {
-            return Number(parts[0]) * 60 + Number.parseFloat(parts[1]);
-        }
-
-        const seconds = Number.parseFloat(at);
-        return Number.isFinite(seconds) ? seconds : 0;
-    }
-
-    if (at && typeof at === 'object' && Number.isFinite(at.percent)) {
-        return trackDuration * at.percent;
-    }
-
-    return 0;
-}
-
-function createEventState() {
-    return {
-        punctuation: 0,
-        roomOpen: 0,
-        roomTighten: 0,
-        materialReveal: 0,
-        postCrush: 0,
-        blackGap: 0,
-        supportDelta: 0,
-        thresholdDelta: 0,
-        pressureDelta: 0,
-        releaseDelta: 0,
-        temperatureDelta: 0,
-        shellDelta: 0,
-        fillDelta: 0,
-        backDelta: 0,
-        floorDelta: 0,
-        vignetteDarknessDelta: 0,
-        vignetteOffsetDelta: 0,
-        vignetteSoftnessDelta: 0,
-        grainDelta: 0,
-        bloomDelta: 0,
-        materialRoughnessDelta: 0,
-        materialClearcoatDelta: 0,
-        materialClearcoatRoughnessDelta: 0,
-        materialEnvMapIntensityDelta: 0,
-        materialSheenDelta: 0,
-        cameraWeight: 0,
-        cameraPosition: new THREE.Vector3(),
-        cameraTarget: new THREE.Vector3(),
-        cameraDriftScale: null
-    };
-}
-
-function resetEventState(state) {
-    state.punctuation = 0;
-    state.roomOpen = 0;
-    state.roomTighten = 0;
-    state.materialReveal = 0;
-    state.postCrush = 0;
-    state.blackGap = 0;
-    state.supportDelta = 0;
-    state.thresholdDelta = 0;
-    state.pressureDelta = 0;
-    state.releaseDelta = 0;
-    state.temperatureDelta = 0;
-    state.shellDelta = 0;
-    state.fillDelta = 0;
-    state.backDelta = 0;
-    state.floorDelta = 0;
-    state.vignetteDarknessDelta = 0;
-    state.vignetteOffsetDelta = 0;
-    state.vignetteSoftnessDelta = 0;
-    state.grainDelta = 0;
-    state.bloomDelta = 0;
-    state.materialRoughnessDelta = 0;
-    state.materialClearcoatDelta = 0;
-    state.materialClearcoatRoughnessDelta = 0;
-    state.materialEnvMapIntensityDelta = 0;
-    state.materialSheenDelta = 0;
-    state.cameraWeight = 0;
-    state.cameraPosition.set(0, 0, 0);
-    state.cameraTarget.set(0, 0, 0);
-    state.cameraDriftScale = null;
-}
-
 function samplePlateauEnvelope(elapsed, start, duration, attackSeconds, releaseSeconds) {
     const safeDuration = Math.max(duration, 0.001);
     const end = start + safeDuration;
@@ -2836,35 +2701,6 @@ function createPortalTexture(width = 768, height = 1536) {
     return texture;
 }
 
-function createBackWallTexture(width = 1024, height = 1536) {
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    const context = canvas.getContext('2d');
-
-    context.clearRect(0, 0, width, height);
-
-    const base = context.createLinearGradient(0, 0, 0, height);
-    base.addColorStop(0.0, 'rgba(10, 10, 12, 1)');
-    base.addColorStop(0.18, 'rgba(7, 7, 9, 1)');
-    base.addColorStop(0.5, 'rgba(2, 2, 3, 1)');
-    base.addColorStop(0.82, 'rgba(5, 5, 7, 1)');
-    base.addColorStop(1.0, 'rgba(12, 12, 14, 1)');
-    context.fillStyle = base;
-    context.fillRect(0, 0, width, height);
-
-    const centerLift = context.createRadialGradient(width * 0.52, height * 0.42, width * 0.04, width * 0.52, height * 0.42, width * 0.34);
-    centerLift.addColorStop(0.0, 'rgba(26, 24, 22, 0.08)');
-    centerLift.addColorStop(0.3, 'rgba(12, 12, 13, 0.03)');
-    centerLift.addColorStop(1.0, 'rgba(0, 0, 0, 0)');
-    context.fillStyle = centerLift;
-    context.fillRect(0, 0, width, height);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.colorSpace = THREE.SRGBColorSpace;
-    return texture;
-}
-
 function createApertureTexture(width = 768, height = 1536) {
     const canvas = document.createElement('canvas');
     canvas.width = width;
@@ -2930,14 +2766,6 @@ function sampleTimedCurve(points = [], elapsed, field = 'value') {
     return sortedPoints[sortedPoints.length - 1][field] ?? 0;
 }
 
-function getTimedCurveValue(points = [], elapsed, field, fallback = 0) {
-    if (!Array.isArray(points) || !points.length) {
-        return fallback;
-    }
-
-    return sampleTimedCurve(points, elapsed, field);
-}
-
 function sampleHeldTimedCurve(points = [], elapsed, field = 'value') {
     if (!Array.isArray(points) || !points.length) {
         return {
@@ -2991,6 +2819,16 @@ function sampleHeldTimedCurve(points = [], elapsed, field = 'value') {
     };
 }
 
+/**
+ * One Path B chamber film. The constructor reads URL flags and picks the chamber variant;
+ * init() mounts the shell UI, resolves track and journey (building chamberConfig), sets up
+ * the renderer, scene, post chain, hero and audio, and starts render(). Each frame, render()
+ * advances the transport, samples getMacroState (authored phase arc), updateAnalysisState
+ * (audio), getEventState and getRoomState, updates camera, hero, god ray, atmosphere and
+ * lighting, runs the shadow cadence, renders the composer and schedules the next frame
+ * at the getFrameIntervalMs cap. Time is wall-clock anchored: updateTransport derives
+ * state.currentTime from transportStartSeconds, and seek re-anchors audio and transport.
+ */
 export class ReliquaryPrototypeExperience {
     constructor(root) {
         this.root = root;
@@ -4202,8 +4040,8 @@ export class ReliquaryPrototypeExperience {
         const wasShrunkForMainShell = (output.targetHeight || 0) < 5;
 
         // ?artifact= selects the MATERIAL treatment, not the mesh: journey-authored
-        // modelUrl/fallbackModelUrl survive so the Blender relic stays reachable
-        // (PARITY.md's parity URL depends on this). ?relic=meshy (or static default)
+        // modelUrl/fallbackModelUrl survive so the Blender relic stays reachable with
+        // any artifact treatment. ?relic=meshy (or a static sonoiteData.relic default)
         // forces the code-side Meshy defaults; ?relic=blender keeps journey primary first.
         const relicChoice = this.resolveRelicChoice();
         if (relicChoice === 'meshy') {
@@ -4324,20 +4162,8 @@ export class ReliquaryPrototypeExperience {
         );
     }
 
-    // E1 bloom taste A/B for Gate 1 (docs/qa/AESTHETIC_UX_SYNTHESIS_2026-07-20.md, E1/C4).
-    //
-    // Runtime-verified 2026-07-20: keyLight.angle/penumbra are rewritten per frame by
-    // updateLighting from variant lerp endpoints plus pressure/accent/breath terms, so a
-    // config-level cone trim would be inert — none is applied. That negative result is
-    // the durable finding here.
-    //
-    // Corrected 2026-07-20b: this preset originally described 0.14 as restoring a
-    // "documented baseline" that 0.08 had drifted from. That was backwards. 0.14 comes
-    // from MUSIC_INTERACTION_MATRIX.md:158 — a row in the PRE-RESET void-runtime table
-    // (its neighbours name void_sphere, void_halo, Track5VoidDirector, EggOrb), not Path
-    // B canon. 0.08 is the deliberate authored override in CHAMBER_VARIANTS
-    // ['track5-cinema']. The flag survives ONLY as a taste comparison with no canonical
-    // claim: the owner may well prefer 0.14, but he is choosing it, not restoring it.
+    // `?rescore=1` (track5-cinema only): owner A/B that merges three slow camera beats
+    // into the authored camera score.
     applyRescoreCameraBeats() {
         if (this.urlParams.get('rescore') !== '1' || this.chamberVariantKey !== 'track5-cinema') {
             return;
@@ -4346,7 +4172,7 @@ export class ReliquaryPrototypeExperience {
         if (!Array.isArray(baseScore) || !baseScore.length) {
             return;
         }
-        // Transitions ARRIVE at atSeconds (updateCamera:5104-5105 clamps transitionStart to the
+        // Transitions ARRIVE at atSeconds (updateCamera clamps transitionStart to the
         // segment start), so atSeconds marks when the move COMPLETES: A drifts 73-110, B pushes
         // 260-285, C pushes 370-450 (0.049 m/s, at Grok's nausea cap).
         const extraBeats = [
@@ -4361,6 +4187,20 @@ export class ReliquaryPrototypeExperience {
         };
     }
 
+    // `?sacristy=1`: E1 bloom taste A/B for Gate 1 (2026-07-20 aesthetic synthesis, E1/C4).
+    //
+    // Runtime-verified 2026-07-20: keyLight.angle/penumbra are rewritten per frame by
+    // updateLighting from variant lerp endpoints plus pressure/accent/breath terms, so a
+    // config-level cone trim would be inert — none is applied. That negative result is
+    // the durable finding here.
+    //
+    // Corrected 2026-07-20b: this preset originally described 0.14 as restoring a
+    // "documented baseline" that 0.08 had drifted from. That was backwards. 0.14 comes
+    // from MUSIC_INTERACTION_MATRIX.md:158 — a row in the PRE-RESET void-runtime table
+    // (its neighbours name void_sphere, void_halo, Track5VoidDirector, EggOrb), not Path
+    // B canon. 0.08 is the deliberate authored override in CHAMBER_VARIANTS
+    // ['track5-cinema']. The flag survives ONLY as a taste comparison with no canonical
+    // claim: the owner may well prefer 0.14, but he is choosing it, not restoring it.
     applySacristyPreset() {
         if (this.urlParams.get('sacristy') !== '1') {
             return;
@@ -4370,7 +4210,7 @@ export class ReliquaryPrototypeExperience {
         console.info('[Prototype] bloom taste A/B: 0.08 (authored Path B) -> 0.14 (not canon — pre-reset void value, offered for comparison only)');
     }
 
-    // E4 fill-stack committed-or-absent batch for Gate 1 owner A/B (docs/qa/AESTHETIC_UX_SYNTHESIS_2026-07-20.md, E4/C5).
+    // E4 fill-stack committed-or-absent batch for Gate 1 owner A/B (2026-07-20 aesthetic synthesis, E4/C5).
     applyFillstackPreset() {
         if (this.urlParams.get('fillstack') !== '1') {
             return;
@@ -4383,7 +4223,7 @@ export class ReliquaryPrototypeExperience {
         console.info('[Prototype] fillstack preset: frontHazeIdle 0.108, shellBase 0.15, bokehMax 0.225');
     }
 
-    // E5 Eno temperature arcs for the RELEASE-owner probe design (docs/qa/AESTHETIC_UX_SYNTHESIS_2026-07-20.md, E5).
+    // E5 Eno temperature arcs for the RELEASE-owner probe design (2026-07-20 aesthetic synthesis, E5).
     // Autonomous slow arcs on the warmth axis (25% breathing budget; temperature is a lighting driver, not Layer-0 palette).
     applyEnoArcsPreset() {
         if (this.urlParams.get('enoarcs') !== '1') {
@@ -4394,7 +4234,7 @@ export class ReliquaryPrototypeExperience {
         console.info('[Prototype] eno-arcs preset: tempShift depth 0.15 (periods 37s/59s)');
     }
 
-    // E3 withheld-reveal opening for Gate 1 owner A/B (docs/qa/AESTHETIC_UX_SYNTHESIS_2026-07-20.md, E3).
+    // E3 withheld-reveal opening for Gate 1 owner A/B (2026-07-20 aesthetic synthesis, E3).
     // Attentional pacing, NOT Turrell physiology: hold reveal at 0.10 until t=15s, dawn to 1.0 by t=40s.
     applyWithholdPreset() {
         if (this.urlParams.get('withhold') !== '1') {

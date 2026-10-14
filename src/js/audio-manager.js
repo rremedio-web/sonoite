@@ -1,6 +1,11 @@
 /**
- * Security-Hardened Audio Manager - Web Audio API integration for Sonoite
- * Handles audio loading, playback, and frequency analysis with comprehensive security measures
+ * AudioManager: the Web Audio core shared by the legacy runtime (three-experience.js) and Path B
+ * (prototype/experience.js); each creates its own instance.
+ * loadTrack() fetches with origin, rate-limit, size and file-signature checks, then decodes to an
+ * AudioBuffer; seekTo() recreates the BufferSource. getCurrentTime()/seekTo() are the transport
+ * clock, since neither runtime uses an <audio> element. A throttled AnalyserNode loop feeds
+ * onFrequencyUpdate() listeners (Meyda features are optional). Audit events go to an in-memory
+ * log; security violations are also POSTed when sonoiteSecurityConfig.reportingEndpoint is set.
  */
 import Meyda from 'meyda';
 import { dlog, dwarn, derr } from './utils/devlog.js';
@@ -173,13 +178,6 @@ export class AudioManager {
         }
     }
     
-    /**
-     * Resume audio context (required for user interaction)
-     * P1-FIX: Removed duplicate - using Safari-compatible version at line 1265
-     * See: SAFARI MOBILE AUDIO CONTEXT HELPERS section
-     */
-    // resumeAudioContext() defined below with Safari mobile retry logic
-
     /**
      * Validate URL security
      */
@@ -425,7 +423,7 @@ export class AudioManager {
     }
     
     /**
-     * Load audio buffer from URL for consciousness visualization
+     * Unused: no callers. Fetches and decodes without loadTrack()'s validation.
      */
     async loadAudioBuffer(url) {
         try {
@@ -914,11 +912,8 @@ export class AudioManager {
     }
     
     /**
-     * Get current playback time
-     */
-    
-    /**
-     * Setup frequency analysis for consciousness visualization
+     * Unused: no callers. Live analysis is startFrequencyAnalysis() (started by play()/seekTo());
+     * Path B subscribes via onFrequencyUpdate(), the legacy runtime polls getAudioData()/getAudioAnalysis().
      */
     setupFrequencyAnalysis() {
         if (!this.audioContext || !this.source) return;
@@ -935,7 +930,7 @@ export class AudioManager {
     }
 
     /**
-     * Start audio analysis loop for consciousness visualization
+     * Unused: only setupFrequencyAnalysis() calls it, and no listener exists for 'audioAnalysisUpdate'.
      */
     startAudioAnalysis() {
         const analyzeAudio = () => {
@@ -1540,10 +1535,9 @@ export class AudioManager {
     }
 
     /**
-     * CONSOLIDATED AUDIO CONSCIOUSNESS FUNCTIONALITY
-     * Frequency band analysis and consciousness mapping
+     * Five-band levels (bass, lowMid, mid, highMid, treble; 0-1) from the analyser's byte data.
+     * Feeds getAudioData() and getAudioAnalysis(), which only the legacy runtime calls.
      */
-
     getFrequencyBands() {
         if (!this.frequencyData) return null;
 

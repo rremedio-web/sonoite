@@ -106,7 +106,8 @@ export default defineConfig(({ mode }) => {
 
             terserOptions: {
                 compress: {
-                    // BUILD-05: Strip console.log/debug in production, keep warn/error
+                    // BUILD-05: drop_console strips ALL console.* calls in production (warn/error
+                    // included), so pure_funcs below is redundant while this is true.
                     drop_console: isProduction,
                     drop_debugger: isProduction,
                     pure_funcs: isProduction ? ['console.log', 'console.debug'] : [],

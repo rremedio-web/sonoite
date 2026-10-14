@@ -1,3 +1,13 @@
+/**
+ * Path B UI layer, imported by experience.js. ReliquaryShell builds all DOM inside the prototype root:
+ * canvas and frame mask, title card and intro threshold, transport (play/pause, seek rail, volume),
+ * auto-hiding chrome, the track index and the `?tweak=1` live-trim panel. injectPrototypeStyles() adds
+ * all CSS as one style tag, carrying sonoiteData.cspNonce when present. BUILT_TRACK_CYCLE is the ordered
+ * list of tracks with a chamber film (entry routing, index, next track). Status text renders only in debug
+ * mode (`?debug=1` or sonoiteData.isDebug); window.__sonoiteStaticLoader is defined only by the static
+ * export (scripts/build-static-prototype.mjs).
+ */
+
 const STYLE_ID = 'sonoite-prototype-styles';
 
 export const BUILT_TRACK_CYCLE = Object.freeze(['sonoite', 'horas-mortas', 'nao-querer-nada']);

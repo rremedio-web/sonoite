@@ -1,5 +1,11 @@
 import * as THREE from 'three';
 
+// Track 1 Stage trial, light sequence, imported by experience.js (opt-in: Track 1 with
+// `?proposal=stage&light=sequence`, usesTrack1LightSequence()). Moves the proposal key through
+// approach / conceal / reveal / rest around the 316.65 s hush (286-384 s) and adds a fixed
+// shadow-casting flag near the source. Pure function of track time. Not owner-adopted.
+// Trial notes: docs/qa/track1-light-sequence-2026-09-07/README.md.
+
 const ramp = (a, b, t) => THREE.MathUtils.smoothstep(t, a, b);
 
 // A single phrase-scale interruption around the existing 316.65s hush.

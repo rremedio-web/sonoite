@@ -1,10 +1,12 @@
 /**
- * Track 1 — "Sonoite" film module, v2 (Prompt #206).
+ * Track 1 — "Sonoite" film module, v2 (Prompt #206). SONOITE_CHAMBER_FILM_TIMELINE
+ * is the code timeline of the sonoite-cinema variant in experience.js.
  *
- * CONSECRATE / Birth, light-led (docs/qa/TRACK1_CHAMBER_PROPOSAL_2026-08-13.md),
- * authored against the mined hit-list (42 enriched moments + timeline/peaks/
- * onsets/chroma/phases analysis + Track1Director beat map; see
- * docs/qa/TRACK1_MUSICAL_MAP_2026-08-13.md). Four pillars over v1:
+ * CONSECRATE / Birth, light-led (the Track 1 verb in docs/qa/MUSIC_INTERACTION_MATRIX.md;
+ * the August 2026 Track 1 chamber proposal and musical map it was authored from are
+ * not in this repo), authored against the mined hit-list (42 enriched moments +
+ * timeline/peaks/onsets/chroma/phases analysis + Track1Director beat map).
+ * Four pillars over v1:
  *
  *   1. HARD CUTS — `transitionSeconds: 0` cue entries (18 cuts after
  *      dropping 447.05; Grok 4.6 cinematography pass 2026-08-14: 210 wide
@@ -39,9 +41,14 @@
  *
  * v3.3 lookdev pass (2026-08-14): flame rebuild, color-schism kill, bold geometry,
  * room reveal, egg quickening, dark discipline, anticipation breath.
+ *
+ * Default route since September: the quiet scene (usesQuietScene() in experience.js)
+ * plays this score without the practical candles, hides the dust/haze/bokeh/floor-glow
+ * overlays and drives its own key light before 125 s; `?scene=original` restores the
+ * film as described above. See docs/qa/TRACK1_QUIET_SCENE_STUDY_2026-09-05.md.
  */
 
-// frozen 2026-08-14 from track5-recut-seams — T1 owns its geometry
+// frozen 2026-08-14 from the Track 5 recut targets (films/nao-querer-nada.js) — T1 owns its geometry
 const SONOITE_MID_RIDGE = [0.959854, 3.4, 0.4];
 const SONOITE_BASE_POOL = [0.959854, 0.2, 0.9];
 const SONOITE_RIDGE_JUNCTION = [1.0282, 3.5696, 0.6120];

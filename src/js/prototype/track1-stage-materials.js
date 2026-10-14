@@ -1,5 +1,12 @@
 import * as THREE from 'three';
 
+// Track 1 Stage trial, reliquary setting (Track 1 with `?proposal=stage&setting=reliquary`), called from
+// experience.js loadStageDrape(). Loads the Fabric040 / Plaster001 1K PBR sets from
+// public/assets/materials/track1-stage/ and apply() maps them onto the weighted drape and the physical
+// chamber's floor-to-wall surface. Any failed load disposes the rest and rejects; the caller then keeps
+// matte materials. Not owner-adopted.
+// Trial notes: docs/qa/track1-reference-reset-2026-09-08/CLIMAX_AND_MATERIALS.md.
+//
 // These textures belong to the experience, not the shared glTF cache.
 export async function loadTrack1StageMaterials(themeUrl, renderer) {
     const names = ['Fabric040', 'Plaster001'];

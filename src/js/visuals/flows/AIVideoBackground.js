@@ -1,13 +1,9 @@
 /**
- * AIVideoBackground - Test layer for AI-generated video backgrounds
- *
- * USAGE:
- * 1. Place video file in: public/assets/ai-backgrounds/{track-slug}.webm (or .mp4)
- * 2. Add to journey JSON:
- *    "flow": { "type": "ai_video_background", "params": { "opacity": 0.6, "blendMode": "screen" } }
- * 3. Or enable globally via: window.SONOITE_AI_BG = true
- *
- * SUPPORTED BLEND MODES: screen, multiply, overlay, lighten, color-dodge, soft-light
+ * AIVideoBackground: experimental legacy-runtime flow layer, registered as 'ai_video_background' in
+ * register-defaults.js. Plays public/assets/ai-backgrounds/{slug}.webm|.mp4|.mov (tried in order) on
+ * a blended plane behind the scene. Only phase42/o-livro-azul-ai-test.json and
+ * paralisia-do-sono-ai-test.json reference it, and ai-backgrounds/ is not in this snapshot, so every
+ * source errors and the layer falls back to an animated dark gradient. Path B does not use it.
  */
 
 import * as THREE from 'three';

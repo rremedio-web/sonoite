@@ -1,4 +1,13 @@
 /* eslint-disable security/detect-object-injection -- Keys come from fixed track whitelists and authored camera tables. */
+/**
+ * September cinematic proposals, imported by experience.js (opt-in `?proposal=intimate|chamber|afterimage|stage`
+ * on the three built films; ignored under `?recut=1` and proof runs). resolveCinematicProposal() validates the
+ * mode against the track's own cinema variant; createProposalCamera() rewrites the camera (the seconds score on
+ * Tracks 1 and 4, ShotDirector setups and cuts on Track 5); sampleProposalLight() returns absolute-time light
+ * envelopes. The Track 4/5 ledger arms reuse the Stage room. None is owner-adopted.
+ * See docs/qa/THREE_CINEMATIC_PROPOSALS_2026-09-06.md and STAGE_HYBRID_TRIAL_2026-09-07.md.
+ */
+
 import { sampleSodiumLightLevel } from './chamber-sodium.js';
 import { mutationAmountAt } from './relic-mutation.js';
 

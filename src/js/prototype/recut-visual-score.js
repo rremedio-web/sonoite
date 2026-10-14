@@ -6,7 +6,8 @@
  * THREE objects, allocates nothing per frame, reads no clock, adds no pass, and
  * every value it returns is folded into an expression that already exists in
  * `experience.js` (the Track 5 plate `strength` uniform, plus one new `traceCool`
- * uniform on the SAME pass).
+ * uniform on the SAME pass). experience.js builds it only with `?recut=1` on the
+ * canonical Track 5 film, and drops it if validate() fails on the loaded beat grid.
  *
  * Why this exists
  * ---------------

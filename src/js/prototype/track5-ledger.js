@@ -11,6 +11,11 @@
  * (never eases, never follows the tar), and R, a rear edge light that keeps the
  * black, wet object readable from the collapse to the end. No fill, no wall, and
  * it ends in black. Pure functions of track time (seek-safe).
+ *
+ * Opt-in, imported by experience.js: `?ledger=1` on the canonical Track 5 film
+ * (usesTrack5Ledger(); ignored under `?recut=1` and proof runs). It runs in the
+ * Stage room: applyTrack5Ledger() reshapes the Stage light and
+ * applyTrack5LedgerCamera() replaces the cut plan.
  */
 
 const clamp01 = (x) => Math.max(0, Math.min(1, x));

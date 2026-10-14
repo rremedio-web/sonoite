@@ -1,4 +1,14 @@
 /* eslint-disable security/detect-object-injection -- rig ids are authored keys from TRACK5_LIGHT_RIGS */
+/**
+ * Track 5 named light rigs, imported by experience.js. TRACK5_LIGHT_RIGS sets exposure plus key/rim/back/fill
+ * per rig; the film's ShotDirector setups and the recut phrase-light table refer to rigs by id.
+ * createLightRigResolver() places each rig relative to the subject and the current camera side, so a rig reads
+ * the same from any shot. Also exports the authored god-ray (246-317 s, `godray` flag) and bokeh-arrival
+ * (168-186 s) envelopes. Rigs apply when the `lightarc` film flag is on (default on the canonical Track 5 film).
+ * "Build spec §N" below is the Track 5 recut build spec, which is not in this repo; its five owner choices
+ * are restated in docs/superpowers/specs/2026-07-23-track5-recut-creative-layer-design.md.
+ */
+
 const DEG2RAD = Math.PI / 180;
 
 // Warm-neutral rim/back tint for the recut P5 rigs (build spec §3 owner choice

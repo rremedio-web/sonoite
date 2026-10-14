@@ -1,3 +1,9 @@
+// Track 5 authored surface inflection, imported by experience.js: a 0-1 envelope peaked on measured
+// recording accents in 225-255 s that briefly lowers the relic's roughness. It replaces live onsets so
+// seeks are exact. Opt-in: the `?reaction=surface[-three|-two|-none]` study (isSurfaceReactionStudy())
+// and, with the two-cue set, any T5 `?proposal=` (not the `?ledger=1` arm).
+// See docs/qa/TRACK5_SURFACE_STUDY_2026-09-05.md.
+
 // Selected from this recording's analysis/nao-querer-nada/peaks.json.
 // Skip the weaker 239.05s peak: the WANTING passage needs space, not another pulse.
 const SURFACE_CUES = [236.65, 245.65, 253.4];

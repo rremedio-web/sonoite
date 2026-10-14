@@ -4,6 +4,14 @@
  * Pure exported schedule math + THREE handles in createChamberSodium.
  * Authored from public/assets/journeys/analysis/horas-mortas/phases.json +
  * peaks.json / onsets.json / chroma.json — no runtime fetch, no randomness, no audio coupling.
+ *
+ * experience.js setupChamberSodium() builds the fixture on the horas-mortas-cinema variant
+ * (the Track 4 default); `?sodium=0` swaps the authored schedule for a steady dim run.
+ * cinematic-proposals.js and track4-ledger.js read the schedule too.
+ *
+ * Section references: v4/v4b = docs/qa/TRACK4_V4_SPEC_2026-08-15.md (§P3-11, §P3-12),
+ * v5 = docs/qa/TRACK4_V5_LIGHT_SPEC_2026-08-15.md (ranked items §1-§6). The v2 and v3
+ * specs (§A, §C*, §F*, §V3-*) are not in this repo.
  */
 
 import { authoredAmberHexForKelvin, sampleCandleBreath } from './chamber-practicals.js';
@@ -146,9 +154,11 @@ export const SODIUM_V3_WARMUP_READ_SECONDS = 3.2;
 export const SODIUM_V3_GRAIN_BLACKOUT_LEVEL = 0.05;
 export const SODIUM_V3_GRAIN_BLACKOUT_MAX = 0.015;
 
-/** Scotopic ambient — darkAdaptation curve × scale (v4b §P3-11; geometry, not grade floor).
+/**
+ * Scotopic ambient — darkAdaptation curve × scale (v4b §P3-11; geometry, not grade floor).
  * 0.35 measured imperceptible (AFTER cycle-3 → 0.0385 intensity); 0.9 puts the
- * ghost-room just above the eye's floor while the void stays void. */
+ * ghost-room just above the eye's floor while the void stays void.
+ */
 export const SODIUM_SCOTOPIC_AMBIENT_SCALE = 0.9;
 export const SODIUM_SCOTOPIC_SKY_COLOR = 0x3a3f47;
 export const SODIUM_SCOTOPIC_GROUND_COLOR = 0x1a1c20;

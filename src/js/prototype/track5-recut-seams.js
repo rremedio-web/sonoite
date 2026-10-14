@@ -1,4 +1,11 @@
 /* eslint-disable security/detect-object-injection -- setup ids are validated keys from authored camera configs */
+/**
+ * Track 5 `?recut=1` camera assembly, imported by experience.js. createTrack5RecutCameraConfig() wraps the
+ * authored recut middle (TRACK5_RECUT_DIRECTOR_CAMERA) with six setups imported from the default film camera:
+ * head cuts at bars 1/10/17 and tail cuts at bars 195/204/213, pitch-locked and exempt from the orbit budget,
+ * so the recut opens and closes on the default film's framing. Only used on the canonical Track 5 film.
+ */
+
 const DEFAULT_IMPORTED_SETUP_IDS = [
     'ws_front_low',
     'mcu_left_eye',

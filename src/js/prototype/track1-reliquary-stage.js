@@ -1,5 +1,13 @@
 import * as THREE from 'three';
 
+// Track 1 Stage trial, dim reliquary setting, imported by experience.js (opt-in: Track 1 with
+// `?proposal=stage&setting=reliquary`, usesTrack1Reliquary()). createTrack1StageResponse() turns analyser
+// levels into separate slow light/cloth/air/surface followers (`&response=0` disables them);
+// sampleTrack1ReliquaryLight() reshapes the Stage light and advances the key through the 384-459.5 s
+// climax (`&climax=0` disables it); prepareWeightedDrape() adopts the cloth from weighted-drape.glb.
+// Not owner-adopted. Trial notes: docs/qa/track1-reference-reset-2026-09-08/CLIMAX_AND_MATERIALS.md
+// (it supersedes the appearance and audio-to-haze details of TRIAL.md in the same folder).
+
 const bounded = value => Number.isFinite(value) ? THREE.MathUtils.clamp(value, 0, 1) : 0;
 
 // Separate physical response times, fed by the existing analyser, not its hits.

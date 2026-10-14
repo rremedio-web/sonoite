@@ -1,5 +1,14 @@
 import * as THREE from 'three';
 
+// Two September trial drapes, imported by experience.js and parented to the physical chamber
+// (physical-chamber.js). Neither is owner-adopted.
+//  - createPhysicalDrape(): Track 5 dim cloth study, a static hanging textile behind the relic
+//    (`?scene=physical&room=cloth`, usesClothRoomStudy()). See docs/qa/TRACK5_CLOTH_STUDY_2026-09-06.md.
+//  - createShadowDrape() + sampleShadowDrapeSettle(): Track 1 Stage shadow receiver (Track 1 with
+//    `?proposal=stage`; `&drape=0` hides it; not built under `&setting=reliquary`, which loads
+//    weighted-drape.glb instead). One morph from hanging to settled over 316.65-365 s.
+//    See docs/qa/shadow-drape-2026-09-07/README.md.
+
 // One settling gesture in the existing hush-to-reveal passage, then a held state.
 // Absolute recording time makes reverse seeking restore both cloth and shadow.
 export function sampleShadowDrapeSettle(elapsed, reducedMotion = false) {

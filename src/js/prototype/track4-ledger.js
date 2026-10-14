@@ -12,6 +12,11 @@
  *
  * Distances from the tube (-3.15, 5.6, 3), measured in the scene: crown ~5.1,
  * lower flower ~5.7, fingers/hand ~6.6, base ~8.4, back wall ~13.3.
+ *
+ * Opt-in, imported by experience.js: on Track 4 (horas-mortas-cinema) `?ledger=f`
+ * or `?ledger=a` picks an arm (getTrack4LedgerArm(); ignored under `?recut=1` and
+ * proof runs). The ledger runs in the Stage room and keeps the film's own camera.
+ * applyTrack4Edit() at the bottom is the separate `?edit=1` camera edit.
  */
 import { SODIUM_AFTER_CYCLES } from './chamber-sodium.js';
 

@@ -1,4 +1,14 @@
 /**
+ * URL flag resolution for the Path B films, imported by experience.js. resolveFilmFlags() returns the
+ * Track 5 production flags. shots / lightarc / godray / mutation default on only for the canonical
+ * Track 5 film (nao-querer-nada on track5-cinema) when `?film` is absent. `?film=0` turns those flags off;
+ * `?film=1` turns them on for any track; a per-flag `?<flag>=0|1` still overrides `?film=1` and the default
+ * (so `?film=1&godray=0` disables godray). recut / lehr / listen / rimmode apply only on the canonical
+ * Track 5 film with `?recut=1`. Separate helpers resolve `?textured=`, `?sodium=` (Track 4) and
+ * `?vigil=` (Track 1).
+ */
+
+/**
  * @param {{ get: (name: string) => string|null|undefined }} urlParams
  * @param {string}                                           name
  * @return {string|null} Normalized param value, or null when missing or empty.

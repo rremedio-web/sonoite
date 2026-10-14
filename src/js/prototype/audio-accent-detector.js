@@ -1,7 +1,10 @@
 /**
- * Positive spectral change, not an absolute bass-level crossing. Samples come
- * from the audio callback, so render FPS never counts the same spectrum twice.
- * The existing analyser/continuous visual channels remain unchanged.
+ * One-shot audio accent detector for the chamber's 5% punctuation layer (accentPulse in experience.js).
+ * Fires on positive spectral flux in 40-1000 Hz, not an absolute bass-level crossing, above an adaptive
+ * threshold (running mean + 1.5 mean absolute deviations), with a 0.35 s priming delay, 0.7 s refractory
+ * and an energy floor. Fed from AudioManager's frequency callback (receiveAudioAnalysis()), so render FPS
+ * never counts the same spectrum twice; seeks and gaps over 0.5 s re-prime it. The continuous analyser
+ * channels are unaffected.
  */
 export function createAudioAccentDetector() {
     let previous = null;

@@ -3,6 +3,11 @@
  *
  * One dying sodium fixture outliving the song. Camera grammar: long static holds
  * + one 80s slow push during BURN + FADE squeeze. Authored against analysis truth.
+ *
+ * HORAS_MORTAS_CHAMBER_FILM_TIMELINE is the code timeline of the horas-mortas-cinema
+ * variant in experience.js; the fixture itself lives in chamber-sodium.js, which also
+ * reads the dark-adaptation curve below. "v4 §P3-11" refers to
+ * docs/qa/TRACK4_V4_SPEC_2026-08-15.md.
  */
 
 const HORAS_MORTAS_RELIC_TARGET = [0.96, 2.0, -0.04];

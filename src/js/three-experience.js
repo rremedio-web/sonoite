@@ -1,6 +1,9 @@
 /**
  * Sonoite Three.js Experience
  * Main Three.js scene with audio-reactive visuals
+ *
+ * LEGACY (pre-reset) runtime: the front page no longer boots it; the current runtime is Path B in
+ * src/js/prototype/. Kept in source, not extended. See CLAUDE.md, Architecture section A.
  */
 
 // Initialize debug mode (default: false)
@@ -59,11 +62,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { dlog, dwarn, derr } from './utils/devlog.js';
 import { PostProcessingConfig } from './visuals/PostProcessingConfig.js';
 import { AudioManager } from './audio-manager.js';
-// Removed TrackVisualizer - using consciousness system instead
-// DISABLED: Legacy consciousness system - replaced with Visual Layer API
-// import { AbstractConsciousness } from './modules/abstract-consciousness.js';
-// import { TrackMetamorphosis } from './modules/track-metamorphosis.js';
-// import { ConsciousnessSystem } from './consciousness-system.js';
 import { performanceMonitor } from '../core/PerformanceMonitor.js';
 import { getRootScene, setRootScene, setRootCamera, setRootRenderer } from './three-root.js';
 import { visualLayerErrorBoundary } from './visuals/utils/VisualLayerErrorBoundary.js';
@@ -216,9 +214,6 @@ export class SonoiteExperience {
             // Phase 3: Audio and visualizers
             this.setupAudio();
             this.setupVisualizers();
-            // DISABLED: Legacy consciousness setup
-            // this.setupAbstractConsciousness();
-            // this.setupConsciousnessSystem();
             this.createAmbientScene();
             this.setupEventListeners();
             this.setupUI();

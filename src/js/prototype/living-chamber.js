@@ -7,6 +7,8 @@ import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
 // seeded PRNG — never audio — so it stays inside the 25% breathing budget.
 // Outputs are multipliers/additives composed at the existing final-assignment
 // sites; a per-phase master amplitude lets ERASURE collapse the layer to zero.
+// experience.js builds one per session when the active variant's `living`
+// config is enabled (never on horas-mortas-cinema); `?seed=<n>` replays it.
 
 const PINK_STEP_SECONDS = 1 / 30;
 const MAX_PINK_STEPS_PER_FRAME = 8;
@@ -216,7 +218,7 @@ export class LivingChamber {
         this.outputs.camOffset.y = this.noise.noise(noiseTime + this.noiseOffsets.y, this.noiseOffsets.y, 0) * breathAmp[1] * amplitude;
         this.outputs.camOffset.z = this.noise.noise(noiseTime + this.noiseOffsets.z, this.noiseOffsets.z, 0) * breathAmp[2] * amplitude;
 
-        // E5 Eno arcs: autonomous warmth drift, breathing budget (docs/qa/AESTHETIC_UX_SYNTHESIS_2026-07-20.md, E5). Depth 0 unless ?enoarcs=1.
+        // E5 Eno arcs: autonomous warmth drift, breathing budget (item E5 of the July 2026 aesthetic/UX synthesis). Depth 0 unless ?enoarcs=1.
         const enoDepth = config.enoTempDepth ?? 0;
         this.outputs.tempShift = enoDepth * (
             0.6 * Math.sin((twoPi * elapsed) / 37 + this.enoPhaseA)

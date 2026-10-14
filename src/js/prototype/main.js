@@ -1,3 +1,11 @@
+/**
+ * Path B entry point (Vite entry 'prototype'). functions.php enqueues it only for prototype requests:
+ * the front page, the "Sonoite Prototype" page template and `?prototype=1`, all rendered through
+ * page-prototype.php. Boots one ReliquaryPrototypeExperience into #sonoite-prototype-root, tearing down
+ * any previous instance first, and exposes it as window.SonoitePrototype for console inspection.
+ * If boot fails, the root is replaced with a plain "refresh to try again" card.
+ */
+
 import { ReliquaryPrototypeExperience } from './experience.js';
 
 async function bootPrototype() {

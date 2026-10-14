@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import { VisualLayer } from '../layer-api.js';
 import { createEtherealGlowMaterial } from '../materials/EtherealGlowMaterial.js';
 import { createWireBloomMaterial } from '../materials/WireBloomMaterial.js';
-// P0-CRACK: Removed - ugly Voronoi effect, needs redesign
-// import { createEggCrackMaterial } from '../materials/EggCrackMaterial.js';
 import { addBarycentric } from '../geom/addBarycentric.js';
 
 export class EggOrb extends VisualLayer {

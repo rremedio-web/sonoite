@@ -1,5 +1,12 @@
 import * as THREE from 'three';
 
+// Track 5 irreversible tar mutation of the hero relic, imported by experience.js (cinematic-proposals.js
+// reads mutationAmountAt() too). mutationAmountAt() is the authored, seek-safe progress curve: 0 until
+// 337 s, 0.65 by 470 s, 1 at 510 s. createRelicMutation().install() upgrades the hero's standard materials
+// to physical and injects the tar/clearcoat shader via onBeforeCompile (chaining any existing hook);
+// update() raises the shared tar front from the base of the relic; dispose() restores the originals.
+// Enabled by the `mutation` film flag (default on for the canonical Track 5 film; see film-flags.js).
+
 const TAR_ROUGHNESS = 0.12;
 const TAR_METALNESS = 0.12;
 const TAR_CLEARCOAT = 1.0;

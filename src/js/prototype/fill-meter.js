@@ -1,10 +1,12 @@
-// Frame-fill measurement. The chamber's Priority-0 target — "frame goes from
-// 15% to 40%+ visible" (docs/qa/UNIFIED_CREATIVE_DIRECTION_2026-03-11.md:375-381)
-// — has been asserted since March 2026 and never once measured in a running
-// frame, which is how it survived four months unbuilt. This reads the actual
-// backbuffer and reports the same two thresholds Pass 1b used (lum>8, lum>25,
-// docs/qa/perceivability/PASS1B_EVIDENCE_2026-07-04.md:23) so numbers are
-// directly comparable across passes.
+// Frame-fill measurement, a dev overlay enabled with `?fillmeter=1` (created by
+// experience.js after boot). The chamber's Priority-0 target — "frame goes from
+// 15% to 40%+ visible", from the March 2026 creative direction (that document
+// is not in this repo; docs/superpowers/specs/2026-07-20-track5-godray-cone-pass0.md
+// restates it and commissions this meter) — had been asserted since March and
+// never once measured in a running frame, which is how it survived four months
+// unbuilt. This reads the actual backbuffer and reports the same two thresholds
+// Pass 1b used (lum>8, lum>25, docs/qa/perceivability/PASS1B_EVIDENCE_2026-07-04.md:23)
+// so numbers are directly comparable across passes.
 //
 // Sampling reads the default framebuffer, so it MUST run in the same frame as
 // the composer's draw, before the browser swaps buffers.

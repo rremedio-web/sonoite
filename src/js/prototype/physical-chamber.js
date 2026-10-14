@@ -1,5 +1,13 @@
 import * as THREE from 'three';
 
+// September physical-room trial, imported by experience.js. Replaces the default shadow catcher and
+// floor surfaces when usesPhysicalScene() is true: Track 5 `?scene=physical`, or any `?proposal=`
+// (including the ledger arms, which resolve to Stage). `aftermath` (Stage on Track 5) adds a wet tar
+// region on the floor that grows with the relic mutation (userData.residue). `surfaceDetail: false`
+// drops the procedural pores so the Track 1 reliquary setting's mapped plaster reads cleanly.
+// Not owner-adopted.
+// See docs/qa/PHYSICAL_AMBIENCE_TRIAL_2026-09-05.md and STAGE_HYBRID_TRIAL_2026-09-07.md.
+//
 // A continuous receiving surface: floor, rounded return, then an uneven wall.
 // The seam is curved geometry, so it survives oblique and wide cameras.
 export function createPhysicalChamber({ aftermath = false, surfaceDetail = true } = {}) {

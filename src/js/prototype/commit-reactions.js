@@ -19,17 +19,21 @@
 // What it may touch: the light law (key/rim/back weight, warmth, vignette).
 // What it must never touch: camera, relic transform, phase state.
 //
-// Corrected 2026-07-20 (external review, docs/qa/external-grok-4.5-2026-07-20/):
-// an earlier version of this comment called the module "the first deliberate
-// crossing of the Layer-0 line". That was false. Layer 0 has ALWAYS been
-// crossed in shipped code — `dynamicState.breathing` carries an audio term
-// (experience.js:5313-5317) and is applied to camera Y (:5050), the camera
-// target (:5059), and the relic's own rotation and Y position (:5084-5085);
-// relic iridescence rides midSustain (:5099). The doctrine file contains both
-// the blanket "never" and a gain table authorising exactly those couplings, and
-// the implementation followed the permissive half. So this module is not the
-// first crossing — it is the first one that is perceivable, committed, and
-// honest about being a crossing.
+// Opt-in; experience.js builds it for `?commit=1` (applyCommitPreset(), with the
+// variant's commitReactions windows, default 337-534s) or for the Track 5 recut
+// with `?recut=1&listen=1` (RECUT_LISTEN_COMMIT_CONFIG in recut-listen.js).
+//
+// Corrected 2026-07-20 (external review): an earlier version of this comment
+// called the module "the first deliberate crossing of the Layer-0 line". That
+// was false. Layer 0 has ALWAYS been crossed in shipped code —
+// `dynamicState.breathing` carries an audio term (experience.js
+// updateAnalysisState()) and is applied to camera Y and target in
+// updateCamera() and to the relic's rotation.z and Y position in updateHero();
+// relic iridescence rides midSustain, also in updateHero(). The doctrine file
+// contains both the blanket "never" and a gain table authorising exactly those
+// couplings, and the implementation followed the permissive half. So this
+// module is not the first crossing — it is the first one that is perceivable,
+// committed, and honest about being a crossing.
 
 const DEFAULT_STATES = [
     { id: 'sealed', keyMul: 0.82, rimMul: 1.18, backMul: 0.88, tempShift: -0.06, vignetteShift: 0.05 },

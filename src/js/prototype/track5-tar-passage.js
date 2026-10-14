@@ -1,4 +1,8 @@
-// Accepted for the opt-in physical room. The tar score and all other cuts stay intact.
+// Track 5 physical-room camera cut, imported by experience.js. Opt-in via usesTarPassageCut(): Track 5
+// `?scene=physical`, any T5 `?proposal=` or `?ledger=1`, never with `?recut=1`; `&passage=hold` keeps the
+// original cut. Adds a low MCU on the tar frontier (mcu_tar_frontier) and cuts to it at bar 149; the tar
+// score and all other cuts stay intact (the Track 5 ledger reuses the setup in its own cut plan).
+// See docs/qa/TRACK5_TAR_PASSAGE_COMPARISON_2026-09-06.md.
 export function createTrack5TarPassageCamera(camera) {
     return {
         ...camera,

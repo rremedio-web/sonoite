@@ -13,6 +13,12 @@
  * replaces arrays wholesale). Tests scrape this file's source text via
  * 'const TRACK5_*' tokens — keep declarations as bare `const` with the
  * export block at the bottom.
+ *
+ * References in the recut comments: "creative layer §N" is
+ * docs/superpowers/specs/2026-07-23-track5-recut-creative-layer-design.md.
+ * "Build spec §N" (the approved Track 5 recut build spec, 2026-07-23),
+ * "audit 2026-08-13" (the August full-theme audit) and "scout §N" (the recut
+ * material-target scout run) are working documents not included in this repo.
  */
 
 import { EVENT_TYPE } from '../chamber-constants.js';

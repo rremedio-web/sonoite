@@ -24,6 +24,10 @@
  * Nothing here touches cameras, objects, the post stack, the floor, the title, or
  * the default film: every query returns a neutral value unless the caller opts in
  * on the recut path.
+ *
+ * "Build spec §N" / "spec §N" cite the approved Track 5 recut build spec
+ * (2026-07-23), a working document not included in this repo; the public design
+ * record is docs/superpowers/specs/2026-07-23-track5-recut-creative-layer-design.md.
  */
 
 // --- Climax rim pulses (bars 75–125 inclusive; ends before bar 126) ----------

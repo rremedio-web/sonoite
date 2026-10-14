@@ -187,7 +187,7 @@ export function createRecutLehr(options = {}) {
      * gesture if we scaled by envelope.
      *
      * @param {number} elapsed
-     * @return {boolean}
+     * @return {boolean} Whether elapsed lies in [windowStart, windowEnd).
      */
     function inSettleWindow(elapsed) {
         return Number.isFinite(elapsed)
@@ -202,7 +202,7 @@ export function createRecutLehr(options = {}) {
      *
      * @param {number} elapsed
      * @param {number} secondsSinceCut
-     * @return {number}
+     * @return {number} Pull-back distance in world units.
      */
     function cutSettleAt(elapsed, secondsSinceCut) {
         if (!inSettleWindow(elapsed) || !Number.isFinite(secondsSinceCut) || secondsSinceCut < 0) {

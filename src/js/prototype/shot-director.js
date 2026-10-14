@@ -1,3 +1,12 @@
+/**
+ * ShotDirector: the bar-quantised camera of the Track 5 film, imported by experience.js. Maps beat-grid
+ * downbeats to an authored cutTimeline (bar -> named setup) and resolves each setup (WS/MCU/ECU framing,
+ * yaw/pitch/distance around a target point, eased in-shot dolly/orbit within an orbit budget, accent cuts,
+ * dolly-zoom) into a camera pose. It takes the camera only when shouldTakeCamera() agrees: the `shots` film
+ * flag is '1' (default on the canonical Track 5 film), the camera config sets director.enabled, and the
+ * director is active. `?shots=debug` builds it for inspection only and exposes window.SonoiteShotDirector.
+ */
+
 const DEG2RAD = Math.PI / 180;
 const FRAMING_VALUES = new Set(['WS', 'MCU', 'ECU']);
 const PITCH_MIN = -0.35;

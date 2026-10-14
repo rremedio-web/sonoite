@@ -5,7 +5,9 @@
  * absolute second N" and nothing else. It owns no THREE objects, allocates no
  * state per frame, reads no clock, and adds no system to the scene: every value
  * it returns is folded into an expression that already exists in `experience.js`
- * (fog density, dust opacity, `scene.background`).
+ * (fog density, dust opacity, `scene.background`). experience.js builds it only on
+ * the canonical Track 5 film with `?recut=1`; otherwise it stays null and every
+ * consuming expression keeps its original branch.
  *
  * Why this exists
  * ---------------

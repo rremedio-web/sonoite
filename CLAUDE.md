@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A WordPress theme (`sonoite-theme`) that renders a 7-track album ("The Deconstruction of the Self") as an audio-reactive Three.js experience. The product is a **browser-native album listener** — a cinematic room that performs the music — not a visualizer or screensaver.
+A WordPress theme (`sonoite-theme`) that renders the 7-track album *Sonoite* as an audio-reactive Three.js experience. The product is a **browser-native album listener** — a cinematic room that performs the music — not a visualizer or screensaver.
 
 Since the March 2026 product reset, the live direction is **"Path B": a reliquary chamber film-style runtime**, piloted on Track 5 (Não Querer Nada). The pre-reset "void" implementation still exists, but since Prompt #231 (2026-08-15) it is no longer what visitors see: the front page boots the Path B chamber. **Always state which runtime a finding or change targets** — most historical confusion in this repo comes from Track 5 having two competing implementations under one journey filename.
 

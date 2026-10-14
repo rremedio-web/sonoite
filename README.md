@@ -1,6 +1,6 @@
 # Sonoite: an album performed as a chamber film
 
-**Sonoite** is a browser-native album listener for *The Deconstruction of the Self*, a seven-track album I wrote and produced. Each track is played as a short film: one sculpture (a hand holding a flower and an egg) in a dark room, lit and filmed by an authored score in real time with Three.js while the music plays.
+*Sonoite* is a seven-track album I wrote and produced, and this is its browser-native listener. Each track is played as a short film: one sculpture (a hand holding a flower and an egg) in a dark room, lit and filmed by an authored score in real time with Three.js while the music plays.
 
 It is not a music visualizer. The camera, the sculpture and the chapters of each film are **authored to the music's structure** (measured to the second). Live audio analysis only adds the breathing and accents on top.
 

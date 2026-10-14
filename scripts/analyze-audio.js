@@ -1,4 +1,13 @@
 #!/usr/bin/env node
+/**
+ * Offline Meyda feature analysis (RMS, energy, spectral centroid/rolloff, loudness, chroma, ZCR) of
+ * album masters, with per-segment roll-ups. Writes <slug>.analysis.json into
+ * public/assets/journeys/analysis/ by default; the output is authoring reference, not loaded at runtime.
+ *
+ * Usage:   node scripts/analyze-audio.js --input <file.mp3> [--slug <slug>] [--out <file.json>]
+ *          node scripts/analyze-audio.js --config scripts/audio-analysis.config.json [--outputDir <dir>]
+ * Run with --help (or no arguments) for the full option list.
+ */
 
 import { promises as fs } from 'fs';
 import fsSync from 'fs';

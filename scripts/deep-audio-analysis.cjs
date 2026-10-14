@@ -12,6 +12,10 @@
  * - midrange.json - mid-range for Monolith (Track 6 only)
  *
  * Usage: node scripts/deep-audio-analysis.cjs [track1|track2|...|track7|all]
+ * Needs ffmpeg and aubio on PATH. Reads the album MP3s from $SONOITE_UPLOADS_DIR (default: the
+ * WordPress uploads/2025/08 dir) and writes public/assets/journeys/analysis/<slug>/.
+ * Re-running track1 or track5 overwrites their authored beats.json; regenerate those with
+ * build-sonoite-beats.mjs / build-track5-beats.cjs afterwards.
  */
 
 const fs = require('fs');

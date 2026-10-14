@@ -2,7 +2,7 @@
 
 /**
  * Human-authored phrase boundaries for Track 05 (nao-querer-nada).
- * Source of truth: TRACK5_CHAMBER_FILM_TIMELINE.phaseWindows in experience.js.
+ * Source of truth: TRACK5_CHAMBER_FILM_TIMELINE.phaseWindows in src/js/prototype/films/nao-querer-nada.js.
  * Composer may refine these times and re-run scripts/build-track5-beats.cjs.
  */
 const BPM_NOMINAL = 93.5;

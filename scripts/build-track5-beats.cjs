@@ -3,6 +3,16 @@
 /* eslint-disable security/detect-object-injection -- offline build script; keys originate from curated local JSON */
 /* eslint-disable no-console -- CLI script output */
 
+/**
+ * Materialize Track 5 (nao-querer-nada)'s beat grid from the authored phrase anchors in
+ * track5-phrase-anchors.cjs: each anchor span gets a whole number of 4/4 bars (count rounded from
+ * the nominal 93.5 BPM), so every anchor lands on a downbeat. Writes
+ * public/assets/journeys/analysis/nao-querer-nada/beats.json (read by the Path B shot director)
+ * only when validation passes; exits 1 otherwise.
+ *
+ * Usage: node scripts/build-track5-beats.cjs [--print-summary]   (--print-summary: report only, no write)
+ */
+
 const fs = require('fs');
 const path = require('path');
 

@@ -5,10 +5,14 @@
  * Ships a three-track album package (sonoite, horas-mortas, nao-querer-nada) with
  * clean entry at Track 1 and ?track= switching at runtime.
  *
- * Usage:  node scripts/build-static-prototype.mjs [--out dist-static] [--relic blender]
+ * Usage:  node scripts/build-static-prototype.mjs [--out dist-static] [--relic blender|meshy]
+ *             [--uploads <dir with the 01-/04-/05- album MP3s>]
+ *         --uploads falls back to $SONOITE_UPLOADS_DIR, then ../../uploads/2025/08 (theme inside
+ *         wp-content/themes/). --relic picks the relic GLB served at /; the other goes to /b/.
  * Then:   npx vercel deploy --prod <out>     (or drag the folder onto netlify.com/drop)
  *
- * Run `npm run build` first — this copies whatever is currently in dist/.
+ * Run `npm run build` first — this copies whatever is currently in dist/
+ * (`npm run export:static` does both).
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync, cpSync, statSync, readdirSync, rmSync } from 'node:fs';
@@ -201,6 +205,9 @@ const SHIPPED_MODELS = [
 for (const file of SHIPPED_MODELS) {
     bytes += copy(`public/assets/models/track5-poc/optimized/${file}`, `public/assets/models/track5-poc/optimized/${file}`);
 }
+// Track 1 Stage trial (?proposal=stage&setting=reliquary): init awaits the drape GLB before audio setup.
+bytes += copy('public/assets/models/track1-stage', 'public/assets/models/track1-stage');
+bytes += copy('public/assets/materials/track1-stage', 'public/assets/materials/track1-stage');
 
 const resolvedAudio = [];
 for (const track of STATIC_TRACKS) {

@@ -435,52 +435,52 @@ const HARD_LIGHT_VARIANT = {
         sheenColor: '#181d27',
         envMapIntensity: 0.045
     },
-        chamber: {
-            darknessMode: DARKNESS_MODE.SACRISTY,
-            environmentIntensity: 0.018,
-            camera: {
-                xDrift: 0.012,
-                yDrift: 0.008,
-                zPush: 0.34,
-                basePosition: [-2.22, 2.5, 11.7],
-                target: [1.04, 2.16, -0.22],
-                score: [
-                    {
-                        atSeconds: 0,
-                        position: [-2.22, 2.5, 11.7],
-                        target: [1.04, 2.16, -0.22],
-                        driftScale: 0.35
-                    },
-                    {
-                        atSeconds: 30,
-                        transitionSeconds: 8,
-                        position: [-1.86, 2.46, 11.08],
-                        target: [1.02, 2.18, -0.14],
-                        driftScale: 0.46
-                    },
-                    {
-                        atSeconds: 58,
-                        transitionSeconds: 6,
-                        position: [-2.78, 2.62, 11.96],
-                        target: [0.72, 2.12, -0.48],
-                        driftScale: 0.22
-                    },
-                    {
-                        atSeconds: 76,
-                        transitionSeconds: 7,
-                        position: [-1.54, 2.38, 10.42],
-                        target: [1.14, 2.2, -0.04],
-                        driftScale: 0.42
-                    },
-                    {
-                        atSeconds: 90,
-                        transitionSeconds: 5,
-                        position: [-2.08, 2.48, 11.14],
-                        target: [1.02, 2.18, -0.16],
-                        driftScale: 0.28
-                    }
-                ]
-            },
+    chamber: {
+        darknessMode: DARKNESS_MODE.SACRISTY,
+        environmentIntensity: 0.018,
+        camera: {
+            xDrift: 0.012,
+            yDrift: 0.008,
+            zPush: 0.34,
+            basePosition: [-2.22, 2.5, 11.7],
+            target: [1.04, 2.16, -0.22],
+            score: [
+                {
+                    atSeconds: 0,
+                    position: [-2.22, 2.5, 11.7],
+                    target: [1.04, 2.16, -0.22],
+                    driftScale: 0.35
+                },
+                {
+                    atSeconds: 30,
+                    transitionSeconds: 8,
+                    position: [-1.86, 2.46, 11.08],
+                    target: [1.02, 2.18, -0.14],
+                    driftScale: 0.46
+                },
+                {
+                    atSeconds: 58,
+                    transitionSeconds: 6,
+                    position: [-2.78, 2.62, 11.96],
+                    target: [0.72, 2.12, -0.48],
+                    driftScale: 0.22
+                },
+                {
+                    atSeconds: 76,
+                    transitionSeconds: 7,
+                    position: [-1.54, 2.38, 10.42],
+                    target: [1.14, 2.2, -0.04],
+                    driftScale: 0.42
+                },
+                {
+                    atSeconds: 90,
+                    transitionSeconds: 5,
+                    position: [-2.08, 2.48, 11.14],
+                    target: [1.02, 2.18, -0.16],
+                    driftScale: 0.28
+                }
+            ]
+        },
         post: {
             bloomStrength: 0.13,
             grainIntensity: 0.022
@@ -834,7 +834,7 @@ CHAMBER_VARIANTS['reliquary-observed'] = deepMerge(HARD_LIGHT_VARIANT, {
         iridescence: 0.01,
         iridescenceIOR: 1.2
     },
-        chamber: {
+    chamber: {
         environmentIntensity: 0.056,
         fogDensity: 0.022,
         fogColor: '#0a0c14',

@@ -48,7 +48,9 @@ export async function loadJourneyJson(trackFile) {
   
   // Load from WordPress-provided URL
   const res = await fetch(baseUrl);
-  if (!res.ok) throw new Error(`Journey load failed: ${trackFile}`);
+  if (!res.ok) {
+    throw new Error(`Journey load failed: ${trackFile}`);
+  }
   return await res.json();
 }
 
@@ -76,7 +78,7 @@ export async function loadAllJourneys() {
 
 /**
  * MP13: Load enriched moments JSON for a track (optional)
- * @param {string} slug - Track slug (e.g., 'paralisia-do-sono')
+ * @param {string} slug     - Track slug (e.g., 'paralisia-do-sono')
  * @param {string} themeUrl - Theme base URL
  * @returns {Promise<Object|null>} Enriched moments data or null if not found
  */
@@ -117,12 +119,14 @@ async function loadEnrichedMoments(slug, themeUrl) {
 
 /**
  * MP13: Merge enriched moments into base journey
- * @param {Object} baseJourney - The base journey data
+ * @param {Object} baseJourney  - The base journey data
  * @param {Object} enrichedData - The enriched moments data
  * @returns {Object} Merged journey data
  */
 function mergeEnrichedMoments(baseJourney, enrichedData) {
-  if (!enrichedData) return baseJourney;
+  if (!enrichedData) {
+    return baseJourney;
+  }
 
   const merged = { ...baseJourney };
 
@@ -358,7 +362,9 @@ function sanitizeTitle(title) {
  * - MP2: Extracts palette configuration for per-track color identity
  */
 function coerceJourneyData(json) {
-  if (!json || typeof json !== 'object') return json;
+  if (!json || typeof json !== 'object') {
+    return json;
+  }
 
   const out = { ...json };
 
@@ -475,7 +481,9 @@ function coerceJourneyData(json) {
  * so it doesn't fall back to prior track camera paths.
  */
 function applyTrack5CameraInjections(journey, slug) {
-  if (!journey || slug !== 'nao-querer-nada') return journey;
+  if (!journey || slug !== 'nao-querer-nada') {
+    return journey;
+  }
 
   const injected = { ...journey };
   injected.config = injected.config || {};
@@ -507,7 +515,9 @@ function applyTrack5CameraInjections(journey, slug) {
   ];
 
   splineMoments.forEach(sm => {
-    if (existingIds.has(sm.id)) return;
+    if (existingIds.has(sm.id)) {
+      return;
+    }
     injected.moments.push({
       id: sm.id,
       at: sm.at,

@@ -8,7 +8,9 @@
  * @param {THREE.Object3D} root - The root object to dispose
  */
 export function dispose3D(root) {
-  if (!root) return;
+  if (!root) {
+    return;
+  }
   
   // Traverse the object tree
   root.traverse?.(object => {
@@ -23,7 +25,9 @@ export function dispose3D(root) {
       : object.material ? [object.material] : [];
     
     materials.forEach(material => {
-      if (!material) return;
+      if (!material) {
+        return;
+      }
       
       // Dispose material
       material.dispose?.();
@@ -72,10 +76,12 @@ export function dispose3D(root) {
 
 /**
  * Dispose of a render target
- * @param {THREE.WebGLRenderTarget} renderTarget 
+ * @param {THREE.WebGLRenderTarget} renderTarget
  */
 export function disposeRenderTarget(renderTarget) {
-  if (!renderTarget) return;
+  if (!renderTarget) {
+    return;
+  }
   
   renderTarget.dispose?.();
   
@@ -91,10 +97,12 @@ export function disposeRenderTarget(renderTarget) {
 
 /**
  * Dispose of an effect composer and its passes
- * @param {EffectComposer} composer 
+ * @param {EffectComposer} composer
  */
 export function disposeComposer(composer) {
-  if (!composer) return;
+  if (!composer) {
+    return;
+  }
   
   // Dispose render targets
   if (composer.renderTarget1) {

@@ -868,7 +868,7 @@ export class AudioManager {
         this.trigger('onTimeUpdate', this.currentTime);
         this.trigger('onTrackEnd');
         this.trigger('onStop');
-    }
+    };
 
     /**
      * Trigger callbacks with enhanced error handling
@@ -887,7 +887,9 @@ export class AudioManager {
      * Start real-time frequency analysis (throttled; configurable)
      */
     startFrequencyAnalysis() {
-        if (!this.analyser || this.isAnalyzing) return;
+        if (!this.analyser || this.isAnalyzing) {
+            return;
+        }
         
         this.isAnalyzing = true;
         this.updateFrequencyData();
@@ -908,7 +910,9 @@ export class AudioManager {
      * Update normalized buffer and compute average level (0-1)
      */
     updateNormalizedFrequencyData() {
-        if (!this.frequencyData) return 0;
+        if (!this.frequencyData) {
+            return 0;
+        }
 
         if (!this.normalizedFrequencyData || this.normalizedFrequencyData.length !== this.frequencyData.length) {
             this.normalizedFrequencyData = new Float32Array(this.frequencyData.length);
@@ -930,7 +934,9 @@ export class AudioManager {
      * Real-time frequency data update loop (throttled)
      */
     updateFrequencyData() {
-        if (!this.isAnalyzing || !this.analyser) return;
+        if (!this.isAnalyzing || !this.analyser) {
+            return;
+        }
         
         const currentTime = performance.now();
         
@@ -1003,7 +1009,9 @@ export class AudioManager {
      * Get frequency data for specific range
      */
     getFrequencyRange(minFreq, maxFreq) {
-        if (!this.analyser || !this.frequencyData) return 0;
+        if (!this.analyser || !this.frequencyData) {
+            return 0;
+        }
         
         const sampleRate = this.audioContext.sampleRate;
         const fftSize = this.analyser.fftSize;
@@ -1073,7 +1081,9 @@ export class AudioManager {
         }
 
         const frequencies = this.getFrequencyData();
-        if (!frequencies) return 0;
+        if (!frequencies) {
+            return 0;
+        }
 
         let sum = 0;
         for (let i = 0; i < frequencies.length; i++) {
@@ -1158,7 +1168,9 @@ export class AudioManager {
      * Log audit event
      */
     logAuditEvent(event, data = {}) {
-        if (!this.securityConfig.enableAuditLog) return;
+        if (!this.securityConfig.enableAuditLog) {
+            return;
+        }
         
         const auditEvent = {
             timestamp: new Date().toISOString(),
@@ -1297,7 +1309,9 @@ export class AudioManager {
      * Initialize Meyda analyzer for advanced audio feature extraction
      */
     initializeMeydaAnalyzer() {
-        if (!this.enableAdvancedAnalysis || !this.source || !this.audioContext) return;
+        if (!this.enableAdvancedAnalysis || !this.source || !this.audioContext) {
+            return;
+        }
 
         // P0-MEMORY-FIX: Properly destroy existing analyzer before creating new one
         // Meyda doesn't have a destroy() method, so we manually disconnect internal nodes
@@ -1385,7 +1399,9 @@ export class AudioManager {
      */
 
     async resumeAudioContext() {
-        if (!this.audioContext) return false;
+        if (!this.audioContext) {
+            return false;
+        }
 
         try {
             if (this.audioContext.state === 'suspended') {
@@ -1419,7 +1435,9 @@ export class AudioManager {
      * Ensure audio context is running before any audio operation
      */
     async ensureAudioContextRunning() {
-        if (!this.audioContext) return false;
+        if (!this.audioContext) {
+            return false;
+        }
 
         // Always try to resume on user interaction for Safari mobile
         if (this.audioContext.state !== 'running') {
@@ -1460,7 +1478,9 @@ export class AudioManager {
      * Feeds getAudioData() and getAudioAnalysis(), which only the legacy runtime calls.
      */
     getFrequencyBands() {
-        if (!this.frequencyData) return null;
+        if (!this.frequencyData) {
+            return null;
+        }
 
         // Define frequency bands
         const bands = {
@@ -1490,7 +1510,9 @@ export class AudioManager {
 
     getAudioAnalysis() {
         const bands = this.getFrequencyBands();
-        if (!bands) return this.getFallbackAudioData();
+        if (!bands) {
+            return this.getFallbackAudioData();
+        }
 
         // Calculate derived metrics
         const overall = Object.values(bands).reduce((sum, val) => sum + val, 0) / Object.keys(bands).length;
@@ -1587,8 +1609,12 @@ export class AudioManager {
                 this.meydaAnalyzer.stop();
                 const internals = this.meydaAnalyzer._m;
                 if (internals) {
-                    if (internals.analyser?.disconnect) internals.analyser.disconnect();
-                    if (internals.scriptNode?.disconnect) internals.scriptNode.disconnect();
+                    if (internals.analyser?.disconnect) {
+                        internals.analyser.disconnect();
+                    }
+                    if (internals.scriptNode?.disconnect) {
+                        internals.scriptNode.disconnect();
+                    }
                 }
             } catch (e) {
                 // Ignore cleanup errors

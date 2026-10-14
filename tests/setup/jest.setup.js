@@ -1,6 +1,9 @@
 /**
- * Jest Test Setup for Sonoite Security Testing
- * Global test configuration and security-focused test utilities
+ * Shared Jest setup for both projects in jest.config.cjs (Unit Tests and Security Tests),
+ * run before every test file. Polyfills TextEncoder/TextDecoder; stubs crypto, fetch,
+ * performance (now() is Date.now(), so millisecond resolution), AudioContext and a minimal
+ * global THREE; seeds the WordPress-localized globals (sonoiteData, sonoiteSecurityConfig);
+ * and registers the SecurityTestUtils helpers and custom matchers for tests/security.
  */
 
 import { TextDecoder, TextEncoder } from 'util';
@@ -13,10 +16,7 @@ if (typeof global.TextDecoder === 'undefined') {
   global.TextDecoder = TextDecoder;
 }
 
-// Security test environment setup
-global.SECURITY_TEST_MODE = true;
-
-// Mock browser APIs for security testing
+// Web Crypto stub
 const mockCrypto = {
   subtle: {
     digest: jest.fn().mockResolvedValue(new ArrayBuffer(32)),
@@ -56,7 +56,7 @@ if (typeof global.window !== 'undefined') {
   }
 }
 
-// Mock fetch for security testing
+// fetch resolves an empty 200 response unless a test overrides it
 global.fetch = jest.fn().mockResolvedValue({
   ok: true,
   status: 200,
@@ -114,7 +114,7 @@ global.AudioContext = jest.fn().mockImplementation(() => ({
 
 global.webkitAudioContext = global.AudioContext;
 
-// Mock Three.js for consciousness system testing
+// Minimal global THREE for code that reads window.THREE; `import 'three'` still loads the real library
 global.THREE = {
   Scene: jest.fn().mockImplementation(() => ({
     add: jest.fn(),
@@ -291,27 +291,6 @@ global.SecurityTestUtils = {
   }
 };
 
-// Console suppression for cleaner test output
-const originalConsoleError = console.error;
-const originalConsoleWarn = console.warn;
-
-console.error = (...args) => {
-  if (args[0] && typeof args[0] === 'string' && args[0].includes('SECURITY')) {
-    // Allow security-related console messages in tests
-    originalConsoleError(...args);
-  } else if (!global.SUPPRESS_CONSOLE) {
-    originalConsoleError(...args);
-  }
-};
-
-console.warn = (...args) => {
-  if (args[0] && typeof args[0] === 'string' && args[0].includes('SECURITY')) {
-    originalConsoleWarn(...args);
-  } else if (!global.SUPPRESS_CONSOLE) {
-    originalConsoleWarn(...args);
-  }
-};
-
 // Security-focused custom matchers
 expect.extend({
   toBeSecureInput(received) {
@@ -383,7 +362,7 @@ expect.extend({
   }
 });
 
-// Add security-specific globals
+// Globals that WordPress normally injects via wp_localize_script
 global.window.sonoiteSecurityConfig = {
   enableCSPReporting: true,
   enableIntegrityChecks: true,
@@ -407,24 +386,7 @@ global.window.sonoiteData = {
   isSecure: true
 };
 
-// Security testing configuration
-global.SECURITY_TEST_CONFIG = {
-  maxTestDuration: 30000, // 30 seconds
-  enableVulnerabilityTests: true,
-  enablePerformanceTests: true,
-  enableIntegrationTests: true,
-  testDataPath: './tests/data/',
-  mockDataPath: './tests/mocks/'
-};
-
-// Error boundary for security tests
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('Unhandled Promise Rejection in security test:', reason);
-  // Don't fail the test for unhandled promises in security tests
-  // as we're intentionally testing edge cases
-});
-
-// Security test cleanup
+// Per-test cleanup for every suite
 afterEach(() => {
   // Clean up any security test artifacts
   if (global.SecurityTestUtils) {
@@ -438,7 +400,5 @@ afterEach(() => {
   jest.clearAllTimers();
 });
 
-// Global test timeout for security tests
+// Same value as testTimeout in jest.config.cjs
 jest.setTimeout(30000);
-
-console.log('🔒 Security test environment initialized');

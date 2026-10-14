@@ -114,9 +114,28 @@ module.exports = {
             }
         },
         {
-            files: ['src/js/modules/consciousness/**/*.js'],
+            // 2-space-indented files: the legacy runtime (frozen, CLAUDE.md Architecture §A) and
+            // shared modules such as journey-loader and dispose3d that Path B also imports.
+            // Linted at 2 instead of reformatted, to avoid a whitespace-only diff.
+            files: [
+                'src/js/visuals/{flows,materials,passes,geom,color}/**/*.js',
+                'src/js/visuals/structures/*.js',
+                'src/js/visuals/core/{CameraManager,AudioReactiveSkybox,LightField}.js',
+                'src/js/visuals/utils/{signalPipeline,action-validator,audioResponse}.js',
+                'src/js/visuals/{journey-controller,journey-loader,consciousness-adapter,placeholders,register-defaults,layer-api,registry}.js',
+                'src/js/schemas/action-schema.js',
+                'src/js/audio/BeatDetector.js',
+                'src/js/utils/{devlog,dispose3d}.js',
+                'src/js/{main,three-root}.js'
+            ],
+            excludedFiles: [
+                'src/js/visuals/structures/{Track5HeroModel,VoidEclipseDisc,VoidHalo}.js'
+            ],
             rules: {
-                'max-lines': ['warn', 300]
+                indent: ['error', 2, {
+                    SwitchCase: 1,
+                    MemberExpression: 1
+                }]
             }
         }
     ],

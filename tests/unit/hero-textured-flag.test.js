@@ -7,7 +7,7 @@ import {
     shouldSkipTrack5CinemaMaterialDecoration
 } from '../../src/js/prototype/hero-model-urls.js';
 
-const THEME_URL = 'http://localhost/homem/wp-content/themes/sonoite-theme';
+const THEME_URL = 'http://localhost/wp-content/themes/sonoite-theme';
 
 const JOURNEY_HERO_CONFIG = {
     modelUrl: 'public/assets/models/track5-poc/optimized/track5-relic-blender-chamber-optimized.glb',

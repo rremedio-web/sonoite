@@ -1,10 +1,14 @@
 <?php
 /**
- * Sonoite Theme REST API Endpoints
- * Handles all custom REST API endpoints with security and caching
- * 
+ * The sonoite/v1 REST namespace.
+ *
+ * Public: GET /tracks and /tracks/{id} (rate-limited, cached), POST
+ * /preview-email (preview-page signups, stored in an option), and browser
+ * telemetry sinks for CSP, security and performance reports. Admin-only:
+ * /performance and /cache. Report bodies are bounded, rate-limited per IP, and
+ * admin alert emails are throttled.
+ *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -503,7 +507,7 @@ function sonoite_rest_get_performance_metrics($request) {
 
         $metrics = array(
             'cache_status' => array(
-                'object_cache_active' => function_exists('wp_cache_get'),
+                'object_cache_active' => wp_using_ext_object_cache(),
                 'tracks_cached' => get_transient('sonoite_tracks_cache_v3') !== false,
                 'asset_manifest_cached' => get_transient('sonoite_asset_manifest') !== false,
             ),
@@ -524,11 +528,12 @@ function sonoite_rest_get_performance_metrics($request) {
         if ($wpdb->get_var("SHOW TABLES LIKE '$security_table'") === $security_table) {
             $metrics['security_logs'] = array(
                 'total_violations' => $wpdb->get_var("SELECT COUNT(*) FROM {$security_table}"),
-                'violations_last_24h' => $wpdb->get_var($wpdb->prepare(
+                'violations_last_24h' => $wpdb->get_var(
                     "SELECT COUNT(*) FROM {$security_table} WHERE timestamp > DATE_SUB(NOW(), INTERVAL 24 HOUR)"
-                )),
+                ),
                 'critical_violations' => $wpdb->get_var($wpdb->prepare(
-                    "SELECT COUNT(*) FROM {$security_table} WHERE severity = 'critical'"
+                    "SELECT COUNT(*) FROM {$security_table} WHERE severity = %s",
+                    'critical'
                 )),
             );
         }
@@ -563,7 +568,6 @@ function sonoite_rest_clear_cache($request) {
 
             case 'assets':
                 delete_transient('sonoite_asset_manifest');
-                delete_transient('sonoite_critical_css_v2');
                 $cleared[] = 'assets';
                 break;
 
@@ -571,7 +575,6 @@ function sonoite_rest_clear_cache($request) {
             default:
                 sonoite_clear_tracks_cache();
                 delete_transient('sonoite_asset_manifest');
-                delete_transient('sonoite_critical_css_v2');
                 
                 // Clear WordPress object cache if available
                 if (function_exists('wp_cache_flush')) {
@@ -605,18 +608,16 @@ function sonoite_rest_clear_cache($request) {
 function sonoite_rest_get_cache_status($request) {
     try {
         $status = array(
-            'object_cache' => function_exists('wp_cache_get'),
+            'object_cache' => wp_using_ext_object_cache(),
             'tracks_cache' => get_transient('sonoite_tracks_cache_v3') !== false,
             'asset_manifest_cache' => get_transient('sonoite_asset_manifest') !== false,
-            'critical_css_cache' => get_transient('sonoite_critical_css_v2') !== false,
         );
 
         // Get cache expiration times
         $expirations = array();
         $transients = array(
             'tracks' => 'sonoite_tracks_cache_v3',
-            'asset_manifest' => 'sonoite_asset_manifest',
-            'critical_css' => 'sonoite_critical_css_v2'
+            'asset_manifest' => 'sonoite_asset_manifest'
         );
 
         foreach ($transients as $key => $transient) {
@@ -837,14 +838,16 @@ function sonoite_rest_handle_csp_violation($request) {
             ));
         }
 
-        // Log for immediate attention
-        error_log(sprintf(
-            'Sonoite CSP Violation [%s]: %s blocked from %s (IP: %s)',
-            $severity,
-            $violation_details['violated_directive'],
-            $violation_details['blocked_uri'],
-            $client_ip
-        ));
+        // Mirror to the PHP error log only under WP_DEBUG (the table row above is the record)
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            error_log(sprintf(
+                'Sonoite CSP Violation [%s]: %s blocked from %s (IP: %s)',
+                $severity,
+                $violation_details['violated_directive'],
+                $violation_details['blocked_uri'],
+                $client_ip
+            ));
+        }
 
         // Send alert for critical violations
         if (
@@ -973,9 +976,6 @@ function sonoite_rest_handle_preview_email($request) {
 
         $subscribers[] = $new_subscriber;
         update_option('sonoite_preview_subscribers', $subscribers);
-
-        // Log the subscription
-        error_log("Sonoite: New preview subscriber - {$email} from {$client_ip}");
 
         if (get_option('sonoite_send_preview_welcome_email', 0)) {
             sonoite_send_welcome_email($email);

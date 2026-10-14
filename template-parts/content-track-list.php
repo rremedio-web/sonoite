@@ -1,19 +1,14 @@
 <?php
 /**
- * Template part for displaying the track list
+ * Legacy runtime track list: one .track-button per published track (from the
+ * cached sonoite_get_tracks()), which the old runtime's selectTrack() handles.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit('Direct access forbidden.');
-}
-
-// Safety check for required functions
-if (!function_exists('sonoite_get_tracks')) {
-    return;
 }
 ?>
 

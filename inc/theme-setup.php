@@ -1,10 +1,13 @@
 <?php
 /**
- * Sonoite Theme Setup and Configuration
- * Handles theme supports, post types, and basic WordPress integration
+ * Theme supports, the `track` custom post type and its editing UI.
+ *
+ * Registers the track CPT (query_var `sonoite_track`, so `?track=` stays free
+ * for front-page deep links), its meta boxes (audio attachment, track details,
+ * visualization settings) and save handler, the Tracks list columns,
+ * and the audio auto-attach helpers. Loaded by functions.php.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -491,7 +494,7 @@ function sonoite_save_track_meta($post_id) {
 add_action('save_post_track', 'sonoite_save_track_meta');
 
 /**
- * Admin enqueue media scripts
+ * Media modal and jQuery for the Audio File meta box on the track edit screen.
  */
 function sonoite_admin_enqueue_media() {
     global $pagenow, $typenow;
@@ -499,17 +502,6 @@ function sonoite_admin_enqueue_media() {
     if (in_array($pagenow, array('post.php', 'post-new.php')) && $typenow === 'track') {
         wp_enqueue_media();
         wp_enqueue_script('jquery');
-        
-        // Ensure block editor scripts are loaded
-        wp_enqueue_script('wp-blocks');
-        wp_enqueue_script('wp-element');
-        wp_enqueue_script('wp-editor');
-        wp_enqueue_script('wp-components');
-        wp_enqueue_script('wp-data');
-        wp_enqueue_script('wp-i18n');
-        
-        // Enqueue block editor styles
-        wp_enqueue_style('wp-edit-blocks');
     }
 }
 add_action('admin_enqueue_scripts', 'sonoite_admin_enqueue_media');

@@ -2,7 +2,11 @@
 /**
  * Template Name: Sonoite Prototype
  *
- * Minimal full-bleed shell for Path B prototype work.
+ * Full-bleed shell for the Path B chamber runtime (src/js/prototype/). Served
+ * for the front page, ?prototype=1 and pages using this template via
+ * sonoite_maybe_use_prototype_template() in functions.php. Prints its own
+ * <head>, preloads the two shell fonts, and paints the entry track's title
+ * (from ?track=, default `sonoite`) until the JS shell takes over.
  *
  * @package SonoiteTheme
  */

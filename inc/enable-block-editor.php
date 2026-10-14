@@ -1,7 +1,9 @@
 <?php
 /**
- * Enable Block Editor for Track Post Type
- * Simple fix without diagnostics
+ * Forces the block editor for the track CPT, overriding Classic Editor-style
+ * plugins that disable it. First entry in functions.php's $required_files.
+ *
+ * @package SonoiteTheme
  */
 
 if (!defined('ABSPATH')) {
@@ -15,36 +17,3 @@ add_filter('use_block_editor_for_post_type', function($use_block_editor, $post_t
     }
     return $use_block_editor;
 }, 999, 2);
-
-// Ensure post type supports editor
-add_action('init', function() {
-    if (post_type_exists('track')) {
-        add_post_type_support('track', 'editor');
-    }
-}, 999);
-
-// Make sure required scripts are loaded
-add_action('admin_enqueue_scripts', function() {
-    global $pagenow, $typenow;
-    
-    if (in_array($pagenow, array('post.php', 'post-new.php')) && $typenow === 'track') {
-        // Core dependencies for block editor
-        wp_enqueue_script('wp-blocks');
-        wp_enqueue_script('wp-element');
-        wp_enqueue_script('wp-i18n');
-        wp_enqueue_script('wp-data');
-        wp_enqueue_script('wp-compose');
-        wp_enqueue_script('wp-components');
-        wp_enqueue_script('wp-editor');
-        wp_enqueue_script('wp-edit-post');
-        wp_enqueue_script('wp-format-library');
-        wp_enqueue_script('wp-block-library');
-        
-        // Styles
-        wp_enqueue_style('wp-block-library');
-        wp_enqueue_style('wp-edit-post');
-        wp_enqueue_style('wp-editor');
-        wp_enqueue_style('wp-components');
-        wp_enqueue_style('wp-format-library');
-    }
-}, 999);

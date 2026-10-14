@@ -1,7 +1,8 @@
 <?php
 /**
- * Single Track Template
- * 
+ * Single track (/track/{slug}/): redirect to the front page with ?track={slug},
+ * which the Path B shell reads to pick the entry film.
+ *
  * @package SonoiteTheme
  */
 

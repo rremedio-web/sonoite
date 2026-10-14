@@ -1,10 +1,13 @@
 <?php
 /**
- * Sonoite Theme Admin Functions
- * Admin-only functionality, dashboard widgets, and administrative tools
- * 
+ * wp-admin screens for the theme.
+ *
+ * Dashboard widgets (cache, security log, tracks missing audio), the Sonoite
+ * menu (settings, performance, security log, cache, particle counts), the
+ * preview-page settings and subscriber list under Album Tracks, and the AJAX
+ * handlers those screens call. Loaded by functions.php.
+ *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -184,7 +187,7 @@ add_action('wp_ajax_sonoite_check_unattached_audio', 'sonoite_ajax_check_unattac
  */
 function sonoite_performance_dashboard_widget() {
     $cache_status = array(
-        'object_cache' => function_exists('wp_cache_get'),
+        'object_cache' => wp_using_ext_object_cache(),
         'tracks_cached' => get_transient('sonoite_tracks_cache_v3') !== false,
         'asset_manifest_cached' => get_transient('sonoite_asset_manifest') !== false,
     );
@@ -221,7 +224,7 @@ function sonoite_performance_dashboard_widget() {
         </p>
 
         <p>
-            <a href="<?php echo admin_url('admin.php?page=sonoite-performance'); ?>" class="button">
+            <a href="<?php echo esc_url(admin_url('admin.php?page=sonoite-performance')); ?>" class="button">
                 <?php _e('View Detailed Performance', SONOITE_TEXT_DOMAIN); ?>
             </a>
             <button type="button" class="button" onclick="sonoiteClearCache()">
@@ -232,7 +235,7 @@ function sonoite_performance_dashboard_widget() {
 
     <script>
     function sonoiteClearCache() {
-        if (!confirm('<?php _e('Are you sure you want to clear the cache?', SONOITE_TEXT_DOMAIN); ?>')) {
+        if (!confirm('<?php echo esc_js(__('Are you sure you want to clear the cache?', SONOITE_TEXT_DOMAIN)); ?>')) {
             return;
         }
 
@@ -240,29 +243,29 @@ function sonoite_performance_dashboard_widget() {
         const button = event.target;
         const originalText = button.textContent;
         button.disabled = true;
-        button.textContent = '<?php _e('Clearing...', SONOITE_TEXT_DOMAIN); ?>';
+        button.textContent = '<?php echo esc_js(__('Clearing...', SONOITE_TEXT_DOMAIN)); ?>';
 
         // Use AJAX with nonce for security
         jQuery.ajax({
-            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+            url: '<?php echo esc_url(admin_url('admin-ajax.php')); ?>',
             type: 'POST',
             data: {
                 action: 'sonoite_clear_cache',
-                nonce: '<?php echo wp_create_nonce('sonoite-clear-cache-nonce'); ?>'
+                nonce: '<?php echo esc_js(wp_create_nonce('sonoite-clear-cache-nonce')); ?>'
             },
             success: function(response) {
                 if (response.success) {
-                    alert(response.data.message || '<?php _e('Cache cleared successfully!', SONOITE_TEXT_DOMAIN); ?>');
+                    alert(response.data.message || '<?php echo esc_js(__('Cache cleared successfully!', SONOITE_TEXT_DOMAIN)); ?>');
                     // Reload to show updated stats
                     window.location.reload();
                 } else {
-                    alert(response.data.message || '<?php _e('Failed to clear cache.', SONOITE_TEXT_DOMAIN); ?>');
+                    alert(response.data.message || '<?php echo esc_js(__('Failed to clear cache.', SONOITE_TEXT_DOMAIN)); ?>');
                     button.disabled = false;
                     button.textContent = originalText;
                 }
             },
             error: function() {
-                alert('<?php _e('Error clearing cache. Please try again.', SONOITE_TEXT_DOMAIN); ?>');
+                alert('<?php echo esc_js(__('Error clearing cache. Please try again.', SONOITE_TEXT_DOMAIN)); ?>');
                 button.disabled = false;
                 button.textContent = originalText;
             }
@@ -290,17 +293,18 @@ function sonoite_security_dashboard_widget() {
 
     if ($table_exists) {
         $total_violations = $wpdb->get_var("SELECT COUNT(*) FROM {$security_table}");
-        $recent_violations = $wpdb->get_var($wpdb->prepare(
+        $recent_violations = $wpdb->get_var(
             "SELECT COUNT(*) FROM {$security_table} WHERE timestamp > DATE_SUB(NOW(), INTERVAL 24 HOUR)"
-        ));
+        );
         $critical_violations = $wpdb->get_var($wpdb->prepare(
-            "SELECT COUNT(*) FROM {$security_table} WHERE severity = 'critical'"
+            "SELECT COUNT(*) FROM {$security_table} WHERE severity = %s",
+            'critical'
         ));
 
-        $recent_entries = $wpdb->get_results($wpdb->prepare(
+        $recent_entries = $wpdb->get_results(
             "SELECT violation_type, ip_address, timestamp FROM {$security_table} 
              ORDER BY timestamp DESC LIMIT 5"
-        ));
+        );
     } else {
         $total_violations = 0;
         $recent_violations = 0;
@@ -335,7 +339,7 @@ function sonoite_security_dashboard_widget() {
         <?php endif; ?>
 
         <p>
-            <a href="<?php echo admin_url('admin.php?page=sonoite-security'); ?>" class="button">
+            <a href="<?php echo esc_url(admin_url('admin.php?page=sonoite-security')); ?>" class="button">
                 <?php _e('View Security Logs', SONOITE_TEXT_DOMAIN); ?>
             </a>
         </p>
@@ -394,20 +398,20 @@ function sonoite_tracks_dashboard_widget() {
             <ul style="font-size: 12px;">
                 <?php foreach ($recent_tracks as $track): ?>
                     <li>
-                        <a href="<?php echo get_edit_post_link($track->ID); ?>">
+                        <a href="<?php echo esc_url(get_edit_post_link($track->ID)); ?>">
                             <?php echo esc_html($track->post_title); ?>
                         </a>
-                        <br><small><?php echo get_the_date('', $track); ?></small>
+                        <br><small><?php echo esc_html(get_the_date('', $track)); ?></small>
                     </li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
 
         <p>
-            <a href="<?php echo admin_url('edit.php?post_type=track'); ?>" class="button">
+            <a href="<?php echo esc_url(admin_url('edit.php?post_type=track')); ?>" class="button">
                 <?php _e('Manage Tracks', SONOITE_TEXT_DOMAIN); ?>
             </a>
-            <a href="<?php echo admin_url('post-new.php?post_type=track'); ?>" class="button button-primary">
+            <a href="<?php echo esc_url(admin_url('post-new.php?post_type=track')); ?>" class="button button-primary">
                 <?php _e('Add New Track', SONOITE_TEXT_DOMAIN); ?>
             </a>
         </p>
@@ -419,7 +423,7 @@ function sonoite_tracks_dashboard_widget() {
                 // Check for unattached audio files and auto-fix
                 $.post(ajaxurl, {
                     action: 'sonoite_check_unattached_audio',
-                    nonce: '<?php echo wp_create_nonce('sonoite-admin-ajax'); ?>'
+                    nonce: '<?php echo esc_js(wp_create_nonce('sonoite-admin-ajax')); ?>'
                 }, function(response) {
                     if (response.success && response.data.found) {
                         var $status = $('#sonoite-audio-fix-status').empty();
@@ -450,7 +454,7 @@ function sonoite_tracks_dashboard_widget() {
                     action: 'sonoite_attach_audio',
                     track_id: trackId,
                     audio_id: audioId,
-                    nonce: '<?php echo wp_create_nonce('sonoite-admin-ajax'); ?>'
+                    nonce: '<?php echo esc_js(wp_create_nonce('sonoite-admin-ajax')); ?>'
                 }, function(response) {
                     if (response.success) {
                         location.reload();
@@ -488,10 +492,10 @@ function sonoite_add_admin_menu() {
         'sonoite_performance_page'
     );
 
-    // Security submenu - now includes CDN integrity management
+    // Security submenu (violation summary and log)
     add_submenu_page(
         'sonoite-settings',
-        __('Security & CDN', SONOITE_TEXT_DOMAIN),
+        __('Security', SONOITE_TEXT_DOMAIN),
         __('Security', SONOITE_TEXT_DOMAIN),
         'manage_options',
         'sonoite-security',
@@ -506,16 +510,6 @@ function sonoite_add_admin_menu() {
         'manage_options',
         'sonoite-cache',
         'sonoite_cache_page'
-    );
-    
-    // Debug submenu (temporary)
-    add_submenu_page(
-        'sonoite-settings',
-        __('Debug Block Editor', SONOITE_TEXT_DOMAIN),
-        __('Debug', SONOITE_TEXT_DOMAIN),
-        'manage_options',
-        'sonoite-debug',
-        'sonoite_debug_page'
     );
 
     // Preview settings submenu
@@ -559,7 +553,7 @@ function sonoite_settings_page() {
             <div class="sonoite-admin-card">
                 <h3><?php _e('Quick Actions', SONOITE_TEXT_DOMAIN); ?></h3>
                 <p>
-                    <a href="<?php echo admin_url('post-new.php?post_type=track'); ?>" class="button button-primary">
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=track')); ?>" class="button button-primary">
                         <?php _e('Add New Track', SONOITE_TEXT_DOMAIN); ?>
                     </a>
                 </p>
@@ -569,7 +563,7 @@ function sonoite_settings_page() {
                     </button>
                 </p>
                 <p>
-                    <a href="<?php echo admin_url('admin.php?page=sonoite-performance'); ?>" class="button">
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=sonoite-performance')); ?>" class="button">
                         <?php _e('Performance Monitor', SONOITE_TEXT_DOMAIN); ?>
                     </a>
                 </p>
@@ -580,7 +574,7 @@ function sonoite_settings_page() {
                 <ul>
                     <li>
                         <?php _e('Object Cache:', SONOITE_TEXT_DOMAIN); ?>
-                        <strong><?php echo function_exists('wp_cache_get') ? __('Active', SONOITE_TEXT_DOMAIN) : __('Inactive', SONOITE_TEXT_DOMAIN); ?></strong>
+                        <strong><?php echo wp_using_ext_object_cache() ? __('Active', SONOITE_TEXT_DOMAIN) : __('Inactive', SONOITE_TEXT_DOMAIN); ?></strong>
                     </li>
                     <li>
                         <?php _e('Security Enabled:', SONOITE_TEXT_DOMAIN); ?>
@@ -597,28 +591,28 @@ function sonoite_settings_page() {
 
     <script>
     function sonoiteClearAllCache() {
-        if (!confirm('<?php _e('Clear all caches? This will temporarily slow down the site.', SONOITE_TEXT_DOMAIN); ?>')) {
+        if (!confirm('<?php echo esc_js(__('Clear all caches? This will temporarily slow down the site.', SONOITE_TEXT_DOMAIN)); ?>')) {
             return;
         }
 
-        fetch('<?php echo rest_url('sonoite/v1/cache'); ?>', {
+        fetch('<?php echo esc_url(rest_url('sonoite/v1/cache')); ?>', {
             method: 'DELETE',
             headers: {
-                'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>',
+                'X-WP-Nonce': '<?php echo esc_js(wp_create_nonce('wp_rest')); ?>',
                 'Content-Type': 'application/json'
             }
         })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('<?php _e('All caches cleared successfully!', SONOITE_TEXT_DOMAIN); ?>');
+                alert('<?php echo esc_js(__('All caches cleared successfully!', SONOITE_TEXT_DOMAIN)); ?>');
             } else {
-                alert('<?php _e('Failed to clear cache.', SONOITE_TEXT_DOMAIN); ?>');
+                alert('<?php echo esc_js(__('Failed to clear cache.', SONOITE_TEXT_DOMAIN)); ?>');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('<?php _e('Error clearing cache.', SONOITE_TEXT_DOMAIN); ?>');
+            alert('<?php echo esc_js(__('Error clearing cache.', SONOITE_TEXT_DOMAIN)); ?>');
         });
     }
     </script>
@@ -653,18 +647,10 @@ function sonoite_settings_page() {
  * Performance monitoring page
  */
 function sonoite_performance_page() {
-    // Get performance data via REST API
-    $performance_data = wp_remote_get(rest_url('sonoite/v1/performance'), array(
-        'headers' => array(
-            'X-WP-Nonce' => wp_create_nonce('wp_rest')
-        )
-    ));
-
-    $metrics = array();
-    if (!is_wp_error($performance_data)) {
-        $body = wp_remote_retrieve_body($performance_data);
-        $metrics = json_decode($body, true);
-    }
+    // Dispatch the REST route in-process: an HTTP loopback carries no auth
+    // cookie, so core's nonce check would reject it with a 403.
+    $response = rest_do_request(new WP_REST_Request('GET', '/sonoite/v1/performance'));
+    $metrics = $response->is_error() ? array() : $response->get_data();
     ?>
     <div class="wrap">
         <h1><?php _e('Performance Monitor', SONOITE_TEXT_DOMAIN); ?></h1>
@@ -729,19 +715,19 @@ function sonoite_performance_page() {
     <script>
     function sonoiteClearSpecificCache(type) {
         const messages = {
-            'tracks': '<?php _e('Clear tracks cache?', SONOITE_TEXT_DOMAIN); ?>',
-            'assets': '<?php _e('Clear assets cache?', SONOITE_TEXT_DOMAIN); ?>',
-            'all': '<?php _e('Clear all caches?', SONOITE_TEXT_DOMAIN); ?>'
+            'tracks': '<?php echo esc_js(__('Clear tracks cache?', SONOITE_TEXT_DOMAIN)); ?>',
+            'assets': '<?php echo esc_js(__('Clear assets cache?', SONOITE_TEXT_DOMAIN)); ?>',
+            'all': '<?php echo esc_js(__('Clear all caches?', SONOITE_TEXT_DOMAIN)); ?>'
         };
 
         if (!confirm(messages[type])) {
             return;
         }
 
-        fetch('<?php echo rest_url('sonoite/v1/cache'); ?>', {
+        fetch('<?php echo esc_url(rest_url('sonoite/v1/cache')); ?>', {
             method: 'DELETE',
             headers: {
-                'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>',
+                'X-WP-Nonce': '<?php echo esc_js(wp_create_nonce('wp_rest')); ?>',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ cache_type: type })
@@ -752,12 +738,12 @@ function sonoite_performance_page() {
                 alert(data.message);
                 location.reload();
             } else {
-                alert('<?php _e('Failed to clear cache.', SONOITE_TEXT_DOMAIN); ?>');
+                alert('<?php echo esc_js(__('Failed to clear cache.', SONOITE_TEXT_DOMAIN)); ?>');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('<?php _e('Error clearing cache.', SONOITE_TEXT_DOMAIN); ?>');
+            alert('<?php echo esc_js(__('Error clearing cache.', SONOITE_TEXT_DOMAIN)); ?>');
         });
     }
     </script>
@@ -765,24 +751,37 @@ function sonoite_performance_page() {
 }
 
 /**
- * Security & CDN page
+ * Security page: violation counts plus a paginated log of the
+ * sonoite_security_violations table.
  */
 function sonoite_security_page() {
     global $wpdb;
 
     $security_table = $wpdb->prefix . 'sonoite_security_violations';
     $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$security_table'") === $security_table;
+
+    // Get violations with pagination
+    $page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
+    $per_page = 20;
+    $offset = ($page - 1) * $per_page;
+    $total_violations = 0;
+    $violations = array();
+
+    if ($table_exists) {
+        $total_violations = $wpdb->get_var("SELECT COUNT(*) FROM {$security_table}");
+        $violations = $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM {$security_table} ORDER BY timestamp DESC LIMIT %d OFFSET %d",
+            $per_page,
+            $offset
+        ));
+    }
+
+    $total_pages = ceil($total_violations / $per_page);
     ?>
     <div class="wrap">
-        <h1><?php _e('Security & CDN Management', SONOITE_TEXT_DOMAIN); ?></h1>
+        <h1><?php _e('Security', SONOITE_TEXT_DOMAIN); ?></h1>
 
-        <!-- CDN Integrity Section -->
         <div class="sonoite-admin-grid">
-            <div class="sonoite-admin-card">
-                <h2><?php _e('CDN Integrity Status', SONOITE_TEXT_DOMAIN); ?></h2>
-                <?php sonoite_display_cdn_status(); ?>
-            </div>
-
             <div class="sonoite-admin-card">
                 <h2><?php _e('Security Summary', SONOITE_TEXT_DOMAIN); ?></h2>
                 <?php sonoite_display_detailed_security_status(); ?>
@@ -793,77 +792,62 @@ function sonoite_security_page() {
             <div class="notice notice-info">
                 <p><?php _e('Security violations table not found. Violations will be logged when they occur.', SONOITE_TEXT_DOMAIN); ?></p>
             </div>
-        <?php return; endif;
+        <?php else: ?>
+            <h2><?php _e('Security Logs', SONOITE_TEXT_DOMAIN); ?></h2>
 
-    // Get violations with pagination
-    $page = isset($_GET['paged']) ? max(1, intval($_GET['paged'])) : 1;
-    $per_page = 20;
-    $offset = ($page - 1) * $per_page;
+            <div class="sonoite-security-stats">
+                <p><?php printf(__('Total Violations: %d', SONOITE_TEXT_DOMAIN), $total_violations); ?></p>
+            </div>
 
-    $total_violations = $wpdb->get_var("SELECT COUNT(*) FROM {$security_table}");
-    $violations = $wpdb->get_results($wpdb->prepare(
-        "SELECT * FROM {$security_table} ORDER BY timestamp DESC LIMIT %d OFFSET %d",
-        $per_page,
-        $offset
-    ));
-
-    $total_pages = ceil($total_violations / $per_page);
-    ?>
-    <div class="wrap">
-        <h1><?php _e('Security Logs', SONOITE_TEXT_DOMAIN); ?></h1>
-
-        <div class="sonoite-security-stats">
-            <p><?php printf(__('Total Violations: %d', SONOITE_TEXT_DOMAIN), $total_violations); ?></p>
-        </div>
-
-        <?php if (!empty($violations)): ?>
-            <table class="wp-list-table widefat fixed striped">
-                <thead>
-                    <tr>
-                        <th><?php _e('Time', SONOITE_TEXT_DOMAIN); ?></th>
-                        <th><?php _e('Type', SONOITE_TEXT_DOMAIN); ?></th>
-                        <th><?php _e('IP Address', SONOITE_TEXT_DOMAIN); ?></th>
-                        <th><?php _e('Severity', SONOITE_TEXT_DOMAIN); ?></th>
-                        <th><?php _e('Details', SONOITE_TEXT_DOMAIN); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($violations as $violation): ?>
+            <?php if (!empty($violations)): ?>
+                <table class="wp-list-table widefat fixed striped">
+                    <thead>
                         <tr>
-                            <td><?php echo esc_html($violation->timestamp); ?></td>
-                            <td><?php echo esc_html($violation->violation_type); ?></td>
-                            <td><?php echo esc_html($violation->ip_address); ?></td>
-                            <td>
-                                <span class="severity-<?php echo esc_attr($violation->severity); ?>">
-                                    <?php echo esc_html(ucfirst($violation->severity)); ?>
-                                </span>
-                            </td>
-                            <td><?php echo esc_html(wp_trim_words($violation->violation_details, 10)); ?></td>
+                            <th><?php _e('Time', SONOITE_TEXT_DOMAIN); ?></th>
+                            <th><?php _e('Type', SONOITE_TEXT_DOMAIN); ?></th>
+                            <th><?php _e('IP Address', SONOITE_TEXT_DOMAIN); ?></th>
+                            <th><?php _e('Severity', SONOITE_TEXT_DOMAIN); ?></th>
+                            <th><?php _e('Details', SONOITE_TEXT_DOMAIN); ?></th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($violations as $violation): ?>
+                            <tr>
+                                <td><?php echo esc_html($violation->timestamp); ?></td>
+                                <td><?php echo esc_html($violation->violation_type); ?></td>
+                                <td><?php echo esc_html($violation->ip_address); ?></td>
+                                <td>
+                                    <span class="severity-<?php echo esc_attr($violation->severity); ?>">
+                                        <?php echo esc_html(ucfirst($violation->severity)); ?>
+                                    </span>
+                                </td>
+                                <td><?php echo esc_html(wp_trim_words($violation->violation_details, 10)); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-            <?php if ($total_pages > 1): ?>
-                <div class="tablenav">
-                    <div class="tablenav-pages">
-                        <?php
-                        echo paginate_links(array(
-                            'base' => add_query_arg('paged', '%#%'),
-                            'format' => '',
-                            'prev_text' => __('&laquo; Previous', SONOITE_TEXT_DOMAIN),
-                            'next_text' => __('Next &raquo;', SONOITE_TEXT_DOMAIN),
-                            'total' => $total_pages,
-                            'current' => $page
-                        ));
-                        ?>
+                <?php if ($total_pages > 1): ?>
+                    <div class="tablenav">
+                        <div class="tablenav-pages">
+                            <?php
+                            echo paginate_links(array(
+                                'base' => add_query_arg('paged', '%#%'),
+                                'format' => '',
+                                'prev_text' => __('&laquo; Previous', SONOITE_TEXT_DOMAIN),
+                                'next_text' => __('Next &raquo;', SONOITE_TEXT_DOMAIN),
+                                'total' => $total_pages,
+                                'current' => $page
+                            ));
+                            ?>
+                        </div>
                     </div>
+                <?php endif; ?>
+            <?php else: ?>
+                <div class="notice notice-success">
+                    <p><?php _e('No security violations recorded.', SONOITE_TEXT_DOMAIN); ?></p>
                 </div>
             <?php endif; ?>
-        <?php else: ?>
-            <div class="notice notice-success">
-                <p><?php _e('No security violations recorded.', SONOITE_TEXT_DOMAIN); ?></p>
-            </div>
         <?php endif; ?>
     </div>
 
@@ -881,18 +865,9 @@ function sonoite_security_page() {
  * Cache management page
  */
 function sonoite_cache_page() {
-    // Get cache status via REST API
-    $cache_response = wp_remote_get(rest_url('sonoite/v1/cache'), array(
-        'headers' => array(
-            'X-WP-Nonce' => wp_create_nonce('wp_rest')
-        )
-    ));
-
-    $cache_data = array();
-    if (!is_wp_error($cache_response)) {
-        $body = wp_remote_retrieve_body($cache_response);
-        $cache_data = json_decode($body, true);
-    }
+    // Dispatched in-process for the same reason as sonoite_performance_page()
+    $response = rest_do_request(new WP_REST_Request('GET', '/sonoite/v1/cache'));
+    $cache_data = $response->is_error() ? array() : $response->get_data();
     ?>
     <div class="wrap">
         <h1><?php _e('Cache Management', SONOITE_TEXT_DOMAIN); ?></h1>
@@ -951,12 +926,12 @@ function sonoite_cache_page() {
         const button = event.target;
         const originalText = button.textContent;
         button.disabled = true;
-        button.textContent = '<?php _e('Clearing...', SONOITE_TEXT_DOMAIN); ?>';
+        button.textContent = '<?php echo esc_js(__('Clearing...', SONOITE_TEXT_DOMAIN)); ?>';
 
-        fetch('<?php echo rest_url('sonoite/v1/cache'); ?>', {
+        fetch('<?php echo esc_url(rest_url('sonoite/v1/cache')); ?>', {
             method: 'DELETE',
             headers: {
-                'X-WP-Nonce': '<?php echo wp_create_nonce('wp_rest'); ?>',
+                'X-WP-Nonce': '<?php echo esc_js(wp_create_nonce('wp_rest')); ?>',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ cache_type: type })
@@ -968,12 +943,12 @@ function sonoite_cache_page() {
                 messagesDiv.innerHTML = '<div class="notice notice-success"><p>' + data.message + '</p></div>';
                 setTimeout(() => location.reload(), 1000);
             } else {
-                messagesDiv.innerHTML = '<div class="notice notice-error"><p><?php _e('Failed to clear cache.', SONOITE_TEXT_DOMAIN); ?></p></div>';
+                messagesDiv.innerHTML = '<div class="notice notice-error"><p><?php echo esc_js(__('Failed to clear cache.', SONOITE_TEXT_DOMAIN)); ?></p></div>';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById('cache-messages').innerHTML = '<div class="notice notice-error"><p><?php _e('Error clearing cache.', SONOITE_TEXT_DOMAIN); ?></p></div>';
+            document.getElementById('cache-messages').innerHTML = '<div class="notice notice-error"><p><?php echo esc_js(__('Error clearing cache.', SONOITE_TEXT_DOMAIN)); ?></p></div>';
         })
         .finally(() => {
             button.disabled = false;
@@ -992,7 +967,7 @@ function sonoite_cache_page() {
 }
 
 /**
- * Add admin notices for performance recommendations
+ * Warn on the Tracks list when published tracks have no audio file attached.
  */
 function sonoite_admin_notices() {
     $screen = get_current_screen();
@@ -1000,18 +975,6 @@ function sonoite_admin_notices() {
     // Only show on relevant admin pages
     if (!in_array($screen->id, array('dashboard', 'edit-track', 'track'))) {
         return;
-    }
-
-    // Check for object caching
-    if (!function_exists('wp_cache_get')) {
-        ?>
-        <div class="notice notice-warning is-dismissible">
-            <p>
-                <strong><?php _e('Sonoite Performance Recommendation:', SONOITE_TEXT_DOMAIN); ?></strong>
-                <?php _e('Consider installing an object caching plugin (Redis/Memcached) for better performance.', SONOITE_TEXT_DOMAIN); ?>
-            </p>
-        </div>
-        <?php
     }
 
     // Check for tracks without audio files
@@ -1044,71 +1007,10 @@ function sonoite_admin_notices() {
 add_action('admin_notices', 'sonoite_admin_notices');
 
 /**
- * Enqueue admin scripts and styles
+ * Show a build notice when no Vite manifest can be loaded (the theme then
+ * enqueues no JS). Uses the same lookup as the front end.
  */
-function sonoite_admin_enqueue_scripts($hook) {
-    // Only enqueue on Sonoite admin pages
-    if (strpos($hook, 'sonoite') === false) {
-        return;
-    }
-
-    wp_enqueue_style(
-        'sonoite-admin',
-        get_template_directory_uri() . '/admin/css/admin.css',
-        array(),
-        SONOITE_VERSION
-    );
-
-    wp_enqueue_script(
-        'sonoite-admin',
-        get_template_directory_uri() . '/admin/js/admin.js',
-        array('jquery'),
-        SONOITE_VERSION,
-        true
-    );
-
-    wp_localize_script('sonoite-admin', 'sonoiteAdmin', array(
-        'restUrl' => rest_url('sonoite/v1/'),
-        'nonce' => wp_create_nonce('wp_rest'),
-        'i18n' => array(
-            'confirmClear' => __('Are you sure you want to clear the cache?', SONOITE_TEXT_DOMAIN),
-            'cacheCleared' => __('Cache cleared successfully!', SONOITE_TEXT_DOMAIN),
-            'error' => __('An error occurred.', SONOITE_TEXT_DOMAIN)
-        )
-    ));
-}
-add_action('admin_enqueue_scripts', 'sonoite_admin_enqueue_scripts');
-
-/**
- * Debug page for block editor issues
- */
-function sonoite_debug_page() {
-    ?>
-    <div class="wrap">
-        <h1><?php _e('Block Editor Debug', SONOITE_TEXT_DOMAIN); ?></h1>
-        <?php include(get_template_directory() . '/debug-block-editor.php'); ?>
-    </div>
-    <?php
-}
-
-/**
- * Display CDN status information
- *
- * SEC-01: CDN dependencies removed (Dec 3, 2025)
- * Three.js is now bundled locally via Vite. No external CDN resources needed.
- */
-function sonoite_display_cdn_status() {
-    echo '<p class="description" style="color: #46b450;">✅ ' . __('Three.js bundled locally - no CDN dependencies.', SONOITE_TEXT_DOMAIN) . '</p>';
-    echo '<p class="description">' . __('External CDN auto-hash system removed for security. All assets served from local bundle.', SONOITE_TEXT_DOMAIN) . '</p>';
-}
-
-/**
- * Add admin notices for build issues
- *
- * SEC-01: CDN hash notices removed (Dec 3, 2025)
- * Three.js bundled locally - no CDN dependencies.
- */
-function sonoite_cdn_admin_notices() {
+function sonoite_build_admin_notices() {
     $screen = get_current_screen();
 
     // Only show on relevant admin pages
@@ -1116,9 +1018,7 @@ function sonoite_cdn_admin_notices() {
         return;
     }
 
-    // Check if asset manifest exists
-    $manifest_path = get_template_directory() . '/dist/manifest.json';
-    if (!file_exists($manifest_path)) {
+    if (empty(sonoite_get_asset_manifest())) {
         ?>
         <div class="notice notice-error is-dismissible">
             <p>
@@ -1129,46 +1029,7 @@ function sonoite_cdn_admin_notices() {
         <?php
     }
 }
-add_action('admin_notices', 'sonoite_cdn_admin_notices');
-
-/**
- * Handle admin errors and configuration issues
- */
-function sonoite_handle_admin_errors() {
-    if (!is_admin()) {
-        return;
-    }
-
-    // Check for common configuration issues
-    $issues = array();
-
-    if (!file_exists(get_template_directory() . '/dist/manifest.json')) {
-        $issues[] = 'Asset manifest missing - run npm run build';
-    }
-
-    // Check if security table exists
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'sonoite_security_violations';
-    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") !== $table_name) {
-        $issues[] = 'Security violations table missing';
-    }
-
-    if (!empty($issues)) {
-        set_transient('sonoite_admin_issues', $issues, 300); // 5 minutes
-    } else {
-        delete_transient('sonoite_admin_issues');
-    }
-}
-add_action('admin_init', 'sonoite_handle_admin_errors');
-
-/**
- * Check if security table exists
- */
-function sonoite_check_security_table() {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'sonoite_security_violations';
-    return $wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name;
-}
+add_action('admin_notices', 'sonoite_build_admin_notices');
 
 /**
  * Display detailed security status information
@@ -1184,12 +1045,13 @@ function sonoite_display_detailed_security_status() {
         return;
     }
     
-    $recent_violations = $wpdb->get_var($wpdb->prepare(
+    $recent_violations = $wpdb->get_var(
         "SELECT COUNT(*) FROM {$security_table} WHERE timestamp > DATE_SUB(NOW(), INTERVAL 24 HOUR)"
-    ));
+    );
     
     $critical_violations = $wpdb->get_var($wpdb->prepare(
-        "SELECT COUNT(*) FROM {$security_table} WHERE severity = 'critical'"
+        "SELECT COUNT(*) FROM {$security_table} WHERE severity = %s",
+        'critical'
     ));
     
     echo '<ul>';
@@ -1199,20 +1061,12 @@ function sonoite_display_detailed_security_status() {
 }
 
 /**
- * Admin context check for sensitive operations
- */
-function sonoite_is_admin_context() {
-    return is_admin() && current_user_can('manage_options');
-}
-
-/**
  * Preview Settings Page Content
  */
 function sonoite_preview_settings_page() {
     // Handle form submission
     if (isset($_POST['submit']) && wp_verify_nonce($_POST['sonoite_preview_nonce'], 'sonoite_preview_settings')) {
         $preview_track_id = intval($_POST['preview_track_id']);
-        $preview_enabled = isset($_POST['preview_enabled']) ? 1 : 0;
         $coming_soon_message = sanitize_textarea_field($_POST['coming_soon_message']);
         $email_capture_enabled = isset($_POST['email_capture_enabled']) ? 1 : 0;
         $social_sharing_enabled = isset($_POST['social_sharing_enabled']) ? 1 : 0;
@@ -1233,7 +1087,6 @@ function sonoite_preview_settings_page() {
             }
         }
 
-        update_option('sonoite_preview_enabled', $preview_enabled);
         update_option('sonoite_coming_soon_message', $coming_soon_message);
         update_option('sonoite_email_capture_enabled', $email_capture_enabled);
         update_option('sonoite_social_sharing_enabled', $social_sharing_enabled);
@@ -1241,7 +1094,6 @@ function sonoite_preview_settings_page() {
 
     // Get current settings
     $current_track_id = get_option('sonoite_preview_track', 0);
-    $preview_enabled = get_option('sonoite_preview_enabled', 1);
     $coming_soon_message = get_option('sonoite_coming_soon_message', __('Full Album Experience Coming Soon', SONOITE_TEXT_DOMAIN));
     $email_capture_enabled = get_option('sonoite_email_capture_enabled', 1);
     $social_sharing_enabled = get_option('sonoite_social_sharing_enabled', 1);
@@ -1271,21 +1123,6 @@ function sonoite_preview_settings_page() {
 
                     <table class="form-table" role="presentation">
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <label for="preview_enabled"><?php esc_html_e('Enable Preview Page', SONOITE_TEXT_DOMAIN); ?></label>
-                                </th>
-                                <td>
-                                    <input type="checkbox" id="preview_enabled" name="preview_enabled" value="1" <?php checked($preview_enabled, 1); ?>>
-                                    <label for="preview_enabled">
-                                        <?php esc_html_e('Make preview page accessible to visitors', SONOITE_TEXT_DOMAIN); ?>
-                                    </label>
-                                    <p class="description">
-                                        <?php esc_html_e('Uncheck to hide the preview page while you set it up.', SONOITE_TEXT_DOMAIN); ?>
-                                    </p>
-                                </td>
-                            </tr>
-
                             <tr>
                                 <th scope="row">
                                     <label for="preview_track_id"><?php esc_html_e('Preview Track', SONOITE_TEXT_DOMAIN); ?></label>
@@ -1359,10 +1196,13 @@ function sonoite_preview_settings_page() {
                                         <?php esc_html_e('Enable email signup for launch notifications', SONOITE_TEXT_DOMAIN); ?>
                                     </label>
                                     <p class="description">
-                                        <?php echo sprintf(
-                                            __('Currently %d subscribers. <a href="%s">View subscribers</a>', SONOITE_TEXT_DOMAIN),
-                                            $subscribers_count,
-                                            admin_url('edit.php?post_type=track&page=sonoite-preview-subscribers')
+                                        <?php echo wp_kses(
+                                            sprintf(
+                                                __('Currently %d subscribers. <a href="%s">View subscribers</a>', SONOITE_TEXT_DOMAIN),
+                                                $subscribers_count,
+                                                esc_url(admin_url('edit.php?post_type=track&page=sonoite-preview-subscribers'))
+                                            ),
+                                            array('a' => array('href' => array()))
                                         ); ?>
                                     </p>
                                 </td>
@@ -1396,7 +1236,7 @@ function sonoite_preview_settings_page() {
                     <ol>
                         <li><?php esc_html_e('Upload at least one track with audio', SONOITE_TEXT_DOMAIN); ?></li>
                         <li><?php esc_html_e('Select which track to use as preview', SONOITE_TEXT_DOMAIN); ?></li>
-                        <li><?php esc_html_e('Enable the preview page', SONOITE_TEXT_DOMAIN); ?></li>
+                        <li><?php esc_html_e('Assign the "Sonoite Preview Experience" template to a page at /preview/', SONOITE_TEXT_DOMAIN); ?></li>
                         <li><?php esc_html_e('Test the preview experience', SONOITE_TEXT_DOMAIN); ?></li>
                         <li><?php esc_html_e('Share with your audience', SONOITE_TEXT_DOMAIN); ?></li>
                     </ol>
@@ -1866,8 +1706,8 @@ function sonoite_particle_settings_page() {
 }
 
 /**
- * Secure AJAX handler for cache clearing
- * Replaces insecure GET parameter method with POST + nonce
+ * AJAX handler for the dashboard widget's "Clear Cache" button (POST + nonce,
+ * manage_options only).
  */
 function sonoite_ajax_clear_cache() {
     // Verify nonce
@@ -1883,7 +1723,6 @@ function sonoite_ajax_clear_cache() {
     // Clear all caches
     delete_transient('sonoite_asset_manifest');
     delete_transient('sonoite_tracks_cache_v3');
-    delete_transient('sonoite_critical_css_v2');
 
     // Clear opcache if available
     $opcache_cleared = false;

@@ -1,19 +1,16 @@
 <?php
 /**
- * Main template file for Sonoite Theme
- * 
+ * Fallback template for every request not routed elsewhere (the front page
+ * and ?prototype=1 go to page-prototype.php; track URLs redirect). Renders
+ * the legacy runtime shell from template-parts/content-main.php. Theme JS is
+ * enqueued only on experience pages, so on other routes this is static markup.
+ *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit('Direct access forbidden.');
-}
-
-// Safety check for WordPress functions
-if (!function_exists('wp_head')) {
-    wp_die('WordPress not properly loaded');
 }
 
 get_header(); ?>

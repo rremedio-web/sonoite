@@ -1,9 +1,10 @@
 <?php
 /**
- * The footer for Sonoite theme
+ * Closing markup for get_footer() templates: the #loading-screen and
+ * #error-screen overlays the legacy runtime toggles, a hidden <audio>, a canvas
+ * container and ARIA live regions, then wp_footer().
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access

@@ -1,7 +1,8 @@
 <?php
 /**
- * Track Archive Template
- * 
+ * Track archive (/tracks/): there is no list view, so redirect to the front
+ * page, which hosts the album.
+ *
  * @package SonoiteTheme
  */
 

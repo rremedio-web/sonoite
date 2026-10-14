@@ -1,19 +1,14 @@
 <?php
 /**
- * Template part for displaying the main content
+ * Legacy runtime shell (included by index.php): the #three-canvas, track list,
+ * audio controls and track-info region that src/js/three-experience.js binds to.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit('Direct access forbidden.');
-}
-
-// Safety check for required functions
-if (!function_exists('get_template_part')) {
-    return;
 }
 ?>
 

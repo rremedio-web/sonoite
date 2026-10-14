@@ -2,13 +2,12 @@
 Theme Name: Sonoite
 Author: Ricardo Remedio
 Description: Browser-native album listener — a 7-track album performed as an audio-reactive Three.js chamber film.
-Version: 1.0.0
+Version: 1.0.2
 Text Domain: sonoite-theme
-Domain Path: /languages
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 5.0
-Tested up to: 6.4
+Requires at least: 5.7
+Tested up to: 7.1
 Requires PHP: 7.4
 Network: false
 */

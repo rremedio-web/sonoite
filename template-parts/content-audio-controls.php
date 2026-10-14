@@ -1,9 +1,9 @@
 <?php
 /**
- * Template part for displaying the audio controls
+ * Legacy runtime transport bar: previous/play/next, seek and volume sliders,
+ * and the time display, all wired up by the old runtime's JS.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access

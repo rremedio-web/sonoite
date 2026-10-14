@@ -1,10 +1,13 @@
 <?php
 /**
- * Sonoite Theme - Main Functions File
- * Loads modular components and defines core constants
- * 
+ * Theme bootstrap.
+ *
+ * Defines the theme constants, loads the six inc/ modules, routes the front page
+ * and ?prototype=1 to page-prototype.php (the Path B chamber runtime), enqueues
+ * the hashed Vite bundles listed in dist/.vite/manifest.json, and owns the CSP
+ * header and per-request nonce. Theme JS loads only on experience pages.
+ *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -32,12 +35,11 @@ if (!defined('SONOITE_ENV')) {
  * Load modular components in correct order
  */
 $required_files = array(
-    'inc/enable-block-editor.php', // Simple block editor fix
+    'inc/enable-block-editor.php', // Forces the block editor for the track CPT
     'inc/theme-setup.php',
     'inc/performance.php',
     'inc/rest-endpoints.php',
     'inc/admin-functions.php'
-    // 'inc/simple-assets.php' // Disabled - was preventing main assets from loading
 );
 
 foreach ($required_files as $file) {
@@ -58,7 +60,8 @@ if (file_exists($security_file)) {
 }
 
 /**
- * Enhanced asset enqueuing with performance optimization
+ * True when the request should boot the Path B prototype: the front page, a page
+ * using the "Sonoite Prototype" template, or any URL with ?prototype=1.
  */
 function sonoite_is_prototype_request() {
     return is_front_page()
@@ -160,25 +163,21 @@ function sonoite_preserve_front_page_queries($redirect_url) {
 }
 add_filter('redirect_canonical', 'sonoite_preserve_front_page_queries');
 
+/**
+ * Enqueue the Vite bundles for the current experience page and localize
+ * `sonoiteData`. Prototype requests (which include the front page) get only
+ * three-vendor + audio-core + the prototype bundle and a reduced data object.
+ * The preview template gets the vendor chunks, security-manager,
+ * init-experience and the preview bundle plus its stylesheet. Other pages get
+ * nothing.
+ */
 function sonoite_enqueue_scripts() {
-    // Only log in debug mode
-    if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('sonoite_enqueue_scripts called');
-    }
-
-    // POST-01: Post-processing is expensive; keep it opt-in even in WP_DEBUG.
-    // Enable explicitly with ?post=1 when validating cinematic passes.
-    $enable_post = sonoite_query_flag_enabled('post');
-    if ($enable_post) {
-        wp_add_inline_script('sonoite-init-experience', 'window.SONOITE_POST = true;', 'before');
-    }
-
     // Check if this is a specialized experience page
     $is_preview_page = is_page_template('page-preview.php');
     $is_prototype_page = sonoite_is_prototype_request();
     
-    // BUILD-02: Re-enable asset enqueue guard - SPA assets only on experience pages
-    if (!is_front_page() && !is_page_template('page-album.php') && !$is_preview_page && !$is_prototype_page) {
+    // Theme assets load only on experience pages.
+    if (!is_front_page() && !$is_preview_page && !$is_prototype_page) {
         return;
     }
 
@@ -188,10 +187,6 @@ function sonoite_enqueue_scripts() {
 
     // Load asset manifest for cache-busted filenames
     $manifest = sonoite_get_asset_manifest();
-    // SEC-07: Gate manifest logging behind WP_DEBUG
-    if (defined('WP_DEBUG') && WP_DEBUG) {
-        error_log('Manifest loaded: ' . count($manifest) . ' entries');
-    }
 
     // Get secure tracks data (now cached)
     $tracks_data = sonoite_get_secure_tracks_data();
@@ -205,11 +200,12 @@ function sonoite_enqueue_scripts() {
         $theme_version
     );
     
-    // Enqueue preview-specific styles if on preview page
-    if ($is_preview_page) {
+    // Enqueue preview-specific styles if on preview page (hashed file from the manifest)
+    $preview_css = $manifest['src/css/preview.css']['file'] ?? null;
+    if ($is_preview_page && $preview_css) {
         wp_enqueue_style(
             'sonoite-preview-style',
-            $manifest['src/css/preview.css'] ?? $theme_url . '/dist/css/preview-styles.css',
+            $theme_url . '/dist/' . $preview_css,
             array('sonoite-style'),
             $theme_version
         );
@@ -219,15 +215,8 @@ function sonoite_enqueue_scripts() {
     // First load the vendor chunks - find them dynamically
     $found_three = false;
     foreach ($manifest as $key => $value) {
-        // SEC-07: Gate manifest iteration logging behind WP_DEBUG
-        if ($is_debug) {
-            error_log("Checking manifest key: $key");
-        }
         if (strpos($key, '_three-vendor') === 0 && is_array($value) && isset($value['file'])) {
             $script_url = $theme_url . '/dist/' . $value['file'];
-            if ($is_debug) {
-                error_log("Enqueuing three-vendor: $script_url");
-            }
             wp_enqueue_script(
                 'sonoite-three-vendor',
                 $script_url,
@@ -235,7 +224,6 @@ function sonoite_enqueue_scripts() {
                 $theme_version,
                 true
             );
-            wp_script_add_data('sonoite-three-vendor', 'type', 'module');
             // Guard against stray global THREE injected by plugins/CDN before our vendor chunk
             $three_guard = 'try { if (window.THREE) { delete window.THREE; } } catch (e) { window.THREE = undefined; }';
             wp_add_inline_script('sonoite-three-vendor', $three_guard, 'before');
@@ -256,33 +244,14 @@ function sonoite_enqueue_scripts() {
                 $theme_version,
                 true
             );
-            wp_script_add_data('sonoite-audio-core', 'type', 'module');
             break;
         }
     }
     
-    // MIG-01: Legacy consciousness system disabled - using Visual Layer API via init-experience.js only
-    // foreach ($manifest as $key => $value) {
-    //     if (strpos($key, '_consciousness') === 0 && is_array($value) && isset($value['file'])) {
-    //         wp_enqueue_script(
-    //             'sonoite-consciousness',
-    //             $theme_url . '/dist/' . $value['file'],
-    //             array('sonoite-three-vendor'),
-    //             $theme_version,
-    //             true
-    //         );
-    //         wp_script_add_data('sonoite-consciousness', 'type', 'module');
-    //         break;
-    //     }
-    // }
+    // The legacy consciousness bundle is still built (vite.config.js) but intentionally not enqueued.
 
-    // Load entry point scripts
+    // Load entry point scripts. The service worker (src/js/service-worker-manager.js) is built but intentionally not registered.
     $js_modules = array(
-        // Temporarily disable service worker
-        // 'src/js/service-worker-manager.js' => array(
-        //     'deps' => array(),
-        //     'handle' => 'sonoite-service-worker'
-        // ),
         'src/js/security-manager.js' => array(
             'deps' => array(),
             'handle' => 'sonoite-security'
@@ -344,7 +313,6 @@ function sonoite_enqueue_scripts() {
             $theme_version,
             true
         );
-        wp_script_add_data($config['handle'], 'type', 'module');
     }
 
     // Localize script data for main application or preview
@@ -369,7 +337,6 @@ function sonoite_enqueue_scripts() {
         'tracks' => $tracks_data,
         'themeUrl' => esc_url($theme_url),
         'nonce' => wp_create_nonce('sonoite_nonce'),
-        'previewEmailNonce' => wp_create_nonce('sonoite_preview_email'),
         'restNonce' => wp_create_nonce('wp_rest'),
         'version' => $theme_version,
         'isSecure' => is_ssl(),
@@ -453,7 +420,6 @@ function sonoite_get_i18n_strings() {
 
 /**
  * Get security configuration for client-side
- * SEC-01: Removed CDN integrity hashes - Three.js now bundled locally
  */
 function sonoite_get_security_config() {
     $csp_nonce = sonoite_get_csp_nonce();
@@ -477,16 +443,13 @@ function sonoite_get_security_config() {
 }
 
 /**
- * Generate and manage CSP nonce
- */
-/**
- * STAB-05: Per-request CSP nonce generation
- * Generates a cryptographically secure nonce for CSP compliance
+ * Per-request CSP nonce, shared by the CSP header, script/style tags and the
+ * inline <script>/<style> blocks the templates print.
  */
 function sonoite_get_csp_nonce() {
     // Check global first for request-scoped nonce
     if (!isset($GLOBALS['sonoite_csp_nonce'])) {
-        // Generate a cryptographically secure nonce (32 bytes = 256 bits)
+        // Generate a cryptographically secure nonce (16 bytes = 128 bits)
         $GLOBALS['sonoite_csp_nonce'] = bin2hex(random_bytes(16)); // 32 hex chars
     }
 
@@ -494,27 +457,18 @@ function sonoite_get_csp_nonce() {
 }
 
 /**
- * STAB-05: Public getter for CSP nonce (alias for backward compatibility)
- */
-function sonoite_csp_nonce() {
-    return sonoite_get_csp_nonce();
-}
-
-/**
  * STAB-05: Build CSP header with dev/prod branching
  * Production: Strict policy with nonces only
  * Development: Relaxed policy for easier debugging
- *
- * SEC-01: Removed CDN (cdn.jsdelivr.net) from CSP - Three.js now bundled locally
  */
 function sonoite_build_csp_header() {
     $nonce = sonoite_get_csp_nonce();
     $is_dev = (SONOITE_ENV === 'dev');
 
-    // Build base directives - SEC-01: No CDN references, all assets local
+    // Base directives: every asset (Three.js included) is served from this origin
     $directives = array(
         "default-src 'self'",
-        // STAB-05: Branch script-src based on environment (no CDN needed)
+        // STAB-05: Branch script-src based on environment
         "script-src 'self' 'nonce-{$nonce}'" . ($is_dev ? " 'unsafe-inline' 'unsafe-eval'" : ""),
         // STAB-05: Branch style-src based on environment (element styles)
         "style-src 'self' 'nonce-{$nonce}'" . ($is_dev ? " 'unsafe-inline'" : ""),
@@ -522,7 +476,6 @@ function sonoite_build_csp_header() {
         "style-src-attr 'unsafe-inline'",
         "img-src 'self' data: blob:",
         "media-src 'self' blob:",
-        // SEC-01: Removed CDN from connect-src - all assets are local
         "connect-src 'self' " . wp_parse_url(home_url(), PHP_URL_HOST),
         "font-src 'self' data:",
         "object-src 'none'",
@@ -536,8 +489,6 @@ function sonoite_build_csp_header() {
     if (!$is_dev) {
         $directives[] = "block-all-mixed-content";
     }
-
-    // SEC-01: Removed CDN hash injection - no longer using CDN
 
     return implode('; ', $directives);
 }
@@ -570,12 +521,10 @@ function sonoite_send_csp_header() {
     }
 }
 // Emit CSP headers early in the response
-remove_action('wp_head', 'sonoite_send_csp_header', 1);
 add_action('send_headers', 'sonoite_send_csp_header');
 
 /**
  * STAB-05: Add security attributes to script tags with universal nonce support
- * SEC-01: Removed CDN integrity injection - Three.js now bundled locally
  */
 function sonoite_add_script_attributes($tag, $handle, $src) {
     $nonce = sonoite_get_csp_nonce();
@@ -587,9 +536,7 @@ function sonoite_add_script_attributes($tag, $handle, $src) {
 
     // Sonoite-specific enhancements
     if (strpos($handle, 'sonoite-') === 0) {
-        // SEC-01: Removed CDN integrity injection - no longer using CDN
-
-        // Add type="module" for all sonoite scripts
+        // Add type="module" for all sonoite scripts (the Vite bundles are ES modules)
         if (strpos($tag, 'type=') === false) {
             $tag = str_replace('<script', '<script type="module"', $tag);
         }
@@ -629,19 +576,6 @@ function sonoite_add_inline_script_nonce($attributes, $data) {
     }
     return $attributes;
 }
-
-/**
- * SEC-01: REMOVED CDN importmap - Three.js is now bundled locally via Vite
- *
- * The previous implementation auto-generated integrity hashes from CDN content,
- * which defeated SRI purpose (compromised CDN → fresh hash → trusted).
- *
- * Three.js is now bundled in the 'three-vendor' chunk by Vite (see vite.config.js).
- * No importmap needed - imports resolve to local bundle.
- *
- * @deprecated Removed Dec 3, 2025 - SEC-01 fix
- */
-// function sonoite_add_importmap() { /* REMOVED - Using local bundle */ }
 
 /**
  * Secure database table creation with proper error handling
@@ -717,7 +651,7 @@ function sonoite_debug_info() {
     echo "<!-- Theme Version: " . SONOITE_VERSION . " -->\n";
     echo "<!-- Text Domain: " . SONOITE_TEXT_DOMAIN . " -->\n";
     echo "<!-- Security Enabled: " . (SONOITE_SECURITY_ENABLED ? 'Yes' : 'No') . " -->\n";
-    echo "<!-- Object Cache: " . (function_exists('wp_cache_get') ? 'Active' : 'Inactive') . " -->\n";
+    echo "<!-- Object Cache: " . (wp_using_ext_object_cache() ? 'Active' : 'Inactive') . " -->\n";
 
     // Cache status
     $tracks_cached = get_transient('sonoite_tracks_cache_v3') !== false ? 'HIT' : 'MISS';

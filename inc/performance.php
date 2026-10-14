@@ -1,10 +1,16 @@
 <?php
 /**
- * Sonoite Theme Performance Optimizations
- * Implements caching, query optimization, and performance monitoring
- * 
+ * Track data, caching and asset-manifest helpers.
+ *
+ * Builds the track list from the track CPT with one grouped postmeta query plus
+ * a batched attachment lookup (12h transient, cleared on track save/delete),
+ * which REST GET /tracks and sonoite_get_secure_tracks_data() read; the latter
+ * drops tracks whose audio fails sonoite_validate_audio_url() before they reach
+ * sonoiteData. Also loads the Vite manifest (dist/.vite/manifest.json) that
+ * functions.php resolves bundles against, trims front-page core assets and
+ * runs the daily security-log cleanup cron.
+ *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -17,11 +23,9 @@ if (!defined('ABSPATH')) {
  */
 function sonoite_get_tracks_cached() {
     // Try object cache first (Redis/Memcached)
-    if (function_exists('wp_cache_get')) {
-        $tracks = wp_cache_get('sonoite_tracks_v3', 'sonoite');
-        if (false !== $tracks) {
-            return $tracks;
-        }
+    $tracks = wp_cache_get('sonoite_tracks_v3', 'sonoite');
+    if (false !== $tracks) {
+        return $tracks;
     }
 
     // Try transient cache
@@ -35,19 +39,12 @@ function sonoite_get_tracks_cached() {
         // Cache for 12 hours in transient
         set_transient($cache_key, $tracks, 12 * HOUR_IN_SECONDS);
 
-        // Also store in object cache if available (6 hour expiry)
-        if (function_exists('wp_cache_set')) {
-            wp_cache_set('sonoite_tracks_v3', $tracks, 'sonoite', 6 * HOUR_IN_SECONDS);
-        }
+        // Also store in object cache (6 hour expiry)
+        wp_cache_set('sonoite_tracks_v3', $tracks, 'sonoite', 6 * HOUR_IN_SECONDS);
 
         // Log cache miss for monitoring
         if (defined('WP_DEBUG') && WP_DEBUG) {
             error_log('Sonoite: Tracks cache MISS - rebuilding data (' . count($tracks) . ' tracks)');
-        }
-    } else {
-        // Log cache hit
-        if (defined('WP_DEBUG') && WP_DEBUG && function_exists('wp_cache_get')) {
-            wp_cache_set('sonoite_tracks_v3', $tracks, 'sonoite', 6 * HOUR_IN_SECONDS);
         }
     }
 
@@ -141,8 +138,7 @@ function sonoite_build_tracks_data_optimized() {
         $tracks[] = array(
             'id' => intval($row->ID),
             'title' => $row->post_title,
-            // 'content' => $row->post_content, // Removed to prevent content display
-            'content' => '', // Empty content to prevent display
+            'content' => '', // post_content is deliberately not exposed to the front end
             'excerpt' => $row->post_excerpt,
             'audio_url' => $audio_url,
             'audio_mime_type' => $audio_mime_type,
@@ -226,12 +222,9 @@ function sonoite_get_attachments_batch($attachment_ids) {
 function sonoite_clear_tracks_cache() {
     // Clear transient caches
     delete_transient('sonoite_tracks_cache_v3');
-    delete_transient('sonoite_tracks_count');
 
     // Clear object cache
-    if (function_exists('wp_cache_delete')) {
-        wp_cache_delete('sonoite_tracks_v3', 'sonoite');
-    }
+    wp_cache_delete('sonoite_tracks_v3', 'sonoite');
 
     // Clear individual track caches
     $post_ids = get_posts(array(
@@ -245,9 +238,7 @@ function sonoite_clear_tracks_cache() {
 
     foreach ($post_ids as $post_id) {
         delete_transient('sonoite_track_' . $post_id);
-        if (function_exists('wp_cache_delete')) {
-            wp_cache_delete('sonoite_track_' . $post_id, 'sonoite');
-        }
+        wp_cache_delete('sonoite_track_' . $post_id, 'sonoite');
     }
 
     // Log cache clear
@@ -311,25 +302,6 @@ function sonoite_optimize_queries($query) {
 add_action('pre_get_posts', 'sonoite_optimize_queries');
 
 /**
- * Preload critical resources
- */
-function sonoite_preload_resources() {
-    if (!is_front_page()) {
-        return;
-    }
-
-    // Preload critical CSS - removed as it's causing warnings
-    // echo '<link rel="preload" as="style" href="' . esc_url(get_stylesheet_uri()) . '">' . "\n";
-
-    // Removed Three.js CDN preload - we're using local bundled version
-
-    // Audio preload removed - causing "unsupported as value" warnings
-
-    // DNS prefetch removed - not using external CDN
-}
-add_action('wp_head', 'sonoite_preload_resources', 1);
-
-/**
  * Optimize asset loading
  */
 function sonoite_optimize_assets() {
@@ -368,102 +340,6 @@ function sonoite_add_lazy_loading($attr, $attachment, $size) {
 add_filter('wp_get_attachment_image_attributes', 'sonoite_add_lazy_loading', 10, 3);
 
 /**
- * Performance monitoring class
- */
-class SonoitePerformanceMonitor {
-    private $start_time;
-    private $start_memory;
-    private $query_start_count;
-
-    public function __construct() {
-        $this->start_time = microtime(true);
-        $this->start_memory = memory_get_usage();
-        $this->query_start_count = get_num_queries();
-
-        add_action('wp_footer', array($this, 'output_metrics'), 999);
-    }
-
-    public function output_metrics() {
-        if (!current_user_can('manage_options') || !defined('WP_DEBUG') || !WP_DEBUG) {
-            return;
-        }
-
-        $end_time = microtime(true);
-        $end_memory = memory_get_usage();
-        $end_queries = get_num_queries();
-
-        $execution_time = round(($end_time - $this->start_time) * 1000, 2);
-        $memory_usage = round(($end_memory - $this->start_memory) / 1024 / 1024, 2);
-        $peak_memory = round(memory_get_peak_usage() / 1024 / 1024, 2);
-        $total_queries = $end_queries - $this->query_start_count;
-
-        echo "\n<!-- Sonoite Performance Metrics -->\n";
-        echo "<!-- Execution Time: {$execution_time}ms -->\n";
-        echo "<!-- Memory Usage: {$memory_usage}MB -->\n";
-        echo "<!-- Peak Memory: {$peak_memory}MB -->\n";
-        echo "<!-- Database Queries: {$total_queries} -->\n";
-        echo "<!-- Cache Status: " . (function_exists('wp_cache_get') ? 'Object Cache Active' : 'Transient Only') . " -->\n";
-
-        // Additional cache metrics
-        $cache_info = array();
-        if (function_exists('wp_cache_get_stats')) {
-            $cache_info['Object Cache Stats'] = wp_cache_get_stats();
-        }
-
-        // Check if tracks are cached
-        $tracks_cached = get_transient('sonoite_tracks_cache_v3') !== false ? 'HIT' : 'MISS';
-        echo "<!-- Tracks Cache: {$tracks_cached} -->\n";
-    }
-}
-
-// Initialize performance monitoring in debug mode
-if (defined('WP_DEBUG') && WP_DEBUG) {
-    new SonoitePerformanceMonitor();
-}
-
-/**
- * Critical CSS inlining for above-the-fold content
- */
-function sonoite_inline_critical_css() {
-    if (!is_front_page()) {
-        return;
-    }
-
-    $critical_css = get_transient('sonoite_critical_css_v2');
-
-    if (false === $critical_css) {
-        $critical_css_file = get_template_directory() . '/assets/critical.css';
-
-        if (file_exists($critical_css_file)) {
-            $critical_css = file_get_contents($critical_css_file);
-            $critical_css = sonoite_minify_css($critical_css);
-            set_transient('sonoite_critical_css_v2', $critical_css, DAY_IN_SECONDS);
-        }
-    }
-
-    if ($critical_css) {
-        $nonce = function_exists('sonoite_get_csp_nonce') ? sonoite_get_csp_nonce() : '';
-        echo '<style id="sonoite-critical-css"' . ($nonce ? ' nonce="' . esc_attr($nonce) . '"' : '') . '>' . $critical_css . '</style>';
-    }
-}
-add_action('wp_head', 'sonoite_inline_critical_css', 5);
-
-/**
- * Minify CSS utility
- */
-function sonoite_minify_css($css) {
-    // Remove comments
-    $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
-
-    // Remove unnecessary whitespace
-    $css = str_replace(array("\r\n", "\r", "\n", "\t"), '', $css);
-    $css = preg_replace('/\s+/', ' ', $css);
-    $css = str_replace(array(' {', '{ ', ' }', '} ', ': ', ' ;', '; '), array('{', '{', '}', '}', ':', ';', ';'), $css);
-
-    return trim($css);
-}
-
-/**
  * Database optimization for security logs
  */
 function sonoite_optimize_security_logs() {
@@ -477,9 +353,9 @@ function sonoite_optimize_security_logs() {
     }
 
     // Delete old logs (older than 30 days)
-    $deleted = $wpdb->query($wpdb->prepare(
+    $deleted = $wpdb->query(
         "DELETE FROM {$table_name} WHERE timestamp < DATE_SUB(NOW(), INTERVAL 30 DAY)"
-    ));
+    );
 
     if ($deleted) {
         error_log("Sonoite: Cleaned up {$deleted} old security log entries");
@@ -499,38 +375,10 @@ if (!wp_next_scheduled('sonoite_cleanup_logs')) {
 }
 add_action('sonoite_cleanup_logs', 'sonoite_optimize_security_logs');
 
-/**
- * Memory usage optimization
- */
-function sonoite_optimize_memory() {
-    // Increase memory limit if needed for track processing
-    if (function_exists('ini_get')) {
-        $memory_limit = ini_get('memory_limit');
-        $memory_in_bytes = sonoite_convert_to_bytes($memory_limit);
-
-        if ($memory_in_bytes < 128 * 1024 * 1024) { // Less than 128MB
-            ini_set('memory_limit', '128M');
-        }
-    }
-}
-add_action('init', 'sonoite_optimize_memory');
-
-/**
- * Convert memory limit to bytes
- */
-function sonoite_convert_to_bytes($value) {
-    $value = trim($value);
-    $last = strtolower($value[strlen($value)-1]);
-    $value = (int) $value;
-
-    switch($last) {
-        case 'g': $value *= 1024;
-        case 'm': $value *= 1024;
-        case 'k': $value *= 1024;
-    }
-
-    return $value;
-}
+// Unschedule when switching away from the theme so the event doesn't outlive it
+add_action('switch_theme', function () {
+    wp_clear_scheduled_hook('sonoite_cleanup_logs');
+});
 
 /**
  * Asset manifest loading with proper transient caching
@@ -591,26 +439,12 @@ function sonoite_get_asset_manifest() {
  */
 function sonoite_clear_asset_manifest() {
     delete_transient('sonoite_asset_manifest');
-    delete_transient('sonoite_critical_css_v2');
 }
 add_action('after_switch_theme', 'sonoite_clear_asset_manifest');
 
 /**
- * Handle cache failures gracefully
- */
-function sonoite_handle_cache_failure($cache_key, $fallback_function) {
-    try {
-        return call_user_func($fallback_function);
-    } catch (Exception $e) {
-        error_log("Sonoite Cache Failure ({$cache_key}): " . $e->getMessage());
-        return array(); // Safe fallback
-    }
-}
-
-/**
- * Validate audio URL security
- * SEC-04: Fixed parse_url host guard to avoid undefined index notice
- * SEC-01: Removed CDN from allowed hosts - all assets are local
+ * Accept only audio URLs on this site's own host with an audio file extension.
+ * sonoite_get_secure_tracks_data() drops tracks that fail this check.
  */
 function sonoite_validate_audio_url($url) {
     // SEC-04: Use wp_parse_url with null checks to avoid undefined index

@@ -1,9 +1,9 @@
 <?php
 /**
- * The header for Sonoite theme
+ * Document head, opening <body> and skip links for index.php (via
+ * get_header()). page-prototype.php and page-preview.php print their own <head>.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -24,8 +24,6 @@ if (!defined('ABSPATH')) {
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <?php endif; ?>
-
-    <!-- SEC-01: CDN preconnect removed (Dec 3, 2025) - Three.js bundled locally -->
 
     <?php wp_head(); ?>
 </head>

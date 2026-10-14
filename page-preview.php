@@ -1,12 +1,15 @@
 <?php
 /**
  * Template Name: Sonoite Preview Experience
- * 
- * Single-track preview page with consciousness visualization,
- * email capture, and social sharing for the Sonoite album
+ *
+ * Self-contained single-track marketing page: plays the track chosen in
+ * Album Tracks > Preview Settings (`sonoite_preview_track` option) through
+ * src/js/preview-experience.js, with launch-email capture (POST
+ * sonoite/v1/preview-email) and share buttons. Prints its own <head>; data
+ * reaches the script as window.sonoitePreviewData. Admins are redirected to
+ * the settings screen until a track with audio is selected.
  *
  * @package SonoiteTheme
- * @version 1.0.0
  */
 
 // Prevent direct access
@@ -71,6 +74,11 @@ if (!$preview_track) {
 }
 
 $nonce = sonoite_get_csp_nonce();
+
+// Social preview image: the track artwork, else the theme screenshot.
+$share_image = !empty($preview_track['featured_image'])
+    ? $preview_track['featured_image']
+    : get_template_directory_uri() . '/screenshot.png';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -87,13 +95,13 @@ $nonce = sonoite_get_csp_nonce();
     <meta property="og:description" content="<?php esc_attr_e('Experience consciousness through sound and visuals. Preview the journey.', SONOITE_TEXT_DOMAIN); ?>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?php echo esc_url(get_permalink()); ?>">
-    <meta property="og:image" content="<?php echo esc_url($preview_track['featured_image'] ?: get_template_directory_uri() . '/assets/images/sonoite-preview-share.jpg'); ?>">
+    <meta property="og:image" content="<?php echo esc_url($share_image); ?>">
     
     <!-- Twitter Card Meta -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr(get_bloginfo('name')); ?> - <?php esc_attr_e('Interactive Album Preview', SONOITE_TEXT_DOMAIN); ?>">
     <meta name="twitter:description" content="<?php esc_attr_e('Experience consciousness through sound and visuals. Preview the journey.', SONOITE_TEXT_DOMAIN); ?>">
-    <meta name="twitter:image" content="<?php echo esc_url($preview_track['featured_image'] ?: get_template_directory_uri() . '/assets/images/sonoite-preview-share.jpg'); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($share_image); ?>">
     
     <?php wp_head(); ?>
 </head>
@@ -202,8 +210,6 @@ $nonce = sonoite_get_csp_nonce();
                     </p>
 
                     <form id="preview-email-form" class="preview-email-form" role="form">
-                        <?php wp_nonce_field('sonoite_preview_email', 'preview_email_nonce'); ?>
-                        
                         <div class="email-form-group">
                             <label for="preview-email" class="screen-reader-text">
                                 <?php esc_html_e('Email address', SONOITE_TEXT_DOMAIN); ?>
@@ -316,7 +322,7 @@ $nonce = sonoite_get_csp_nonce();
         'apiUrl' => home_url('/wp-json/sonoite/v1/'),
         'themeUrl' => get_template_directory_uri(),
         'ajaxUrl' => admin_url('admin-ajax.php'),
-        'nonce' => wp_create_nonce('sonoite_preview_nonce'),
+        'nonce' => wp_create_nonce('wp_rest'), // Sent as X-WP-Nonce; core validates it against 'wp_rest'
         'shareUrl' => get_permalink(),
         'shareTitle' => get_bloginfo('name') . ' - ' . __('Interactive Album Preview', SONOITE_TEXT_DOMAIN),
         'shareDescription' => __('Experience consciousness through sound and visuals. Preview the journey.', SONOITE_TEXT_DOMAIN),

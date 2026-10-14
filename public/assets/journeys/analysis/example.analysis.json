@@ -1,0 +1,44 @@
+{
+  "track": "example-track",
+  "file": "/absolute/path/to/audio.wav",
+  "durationSeconds": 240.0,
+  "sampleRate": 44100,
+  "frameSize": 2048,
+  "hopSize": 1024,
+  "framesAnalyzed": 10234,
+  "analysisTimestamp": "2025-09-18T12:00:00.000Z",
+  "features": {
+    "rms": { "count": 10234, "min": 0.01, "max": 0.42, "mean": 0.18 },
+    "energy": { "count": 10234, "min": 0.0, "max": 0.19, "mean": 0.07 },
+    "spectralCentroid": { "count": 10234, "min": 120.0, "max": 5200.0, "mean": 1850.0 },
+    "spectralRolloff": { "count": 10234, "min": 800.0, "max": 10000.0, "mean": 6400.0 },
+    "zcr": { "count": 10234, "min": 0.01, "max": 0.32, "mean": 0.12 },
+    "loudness": {
+      "total": { "count": 10234, "min": 0.05, "max": 0.92, "mean": 0.38 },
+      "specific": {
+        "mean": [0.12, 0.08, 0.05, 0.04, 0.03, 0.02, 0.02, 0.02, 0.03, 0.05, 0.07, 0.08, 0.09, 0.1, 0.1, 0.09, 0.08, 0.06, 0.05, 0.04, 0.03, 0.02, 0.02, 0.02],
+        "max": [0.61, 0.54, 0.46, 0.40, 0.37, 0.33, 0.32, 0.31, 0.35, 0.40, 0.45, 0.48, 0.52, 0.56, 0.58, 0.55, 0.50, 0.44, 0.39, 0.34, 0.30, 0.26, 0.23, 0.20]
+      }
+    },
+    "chroma": {
+      "mean": [0.21, 0.18, 0.16, 0.19, 0.23, 0.27, 0.30, 0.26, 0.22, 0.18, 0.14, 0.19],
+      "max": [0.74, 0.69, 0.65, 0.70, 0.78, 0.83, 0.86, 0.81, 0.75, 0.70, 0.66, 0.72]
+    }
+  },
+  "peaks": {
+    "loudness": [
+      { "value": 0.92, "time": 67.512 },
+      { "value": 0.90, "time": 179.008 },
+      { "value": 0.88, "time": 201.152 }
+    ],
+    "spectralCentroid": [
+      { "value": 5200.0, "time": 32.256 },
+      { "value": 4985.0, "time": 143.872 }
+    ]
+  },
+  "segments": [
+    { "index": 0, "start": 0, "end": 4, "frames": 172, "rms": 0.05, "loudness": 0.12, "spectralCentroid": 420.0, "energy": 0.02, "zcr": 0.05 },
+    { "index": 1, "start": 4, "end": 8, "frames": 172, "rms": 0.09, "loudness": 0.18, "spectralCentroid": 950.0, "energy": 0.05, "zcr": 0.08 },
+    { "index": 2, "start": 8, "end": 12, "frames": 172, "rms": 0.14, "loudness": 0.26, "spectralCentroid": 1650.0, "energy": 0.09, "zcr": 0.11 }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "meta": { "track": 7, "slug": "homem-educado" },
+  "post": { "preset": "balanced" },
+  "flows": [
+    { "id": "cold_haze", "type": "cold_haze", "params": { "density": 0.2 } }
+  ],
+  "structures": [
+    { "id": "monolith_grid", "type": "monolith_grid", "params": { "opacity": 0.0 } },
+    { "id": "glitching_cage", "type": "glitching_cage", "params": { "opacity": 0.0 } }
+  ],
+  "moments": [
+    { "id": "t7_major_synchronized_lock_in", "at": 48.0, "actions": [
+        { "target": "monolith_grid", "behavior": "animateToFinalPositions", "duration": 4.0, "easing": "easeInOutCubic" },
+        { "target": "camera", "type": "camera_path", "duration": 4.0, "easing": "easeInOutCubic", "path": [{ "preset": "frontal_fixed" }] }
+    ]},
+    { "id": "t7_major_glitch", "at": 249.0, "actions": [
+        { "target": "glitching_cage", "prop": "opacity", "to": 1.0, "duration": 0.15, "then": { "to": 0.0, "duration": 0.8 } }
+    ]}
+  ]
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sonoite — cinematic studies</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101112;color:#dedbd4;font:15px/1.5 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:24px 32px}header{display:flex;align-items:baseline;justify-content:space-between;gap:20px}h1{font:normal 36px Georgia,serif;margin:0}small,#status{color:#9fa3a6;font-size:12px}nav{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}button,select{font:inherit;color:inherit;background:#181a1c;border:1px solid #444;padding:10px 14px;cursor:pointer}button[aria-pressed=true]{background:#d7d4cc;color:#131415}button:disabled{opacity:.4;cursor:wait}button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #dfbd83;outline-offset:3px}.directions button{text-align:left;flex:1;min-width:220px}.directions strong{display:block;font:normal 23px Georgia,serif;margin-bottom:5px}.directions span{font-size:13px;opacity:.8}iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid #303234;background:#000;max-height:68vh}#description{max-width:900px;color:#b3b5b7;min-height:44px}a{color:inherit}#status{min-height:21px}.transport{align-items:center}.transport button:last-child{margin-left:auto}@media(max-width:650px){main{padding:15px}header{display:block}.directions button{min-width:150px}iframe{aspect-ratio:4/3}h1{font-size:28px}}
+</style>
+<main>
+<header><h1>Into the room</h1><small>SONOITE · CINEMATIC STUDIES</small></header>
+<nav class="directions" aria-label="Cinematic direction">
+<button data-mode="intimate" aria-pressed="true"><strong>01 · Intimate</strong><span>Folds, edges and the changing surface.</span></button>
+<button data-mode="chamber" aria-pressed="false"><strong>02 · Chamber</strong><span>The figure, its shadow and the space around it.</span></button>
+<button data-mode="afterimage" aria-pressed="false"><strong>03 · Afterimage</strong><span>Return to a familiar view and see what time changed.</span></button>
+<button data-mode="stage" aria-pressed="false"><strong>04 · Stage trial</strong><span>Travelling shadow, failing lamp, lasting residue.</span></button>
+</nav>
+<nav aria-label="Track and reference"><label>Track <select id="track"><option value="sonoite">01 · Sonoite</option><option value="horas-mortas">04 · Horas mortas</option><option value="nao-querer-nada">05 · Não querer nada</option></select></label><button id="baseline" aria-pressed="false">Compare current version</button><a id="full" target="_blank" rel="noopener">Open full experience ↗</a></nav>
+<p id="description"></p>
+<p id="hold-control" hidden><label>Setting <select id="setting"><option value="reliquary">Dim reliquary · weighted cloth</option><option value="earlier">Earlier curtain</option></select></label><br><span id="reliquary-controls"><label><input id="diffusion" type="checkbox" checked> Light diffusion</label> · <label><input id="climax" type="checkbox" checked> Climax progression</label></span><br><a href="camera-notes.html">Every camera change and its purpose ↗</a><br><label id="response-control"><input id="response" type="checkbox" checked> Subtle music response</label><br><label><input id="hold" type="checkbox"> Hold the Track 1 camera still to judge the light and shadow</label><br><label>Light movement <select id="light"><option value="sweep">Continuous sweep</option><option value="sequence">Approach, conceal, reveal</option></select></label><br><label><input id="drape" type="checkbox" checked> Cloth form</label> · <a href="concepts/openai-stage-concepts.png" target="_blank" rel="noopener">View generated stage ideas ↗</a></p>
+<iframe id="film" title="Sonoite cinematic proposal" allow="autoplay; fullscreen"></iframe>
+<nav class="transport" aria-label="Playback passages"><button data-part="opening" disabled>Opening</button><button data-part="middle" disabled>Middle</button><button data-part="climax" hidden disabled>Climax · 6:00–8:09</button><button data-part="scene" hidden disabled>Cloth &amp; light · 3:30–4:15</button><button data-part="light" hidden disabled>Light passage · 4:46–6:50</button><button data-part="ending" disabled>Ending</button><button data-part="tar" hidden disabled>Accepted tar cut + next shot</button><button data-part="full" disabled>Play full track</button><button id="pause" disabled>Pause / resume</button></nav>
+<div id="status" role="status">Loading…</div>
+<p><small>Listen with sound and keep this tab visible. Each direction and the combined stage trial run for the full film; these buttons are shortcuts. The camera moves through the authored shots unless you select the hold control. Switch music response or cloth while paused to compare the same moment; changing the setting reloads the film.</small></p>
+</main>
+<script>
+const film=document.getElementById('film'),status=document.getElementById('status'),track=document.getElementById('track');
+const descriptions={
+ intimate:'Close views make the object readable through material detail. Track 1 emerges under a grazing light; Track 4 retains the dying sodium fixture; Track 5 holds the surface cues and follows the tar into the outro.',
+ chamber:'A continuous floor and curved wall receive real light and shadow. Wider compositions keep the sculpture present. Track 4 stays dry and sodium; Tracks 1 and 5 have a restrained atmospheric veil.',
+ afterimage:'Recognizable compositions return through the film. In Track 1 light gradually admits another side; in Track 4 the familiar frame outlives the lamp; in Track 5 the same view returns with more irreversible coating.',
+ stage:'A mix of the three approaches: Track 1’s shadow crosses an uneven drape with one slow settling fold; Track 4 has a mounted sodium fixture; Track 5 leaves a wet trace on the floor. Hold Track 1’s camera and switch the drape off to compare the same light on the bare wall.'};
+const passages={sonoite:{climax:[360,488.5],scene:[210,255],opening:[30,130],middle:[310,410],light:[286,410],ending:[488,539]},'horas-mortas':{opening:[0,65],middle:[238,300],ending:[318,391.18]},'nao-querer-nada':{opening:[60,120],middle:[225,281],ending:[470,564],tar:[391,460]}};
+const initialParams=new URLSearchParams(location.search);
+const reliquaryDescription='Track 1: concentrated light, a dim covered form and a darker room. Light, cloth and surface respond gently to the music. The climax lowers and advances the light, opens its shadow across the room and slowly settles one fold. Familiar compositions return to show what changed.';
+const sequenceDescription='Track 1: the light approaches a partial obstruction, holds through the hush, then clears it as the shadow moves across the drape. The new position remains through the ending. Play the light passage with the camera still and compare the continuous sweep at the same moment.';
+let mode=initialParams.get('direction')==='stage'?'stage':'intimate',baseline=false,ready=false,end=Infinity,generation=0,previewMoment=initialParams.has('moment')?Number(initialParams.get('moment')):null;
+document.getElementById('light').value=initialParams.get('light')==='sequence'?'sequence':'sweep';
+document.getElementById('hold').checked=initialParams.get('stagehold')==='1';
+document.getElementById('setting').value=initialParams.get('setting')==='reliquary'?'reliquary':'earlier';
+document.getElementById('response').checked=initialParams.get('response')!=='0';
+for(const id of ['diffusion','climax'])document.getElementById(id).checked=initialParams.get(id)!=='0';
+const get=()=>film.contentWindow?.SonoitePrototype;
+function load(){
+ generation++;const old=get();if(old?.state.playing)old.togglePlayback();ready=false;end=Infinity;
+ document.querySelectorAll('[data-part],#pause').forEach(b=>b.disabled=true);
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode&&!baseline)));
+ document.getElementById('response-control').hidden=document.getElementById('setting').value!=='reliquary';
+ document.getElementById('reliquary-controls').hidden=document.getElementById('setting').value!=='reliquary';
+ document.getElementById('baseline').setAttribute('aria-pressed',String(baseline));
+ document.querySelector('[data-part=tar]').hidden=track.value!=='nao-querer-nada';
+ document.getElementById('hold-control').hidden=mode!=='stage'||track.value!=='sonoite'||baseline;
+ document.querySelector('[data-part=climax]').hidden=mode!=='stage'||track.value!=='sonoite'||baseline;
+ document.querySelector('[data-part=scene]').hidden=mode!=='stage'||track.value!=='sonoite'||baseline;
+ document.querySelector('[data-part=light]').hidden=mode!=='stage'||track.value!=='sonoite'||baseline;
+ document.getElementById('description').textContent=baseline?'Current version for comparison. Track 5 uses the accepted physical-room cut.':descriptions[mode];
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'&&document.getElementById('light').value==='sequence')document.getElementById('description').textContent=sequenceDescription;
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'&&document.getElementById('setting').value==='reliquary')document.getElementById('description').textContent=reliquaryDescription;
+ const params=new URLSearchParams({track:track.value,autonext:'0',seed:'7'});
+ if(!baseline)params.set('proposal',mode);else if(track.value==='nao-querer-nada')params.set('scene','physical');
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'&&document.getElementById('hold').checked)params.set('stagehold','1');
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'&&!document.getElementById('drape').checked)params.set('drape','0');
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'&&document.getElementById('light').value==='sequence')params.set('light','sequence');
+ if(!baseline&&mode==='stage'&&track.value==='sonoite'){params.set('setting',document.getElementById('setting').value);for(const id of ['diffusion','climax'])if(!document.getElementById(id).checked)params.set(id,'0');if(!document.getElementById('response').checked)params.set('response','0');}
+ film.src='/?'+params;document.getElementById('full').href=film.src;status.textContent='Loading '+(baseline?'current version':mode)+'…';
+}
+async function showMoment(time){
+ const e=get(),token=generation;
+ if(!e||!Number.isFinite(time))return;
+ try{await e.ensureTrackLoaded();if(token!==generation)return;e.state.started=true;e.state.hasUserStarted=true;e.shell.hideIntro();await e.seek(Math.max(0,Math.min(time,e.getPlaybackEndTime()))/e.getPlaybackEndTime());status.textContent='Paused preview · Choose a passage or play the full track.';}
+ catch(error){status.textContent='Choose a passage to begin.';}
+}
+async function play(part){
+ const e=get(),token=generation;if(!ready||!e)return;
+ const range=part==='full'?[0,e.getPlaybackEndTime()]:passages[track.value][part];
+ end=range[1];
+ try{if(!e.state.playing)await e.togglePlayback();if(token!==generation)return;await e.seek(range[0]/e.getPlaybackEndTime());}
+ catch(error){status.textContent='Playback could not start. Use “Open full experience” to try directly.';}
+}
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;baseline=false;load();});
+document.querySelectorAll('[data-part]').forEach(b=>b.onclick=()=>play(b.dataset.part));
+document.getElementById('baseline').onclick=()=>{baseline=!baseline;load();};track.onchange=load;
+document.getElementById('hold').onchange=load;
+document.getElementById('setting').onchange=load;
+for(const id of ['diffusion','climax'])document.getElementById(id).onchange=()=>{const e=get();if(!e){load();return;}const value=document.getElementById(id).checked?'1':'0';e.urlParams.set(id,value);e.shadowDirty=true;const url=new URL(document.getElementById('full').href);url.searchParams.set(id,value);document.getElementById('full').href=url;};
+document.getElementById('response').onchange=()=>{
+ const e=get();if(!ready||!e){load();return;}
+ const value=document.getElementById('response').checked?'1':'0';
+ e.urlParams.set('response',value);e.track1StageResponse.reset();
+ const url=new URL(document.getElementById('full').href);url.searchParams.set('response',value);document.getElementById('full').href=url;
+};
+document.getElementById('light').onchange=()=>{
+ const e=get();
+ if(!ready||!e?.track1LightOccluder){load();return;}
+ const value=document.getElementById('light').value;
+ document.getElementById('description').textContent=document.getElementById('setting').value==='reliquary'?reliquaryDescription:value==='sequence'?sequenceDescription:descriptions.stage;
+ e.urlParams.set('light',value);e.shadowDirty=true;
+ const url=new URL(document.getElementById('full').href);url.searchParams.set('light',value);
+ document.getElementById('full').href=url;
+};
+document.getElementById('drape').onchange=()=>{
+ const e=get();
+ if(!ready||!e?.physicalDrape){load();return;}
+ const value=document.getElementById('drape').checked?'1':'0';
+ e.urlParams.set('drape',value);e.shadowDirty=true;
+ const url=new URL(document.getElementById('full').href);url.searchParams.set('drape',value);
+ document.getElementById('full').href=url;
+};
+document.getElementById('pause').onclick=()=>{const e=get();if(e){end=Infinity;e.togglePlayback();}};
+setInterval(()=>{
+ const e=get();if(!e)return;
+ if(e.state.ready&&!ready){ready=true;document.querySelectorAll('[data-part],#pause').forEach(b=>b.disabled=false);status.textContent='Ready · Choose a passage or play the full track.';if(previewMoment!==null){const time=previewMoment;previewMoment=null;showMoment(time);}}
+ if(e.state.playing){const t=e.state.currentTime;status.textContent=(baseline?'Current':mode)+' · '+Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');if(t>=end){e.togglePlayback();status.textContent+=' · Passage complete';}}
+},150);
+load();
+</script>
+</html>

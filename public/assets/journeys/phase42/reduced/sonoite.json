@@ -1,0 +1,665 @@
+{
+  "meta": {
+    "track": 1,
+    "slug": "sonoite",
+    "bpm": 140,
+    "key": "D minor",
+    "qaFlag": "SONOITE_PHASE42_QA",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#FF6B35",
+    "secondary": "#004E89",
+    "accent": "#F7FFF7"
+  },
+  "flow": {
+    "type": "star_dust",
+    "params": {
+      "density": 0.30,
+      "spawnRate": 0.03,
+      "size": 0.03
+    },
+    "reactivity": {
+      "loudness": "glow"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "egg_crystal",
+        "params": {
+          "scale": 1
+        },
+        "reactivity": {
+          "bass": "breath",
+          "mid": "spin"
+        }
+      },
+      {
+        "type": "drifting_wireframes",
+        "params": {
+          "count": 6,
+          "radius": 4
+        },
+        "reactivity": {
+          "treble": "shimmer"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [
+      6,
+      2.5,
+      10
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.01
+  },
+  "post": {
+    "preset": "high"
+  },
+  "moments": [
+    {
+      "id": "t1_camera_follow_egg",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": {
+            "behavior": "follow",
+            "followTarget": "egg_crystal",
+            "damping": 0.03,
+            "duration": 538
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_wireframe_choreography",
+      "at": "0:50",
+      "actions": [
+        {
+          "type": "choreography",
+          "target": "drifting_wireframes",
+          "params": {
+            "behavior": "orbit",
+            "center": [
+              0,
+              0,
+              0
+            ],
+            "speed": 0.03,
+            "radius": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "sonoite_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_20_0_rm",
+      "at": "0:20",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_45_0_rm",
+      "at": "0:45",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_70_0_rm",
+      "at": "1:10",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_95_0_rm",
+      "at": "1:35",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_120_0_rm",
+      "at": "2:00",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_145_0_rm",
+      "at": "2:25",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_170_0_rm",
+      "at": "2:50",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_195_0_rm",
+      "at": "3:15",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_220_0_rm",
+      "at": "3:40",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_245_0_rm",
+      "at": "4:05",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_270_0_rm",
+      "at": "4:30",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_295_0_rm",
+      "at": "4:55",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_320_0_rm",
+      "at": "5:20",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_345_0_rm",
+      "at": "5:45",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_370_0_rm",
+      "at": "6:10",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_climax_370_985_rm",
+      "at": "6:11",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 7.5,
+            "intensity": 0.4
+          }
+        },
+        {
+          "type": "sparkle",
+          "target": "star_dust",
+          "params": {
+            "duration": 6
+          }
+        },
+        {
+          "type": "spin",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 7.5,
+            "speed": 0.7
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 7.5,
+            "bloom": 0.375,
+            "vignetteDarkness": 1.5,
+            "easing": "easeInOutSine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_395_0_rm",
+      "at": "6:35",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_420_0_rm",
+      "at": "7:00",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_445_0_rm",
+      "at": "7:25",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_470_0_rm",
+      "at": "7:50",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_495_0_rm",
+      "at": "8:15",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_minor_520_0_rm",
+      "at": "8:40",
+      "actions": [
+        {
+          "type": "breath",
+          "target": "egg_crystal",
+          "params": {
+            "duration": 3,
+            "intensity": 0.125
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "sonoite_outro_rm",
+      "at": "8:48",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 9,
+            "vignetteDarkness": 0.8
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": {
+            "duration": 9,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": {
+            "duration": 9,
+            "delay": 1
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "meta": {
+    "track": 6,
+    "slug": "o-filho",
+    "bpm": 94,
+    "key": "E minor",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#D4A574",
+    "secondary": "#8B4513",
+    "accent": "#F5E6D3"
+  },
+  "flow": {
+    "type": "falling_ash",
+    "params": {
+      "density": 0.12,
+      "spawnRate": 0.05,
+      "size": 0.07,
+      "opacity": 0.5,
+      "palette": ["#cc7722", "#ff9944", "#dd8833"],
+      "emissiveIntensity": 0.6
+    },
+    "reactivity": {
+      "loudness": "glow"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "monolith",
+        "params": {
+          "height": 12
+        },
+        "reactivity": {
+          "bass": "subtle_scale",
+          "treble": "edge_shimmer"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [
+      0,
+      1.6,
+      10
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ]
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": [
+    {
+      "id": "o-filho_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_14_0_rm",
+      "at": "0:14",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_42_0_rm",
+      "at": "0:42",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_70_0_rm",
+      "at": "1:10",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_98_0_rm",
+      "at": "1:38",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_126_0_rm",
+      "at": "2:06",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_154_0_rm",
+      "at": "2:34",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_crossfade_170_04_rm",
+      "at": "2:50",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "monolith",
+          "params": {
+            "duration": 6.0,
+            "value": 0.0
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "monolith_b",
+          "params": {
+            "duration": 6.0,
+            "value": 1.0
+          }
+        },
+        {
+          "type": "density",
+          "target": "falling_ash",
+          "params": {
+            "duration": 4.5,
+            "multiplier": 0.75
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_182_0_rm",
+      "at": "3:02",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_210_0_rm",
+      "at": "3:30",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_238_0_rm",
+      "at": "3:58",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_266_0_rm",
+      "at": "4:26",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_294_0_rm",
+      "at": "4:54",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_322_0_rm",
+      "at": "5:22",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_minor_350_0_rm",
+      "at": "5:50",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "monolith",
+          "params": {
+            "duration": 1.7999999999999998,
+            "intensity": 0.125
+          }
+        }
+      ]
+    },
+    {
+      "id": "o-filho_outro_rm",
+      "at": "5:53",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 9.0,
+            "vignetteDarkness": 0.8
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": {
+            "duration": 9.0,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": {
+            "duration": 9.0,
+            "delay": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

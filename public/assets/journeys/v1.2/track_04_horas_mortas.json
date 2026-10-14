@@ -1,0 +1,138 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "04_horas_mortas",
+  "title": "Horas Mortas",
+  "consciousnessLevel": 0.2,
+  "userControl": false,
+  "camera": {
+    "behavior": "float",
+    "speed": 0.01,
+    "shake": 0.01,
+    "fov": 60,
+    "depthOfField": {
+      "enabled": true,
+      "focus": 12,
+      "aperture": 0.01
+    }
+  },
+  "scene": {
+    "scale": "vast",
+    "density": "low",
+    "background": "#0a0a12",
+    "coverAesthetic": "veiled",
+    "behavioralFlags": [
+      "drifting"
+    ]
+  },
+  "postProcessing": [
+    "vignette",
+    "soft_bloom"
+  ],
+  "flow": {
+    "type": "ink_tendrils",
+    "params": {
+      "density": 0.03,
+      "spawnRate": 0.01,
+      "palette": [
+        "#0a0a12",
+        "#424242",
+        "#d7d7e0"
+      ]
+    },
+    "reactivity": {
+      "loudness": "turbulence",
+      "centroid": "color_shift"
+    },
+    "shaders": {
+      "material": "curlNoiseTendrils",
+      "uniforms": {
+        "uCurlAmp": 0.3
+      }
+    }
+  },
+  "structure": {
+    "type": "distant_shards",
+    "params": {
+      "complexity": 0.1,
+      "material": "glass_frost"
+    },
+    "reactivity": {
+      "bass": "gentle_shudder",
+      "loudness": "appear_disappear"
+    },
+    "shaders": {
+      "material": "matteShard",
+      "uniforms": {}
+    }
+  },
+  "core": {
+    "enabled": false
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "first_stir",
+      "type": "emergence",
+      "trigger": {
+        "mode": "time",
+        "at": 90.0
+      },
+      "targets": [
+        "flow:tendrils"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 0.5,
+      "duration": 1.0
+    },
+    {
+      "id": "deep_thought",
+      "type": "revelation",
+      "trigger": {
+        "mode": "feature",
+        "feature": "rms",
+        "lt": 0.15,
+        "cooldown": 8.0
+      },
+      "targets": [
+        "structure:shards"
+      ],
+      "action": "understanding_wave",
+      "intensity": 0.3,
+      "duration": 2.0
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#424242",
+    "accent": "#d7d7e0"
+  }
+}

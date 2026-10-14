@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "track": 5,
+    "slug": "nao-querer-nada",
+    "title": "Nao Querer Nada",
+    "bpm": 93,
+    "key": "E minor",
+    "variant": "reduced_motion",
+    "_phases": {
+      "VOID": "0:00-1:36 (0-96s)",
+      "AWAKENING": "1:36-3:36 (96-216s)",
+      "WANTING": "3:36-4:41 (216-281s)",
+      "RELEASE": "4:41-7:12 (281-432s)",
+      "ERASURE": "7:12-9:24 (432-564s)"
+    }
+  },
+  "palette": {
+    "primary": "#000000",
+    "secondary": "#050508",
+    "accent": "#0D0D15",
+    "fog": "#010101"
+  },
+  "flow": {
+    "type": "void_dust",
+    "params": {
+      "mode": "void_dust",
+      "count": 900,
+      "maxRadius": 26.0,
+      "velocityJitter": 0.12
+    }
+  },
+  "skybox": {
+    "ambientParticles": 0
+  },
+  "structure": {
+    "type": "void_sphere",
+    "params": {
+      "radius": 1.8,
+      "intensity": 1.05,
+      "edgeColor": "#2A2A3A",
+      "darkColor": "#000000",
+      "bassContraction": 0.08,
+      "breathingRate": 0.02,
+      "positionY": 2.0
+    },
+    "reactivity": {
+      "bass": "contract",
+      "mid": "pulse"
+    }
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [7, 2.5, 11],
+    "target": [0, 0, 0],
+    "speed": 0.004
+  },
+  "post": {
+    "preset": "void"
+  },
+  "moments": [
+    {
+      "id": "t5_void_first_stir_rm",
+      "at": "0:28.00",
+      "_phase": "VOID",
+      "_energy": "5%",
+      "_segment": "VOID - first stir (reduced: post only)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.08,
+            "vignette": 0.78,
+            "grain": 0.12,
+            "duration": 12.0,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_awaken_25pct_rm",
+      "at": "2:20.00",
+      "_phase": "AWAKENING",
+      "_energy": "25%",
+      "_segment": "AWAKENING - desire becomes noticeable (reduced: post only)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.10,
+            "vignette": 0.74,
+            "grain": 0.15,
+            "duration": 20.0,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_peak_climax_rm",
+      "at": "4:41.00",
+      "_phase": "WANTING",
+      "_energy": "50% - TRUE PEAK",
+      "_segment": "WANTING - true peak (reduced: post only, gentler values)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.22,
+            "vignette": 0.85,
+            "grain": 0.16,
+            "duration": 16.0,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_break_drop_rm",
+      "at": "7:02.00",
+      "_phase": "RELEASE",
+      "_energy": "75%",
+      "_segment": "BREAK - brief resurgence (reduced: post only)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.10,
+            "vignette": 0.80,
+            "grain": 0.15,
+            "duration": 12.0,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_dissolve_rm",
+      "at": "8:27.00",
+      "_phase": "ERASURE",
+      "_energy": "95%",
+      "_segment": "ERASURE - begin final dissolve (reduced: post + opacity)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.04,
+            "vignette": 0.94,
+            "grain": 0.20,
+            "duration": 35.0,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.0,
+            "duration": 40.0,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    }
+  ]
+}

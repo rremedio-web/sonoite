@@ -1,0 +1,154 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "07_homem_educado",
+  "title": "Homem Educado",
+  "consciousnessLevel": 0.9,
+  "userControl": false,
+  "camera": {
+    "behavior": "orbit",
+    "speed": 0.01,
+    "shake": 0.005,
+    "fov": 52,
+    "depthOfField": {
+      "enabled": true,
+      "focus": 18,
+      "aperture": 0.012
+    }
+  },
+  "scene": {
+    "scale": "large",
+    "density": "medium",
+    "background": "#0a0a12",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": [
+      "asyncPulse"
+    ]
+  },
+  "postProcessing": [
+    "soft_bloom"
+  ],
+  "flow": {
+    "type": "cold_haze",
+    "params": {
+      "density": 0.2,
+      "spawnRate": 0.05,
+      "palette": [
+        "#0a0a12",
+        "#56667a",
+        "#aeb8c7"
+      ]
+    },
+    "reactivity": {
+      "dominantNote": "mist_thicken"
+    },
+    "shaders": {
+      "material": "coldHaze",
+      "uniforms": {
+        "uMist": 0.3
+      }
+    }
+  },
+  "structure": {
+    "type": "monolith_grid",
+    "params": {
+      "complexity": 1.0,
+      "material": "clear_diamond"
+    },
+    "reactivity": {
+      "chroma": "row_pulse",
+      "treble": "shimmer"
+    },
+    "shaders": {
+      "material": "monolithShimmer",
+      "uniforms": {
+        "uShimmer": 0.5
+      }
+    }
+  },
+  "core": {
+    "enabled": false
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "rebellion_glitch",
+      "type": "intensity",
+      "trigger": {
+        "mode": "feature",
+        "feature": "zcr",
+        "gt": 0.3,
+        "cooldown": 1.2
+      },
+      "targets": [
+        "structure:grid",
+        "fx:glitch"
+      ],
+      "action": "rebellion_glitch",
+      "intensity": 0.8,
+      "duration": 0.5
+    },
+    {
+      "id": "breakdown",
+      "type": "transformation",
+      "trigger": {
+        "mode": "time",
+        "at": 180.0
+      },
+      "targets": [
+        "structure:grid"
+      ],
+      "action": "constrict_then_relax",
+      "intensity": 1.0,
+      "duration": 2.0
+    },
+    {
+      "id": "awakening",
+      "type": "revelation",
+      "trigger": {
+        "mode": "time",
+        "at": 310.0
+      },
+      "targets": [
+        "core:blob",
+        "fx:bloom"
+      ],
+      "action": "awakening",
+      "intensity": 0.9,
+      "duration": 1.5
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#56667a",
+    "accent": "#e0e5ec"
+  }
+}

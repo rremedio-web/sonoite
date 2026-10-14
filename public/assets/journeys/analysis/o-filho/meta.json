@@ -1,0 +1,24 @@
+{
+  "track": "o-filho",
+  "file": "06-O-Filho.mp3",
+  "analysisVersion": "2.1-split",
+  "analysisTimestamp": "2025-12-25T22:40:20.802Z",
+  "duration": 362.79,
+  "sampleRate": 44100,
+  "segmentIntervalMs": 50,
+  "totalSegments": 7255,
+  "tempo": {
+    "bpm": 0,
+    "confidence": 0,
+    "source": "aubio"
+  },
+  "summary": {
+    "avgLoudness": 56.87,
+    "maxLoudness": 80.02,
+    "avgEnergy": 51.12,
+    "maxEnergy": 299.99,
+    "silentPhaseCount": 6,
+    "peakPhaseCount": 46,
+    "ambientPhaseCount": 55
+  }
+}

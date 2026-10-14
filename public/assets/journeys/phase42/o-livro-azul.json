@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "track": 3,
+    "slug": "o-livro-azul",
+    "title": "O Livro Azul",
+    "bpm": 160,
+    "key": "D minor",
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#0D3B66",
+    "secondary": "#FAF0CA",
+    "accent": "#F4D35E"
+  },
+  "flow": {
+    "type": "misty_rain",
+    "params": {
+      "density": 0.4,
+      "spawnRate": 0.4,
+      "size": 0.04,
+      "opacity": 0.5
+    },
+    "reactivity": {
+      "mid": "speed_mod",
+      "loudness": "sparkle"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "distant_shards",
+        "params": {
+          "count": 15,
+          "spread": 12
+        },
+        "reactivity": {
+          "treble": "shimmer",
+          "mid": "drift"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [5, 3, 9],
+    "target": [0, 0, 0],
+    "speed": 0.02
+  },
+  "post": {
+    "preset": "high"
+  },
+  "moments": [
+    {
+      "id": "pages_open",
+      "at": "0:00",
+      "actions": [
+        { "type": "manifest_in", "target": "flow", "params": { "duration": 3, "delay": 0 } },
+        { "type": "manifest_in", "target": "structure", "params": { "duration": 4, "delay": 0.5 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "bloom": 0.3 } }
+      ]
+    },
+    {
+      "id": "first_drops",
+      "at": "0:15",
+      "actions": [
+        { "type": "count", "target": "misty_rain", "params": { "duration": 2, "multiplier": 1.2 } },
+        { "type": "shimmer", "target": "distant_shards", "params": { "duration": 1.5, "amount": 0.2 } }
+      ]
+    },
+    {
+      "id": "ink_spreading",
+      "at": "0:35",
+      "actions": [
+        { "type": "count", "target": "misty_rain", "params": { "duration": 2.5, "multiplier": 1.35 } },
+        { "type": "sparkle", "target": "misty_rain", "params": { "duration": 2 } }
+      ]
+    },
+    {
+      "id": "shards_dance",
+      "at": "0:55",
+      "actions": [
+        { "type": "shimmer", "target": "distant_shards", "params": { "duration": 2, "amount": 0.4 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "bloom": 0.4 } }
+      ]
+    },
+    {
+      "id": "rain_intensifies",
+      "at": "1:15",
+      "actions": [
+        { "type": "count", "target": "misty_rain", "params": { "duration": 3, "multiplier": 1.5 } },
+        { "type": "opacity", "target": "misty_rain", "params": { "duration": 2.5, "value": 0.65 } }
+      ]
+    },
+    {
+      "id": "golden_light",
+      "at": "1:40",
+      "actions": [
+        { "type": "color_shift", "target": "misty_rain", "params": { "duration": 3, "hue": 0.06, "saturation": 0.08 } },
+        { "type": "shimmer", "target": "distant_shards", "params": { "duration": 2, "amount": 0.5 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2.5, "bloom": 0.55 } }
+      ]
+    },
+    {
+      "id": "aurora_burst",
+      "at": "2:00",
+      "actions": [
+        { "type": "color_shift", "target": "misty_rain", "params": { "duration": 4, "hue": 0.1, "saturation": 0.12 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "bloom": 0.7 } },
+        { "type": "sparkle", "target": "distant_shards", "params": { "duration": 3 } },
+        { "type": "camera_path", "target": "camera", "params": { "dolly": 0.92, "duration": 3, "easing": "easeInOutSine" } }
+      ]
+    },
+    {
+      "id": "final_glow",
+      "at": "2:20",
+      "actions": [
+        { "type": "shimmer", "target": "distant_shards", "params": { "duration": 2.5, "amount": 0.6 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "bloom": 0.5 } }
+      ]
+    },
+    {
+      "id": "book_closes",
+      "at": "2:32",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 6, "vignetteDarkness": 0.7, "bloom": 0.3 } },
+        { "type": "manifest_out", "target": "structure", "params": { "duration": 6, "delay": 0.5 } },
+        { "type": "manifest_out", "target": "flow", "params": { "duration": 6, "delay": 1 } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "track": 2,
+    "slug": "paralisia-do-sono",
+    "title": "Paralisia do Sono",
+    "bpm": 80,
+    "key": "F# minor",
+    "mood": {
+      "dark": 0.69,
+      "ethereal": 0.64,
+      "scary": 0.42
+    },
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#2D132C",
+    "secondary": "#801336",
+    "accent": "#C9ADA7"
+  },
+  "flow": {
+    "type": "heavy_fog",
+    "params": {
+      "density": 0.7,
+      "opacity": 0.3,
+      "palette": ["#0a0a0a", "#1a1a1a"],
+      "count": 15
+    },
+    "reactivity": {
+      "loudness": "turbulence"
+    }
+  },
+  "flowElements": [
+    {
+      "type": "cold_haze",
+      "params": {
+        "density": 0.12,
+        "opacity": 0.08,
+        "palette": ["#1a1a2e", "#2a2a3e"]
+      },
+      "reactivity": {
+        "loudness": 0.1
+      }
+    }
+  ],
+  "structure": {
+    "type": "glitching_cage",
+    "params": {
+      "size": 6,
+      "material": "obsidian_glass"
+    },
+    "reactivity": {
+      "bass": "cage_vibrate",
+      "treble": "shimmer"
+    },
+    "elements": [
+      {
+        "type": "monolith",
+        "params": {
+          "scale": 1.8,
+          "position": [3.5, 0, -2]
+        },
+        "reactivity": {
+          "bass": "subtle_scale"
+        }
+      }
+    ]
+  },
+  "structureElements": [
+    {
+      "type": "monolith",
+      "params": {
+        "position": [3.5, 0, -2],
+        "scale": 1.8
+      },
+      "reactivity": {
+        "bass": "pulse",
+        "centroid": "transmission"
+      }
+    }
+  ],
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 1.4, 6.5],
+    "target": [0, 0, 0]
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": [
+    {
+      "id": "trapped_awakening",
+      "at": "0:00",
+      "actions": [
+        { "type": "manifest_in", "target": "flow", "params": { "duration": 4, "delay": 0 } },
+        { "type": "manifest_in", "target": "structure", "params": { "duration": 5, "delay": 1 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.6 } }
+      ]
+    },
+    {
+      "id": "first_breath",
+      "at": "0:20",
+      "actions": [
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 2, "amount": 0.15 } },
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 1.5, "amount": 0.2 } }
+      ]
+    },
+    {
+      "id": "walls_close",
+      "at": "0:45",
+      "actions": [
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2.5, "amount": 0.35 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "vignetteDarkness": 0.7 } }
+      ]
+    },
+    {
+      "id": "presence_felt",
+      "at": "1:10",
+      "actions": [
+        { "type": "pulse", "target": "monolith", "params": { "duration": 2, "intensity": 0.3 } },
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 2, "amount": 0.25 } }
+      ]
+    },
+    {
+      "id": "panic_spike_1",
+      "at": "1:35",
+      "actions": [
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 1, "amount": 0.6 } },
+        { "type": "density", "target": "heavy_fog", "params": { "duration": 1.5, "multiplier": 1.4 } },
+        { "type": "veil", "target": "post_processing", "params": { "duration": 0.8, "darken": 0.2 } }
+      ]
+    },
+    {
+      "id": "subsiding",
+      "at": "2:00",
+      "actions": [
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 3, "amount": 0.12 } },
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2, "amount": 0.15 } }
+      ]
+    },
+    {
+      "id": "shadow_approach",
+      "at": "2:25",
+      "actions": [
+        { "type": "pulse", "target": "monolith", "params": { "duration": 3, "intensity": 0.4 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2.5, "vignetteDarkness": 0.8 } }
+      ]
+    },
+    {
+      "id": "cage_rattle",
+      "at": "2:50",
+      "actions": [
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2, "amount": 0.5 } },
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 2, "amount": 0.35 } }
+      ]
+    },
+    {
+      "id": "major_tension",
+      "at": "3:10",
+      "actions": [
+        { "type": "density", "target": "heavy_fog", "params": { "duration": 2, "multiplier": 1.6 } },
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2, "amount": 0.65 } },
+        { "type": "veil", "target": "post_processing", "params": { "duration": 1, "darken": 0.25 } },
+        { "type": "pulse", "target": "monolith", "params": { "duration": 2, "intensity": 0.5 } }
+      ]
+    },
+    {
+      "id": "trying_to_move",
+      "at": "3:35",
+      "actions": [
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 1.5, "amount": 0.4 } },
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 2, "amount": 0.3 } }
+      ]
+    },
+    {
+      "id": "second_wave",
+      "at": "3:55",
+      "actions": [
+        { "type": "density", "target": "heavy_fog", "params": { "duration": 2.5, "multiplier": 1.5 } },
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2, "amount": 0.55 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "vignetteDarkness": 0.85 } }
+      ]
+    },
+    {
+      "id": "monolith_watch",
+      "at": "4:15",
+      "actions": [
+        { "type": "pulse", "target": "monolith", "params": { "duration": 3, "intensity": 0.55 } },
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 2, "amount": 0.2 } }
+      ]
+    },
+    {
+      "id": "climax_terror",
+      "at": "4:40",
+      "actions": [
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 3, "amount": 0.8 } },
+        { "type": "density", "target": "heavy_fog", "params": { "duration": 2.5, "multiplier": 1.8 } },
+        { "type": "pulse", "target": "monolith", "params": { "duration": 2, "intensity": 0.7 } },
+        { "type": "veil", "target": "post_processing", "params": { "duration": 1.5, "darken": 0.35 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 1.0 } }
+      ]
+    },
+    {
+      "id": "release_begin",
+      "at": "5:00",
+      "actions": [
+        { "type": "turbulence", "target": "heavy_fog", "params": { "duration": 3, "amount": 0.15 } },
+        { "type": "shimmer", "target": "glitching_cage", "params": { "duration": 2, "amount": 0.25 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 4, "vignetteDarkness": 0.7 } }
+      ]
+    },
+    {
+      "id": "waking_slow",
+      "at": "5:15",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 8, "vignetteDarkness": 0.5 } },
+        { "type": "manifest_out", "target": "structure", "params": { "duration": 8, "delay": 1 } },
+        { "type": "manifest_out", "target": "flow", "params": { "duration": 8, "delay": 2 } }
+      ]
+    }
+  ]
+}

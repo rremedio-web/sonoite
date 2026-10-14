@@ -1,0 +1,16 @@
+{
+  "meta": { "track": 3, "slug": "o-livro-azul" },
+  "post": { "preset": "high" },
+  "flows": [
+    { "id": "misty_rain", "type": "misty_rain", "params": { "density": 0.4, "reactivity": { "mid": { "target": "speed_mod" } } } }
+  ],
+  "structures": [
+    { "id": "deconstructed_vertices", "type": "deconstructed_vertices", "params": { "count": 200, "reactivity": { "mid": { "target": "glow" } } } }
+  ],
+  "moments": [
+    { "id": "t3_camera_drift", "at": 0.0, "actions": [{ "target": "camera", "type": "camera_path", "duration": 210.0, "easing": "linear", "path": [{ "pan": [4, 0, 0] }] }] },
+    { "id": "t3_major_downpour", "at": 135.0, "actions": [
+        { "target": "misty_rain", "prop": "density", "to": 0.7, "duration": 8.0, "then": { "to": 0.4, "duration": 8.0 } }
+    ]}
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "enrichedMoments": [
+    {
+      "id": "t5_void_emerge",
+      "at": "0:28.000",
+      "_phase": "VOID",
+      "_segment": "First awareness of the void",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "preset": "void",
+            "bloom": 0.10,
+            "vignette": 0.80,
+            "duration": 12.0
+          }
+        },
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 78,
+            "duration": 10.0,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_awakening_begin",
+      "at": "2:20.000",
+      "_phase": "AWAKENING",
+      "_segment": "Void starts pulling the world inward",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.12,
+            "vignette": 0.82,
+            "grainIntensity": 0.16,
+            "duration": 24.0
+          }
+        },
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 80,
+            "duration": 16.0,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.85,
+            "duration": 20.0,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_peak",
+      "at": "4:41.000",
+      "_phase": "WANTING",
+      "_segment": "Peak desire - void nearly fills the frame",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 77,
+            "duration": 12.0,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.16,
+            "vignette": 0.84,
+            "grainIntensity": 0.18,
+            "duration": 18.0
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.95,
+            "duration": 15.0,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_begin",
+      "at": "7:02.000",
+      "_phase": "RELEASE",
+      "_segment": "Letting go - void relaxes, camera drifts back",
+      "actions": [
+        {
+          "type": "camera_dolly",
+          "target": "camera",
+          "params": {
+            "amount": 3.0,
+            "duration": 40.0,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 83,
+            "duration": 20.0,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.08,
+            "vignette": 0.82,
+            "grainIntensity": 0.14,
+            "duration": 40.0
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.55,
+            "duration": 30.0,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_through_void",
+      "at": "8:27.000",
+      "_phase": "ERASURE",
+      "_segment": "Final approach - camera passes through the void and everything fades",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT5_THROUGH",
+            "duration": 40.0,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.0,
+            "duration": 40.0,
+            "easing": "easeInExpo"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.05,
+            "vignette": 0.90,
+            "grainIntensity": 0.12,
+            "duration": 35.0
+          }
+        }
+      ]
+    }
+  ]
+}

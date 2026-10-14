@@ -1,0 +1,165 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "01_sonoite",
+  "title": "Sonoite",
+  "consciousnessLevel": 0.5,
+  "userControl": true,
+  "camera": {
+    "behavior": "orbit",
+    "speed": 0.02,
+    "shake": 0.02,
+    "fov": 55,
+    "depthOfField": {
+      "enabled": false,
+      "focus": 8,
+      "aperture": 0.02
+    }
+  },
+  "scene": {
+    "scale": "medium",
+    "density": "medium",
+    "background": "#0a0a12",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": [
+      "drifting",
+      "asyncPulse"
+    ]
+  },
+  "postProcessing": [
+    "soft_bloom",
+    "vignette"
+  ],
+  "flow": {
+    "type": "soft_particles",
+    "params": {
+      "density": 0.3,
+      "spawnRate": 0.2,
+      "palette": [
+        "#0a0a12",
+        "#2f2f4f",
+        "#d7d7e0"
+      ]
+    },
+    "reactivity": {
+      "loudness": "gentle_pulse",
+      "bass": "sparkle",
+      "mid": "speed_mod",
+      "centroid": "color_shift"
+    },
+    "shaders": {
+      "material": "softParticlesBasic",
+      "uniforms": {
+        "uSoftness": 0.8
+      }
+    }
+  },
+  "structure": {
+    "type": "drifting_wireframes",
+    "params": {
+      "complexity": 0.15,
+      "material": "ethereal_glow"
+    },
+    "reactivity": {
+      "loudness": "scale_pulse",
+      "treble": "shimmer",
+      "centroid": "color_shift"
+    },
+    "shaders": {
+      "material": "wireGlow",
+      "uniforms": {
+        "uGlow": 0.6
+      }
+    }
+  },
+  "core": {
+    "enabled": true,
+    "morph": "egg_crystal",
+    "reactivity": {
+      "bass": "subtle_deform",
+      "consciousnessLevel": "morph_breathe"
+    }
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "wonder_bloom",
+      "type": "revelation",
+      "trigger": {
+        "mode": "feature",
+        "feature": "spectralCentroid",
+        "gt": 0.6,
+        "cooldown": 3.0
+      },
+      "targets": [
+        "fx:bloom",
+        "flow:particles"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 0.7,
+      "duration": 1.0
+    },
+    {
+      "id": "grid_wave",
+      "type": "intensity",
+      "trigger": {
+        "mode": "beat",
+        "cooldown": 0.8
+      },
+      "targets": [
+        "structure:wireframes"
+      ],
+      "action": "grid_wave",
+      "intensity": 0.6,
+      "duration": 0.6
+    },
+    {
+      "id": "void_bloom",
+      "type": "dissolution",
+      "trigger": {
+        "mode": "time",
+        "at": 300.0
+      },
+      "targets": [
+        "flow:particles",
+        "fx:bloom"
+      ],
+      "action": "fracture_and_fade",
+      "intensity": 0.8,
+      "duration": 2.0
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#2f2f4f",
+    "accent": "#d7d7e0"
+  }
+}

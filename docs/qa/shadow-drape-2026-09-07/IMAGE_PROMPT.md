@@ -1,0 +1,13 @@
+# OpenAI stage concept sheet
+
+Generated with the built-in OpenAI image-generation tool. The tool exposes no model-version selector; no specific latest model ID is asserted. This is concept art, not a browser render.
+
+Inputs, inspected before generation:
+- `~/Documents/Sonoite Environment Trial/stage-trial-2026-09-07/evidence/t1-held-384.jpg` — edit target / sculpture and stage reference.
+- `~/Documents/Sonoite Listening Review 2026-09-05/album-artwork-reference.png` — album mood and material reference.
+
+Output: [openai-stage-concepts.png](openai-stage-concepts.png). The original generated file remains in the default generated-images directory.
+
+## Exact prompt
+
+Use case: stylized-concept. Edit the supplied Sonoite stage screenshot into a single cinematic concept sheet with THREE stacked wide frames, each a distinct staging proposal. Image 1 is the current rendered stage: preserve its unusual grey sculpture identity, one upright gloved hand holding an egg and thin metal element crowned with clustered irregular petals, and its intimate perspective. Image 2 is the actual album cover, a mood/material reference ONLY, not a panel to reproduce. Keep the existing sculpture recognizably sculptural and GREY, not white porcelain or shiny jewellery; do not turn it into a person. Explore what the space behind this sculpture can become. Top frame '01 / HANGING FOLD': dim asymmetrical heavy gauze hung off-centre behind and to the left, one diagonal tension fold and a broad drape receiving the enlarged real flower/hand shadow, cool neutral grazing light. Middle frame '02 / COVERED VOLUME': a low ambiguous body-like volume behind and to one side of the sculpture covered in soft weighted pale-grey fabric; its sloping shoulder bends and breaks up the projected flower silhouette; tactile folds, secluded, nocturnal. Bottom frame '03 / GATHERED HEM': hanging cloth slopes diagonally down to gathered fabric on the floor, a long shadow travels from wall onto the folds, foreground grey sculpture mostly in darkness with a thin cold edge. All frames should feel like restrained experimental cinema with a physical set, subtle local haze, black negative space, visible form and readable shadow on fabric. Cloth darker and less prominent than the sculpture; no glowing curtain, no identical vertical sine pleats, no extra statues, no candles, orange pools, pedestal, glowing balls, particle dots, laser graphics, lens flares, decorative arches or theatrical symmetry. Three independent compositions with the same source sculpture and camera scale. Only small labels listed above, no explanatory prose. Visually ambitious but practical to translate into a Three.js scene. This is a concept sheet, not a claim of implemented renders.

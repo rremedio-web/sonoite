@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "track": 1,
+    "slug": "sonoite",
+    "bpm": 140,
+    "key": "D minor",
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#0A0A14",
+    "secondary": "#1A1A2E",
+    "accent": "#FF6B35",
+    "highlight": "#FFB347",
+    "fog": "#0A0A12"
+  },
+  "flow": {
+    "type": "star_dust",
+    "params": {
+      "density": 0.3,
+      "spawnRate": 0.03,
+      "size": 0.03
+    },
+    "reactivity": {
+      "loudness": "glow"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "egg_crystal",
+        "params": {
+          "scale": 2.5,
+          "emissiveIntensity": 0.8,
+          "rimLightIntensity": 1.2
+        },
+        "reactivity": {
+          "bass": "breath",
+          "mid": "spin"
+        }
+      },
+      {
+        "type": "distant_shards",
+        "params": {
+          "count": 200,
+          "spread": 40,
+          "opacity": 0.85,
+          "size": 0.5
+        },
+        "reactivity": {
+          "treble": "shimmer",
+          "loudness": "opacity"
+        }
+      },
+      {
+        "type": "glitching_cage",
+        "params": {
+          "baseRadius": 3.5,
+          "opacity": 0,
+          "ghostColor": "#FF6B35"
+        },
+        "reactivity": {
+          "bass": "vibrate",
+          "treble": "stutter"
+        }
+      },
+      {
+        "type": "heavy_fog",
+        "name": "heavy_fog",
+        "params": {
+          "count": 12,
+          "opacity": 0,
+          "color": "#0A0A12"
+        },
+        "reactivity": {
+          "bass": "opacity"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "cinematic",
+    "personality": "The Witness",
+    "start": [
+      8,
+      3,
+      15
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.006
+  },
+  "fog": {
+    "enabled": true,
+    "type": "exponential",
+    "density": 0.025,
+    "color": "#0A0A12",
+    "near": 5,
+    "far": 60
+  },
+  "post": {
+    "preset": "cinematic"
+  }
+}

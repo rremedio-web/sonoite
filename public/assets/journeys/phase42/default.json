@@ -1,0 +1,7 @@
+{
+  "meta": { "title": "Default Fallback", "version": "1.0" },
+  "flow": { "type": "star_dust", "params": { "density": 0.45, "spawnRate": 0.04 }, "reactivity": { "loudness": "glow" } },
+  "structure": { "elements": [ { "type": "egg_crystal", "params": { "scale": 1.0 }, "reactivity": { "bass": "breath" } } ] },
+  "camera": { "mode": "orbit", "start": [0, 2, 9], "target": [0, 0, 0], "speed": 0.02 },
+  "post": { "preset": "noir" }
+}

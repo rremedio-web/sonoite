@@ -1,0 +1,184 @@
+{
+  "meta": {
+    "track": 6,
+    "slug": "o-filho",
+    "title": "O Filho",
+    "bpm": 94,
+    "key": "E minor",
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#D4A574",
+    "secondary": "#8B4513",
+    "accent": "#F5E6D3"
+  },
+  "flow": {
+    "type": "falling_ash",
+    "params": {
+      "density": 0.52,
+      "spawnRate": 0.065,
+      "size": 0.08,
+      "opacity": 0.62,
+      "palette": ["#cc7722", "#ff9944", "#dd8833"],
+      "emissiveIntensity": 0.9
+    },
+    "reactivity": {
+      "loudness": "glow"
+    }
+  },
+  "flowElements": [
+    {
+      "type": "ember_ring_ascent",
+      "params": {
+        "count": 220,
+        "opacity": 0.32,
+        "orbitRadius": 1.9,
+        "ascentSpeed": 0.58,
+        "orbitSpeed": 0.22,
+        "center": { "x": 0, "y": 5.4, "z": 0 },
+        "color": "#C78642",
+        "glowColor": "#FF6B2F"
+      }
+    }
+  ],
+  "structure": {
+    "elements": [
+      {
+        "type": "monolith",
+        "params": {
+          "height": 12,
+          "useSuccessionMaterial": true,
+          "successionTransition": 0.18,
+          "obsidianColor": "#07080F",
+          "plasmaColor": "#FF6726",
+          "burnColor": "#FFB75B",
+          "coreEmissive": "#FF4A18",
+          "coreEmissiveIntensity": 0.38
+        },
+        "reactivity": {
+          "bass": "subtle_scale",
+          "treble": "edge_shimmer"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 4.1, 11.2],
+    "target": [0, 5.2, 0]
+  },
+  "post": {
+    "preset": "inheritance"
+  },
+  "moments": [
+    {
+      "id": "inheritance_begins",
+      "at": "0:00",
+      "actions": [
+        { "type": "manifest_in", "target": "flow", "params": { "duration": 4, "delay": 0 } },
+        { "type": "manifest_in", "target": "structure", "params": { "duration": 5, "delay": 1.0 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.36, "brightness": 1.12, "warmth": 0.96 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 4, "value": 0.24 } }
+      ]
+    },
+    {
+      "id": "monolith_awakens",
+      "at": "0:20",
+      "actions": [
+        { "type": "glow", "target": "monolith", "params": { "duration": 2, "intensity": 0.28 } },
+        { "type": "glow", "target": "falling_ash", "params": { "duration": 1.5, "intensity": 0.25 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 3, "value": 0.3 } }
+      ]
+    },
+    {
+      "id": "ash_thickens",
+      "at": "0:50",
+      "actions": [
+        { "type": "density", "target": "falling_ash", "params": { "duration": 2.5, "multiplier": 1.25 } },
+        { "type": "glow", "target": "monolith", "params": { "duration": 2, "intensity": 0.32 } }
+      ]
+    },
+    {
+      "id": "father_shadow",
+      "at": "1:20",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "vignetteDarkness": 0.5, "brightness": 1.08, "warmth": 0.92 } },
+        { "type": "edge_shimmer", "target": "monolith", "params": { "duration": 2.5, "amount": 0.35 } }
+      ]
+    },
+    {
+      "id": "burden_grows",
+      "at": "1:55",
+      "actions": [
+        { "type": "glow", "target": "monolith", "params": { "duration": 3, "intensity": 0.42 } },
+        { "type": "density", "target": "falling_ash", "params": { "duration": 2.5, "multiplier": 1.4 } }
+      ]
+    },
+    {
+      "id": "legacy_weight",
+      "at": "2:30",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 2.5, "vignetteDarkness": 0.58, "brightness": 1.1, "warmth": 0.98 } },
+        { "type": "glow", "target": "monolith", "params": { "duration": 3, "intensity": 0.52 } },
+        { "type": "glow", "target": "falling_ash", "params": { "duration": 2, "intensity": 0.42 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 5, "value": 0.38 } }
+      ]
+    },
+    {
+      "id": "crossfade_moment",
+      "at": "3:00",
+      "actions": [
+        { "type": "edge_shimmer", "target": "monolith", "params": { "duration": 4, "amount": 0.55 } },
+        { "type": "density", "target": "falling_ash", "params": { "duration": 3, "multiplier": 1.5 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "bloom": 0.38, "warmth": 1.0 } }
+      ]
+    },
+    {
+      "id": "ember_surge",
+      "at": "3:40",
+      "actions": [
+        { "type": "glow", "target": "falling_ash", "params": { "duration": 3, "intensity": 0.65 } },
+        { "type": "glow", "target": "monolith", "params": { "duration": 3, "intensity": 0.58 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 4, "value": 0.48 } }
+      ]
+    },
+    {
+      "id": "confrontation",
+      "at": "4:15",
+      "actions": [
+        { "type": "edge_shimmer", "target": "monolith", "params": { "duration": 3.5, "amount": 0.7 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.68, "bloom": 0.42, "brightness": 1.12, "warmth": 1.04 } }
+      ]
+    },
+    {
+      "id": "climax_fire",
+      "at": "4:50",
+      "actions": [
+        { "type": "glow", "target": "monolith", "params": { "duration": 4, "intensity": 0.78 } },
+        { "type": "density", "target": "falling_ash", "params": { "duration": 3, "multiplier": 1.7 } },
+        { "type": "glow", "target": "falling_ash", "params": { "duration": 3.5, "intensity": 0.78 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "bloom": 0.56, "vignetteDarkness": 0.72, "brightness": 1.14, "warmth": 1.08 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 5, "value": 0.56 } }
+      ]
+    },
+    {
+      "id": "ashes_settle",
+      "at": "5:25",
+      "actions": [
+        { "type": "glow", "target": "monolith", "params": { "duration": 3, "intensity": 0.42 } },
+        { "type": "density", "target": "falling_ash", "params": { "duration": 3, "multiplier": 0.9 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 4, "vignetteDarkness": 0.54, "brightness": 1.06, "warmth": 0.96 } },
+        { "type": "opacity", "target": "ember_ring_ascent", "params": { "duration": 6, "value": 0.22 } }
+      ]
+    },
+    {
+      "id": "acceptance_end",
+      "at": "5:50",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 8, "vignetteDarkness": 0.44, "bloom": 0.22, "brightness": 1.0, "warmth": 0.92 } },
+        { "type": "manifest_out", "target": "structure", "params": { "duration": 8, "delay": 1 } },
+        { "type": "manifest_out", "target": "flow", "params": { "duration": 8, "delay": 2 } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "track": 99,
+    "slug": "test-particle-field",
+    "variant": "test"
+  },
+  "palette": {
+    "primary": "#FF6B35",
+    "secondary": "#00D9FF",
+    "accent": "#FFD93D"
+  },
+  "flow": {
+    "type": "particle_field",
+    "params": {
+      "count": 1000,
+      "fieldSize": 15
+    },
+    "reactivity": {
+      "loudness": "expand",
+      "bass": "pulse"
+    }
+  },
+  "structure": {
+    "elements": []
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [10, 5, 15],
+    "target": [0, 0, 0],
+    "speed": 0.02
+  },
+  "post": {
+    "preset": "balanced"
+  },
+  "moments": [
+    {
+      "id": "test_intro",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.0,
+            "delay": 0
+          }
+        }
+      ]
+    }
+  ]
+}

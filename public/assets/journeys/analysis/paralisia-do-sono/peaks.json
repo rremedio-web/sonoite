@@ -1,0 +1,80 @@
+{
+  "totalPeaks": 15,
+  "peaks": [
+    {
+      "time": 128.4,
+      "loudness": 68.85,
+      "energy": 74.02
+    },
+    {
+      "time": 130.9,
+      "loudness": 68.78,
+      "energy": 62.82
+    },
+    {
+      "time": 139.9,
+      "loudness": 69.06,
+      "energy": 79.99
+    },
+    {
+      "time": 142.9,
+      "loudness": 67.59,
+      "energy": 47.57
+    },
+    {
+      "time": 160.9,
+      "loudness": 68.44,
+      "energy": 109.02
+    },
+    {
+      "time": 167.4,
+      "loudness": 67.56,
+      "energy": 198.1
+    },
+    {
+      "time": 178.9,
+      "loudness": 69.39,
+      "energy": 98.03
+    },
+    {
+      "time": 181.9,
+      "loudness": 68.74,
+      "energy": 89.07
+    },
+    {
+      "time": 184.9,
+      "loudness": 68.45,
+      "energy": 86.11
+    },
+    {
+      "time": 187.9,
+      "loudness": 69.07,
+      "energy": 88.96
+    },
+    {
+      "time": 190.9,
+      "loudness": 69.59,
+      "energy": 103.98
+    },
+    {
+      "time": 197.75,
+      "loudness": 69.51,
+      "energy": 96.33
+    },
+    {
+      "time": 201.9,
+      "loudness": 68.29,
+      "energy": 84.99
+    },
+    {
+      "time": 215.75,
+      "loudness": 68.71,
+      "energy": 148.95
+    },
+    {
+      "time": 222.75,
+      "loudness": 69.76,
+      "energy": 37.3
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "06_o_filho",
+  "title": "O Filho",
+  "consciousnessLevel": 0.8,
+  "userControl": false,
+  "camera": {
+    "behavior": "locked",
+    "speed": 0,
+    "shake": 0.02,
+    "fov": 50,
+    "depthOfField": {
+      "enabled": true,
+      "focus": 7,
+      "aperture": 0.02
+    }
+  },
+  "scene": {
+    "scale": "medium",
+    "density": "low",
+    "background": "#0a0a12",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": []
+  },
+  "postProcessing": [
+    "vignette"
+  ],
+  "flow": {
+    "type": "falling_ash",
+    "params": {
+      "density": 0.1,
+      "spawnRate": 0.05,
+      "palette": [
+        "#24344d",
+        "#4a5c7a",
+        "#e0e5ec"
+      ]
+    },
+    "reactivity": {
+      "loudness": "drift_speed"
+    },
+    "shaders": {
+      "material": "ember",
+      "uniforms": {}
+    }
+  },
+  "structure": {
+    "type": "monolith",
+    "params": {
+      "complexity": 0.0,
+      "material": "glass_silhouette"
+    },
+    "reactivity": {
+      "bass": "subtle_scale",
+      "treble": "surface_shimmer"
+    },
+    "shaders": {
+      "material": "glassSilhouette",
+      "uniforms": {
+        "uIor": 1.0
+      }
+    }
+  },
+  "core": {
+    "enabled": false
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "connection",
+      "type": "emergence",
+      "trigger": {
+        "mode": "time",
+        "at": 60.0
+      },
+      "targets": [
+        "structure:monolith",
+        "fx:bloom"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 0.6,
+      "duration": 1.0
+    },
+    {
+      "id": "generative_pulse",
+      "type": "intensity",
+      "trigger": {
+        "mode": "beat",
+        "cooldown": 0.5
+      },
+      "targets": [
+        "flow:embers",
+        "structure:monolith"
+      ],
+      "action": "generative_pulse",
+      "intensity": 0.7,
+      "duration": 0.4
+    },
+    {
+      "id": "fracture_memory",
+      "type": "dissolution",
+      "trigger": {
+        "mode": "time",
+        "at": 227.0
+      },
+      "targets": [
+        "structure:monolith"
+      ],
+      "action": "fracture_and_fade",
+      "intensity": 1.0,
+      "duration": 1.5
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#24344d",
+    "accent": "#e0e5ec"
+  }
+}

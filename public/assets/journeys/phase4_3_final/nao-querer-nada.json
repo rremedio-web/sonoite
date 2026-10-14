@@ -1,0 +1,15 @@
+{
+  "meta": { "track": 5, "slug": "nao-querer-nada" },
+  "post": { "preset": "high" },
+  "flows": [],
+  "structures": [
+    { "id": "egg_crystal", "type": "egg_crystal", "params": { "scale": 1.0 } },
+    { "id": "deconstructed_vertices", "type": "deconstructed_vertices", "params": { "count": 600, "opacity": 0.0 } }
+  ],
+  "moments": [
+    { "id": "t5_long_dolly", "at": 0.0, "actions": [{ "target": "camera", "type": "camera_path", "duration": 560.0, "easing": "linear", "path": [{ "dolly": -8.0 }] }] },
+    { "id": "t5_major_dissolution", "at": 307.0, "actions": [
+        { "target": "egg_crystal", "behavior": "deconstruct", "duration": 20.0, "params": { "targetLayer": "deconstructed_vertices" } }
+    ]}
+  ]
+}

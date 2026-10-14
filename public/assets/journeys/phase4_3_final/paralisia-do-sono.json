@@ -1,0 +1,45 @@
+{
+  "meta": { "title": "Paralisia", "artist": "Sonoite", "bpm": 90 },
+  "config": {
+    "palette": "panic",
+    "visual_source": "structure/GlitchingCage",
+    "camera_mode": "handheld_panic"
+  },
+  "post_processing": {
+    "preset": "digital_decay",
+    "chromatic_aberration": 0.005,
+    "scanlines": 0.3
+  },
+  "moments": [
+    {
+      "id": "sleep_lock",
+      "at": "0:00",
+      "label": "Locked In",
+      "actions": [
+        { "type": "set_cam", "params": { "pos": [0, 0, 2], "lookAt": [0, 0, 0], "fov": 90 } },
+        { "type": "set_cam_noise", "params": { "intensity": 0.0 } },
+        { "type": "set_bg", "params": { "color": "#000000" } }
+      ]
+    },
+    {
+      "id": "intrusion",
+      "at": "0:40",
+      "label": "The Glitch",
+      "actions": [
+        { "type": "manifest_in", "target": "cage", "params": { "mode": "slam", "duration": 0.1 } },
+        { "type": "set_cam_noise", "params": { "intensity": 2.0, "freq": 10.0 } },
+        { "type": "link_audio", "target": "cage", "params": { "band": "high", "param": "wire_thickness" } }
+      ]
+    },
+    {
+      "id": "panic_attack",
+      "at": "1:20",
+      "label": "Panic",
+      "actions": [
+        { "type": "cam_punch", "params": { "axis": "z", "amount": -0.5 } },
+        { "type": "post_glitch", "params": { "amount": 1.0, "duration": 0.2 } },
+        { "type": "animate_uniform", "target": "cage", "params": { "uniform": "uColor", "value": "#FF0000" } }
+      ]
+    }
+  ]
+}

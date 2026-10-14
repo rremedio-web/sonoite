@@ -1,0 +1,16 @@
+{
+  "source": "reliquary_chamber.blend",
+  "candidate": "reliquary_material_candidate.blend",
+  "vertices": 32467,
+  "triangles": 64987,
+  "uv_layers": [
+    "UVMap"
+  ],
+  "face_regions": {
+    "petals": 40661,
+    "glove": 23174,
+    "metal": 687,
+    "egg": 465
+  },
+  "limitation": "First-pass projected face selection; inspect boundaries and backside before adoption."
+}

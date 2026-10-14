@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "track": 7,
+    "slug": "homem-educado",
+    "bpm": 70,
+    "key": "A minor",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#1B4965",
+    "secondary": "#5FA8D3",
+    "accent": "#CAE9FF"
+  },
+  "flow": {
+    "type": "cold_haze",
+    "params": {
+      "density": 0.2,
+      "spawnRate": 0.05,
+      "size": 0.4,
+      "opacity": 0.18
+    },
+    "reactivity": {
+      "loudness": "waft"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "monolith_grid",
+        "params": {
+          "rows": 6,
+          "columns": 6,
+          "spacing": 2.2,
+          "scale": 0.85
+        },
+        "reactivity": {
+          "chroma": "row_pulse",
+          "treble": "shimmer"
+        }
+      },
+      {
+        "type": "glitching_cage",
+        "params": {
+          "size": 10
+        },
+        "reactivity": {
+          "treble": "shimmer"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [
+      0,
+      3,
+      12
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ]
+  },
+  "post": {
+    "preset": "balanced"
+  },
+  "moments": [
+    {
+      "id": "homem-educado_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_18_0_rm",
+      "at": "0:18",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_48_0_rm",
+      "at": "0:48",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_78_0_rm",
+      "at": "1:18",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_108_0_rm",
+      "at": "1:48",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_138_0_rm",
+      "at": "2:18",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_168_0_rm",
+      "at": "2:48",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_198_0_rm",
+      "at": "3:18",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_228_0_rm",
+      "at": "3:48",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_mid_248_941_rm",
+      "at": "4:09",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 2.25,
+            "amount": 0.2
+          }
+        },
+        {
+          "type": "veil",
+          "target": "post_processing",
+          "params": {
+            "duration": 2.25,
+            "darken": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_258_0_rm",
+      "at": "4:18",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_glitch_286_531429_rm",
+      "at": "4:47",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 0.6000000000000001
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.4
+          }
+        },
+        {
+          "type": "appear_disappear",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.7999999999999998,
+            "cycles": 3,
+            "maxHz": 3
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 1.2000000000000002,
+            "grain": 0.06
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 0.6000000000000001,
+            "delay": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "id": "t7_minor_288_0_rm",
+      "at": "4:48",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "homem-educado_outro_rm",
+      "at": "4:52",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 9.0,
+            "vignetteDarkness": 0.8
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": {
+            "duration": 9.0,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": {
+            "duration": 9.0,
+            "delay": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

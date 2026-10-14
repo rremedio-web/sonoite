@@ -1,0 +1,360 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sonoite Journey Definition v1.2",
+  "type": "object",
+  "properties": {
+    "$schemaVersion": {
+      "type": "string",
+      "pattern": "^1\\.2$"
+    },
+    "track_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "consciousnessLevel": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "userControl": {
+      "type": "boolean"
+    },
+    "camera": {
+      "type": "object",
+      "properties": {
+        "behavior": {
+          "type": "string",
+          "enum": [
+            "float",
+            "locked",
+            "orbit",
+            "tunnel",
+            "grid_dolly",
+            "first_person"
+          ]
+        },
+        "speed": {
+          "type": "number"
+        },
+        "shake": {
+          "type": "number"
+        },
+        "fov": {
+          "type": "number"
+        },
+        "depthOfField": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "focus": {
+              "type": "number"
+            },
+            "aperture": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "enabled",
+            "focus",
+            "aperture"
+          ]
+        }
+      },
+      "required": [
+        "behavior",
+        "speed",
+        "shake",
+        "fov",
+        "depthOfField"
+      ]
+    },
+    "scene": {
+      "type": "object",
+      "properties": {
+        "scale": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large",
+            "vast"
+          ]
+        },
+        "density": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6})$"
+        },
+        "coverAesthetic": {
+          "type": "string",
+          "enum": [
+            "veiled",
+            "surgical"
+          ]
+        },
+        "behavioralFlags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "scale",
+        "density",
+        "background",
+        "coverAesthetic",
+        "behavioralFlags"
+      ]
+    },
+    "postProcessing": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "flow": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "reactivity": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "shaders": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "type",
+        "params",
+        "reactivity",
+        "shaders"
+      ]
+    },
+    "structure": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "reactivity": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "shaders": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "type",
+        "params",
+        "reactivity",
+        "shaders"
+      ]
+    },
+    "core": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "morph": {
+          "type": "string"
+        },
+        "reactivity": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "enabled"
+      ]
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "range": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "range"
+        ]
+      }
+    },
+    "signatureMoments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/signatureMoment"
+      }
+    },
+    "palette": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6})$"
+        },
+        "secondary": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6})$"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6})$"
+        }
+      },
+      "required": [
+        "primary",
+        "secondary",
+        "accent"
+      ]
+    }
+  },
+  "required": [
+    "$schemaVersion",
+    "track_id",
+    "title",
+    "consciousnessLevel",
+    "userControl",
+    "camera",
+    "scene",
+    "postProcessing",
+    "flow",
+    "structure",
+    "core",
+    "phases",
+    "signatureMoments",
+    "palette"
+  ],
+  "definitions": {
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "time",
+            "beat",
+            "feature",
+            "hybrid"
+          ]
+        },
+        "at": {
+          "type": "number"
+        },
+        "feature": {
+          "type": "string"
+        },
+        "gt": {
+          "type": "number"
+        },
+        "lt": {
+          "type": "number"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "cooldown": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "mode"
+      ]
+    },
+    "signatureMoment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "emergence",
+            "transformation",
+            "intensity",
+            "dissolution",
+            "revelation"
+          ]
+        },
+        "trigger": {
+          "$ref": "#/definitions/trigger"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "action": {
+          "type": "string"
+        },
+        "intensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "duration": {
+          "type": "number",
+          "minimum": 0
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "trigger",
+        "targets",
+        "action",
+        "intensity",
+        "duration"
+      ]
+    }
+  }
+}

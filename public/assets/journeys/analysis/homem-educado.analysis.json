@@ -1,0 +1,965 @@
+{
+  "track": "homem-educado",
+  "file": "07 - Homem educado.mp3",
+  "durationSeconds": 301.531429,
+  "sampleRate": 44100,
+  "frameSize": 2048,
+  "hopSize": 1024,
+  "framesAnalyzed": 12984,
+  "analysisTimestamp": "2025-09-20T11:26:04.653Z",
+  "features": {
+    "rms": {
+      "count": 12984,
+      "min": 0.00001,
+      "max": 0.282436,
+      "mean": 0.113509
+    },
+    "energy": {
+      "count": 12984,
+      "min": 0,
+      "max": 163.369698,
+      "mean": 30.858769
+    },
+    "spectralCentroid": {
+      "count": 12984,
+      "min": 11.361702,
+      "max": 110.987716,
+      "mean": 34.266419
+    },
+    "spectralRolloff": {
+      "count": 12984,
+      "min": 5966.470588,
+      "max": 21963.529412,
+      "mean": 15076.484044
+    },
+    "zcr": {
+      "count": 12984,
+      "min": 4,
+      "max": 726,
+      "mean": 55.318238
+    },
+    "loudness": {
+      "total": {
+        "count": 12984,
+        "min": 5.424257,
+        "max": 63.405648,
+        "mean": 48.529317
+      },
+      "specific": null
+    },
+    "chroma": {
+      "mean": [
+        0.441079,
+        0.320496,
+        0.43061,
+        0.502059,
+        0.772566,
+        0.605869,
+        0.489134,
+        0.603481,
+        0.546851,
+        0.715448,
+        0.516627,
+        0.538913
+      ],
+      "max": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "peaks": {
+    "loudness": [
+      {
+        "value": 63.405648,
+        "time": 248.941134
+      },
+      {
+        "value": 62.175539,
+        "time": 254.699683
+      },
+      {
+        "value": 61.630739,
+        "time": 249.591293
+      },
+      {
+        "value": 61.624915,
+        "time": 250.86839
+      },
+      {
+        "value": 61.48099,
+        "time": 198.298413
+      }
+    ],
+    "spectralCentroid": [
+      {
+        "value": 110.987716,
+        "time": 300.257234
+      },
+      {
+        "value": 110.653952,
+        "time": 300.164354
+      },
+      {
+        "value": 109.935644,
+        "time": 300.675193
+      },
+      {
+        "value": 109.783021,
+        "time": 300.350113
+      },
+      {
+        "value": 109.189822,
+        "time": 300.117914
+      }
+    ]
+  },
+  "segments": [
+    {
+      "index": 0,
+      "start": 0,
+      "end": 4,
+      "frames": 173,
+      "rms": 0.086494,
+      "loudness": 39.500901,
+      "spectralCentroid": 17.963618,
+      "energy": 19.073106,
+      "zcr": 21.526012
+    },
+    {
+      "index": 1,
+      "start": 4,
+      "end": 8,
+      "frames": 172,
+      "rms": 0.113403,
+      "loudness": 47.120593,
+      "spectralCentroid": 21.174989,
+      "energy": 28.944921,
+      "zcr": 30.94186
+    },
+    {
+      "index": 2,
+      "start": 8,
+      "end": 12,
+      "frames": 172,
+      "rms": 0.098847,
+      "loudness": 42.80648,
+      "spectralCentroid": 17.7073,
+      "energy": 22.42063,
+      "zcr": 25.674419
+    },
+    {
+      "index": 3,
+      "start": 12,
+      "end": 16,
+      "frames": 173,
+      "rms": 0.100027,
+      "loudness": 41.743462,
+      "spectralCentroid": 17.955061,
+      "energy": 22.499818,
+      "zcr": 25.815029
+    },
+    {
+      "index": 4,
+      "start": 16,
+      "end": 20,
+      "frames": 172,
+      "rms": 0.119287,
+      "loudness": 43.179362,
+      "spectralCentroid": 16.214598,
+      "energy": 30.851238,
+      "zcr": 25.197674
+    },
+    {
+      "index": 5,
+      "start": 20,
+      "end": 24,
+      "frames": 172,
+      "rms": 0.093116,
+      "loudness": 42.174199,
+      "spectralCentroid": 20.6676,
+      "energy": 20.484025,
+      "zcr": 26.232558
+    },
+    {
+      "index": 6,
+      "start": 24,
+      "end": 28,
+      "frames": 172,
+      "rms": 0.111278,
+      "loudness": 49.043959,
+      "spectralCentroid": 26.677358,
+      "energy": 27.428786,
+      "zcr": 33.162791
+    },
+    {
+      "index": 7,
+      "start": 28,
+      "end": 32,
+      "frames": 173,
+      "rms": 0.101739,
+      "loudness": 46.790377,
+      "spectralCentroid": 24.234213,
+      "energy": 22.641135,
+      "zcr": 32.092486
+    },
+    {
+      "index": 8,
+      "start": 32,
+      "end": 36,
+      "frames": 172,
+      "rms": 0.116575,
+      "loudness": 49.469743,
+      "spectralCentroid": 31.021746,
+      "energy": 29.424426,
+      "zcr": 41.523256
+    },
+    {
+      "index": 9,
+      "start": 36,
+      "end": 40,
+      "frames": 172,
+      "rms": 0.129194,
+      "loudness": 51.304107,
+      "spectralCentroid": 29.41878,
+      "energy": 36.646659,
+      "zcr": 38.883721
+    },
+    {
+      "index": 10,
+      "start": 40,
+      "end": 44,
+      "frames": 172,
+      "rms": 0.11237,
+      "loudness": 49.908403,
+      "spectralCentroid": 33.360564,
+      "energy": 27.934239,
+      "zcr": 45.802326
+    },
+    {
+      "index": 11,
+      "start": 44,
+      "end": 48,
+      "frames": 173,
+      "rms": 0.109592,
+      "loudness": 47.900682,
+      "spectralCentroid": 25.237806,
+      "energy": 26.775281,
+      "zcr": 36.346821
+    },
+    {
+      "index": 12,
+      "start": 48,
+      "end": 52,
+      "frames": 172,
+      "rms": 0.109896,
+      "loudness": 47.947791,
+      "spectralCentroid": 24.340118,
+      "energy": 26.198867,
+      "zcr": 35.069767
+    },
+    {
+      "index": 13,
+      "start": 52,
+      "end": 56,
+      "frames": 172,
+      "rms": 0.114619,
+      "loudness": 49.894211,
+      "spectralCentroid": 28.86771,
+      "energy": 28.536506,
+      "zcr": 35.546512
+    },
+    {
+      "index": 14,
+      "start": 56,
+      "end": 60,
+      "frames": 172,
+      "rms": 0.112693,
+      "loudness": 47.41514,
+      "spectralCentroid": 23.325872,
+      "energy": 27.841843,
+      "zcr": 33.616279
+    },
+    {
+      "index": 15,
+      "start": 60,
+      "end": 64,
+      "frames": 173,
+      "rms": 0.114817,
+      "loudness": 48.082591,
+      "spectralCentroid": 26.412035,
+      "energy": 29.73101,
+      "zcr": 34.33526
+    },
+    {
+      "index": 16,
+      "start": 64,
+      "end": 68,
+      "frames": 172,
+      "rms": 0.106976,
+      "loudness": 49.950693,
+      "spectralCentroid": 31.731569,
+      "energy": 24.76028,
+      "zcr": 46.965116
+    },
+    {
+      "index": 17,
+      "start": 68,
+      "end": 72,
+      "frames": 172,
+      "rms": 0.113492,
+      "loudness": 47.529495,
+      "spectralCentroid": 23.440903,
+      "energy": 28.367333,
+      "zcr": 33.883721
+    },
+    {
+      "index": 18,
+      "start": 72,
+      "end": 76,
+      "frames": 173,
+      "rms": 0.105789,
+      "loudness": 45.869372,
+      "spectralCentroid": 24.293982,
+      "energy": 24.96732,
+      "zcr": 30.601156
+    },
+    {
+      "index": 19,
+      "start": 76,
+      "end": 80,
+      "frames": 172,
+      "rms": 0.111822,
+      "loudness": 48.614381,
+      "spectralCentroid": 27.040505,
+      "energy": 27.696356,
+      "zcr": 37.813953
+    },
+    {
+      "index": 20,
+      "start": 80,
+      "end": 84,
+      "frames": 172,
+      "rms": 0.109092,
+      "loudness": 49.427525,
+      "spectralCentroid": 33.604233,
+      "energy": 26.90996,
+      "zcr": 43.651163
+    },
+    {
+      "index": 21,
+      "start": 84,
+      "end": 88,
+      "frames": 172,
+      "rms": 0.099449,
+      "loudness": 49.019125,
+      "spectralCentroid": 34.686617,
+      "energy": 21.357977,
+      "zcr": 45.325581
+    },
+    {
+      "index": 22,
+      "start": 88,
+      "end": 92,
+      "frames": 173,
+      "rms": 0.122016,
+      "loudness": 50.715644,
+      "spectralCentroid": 31.811018,
+      "energy": 32.082135,
+      "zcr": 39.687861
+    },
+    {
+      "index": 23,
+      "start": 92,
+      "end": 96,
+      "frames": 172,
+      "rms": 0.103216,
+      "loudness": 48.798065,
+      "spectralCentroid": 36.630249,
+      "energy": 23.815757,
+      "zcr": 44.55814
+    },
+    {
+      "index": 24,
+      "start": 96,
+      "end": 100,
+      "frames": 172,
+      "rms": 0.132088,
+      "loudness": 52.85672,
+      "spectralCentroid": 36.1679,
+      "energy": 37.746471,
+      "zcr": 48.511628
+    },
+    {
+      "index": 25,
+      "start": 100,
+      "end": 104,
+      "frames": 172,
+      "rms": 0.142176,
+      "loudness": 52.333561,
+      "spectralCentroid": 33.600275,
+      "energy": 43.49298,
+      "zcr": 38.383721
+    },
+    {
+      "index": 26,
+      "start": 104,
+      "end": 108,
+      "frames": 173,
+      "rms": 0.137237,
+      "loudness": 52.999182,
+      "spectralCentroid": 34.97458,
+      "energy": 40.136197,
+      "zcr": 52.127168
+    },
+    {
+      "index": 27,
+      "start": 108,
+      "end": 112,
+      "frames": 172,
+      "rms": 0.154791,
+      "loudness": 53.605146,
+      "spectralCentroid": 32.086697,
+      "energy": 51.646599,
+      "zcr": 39.906977
+    },
+    {
+      "index": 28,
+      "start": 112,
+      "end": 116,
+      "frames": 172,
+      "rms": 0.124229,
+      "loudness": 51.886133,
+      "spectralCentroid": 36.582341,
+      "energy": 33.501773,
+      "zcr": 48.313953
+    },
+    {
+      "index": 29,
+      "start": 116,
+      "end": 120,
+      "frames": 172,
+      "rms": 0.129542,
+      "loudness": 54.017268,
+      "spectralCentroid": 36.427713,
+      "energy": 35.840832,
+      "zcr": 52.569767
+    },
+    {
+      "index": 30,
+      "start": 120,
+      "end": 124,
+      "frames": 173,
+      "rms": 0.137559,
+      "loudness": 52.946501,
+      "spectralCentroid": 34.888712,
+      "energy": 41.818596,
+      "zcr": 44.554913
+    },
+    {
+      "index": 31,
+      "start": 124,
+      "end": 128,
+      "frames": 172,
+      "rms": 0.131299,
+      "loudness": 53.521397,
+      "spectralCentroid": 35.709991,
+      "energy": 36.748235,
+      "zcr": 52.744186
+    },
+    {
+      "index": 32,
+      "start": 128,
+      "end": 132,
+      "frames": 172,
+      "rms": 0.148081,
+      "loudness": 53.709799,
+      "spectralCentroid": 32.406523,
+      "energy": 47.099016,
+      "zcr": 41.023256
+    },
+    {
+      "index": 33,
+      "start": 132,
+      "end": 136,
+      "frames": 173,
+      "rms": 0.142092,
+      "loudness": 53.098251,
+      "spectralCentroid": 36.53322,
+      "energy": 44.358346,
+      "zcr": 48.046243
+    },
+    {
+      "index": 34,
+      "start": 136,
+      "end": 140,
+      "frames": 172,
+      "rms": 0.134696,
+      "loudness": 54.199487,
+      "spectralCentroid": 36.244719,
+      "energy": 38.575006,
+      "zcr": 52.488372
+    },
+    {
+      "index": 35,
+      "start": 140,
+      "end": 144,
+      "frames": 172,
+      "rms": 0.138822,
+      "loudness": 52.742904,
+      "spectralCentroid": 34.909819,
+      "energy": 43.122042,
+      "zcr": 44.895349
+    },
+    {
+      "index": 36,
+      "start": 144,
+      "end": 148,
+      "frames": 172,
+      "rms": 0.132453,
+      "loudness": 52.568852,
+      "spectralCentroid": 35.2963,
+      "energy": 37.275733,
+      "zcr": 47.232558
+    },
+    {
+      "index": 37,
+      "start": 148,
+      "end": 152,
+      "frames": 173,
+      "rms": 0.13712,
+      "loudness": 53.960481,
+      "spectralCentroid": 34.487694,
+      "energy": 40.41726,
+      "zcr": 46.300578
+    },
+    {
+      "index": 38,
+      "start": 152,
+      "end": 156,
+      "frames": 172,
+      "rms": 0.135168,
+      "loudness": 53.27696,
+      "spectralCentroid": 37.124436,
+      "energy": 40.346307,
+      "zcr": 50.348837
+    },
+    {
+      "index": 39,
+      "start": 156,
+      "end": 160,
+      "frames": 172,
+      "rms": 0.131635,
+      "loudness": 53.860759,
+      "spectralCentroid": 36.958855,
+      "energy": 37.045226,
+      "zcr": 57.848837
+    },
+    {
+      "index": 40,
+      "start": 160,
+      "end": 164,
+      "frames": 172,
+      "rms": 0.13827,
+      "loudness": 53.444569,
+      "spectralCentroid": 34.465794,
+      "energy": 40.862101,
+      "zcr": 46.325581
+    },
+    {
+      "index": 41,
+      "start": 164,
+      "end": 168,
+      "frames": 173,
+      "rms": 0.136217,
+      "loudness": 54.053305,
+      "spectralCentroid": 37.328485,
+      "energy": 39.078303,
+      "zcr": 50
+    },
+    {
+      "index": 42,
+      "start": 168,
+      "end": 172,
+      "frames": 172,
+      "rms": 0.135895,
+      "loudness": 54.032714,
+      "spectralCentroid": 36.287586,
+      "energy": 39.515215,
+      "zcr": 48.953488
+    },
+    {
+      "index": 43,
+      "start": 172,
+      "end": 176,
+      "frames": 172,
+      "rms": 0.130282,
+      "loudness": 52.5901,
+      "spectralCentroid": 37.112718,
+      "energy": 38.180679,
+      "zcr": 49.302326
+    },
+    {
+      "index": 44,
+      "start": 176,
+      "end": 180,
+      "frames": 172,
+      "rms": 0.126201,
+      "loudness": 53.354178,
+      "spectralCentroid": 37.790812,
+      "energy": 33.91955,
+      "zcr": 55.174419
+    },
+    {
+      "index": 45,
+      "start": 180,
+      "end": 184,
+      "frames": 173,
+      "rms": 0.143996,
+      "loudness": 53.391269,
+      "spectralCentroid": 33.716713,
+      "energy": 44.734366,
+      "zcr": 41.098266
+    },
+    {
+      "index": 46,
+      "start": 184,
+      "end": 188,
+      "frames": 172,
+      "rms": 0.129224,
+      "loudness": 53.629793,
+      "spectralCentroid": 38.742696,
+      "energy": 35.631636,
+      "zcr": 58.162791
+    },
+    {
+      "index": 47,
+      "start": 188,
+      "end": 192,
+      "frames": 172,
+      "rms": 0.13073,
+      "loudness": 54.798796,
+      "spectralCentroid": 38.40458,
+      "energy": 36.445287,
+      "zcr": 52.255814
+    },
+    {
+      "index": 48,
+      "start": 192,
+      "end": 196,
+      "frames": 173,
+      "rms": 0.149299,
+      "loudness": 55.029709,
+      "spectralCentroid": 39.143127,
+      "energy": 47.390254,
+      "zcr": 49.83815
+    },
+    {
+      "index": 49,
+      "start": 196,
+      "end": 200,
+      "frames": 172,
+      "rms": 0.132922,
+      "loudness": 54.56248,
+      "spectralCentroid": 39.100059,
+      "energy": 37.59985,
+      "zcr": 61.511628
+    },
+    {
+      "index": 50,
+      "start": 200,
+      "end": 204,
+      "frames": 172,
+      "rms": 0.158139,
+      "loudness": 56.741606,
+      "spectralCentroid": 39.160311,
+      "energy": 52.975735,
+      "zcr": 51.5
+    },
+    {
+      "index": 51,
+      "start": 204,
+      "end": 208,
+      "frames": 172,
+      "rms": 0.139119,
+      "loudness": 53.185994,
+      "spectralCentroid": 38.440616,
+      "energy": 41.744698,
+      "zcr": 50.848837
+    },
+    {
+      "index": 52,
+      "start": 208,
+      "end": 212,
+      "frames": 173,
+      "rms": 0.131721,
+      "loudness": 54.386087,
+      "spectralCentroid": 38.201089,
+      "energy": 36.848214,
+      "zcr": 53.791908
+    },
+    {
+      "index": 53,
+      "start": 212,
+      "end": 216,
+      "frames": 172,
+      "rms": 0.154168,
+      "loudness": 54.763984,
+      "spectralCentroid": 36.702814,
+      "energy": 52.751076,
+      "zcr": 44
+    },
+    {
+      "index": 54,
+      "start": 216,
+      "end": 220,
+      "frames": 172,
+      "rms": 0.135391,
+      "loudness": 54.187317,
+      "spectralCentroid": 36.418868,
+      "energy": 39.38328,
+      "zcr": 52.034884
+    },
+    {
+      "index": 55,
+      "start": 220,
+      "end": 224,
+      "frames": 172,
+      "rms": 0.146986,
+      "loudness": 54.10111,
+      "spectralCentroid": 33.405291,
+      "energy": 46.329626,
+      "zcr": 42.127907
+    },
+    {
+      "index": 56,
+      "start": 224,
+      "end": 228,
+      "frames": 173,
+      "rms": 0.149115,
+      "loudness": 55.22386,
+      "spectralCentroid": 39.479704,
+      "energy": 48.483922,
+      "zcr": 51.514451
+    },
+    {
+      "index": 57,
+      "start": 228,
+      "end": 232,
+      "frames": 172,
+      "rms": 0.139861,
+      "loudness": 55.04306,
+      "spectralCentroid": 36.644396,
+      "energy": 41.209111,
+      "zcr": 53.453488
+    },
+    {
+      "index": 58,
+      "start": 232,
+      "end": 236,
+      "frames": 172,
+      "rms": 0.140625,
+      "loudness": 53.431901,
+      "spectralCentroid": 34.542646,
+      "energy": 43.223332,
+      "zcr": 45.662791
+    },
+    {
+      "index": 59,
+      "start": 236,
+      "end": 240,
+      "frames": 172,
+      "rms": 0.111014,
+      "loudness": 52.111453,
+      "spectralCentroid": 38.719401,
+      "energy": 26.140535,
+      "zcr": 59.383721
+    },
+    {
+      "index": 60,
+      "start": 240,
+      "end": 244,
+      "frames": 173,
+      "rms": 0.094262,
+      "loudness": 50.672462,
+      "spectralCentroid": 40.173145,
+      "energy": 19.532616,
+      "zcr": 61.34104
+    },
+    {
+      "index": 61,
+      "start": 244,
+      "end": 248,
+      "frames": 172,
+      "rms": 0.112476,
+      "loudness": 52.046968,
+      "spectralCentroid": 38.328621,
+      "energy": 27.52473,
+      "zcr": 54
+    },
+    {
+      "index": 62,
+      "start": 248,
+      "end": 252,
+      "frames": 172,
+      "rms": 0.132204,
+      "loudness": 53.793505,
+      "spectralCentroid": 35.179681,
+      "energy": 38.819,
+      "zcr": 53.511628
+    },
+    {
+      "index": 63,
+      "start": 252,
+      "end": 256,
+      "frames": 172,
+      "rms": 0.112211,
+      "loudness": 51.350624,
+      "spectralCentroid": 38.539215,
+      "energy": 32.082504,
+      "zcr": 62.534884
+    },
+    {
+      "index": 64,
+      "start": 256,
+      "end": 260,
+      "frames": 173,
+      "rms": 0.105451,
+      "loudness": 51.322181,
+      "spectralCentroid": 43.826504,
+      "energy": 24.35312,
+      "zcr": 178.254335
+    },
+    {
+      "index": 65,
+      "start": 260,
+      "end": 264,
+      "frames": 172,
+      "rms": 0.076606,
+      "loudness": 45.14792,
+      "spectralCentroid": 36.041179,
+      "energy": 15.433417,
+      "zcr": 55.069767
+    },
+    {
+      "index": 66,
+      "start": 264,
+      "end": 268,
+      "frames": 172,
+      "rms": 0.076007,
+      "loudness": 44.446404,
+      "spectralCentroid": 26.951183,
+      "energy": 15.330952,
+      "zcr": 28
+    },
+    {
+      "index": 67,
+      "start": 268,
+      "end": 272,
+      "frames": 173,
+      "rms": 0.079803,
+      "loudness": 44.873687,
+      "spectralCentroid": 29.024529,
+      "energy": 17.100802,
+      "zcr": 40.312139
+    },
+    {
+      "index": 68,
+      "start": 272,
+      "end": 276,
+      "frames": 172,
+      "rms": 0.0661,
+      "loudness": 42.205889,
+      "spectralCentroid": 27.348238,
+      "energy": 12.923341,
+      "zcr": 44.465116
+    },
+    {
+      "index": 69,
+      "start": 276,
+      "end": 280,
+      "frames": 172,
+      "rms": 0.052886,
+      "loudness": 40.678034,
+      "spectralCentroid": 28.172264,
+      "energy": 8.71438,
+      "zcr": 49.5
+    },
+    {
+      "index": 70,
+      "start": 280,
+      "end": 284,
+      "frames": 172,
+      "rms": 0.027273,
+      "loudness": 29.603412,
+      "spectralCentroid": 45.668082,
+      "energy": 1.782913,
+      "zcr": 83.94186
+    },
+    {
+      "index": 71,
+      "start": 284,
+      "end": 288,
+      "frames": 173,
+      "rms": 0.029498,
+      "loudness": 27.921345,
+      "spectralCentroid": 40.926973,
+      "energy": 2.070798,
+      "zcr": 71.248555
+    },
+    {
+      "index": 72,
+      "start": 288,
+      "end": 292,
+      "frames": 172,
+      "rms": 0.021051,
+      "loudness": 24.528897,
+      "spectralCentroid": 43.037956,
+      "energy": 1.06698,
+      "zcr": 75.197674
+    },
+    {
+      "index": 73,
+      "start": 292,
+      "end": 296,
+      "frames": 172,
+      "rms": 0.005195,
+      "loudness": 18.187093,
+      "spectralCentroid": 50.427661,
+      "energy": 0.107095,
+      "zcr": 88.709302
+    },
+    {
+      "index": 74,
+      "start": 296,
+      "end": 300,
+      "frames": 172,
+      "rms": 0.000168,
+      "loudness": 10.510703,
+      "spectralCentroid": 85.530674,
+      "energy": 0.000107,
+      "zcr": 399.697674
+    },
+    {
+      "index": 75,
+      "start": 300,
+      "end": 304,
+      "frames": 64,
+      "rms": 0.000017,
+      "loudness": 6.870729,
+      "spectralCentroid": 101.403934,
+      "energy": 0.000001,
+      "zcr": 531.4375
+    }
+  ]
+}

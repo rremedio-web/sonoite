@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "track": 99,
+    "slug": "single-conservative",
+    "title": "Single Track (Conservative)",
+    "bpm": 90,
+    "key": "D minor",
+    "mood": { "dark": 0.6, "ethereal": 0.5, "scary": 0.2 }
+  },
+  "flow": {
+    "type": "cold_haze",
+    "params": {
+      "density": 0.4,
+      "opacity": 0.2,
+      "palette": ["#0a0a0a", "#1a1a1a"],
+      "count": 6
+    },
+    "reactivity": {
+      "loudness": "fixed"
+    }
+  },
+  "structure": {
+    "type": "egg_crystal",
+    "params": {
+      "size": 3,
+      "material": "obsidian_glass",
+      "transmission": 0.85,
+      "roughness": 0.15
+    },
+    "reactivity": {
+      "bass": "emissive",
+      "treble": "fixed"
+    }
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 1.6, 7],
+    "target": [0, 0, 0]
+  },
+  "post": { "preset": "balanced" },
+  "moments": [
+    {
+      "id": "s1c_intro_pulse",
+      "at": "0:15",
+      "actions": [
+        {
+          "type": "faint_visibility",
+          "target": "egg_crystal",
+          "params": {
+            "value": 0.95,
+            "duration": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "s1c_crescendo",
+      "at": "1:30",
+      "actions": [
+        {
+          "type": "sparkle",
+          "target": "egg_crystal",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}

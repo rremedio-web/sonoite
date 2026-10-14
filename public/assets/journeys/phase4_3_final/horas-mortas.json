@@ -1,0 +1,17 @@
+{
+  "meta": { "track": 4, "slug": "horas-mortas" },
+  "post": { "preset": "noir", "remaps": { "grain": 0.12 } },
+  "flows": [
+    { "id": "ink_tendrils", "type": "ink_tendrils", "params": { "density": 0.03 } }
+  ],
+  "structures": [
+    { "id": "distant_shards", "type": "distant_shards", "params": { "count": 50 } }
+  ],
+  "moments": [
+    { "id": "t4_temporal_echo", "at": 269.0, "actions": [
+        { "target": "distant_shards", "type": "shimmer", "amount": 0.8, "duration": 0.2, "then": {
+            "target": "ink_tendrils", "prop": "turbulence", "to": 0.8, "duration": 4.0, "delay": 0.4, "then": { "to": 0.3, "duration": 6.0 }
+        }}
+    ]}
+  ]
+}

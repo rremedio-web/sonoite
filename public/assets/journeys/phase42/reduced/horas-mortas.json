@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "track": 4,
+    "slug": "horas-mortas",
+    "bpm": 78,
+    "key": "C major",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#3E4347",
+    "secondary": "#7D7C84",
+    "accent": "#D4D2D5"
+  },
+  "flow": {
+    "type": "ink_tendrils",
+    "params": {
+      "density": 0.03,
+      "spawnRate": 0.01
+    },
+    "reactivity": {
+      "loudness": "turbulence",
+      "centroid": "color_shift"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "distant_shards",
+        "params": {
+          "count": 20
+        },
+        "reactivity": {
+          "bass": "gentle_shudder",
+          "loudness": "appear_disappear"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [
+      5,
+      2,
+      9
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.005
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": [
+    {
+      "id": "horas-mortas_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_16_0_rm",
+      "at": "0:16",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_48_0_rm",
+      "at": "0:48",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_80_0_rm",
+      "at": "1:20",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_112_0_rm",
+      "at": "1:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_144_0_rm",
+      "at": "2:24",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_176_0_rm",
+      "at": "2:56",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_208_0_rm",
+      "at": "3:28",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_240_0_rm",
+      "at": "4:00",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_turbulence_269_862_rm",
+      "at": "4:30",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 4.5,
+            "amount": 0.4
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 4.5,
+            "value": 0.8
+          }
+        },
+        {
+          "type": "sparkle",
+          "target": "distant_shards",
+          "params": {
+            "duration": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_272_0_rm",
+      "at": "4:32",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_turbulence_303_74_rm",
+      "at": "5:04",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 4.5,
+            "amount": 0.4
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 4.5,
+            "value": 0.8
+          }
+        },
+        {
+          "type": "sparkle",
+          "target": "distant_shards",
+          "params": {
+            "duration": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_304_0_rm",
+      "at": "5:04",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_336_0_rm",
+      "at": "5:36",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_minor_368_0_rm",
+      "at": "6:08",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "horas-mortas_outro_rm",
+      "at": "6:21",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 9.0,
+            "vignetteDarkness": 0.8
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": {
+            "duration": 9.0,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": {
+            "duration": 9.0,
+            "delay": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

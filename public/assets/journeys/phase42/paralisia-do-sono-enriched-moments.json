@@ -1,0 +1,111 @@
+{
+  "_comment": "MP-T2-Register-02: Enriched moments for Track 2",
+  "_requires": "SONOITE_T2_ENRICHED flag and ink_tendrils + drifting_wireframes in journey structure",
+  "_note": "These moments reference layers not yet in base journey. Add to flowElements/structureElements first.",
+
+  "additionalFlowElements": [
+    {
+      "type": "ink_tendrils",
+      "params": {
+        "count": 8,
+        "spread": 12,
+        "opacity": 0.0,
+        "palette": ["#0a0a1a", "#1a1a2a"]
+      },
+      "reactivity": {
+        "mid": "turbulence"
+      }
+    }
+  ],
+
+  "additionalStructureElements": [
+    {
+      "type": "drifting_wireframes",
+      "params": {
+        "count": 12,
+        "spread": 15,
+        "opacity": 0.0,
+        "wireframe": true
+      },
+      "reactivity": {
+        "bass": "pulse",
+        "treble": "shimmer"
+      }
+    }
+  ],
+
+  "enrichedMoments": [
+    {
+      "id": "t2_first_breath_enriched",
+      "at": "0:26",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "amount": 0.4,
+            "duration": 4.0
+          }
+        },
+        {
+          "type": "veil",
+          "target": "drifting_wireframes",
+          "params": {
+            "state": "on",
+            "fade": 5.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_veil_on",
+      "at": "1:58",
+      "actions": [
+        {
+          "type": "veil",
+          "target": "ink_tendrils",
+          "params": {
+            "state": "on",
+            "fade": 8.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_bloom_enriched",
+      "at": "3:34",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "drifting_wireframes",
+          "params": {
+            "amount": 1.0,
+            "duration": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_resolve_enriched",
+      "at": "4:50",
+      "actions": [
+        {
+          "type": "veil",
+          "target": "ink_tendrils",
+          "params": {
+            "state": "off",
+            "fade": 15.0
+          }
+        },
+        {
+          "type": "veil",
+          "target": "drifting_wireframes",
+          "params": {
+            "state": "off",
+            "fade": 15.0
+          }
+        }
+      ]
+    }
+  ]
+}

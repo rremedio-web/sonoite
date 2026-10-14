@@ -1,0 +1,418 @@
+[
+  {
+    "atSeconds": 0,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 35.4,
+    "position": [
+      -4.2,
+      2.2,
+      8.5
+    ],
+    "target": [
+      0.96,
+      1.5,
+      -0.04
+    ],
+    "fov": 42,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 62.83,
+    "position": [
+      -5.4,
+      2.5,
+      9.2
+    ],
+    "target": [
+      0.96,
+      3.3,
+      0
+    ],
+    "fov": 42,
+    "driftScale": 0,
+    "transitionSeconds": 10
+  },
+  {
+    "atSeconds": 90.26,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 125,
+    "position": [
+      6.8,
+      2.7,
+      6.2
+    ],
+    "target": [
+      0.96,
+      2.7,
+      0
+    ],
+    "fov": 44,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 157,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 177.876,
+    "position": [
+      4.5,
+      3.8,
+      6.8
+    ],
+    "target": [
+      0.96,
+      4.7,
+      -0.04
+    ],
+    "fov": 36,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 189.8,
+    "position": [
+      -4.2,
+      2.2,
+      8.5
+    ],
+    "target": [
+      0.96,
+      1.5,
+      -0.04
+    ],
+    "fov": 42,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 210,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 253,
+    "position": [
+      -5.4,
+      2.5,
+      7.6
+    ],
+    "target": [
+      0.96,
+      2.7,
+      0
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 277,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 310.35,
+    "position": [
+      4.5,
+      3.8,
+      6.8
+    ],
+    "target": [
+      0.96,
+      4.7,
+      -0.04
+    ],
+    "fov": 36,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 316.65,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 336,
+    "position": [
+      -3.4,
+      2.1,
+      7.8
+    ],
+    "target": [
+      0.96,
+      1.5,
+      -0.04
+    ],
+    "fov": 42,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 359.9,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 367,
+    "position": [
+      -5.2,
+      3.8,
+      8.4
+    ],
+    "target": [
+      0.96,
+      3.2,
+      0
+    ],
+    "fov": 38,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 375.05,
+    "position": [
+      4.5,
+      3.8,
+      6.8
+    ],
+    "target": [
+      0.96,
+      4.7,
+      -0.04
+    ],
+    "fov": 36,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 384.03,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 392.2,
+    "position": [
+      -4.6,
+      2.8,
+      8.2
+    ],
+    "target": [
+      0.96,
+      3.1,
+      0
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 399.05,
+    "position": [
+      4.5,
+      3.8,
+      6.8
+    ],
+    "target": [
+      0.96,
+      4.7,
+      -0.04
+    ],
+    "fov": 36,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 411.5,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 425.2,
+    "position": [
+      4.2,
+      3.7,
+      7.2
+    ],
+    "target": [
+      0.98,
+      2.7,
+      0
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 438.9,
+    "position": [
+      4.7,
+      3.1,
+      6.5
+    ],
+    "target": [
+      0.98,
+      2.6,
+      0
+    ],
+    "fov": 38,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 459.5,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 488.5,
+    "position": [
+      -4.2,
+      2.2,
+      8.5
+    ],
+    "target": [
+      0.96,
+      1.5,
+      -0.04
+    ],
+    "fov": 42,
+    "driftScale": 0,
+    "transitionSeconds": 0
+  },
+  {
+    "atSeconds": 528,
+    "position": [
+      -4.4,
+      2.6,
+      11
+    ],
+    "target": [
+      0.96,
+      2,
+      -0.04
+    ],
+    "fov": 40,
+    "driftScale": 0,
+    "transitionSeconds": 24.4
+  }
+]

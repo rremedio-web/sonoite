@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "track": 98,
+    "slug": "single-expressive",
+    "title": "Single Track (Expressive)",
+    "bpm": 120,
+    "key": "A minor",
+    "mood": { "dark": 0.5, "ethereal": 0.7, "scary": 0.4 }
+  },
+  "flow": {
+    "type": "ink_tendrils",
+    "params": {
+      "count": 8,
+      "opacity": 0.4,
+      "spread": 12,
+      "palette": ["#0a0a1a", "#1a1a2a"]
+    },
+    "reactivity": {
+      "loudness": "turbulence",
+      "bass": "expansion"
+    }
+  },
+  "structure": {
+    "type": "egg_crystal",
+    "params": {
+      "size": 3.5,
+      "material": "obsidian_glass",
+      "transmission": 0.9,
+      "roughness": 0.1
+    },
+    "reactivity": {
+      "bass": "shimmer",
+      "treble": "vibration"
+    }
+  },
+  "structureElements": [
+    {
+      "type": "distant_shards",
+      "params": {
+        "count": 80,
+        "spread": 25,
+        "palette": ["#1a1a2a", "#2a2a3a"]
+      },
+      "reactivity": {
+        "treble": "sparkle",
+        "loudness": "opacity"
+      }
+    }
+  ],
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 1.8, 8.5],
+    "target": [0, 0, 0],
+    "transitions": {
+      "intro": {
+        "duration": 4,
+        "easing": "easeInOutCubic",
+        "from": [0, 6, 14],
+        "to": [0, 1.8, 8.5]
+      },
+      "midpoint": {
+        "duration": 6,
+        "easing": "easeInOutQuad",
+        "from": [0, 1.8, 8.5],
+        "to": [3, 1.8, 8.5]
+      }
+    }
+  },
+  "post": { "preset": "balanced" },
+  "moments": [
+    {
+      "id": "s1e_awaken",
+      "at": "0:10",
+      "actions": [
+        {
+          "type": "spawn",
+          "target": "ink_tendrils",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "s1e_veil",
+      "at": "0:45",
+      "actions": [
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": {
+            "sequence": "intro",
+            "duration": 4.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "s1e_bloom",
+      "at": "2:00",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": {
+            "value": 0.9,
+            "duration": 2.0
+          }
+        },
+        {
+          "type": "count",
+          "target": "distant_shards",
+          "params": {}
+        }
+      ]
+    }
+  ]
+}

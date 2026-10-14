@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "track": 7,
+    "slug": "homem-educado",
+    "title": "Homem Educado",
+    "bpm": 70,
+    "key": "A minor",
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#1B4965",
+    "secondary": "#5FA8D3",
+    "accent": "#CAE9FF"
+  },
+  "flow": {
+    "type": "cold_haze",
+    "params": {
+      "density": 0.2,
+      "spawnRate": 0.05,
+      "size": 0.4,
+      "opacity": 0.18
+    },
+    "reactivity": {
+      "loudness": "waft"
+    }
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "monolith_grid",
+        "params": {
+          "rows": 6,
+          "columns": 6,
+          "spacing": 2.2,
+          "scale": 0.85
+        },
+        "reactivity": {
+          "chroma": "row_pulse",
+          "treble": "shimmer"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 3, 12],
+    "target": [0, 0, 0]
+  },
+  "post": {
+    "preset": "balanced"
+  },
+  "moments": [
+    {
+      "id": "educated_man_arrives",
+      "at": "0:00",
+      "actions": [
+        { "type": "manifest_in", "target": "flow", "params": { "duration": 3, "delay": 0 } },
+        { "type": "manifest_in", "target": "structure", "params": { "duration": 4, "delay": 1 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "bloom": 0.2 } }
+      ]
+    },
+    {
+      "id": "grid_pulse_1",
+      "at": "0:25",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 1.5, "amount": 0.2 } },
+        { "type": "row_pulse", "target": "monolith_grid", "params": { "duration": 2, "row": 0 } }
+      ]
+    },
+    {
+      "id": "haze_shifts",
+      "at": "0:55",
+      "actions": [
+        { "type": "waft", "target": "cold_haze", "params": { "duration": 2.5, "amount": 0.3 } },
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 2, "amount": 0.25 } }
+      ]
+    },
+    {
+      "id": "order_emerges",
+      "at": "1:30",
+      "actions": [
+        { "type": "row_pulse", "target": "monolith_grid", "params": { "duration": 2.5, "row": 2 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "bloom": 0.3 } }
+      ]
+    },
+    {
+      "id": "grid_awakens",
+      "at": "2:05",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 2, "amount": 0.35 } },
+        { "type": "row_pulse", "target": "monolith_grid", "params": { "duration": 2, "row": 3 } }
+      ]
+    },
+    {
+      "id": "tension_builds",
+      "at": "2:40",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 2.5, "amount": 0.45 } },
+        { "type": "waft", "target": "cold_haze", "params": { "duration": 3, "amount": 0.4 } },
+        { "type": "veil", "target": "post_processing", "params": { "duration": 2, "darken": 0.08 } }
+      ]
+    },
+    {
+      "id": "structure_strain",
+      "at": "3:20",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 2, "amount": 0.55 } },
+        { "type": "row_pulse", "target": "monolith_grid", "params": { "duration": 2, "row": 4 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "bloom": 0.35 } }
+      ]
+    },
+    {
+      "id": "haze_thickens",
+      "at": "3:55",
+      "actions": [
+        { "type": "waft", "target": "cold_haze", "params": { "duration": 3, "amount": 0.5 } },
+        { "type": "opacity", "target": "cold_haze", "params": { "duration": 2.5, "value": 0.25 } }
+      ]
+    },
+    {
+      "id": "grid_storm",
+      "at": "4:25",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 3, "amount": 0.7 } },
+        { "type": "veil", "target": "post_processing", "params": { "duration": 2, "darken": 0.12 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2.5, "grain": 0.08 } }
+      ]
+    },
+    {
+      "id": "climax_glitch",
+      "at": "4:45",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 2, "amount": 0.85 } },
+        { "type": "appear_disappear", "target": "monolith_grid", "params": { "duration": 1.5, "cycles": 3, "maxHz": 3 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 1.5, "grain": 0.15, "bloom": 0.4 } }
+      ]
+    },
+    {
+      "id": "order_restored",
+      "at": "5:05",
+      "actions": [
+        { "type": "shimmer", "target": "monolith_grid", "params": { "duration": 3, "amount": 0.35 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "grain": 0.03, "bloom": 0.25 } }
+      ]
+    },
+    {
+      "id": "final_composure",
+      "at": "5:30",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 8, "vignetteDarkness": 0.6, "bloom": 0.2 } },
+        { "type": "manifest_out", "target": "structure", "params": { "duration": 8, "delay": 1 } },
+        { "type": "manifest_out", "target": "flow", "params": { "duration": 8, "delay": 2 } }
+      ]
+    }
+  ]
+}

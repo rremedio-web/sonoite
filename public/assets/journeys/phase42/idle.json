@@ -1,0 +1,26 @@
+{
+  "_comment": "BUG-03: Enhanced idle journey to be actually visible. Policy: No shards (Track 4 only).",
+  "flow": {
+    "type": "cold_haze",
+    "params": {
+      "density": 0.25,
+      "opacity": 0.3,
+      "palette": ["#1a1a2e", "#3f3f6f", "#5a5a8f"]
+    }
+  },
+  "structures": [
+    {
+      "type": "star_dust",
+      "params": {
+        "count": 200,
+        "spread": 40,
+        "opacity": 0.4,
+        "palette": ["#ffffff", "#e0e0ff", "#c0c0d0"]
+      }
+    }
+  ],
+  "post": {
+    "preset": "noir"
+  },
+  "moments": []
+}

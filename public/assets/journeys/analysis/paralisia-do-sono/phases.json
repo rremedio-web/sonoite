@@ -1,0 +1,317 @@
+{
+  "totalPhases": 44,
+  "silent": [
+    {
+      "type": "silent",
+      "startTime": 1.4,
+      "avgEnergy": 12.398156149333852,
+      "endTime": 5.8,
+      "duration": 4.4
+    },
+    {
+      "type": "silent",
+      "startTime": 7.95,
+      "avgEnergy": 14.952858107945591,
+      "endTime": 11.75,
+      "duration": 3.8
+    },
+    {
+      "type": "silent",
+      "startTime": 13.65,
+      "avgEnergy": 14.261511958492662,
+      "endTime": 17.6,
+      "duration": 3.95
+    },
+    {
+      "type": "silent",
+      "startTime": 19.8,
+      "avgEnergy": 15.07662329560828,
+      "endTime": 23.55,
+      "duration": 3.75
+    },
+    {
+      "type": "silent",
+      "startTime": 26.15,
+      "avgEnergy": 16.091834450358004,
+      "endTime": 29.75,
+      "duration": 3.6
+    },
+    {
+      "type": "silent",
+      "startTime": 32,
+      "avgEnergy": 13.825769865086123,
+      "endTime": 35.6,
+      "duration": 3.6
+    },
+    {
+      "type": "silent",
+      "startTime": 38.05,
+      "avgEnergy": 11.590677203215003,
+      "endTime": 41.4,
+      "duration": 3.35
+    },
+    {
+      "type": "silent",
+      "startTime": 44.05,
+      "avgEnergy": 11.462795493537238,
+      "endTime": 47.2,
+      "duration": 3.15
+    },
+    {
+      "type": "silent",
+      "startTime": 246.35,
+      "avgEnergy": 17.04265094116056,
+      "endTime": 252.75,
+      "duration": 6.4
+    },
+    {
+      "type": "silent",
+      "startTime": 253.05,
+      "avgEnergy": 14.397173854164775,
+      "endTime": 257.9,
+      "duration": 4.85
+    },
+    {
+      "type": "silent",
+      "startTime": 263.65,
+      "avgEnergy": 15.038628376063574,
+      "endTime": 285.05,
+      "duration": 21.4
+    },
+    {
+      "type": "silent",
+      "startTime": 289.35,
+      "avgEnergy": 15.190352774508908,
+      "endTime": 303.05,
+      "duration": 13.7
+    },
+    {
+      "type": "silent",
+      "startTime": 319.4,
+      "avgEnergy": 5.84046037549891,
+      "endTime": 324.55,
+      "duration": 5.15
+    }
+  ],
+  "ambient": [
+    {
+      "type": "ambient",
+      "startTime": 0,
+      "avgEnergy": 17.968273810181792,
+      "endTime": 1.4,
+      "duration": 1.4
+    },
+    {
+      "type": "ambient",
+      "startTime": 5.8,
+      "avgEnergy": 19.585541679058974,
+      "endTime": 7.95,
+      "duration": 2.15
+    },
+    {
+      "type": "ambient",
+      "startTime": 11.75,
+      "avgEnergy": 19.907178006195842,
+      "endTime": 13.65,
+      "duration": 1.9
+    },
+    {
+      "type": "ambient",
+      "startTime": 17.6,
+      "avgEnergy": 19.814637804682363,
+      "endTime": 19.8,
+      "duration": 2.2
+    },
+    {
+      "type": "ambient",
+      "startTime": 23.55,
+      "avgEnergy": 17.78530364395266,
+      "endTime": 26.15,
+      "duration": 2.6
+    },
+    {
+      "type": "ambient",
+      "startTime": 29.75,
+      "avgEnergy": 18.485355361951882,
+      "endTime": 32,
+      "duration": 2.25
+    },
+    {
+      "type": "ambient",
+      "startTime": 35.6,
+      "avgEnergy": 20.705344703143396,
+      "endTime": 38.05,
+      "duration": 2.45
+    },
+    {
+      "type": "ambient",
+      "startTime": 41.4,
+      "avgEnergy": 19.87739378163075,
+      "endTime": 44.05,
+      "duration": 2.65
+    },
+    {
+      "type": "ambient",
+      "startTime": 47.2,
+      "avgEnergy": 60.74652127382791,
+      "endTime": 48.4,
+      "duration": 1.2
+    },
+    {
+      "type": "ambient",
+      "startTime": 49.25,
+      "avgEnergy": 61.459651701540956,
+      "endTime": 54.4,
+      "duration": 5.15
+    },
+    {
+      "type": "ambient",
+      "startTime": 55.05,
+      "avgEnergy": 63.00010287015244,
+      "endTime": 60.35,
+      "duration": 5.3
+    },
+    {
+      "type": "ambient",
+      "startTime": 61.25,
+      "avgEnergy": 62.852559840086,
+      "endTime": 66.3,
+      "duration": 5.05
+    },
+    {
+      "type": "ambient",
+      "startTime": 67.5,
+      "avgEnergy": 62.99445973298914,
+      "endTime": 72.3,
+      "duration": 4.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 74,
+      "avgEnergy": 64.40969680316998,
+      "endTime": 123.75,
+      "duration": 49.75
+    },
+    {
+      "type": "ambient",
+      "startTime": 125.2,
+      "avgEnergy": 64.41517472312464,
+      "endTime": 139.35,
+      "duration": 14.15
+    },
+    {
+      "type": "ambient",
+      "startTime": 140.9,
+      "avgEnergy": 64.59746900487627,
+      "endTime": 141.75,
+      "duration": 0.85
+    },
+    {
+      "type": "ambient",
+      "startTime": 149.35,
+      "avgEnergy": 64.11889691218683,
+      "endTime": 155.05,
+      "duration": 5.7
+    },
+    {
+      "type": "ambient",
+      "startTime": 221.95,
+      "avgEnergy": 17.371286237754436,
+      "endTime": 230.2,
+      "duration": 8.25
+    },
+    {
+      "type": "ambient",
+      "startTime": 230.25,
+      "avgEnergy": 18.135316901545423,
+      "endTime": 246.35,
+      "duration": 16.1
+    },
+    {
+      "type": "ambient",
+      "startTime": 257.9,
+      "avgEnergy": 19.140931468627674,
+      "endTime": 263.65,
+      "duration": 5.75
+    },
+    {
+      "type": "ambient",
+      "startTime": 285.05,
+      "avgEnergy": 18.913713761747726,
+      "endTime": 289.35,
+      "duration": 4.3
+    },
+    {
+      "type": "ambient",
+      "startTime": 303.05,
+      "avgEnergy": 17.48959154287021,
+      "endTime": 319.4,
+      "duration": 16.35
+    }
+  ],
+  "peak": [
+    {
+      "type": "peak",
+      "startTime": 48.4,
+      "avgEnergy": 68.2484466650042,
+      "endTime": 49.25,
+      "duration": 0.85
+    },
+    {
+      "type": "peak",
+      "startTime": 54.4,
+      "avgEnergy": 67.01236795469734,
+      "endTime": 55.05,
+      "duration": 0.65
+    },
+    {
+      "type": "peak",
+      "startTime": 60.35,
+      "avgEnergy": 66.65206056179608,
+      "endTime": 61.25,
+      "duration": 0.9
+    },
+    {
+      "type": "peak",
+      "startTime": 66.3,
+      "avgEnergy": 70.07847545148923,
+      "endTime": 67.5,
+      "duration": 1.2
+    },
+    {
+      "type": "peak",
+      "startTime": 72.3,
+      "avgEnergy": 66.76603248863773,
+      "endTime": 74,
+      "duration": 1.7
+    },
+    {
+      "type": "peak",
+      "startTime": 140.4,
+      "avgEnergy": 66.35089589729549,
+      "endTime": 140.9,
+      "duration": 0.5
+    },
+    {
+      "type": "peak",
+      "startTime": 142.05,
+      "avgEnergy": 67.06775524268777,
+      "endTime": 146.85,
+      "duration": 4.8
+    },
+    {
+      "type": "peak",
+      "startTime": 147.15,
+      "avgEnergy": 69.93742375453557,
+      "endTime": 149.35,
+      "duration": 2.2
+    },
+    {
+      "type": "peak",
+      "startTime": 155.05,
+      "avgEnergy": 69.91076447700715,
+      "endTime": 221.95,
+      "duration": 66.9
+    }
+  ]
+}

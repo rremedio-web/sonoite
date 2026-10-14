@@ -1,0 +1,44 @@
+{
+  "meta": { "title": "O Filho", "artist": "Sonoite", "bpm": 120 },
+  "config": {
+    "palette": "noir",
+    "visual_source": "structure/Monolith",
+    "camera_mode": "cinematic_dolly"
+  },
+  "post_processing": {
+    "preset": "heavy_contrast",
+    "bloom_strength": 0.4,
+    "film_grain": 0.15
+  },
+  "moments": [
+    {
+      "id": "intro_void",
+      "at": "0:00",
+      "label": "The Void",
+      "actions": [
+        { "type": "set_cam", "params": { "pos": [0, 1, 10], "lookAt": [0, 1, 0], "fov": 35 } },
+        { "type": "set_mat", "target": "monolith", "params": { "color": "#050505", "roughness": 0.1 } },
+        { "type": "fog_density", "params": { "density": 0.05, "color": "#000000" } }
+      ]
+    },
+    {
+      "id": "presence_build",
+      "at": "0:30",
+      "label": "Presence Manifests",
+      "actions": [
+        { "type": "cam_move", "params": { "path": "orbit_slow", "duration": 20 } },
+        { "type": "animate_uniform", "target": "monolith", "params": { "uniform": "uInternalGlow", "to": 0.5, "duration": 10 } }
+      ]
+    },
+    {
+      "id": "climax_shatter",
+      "at": "2:15",
+      "label": "Glass Stress",
+      "actions": [
+        { "type": "cam_shake", "params": { "intensity": 0.2 } },
+        { "type": "animate_uniform", "target": "monolith", "params": { "uniform": "uDistortion", "to": 2.0, "duration": 0.5, "ease": "bounce" } },
+        { "type": "flash", "params": { "color": "#FFFFFF", "duration": 0.1 } }
+      ]
+    }
+  ]
+}

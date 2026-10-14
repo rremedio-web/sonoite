@@ -1,0 +1,152 @@
+{
+  "_comment": "Enriched moments for Track 3 - O Livro Azul (2:38)",
+  "_analysis": "Librosa: 161.5 BPM (fast), 392 beats, 643 onsets (dense), climax at 2:15 (0.4258)",
+  "_requires": "Base journey has misty_rain flow",
+  "_note": "Short but intense - strong opening, quick climax at 85%, fast fadeout",
+
+  "additionalStructureElements": [
+    {
+      "type": "monolith",
+      "params": {
+        "scale": 1.2,
+        "position": [-3, 0, -1],
+        "opacity": 0.0
+      },
+      "reactivity": {
+        "bass": "subtle_scale",
+        "mid": "edge_shimmer"
+      }
+    }
+  ],
+
+  "enrichedMoments": [
+    {
+      "id": "t3_bass_pulse",
+      "at": "0:01",
+      "_audio": "First bass hit - immediate energy",
+      "condition": { "feature": "bass", "threshold": 0.5 },
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "misty_rain",
+          "params": { "amount": 0.5, "duration": 2.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_open_book",
+      "at": "0:07",
+      "_audio": "5% energy (0.2166) - strong opening",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "misty_rain",
+          "params": { "fade": 3.0 }
+        },
+        {
+          "type": "density",
+          "target": "misty_rain",
+          "params": { "value": 0.5, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_page_turn",
+      "at": "0:39",
+      "_audio": "25% energy (0.2633) - building",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "deconstructed_vertices",
+          "params": { "amount": 0.6, "duration": 2.5 }
+        },
+        {
+          "type": "veil",
+          "target": "monolith",
+          "params": { "state": "on", "fade": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_reflection",
+      "at": "1:06",
+      "_audio": "Section 3 transition",
+      "actions": [
+        {
+          "type": "camera_path",
+          "params": { "yaw": 15, "duration": 10, "easing": "easeInOut" }
+        },
+        {
+          "type": "density",
+          "target": "misty_rain",
+          "params": { "value": 0.6, "duration": 5.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_build_to_climax",
+      "at": "1:43",
+      "_audio": "65% energy (0.3689) - building to peak",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.5, "duration": 4.0 }
+        },
+        {
+          "type": "shimmer",
+          "target": "monolith",
+          "params": { "amount": 0.6, "duration": 3.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_climax_insight",
+      "at": "2:15",
+      "_audio": "85% energy - CLIMAX at 0.4258",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.8, "duration": 3.0 }
+        },
+        {
+          "type": "shimmer",
+          "all": true,
+          "params": { "amount": 0.9, "duration": 2.0 }
+        },
+        {
+          "type": "density",
+          "target": "misty_rain",
+          "params": { "value": 0.9, "duration": 3.0 }
+        }
+      ]
+    },
+    {
+      "id": "t3_close_book",
+      "at": "2:23",
+      "_audio": "Approaching quick fadeout",
+      "actions": [
+        {
+          "type": "veil",
+          "target": "monolith",
+          "params": { "state": "off", "fade": 8.0 }
+        },
+        {
+          "type": "density",
+          "target": "misty_rain",
+          "params": { "value": 0.3, "duration": 8.0 }
+        },
+        {
+          "type": "dissolve_layers",
+          "params": { "duration": 12.0 }
+        },
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.2, "duration": 10.0 }
+        }
+      ]
+    }
+  ]
+}

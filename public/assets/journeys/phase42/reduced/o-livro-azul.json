@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "track": 3,
+    "slug": "o-livro-azul",
+    "bpm": 160,
+    "key": "D minor",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#0D3B66",
+    "secondary": "#FAF0CA",
+    "accent": "#F4D35E"
+  },
+  "flow": {
+    "type": "misty_rain",
+    "params": {
+      "density": 0.4,
+      "spawnRate": 0.4,
+      "size": 0.04,
+      "opacity": 0.5
+    },
+    "reactivity": {
+      "mid": "speed_mod",
+      "loudness": "sparkle"
+    }
+  },
+  "structure": {
+    "elements": []
+  },
+  "camera": {
+    "mode": "orbit",
+    "start": [
+      5,
+      3,
+      9
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.02
+  },
+  "post": {
+    "preset": "high"
+  },
+  "moments": [
+    {
+      "id": "o-livro-azul_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t3_rain_12_0_rm",
+      "at": "0:12",
+      "actions": [
+        {
+          "type": "count",
+          "target": "misty_rain",
+          "params": {
+            "duration": 2.25,
+            "multiplier": 0.625
+          }
+        },
+        {
+          "type": "sparkle",

@@ -1,0 +1,173 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "02_paralisia_do_sono",
+  "title": "Paralisia do Sono",
+  "consciousnessLevel": 0.85,
+  "userControl": false,
+  "camera": {
+    "behavior": "locked",
+    "speed": 0,
+    "shake": 0.08,
+    "fov": 60,
+    "depthOfField": {
+      "enabled": true,
+      "focus": 5,
+      "aperture": 0.03
+    }
+  },
+  "scene": {
+    "scale": "medium",
+    "density": "high",
+    "background": "#020407",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": [
+      "reactsToBeat"
+    ]
+  },
+  "postProcessing": [
+    "vignette",
+    "film_grain"
+  ],
+  "flow": {
+    "type": "heavy_fog",
+    "params": {
+      "density": 0.5,
+      "spawnRate": 0.2,
+      "palette": [
+        "#020407",
+        "#1a1a1f",
+        "#2f2f4f"
+      ]
+    },
+    "reactivity": {
+      "loudness": "turbulence",
+      "mid": "speed_mod"
+    },
+    "shaders": {
+      "material": "volumetricFog",
+      "uniforms": {
+        "uTurbulence": 0.2
+      }
+    }
+  },
+  "structure": {
+    "type": "glitching_cage",
+    "params": {
+      "complexity": 0.6,
+      "material": "obsidian_glass"
+    },
+    "reactivity": {
+      "treble": "shimmer",
+      "bass": "cage_vibrate",
+      "loudness": "cage_vibrate"
+    },
+    "shaders": {
+      "material": "wireGlitch",
+      "uniforms": {
+        "uGlitch": 0.2
+      }
+    }
+  },
+  "core": {
+    "enabled": false
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "cage_constrict",
+      "type": "transformation",
+      "trigger": {
+        "mode": "time",
+        "at": 30.0
+      },
+      "targets": [
+        "structure:cage"
+      ],
+      "action": "constrict_then_relax",
+      "intensity": 0.9,
+      "duration": 3.0
+    },
+    {
+      "id": "panic_spike",
+      "type": "intensity",
+      "trigger": {
+        "mode": "feature",
+        "feature": "rms",
+        "gt": 0.78,
+        "cooldown": 0.4
+      },
+      "targets": [
+        "structure:cage",
+        "fx:glitch"
+      ],
+      "action": "sharp_glitch_and_shake",
+      "intensity": 1.0,
+      "duration": 0.35
+    },
+    {
+      "id": "false_hope",
+      "type": "revelation",
+      "trigger": {
+        "mode": "feature",
+        "feature": "spectralCentroid",
+        "lt": 0.25,
+        "cooldown": 6.0
+      },
+      "targets": [
+        "flow:fog"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 0.4,
+      "duration": 0.8
+    },
+    {
+      "id": "liberation_burst",
+      "type": "dissolution",
+      "trigger": {
+        "mode": "time",
+        "at": 278.0
+      },
+      "targets": [
+        "structure:cage",
+        "flow:fog"
+      ],
+      "action": "fracture_and_fade",
+      "intensity": 1.0,
+      "duration": 2.5
+    }
+  ],
+  "palette": {
+    "primary": "#020407",
+    "secondary": "#1a1a1f",
+    "accent": "#d7d7e0"
+  }
+}

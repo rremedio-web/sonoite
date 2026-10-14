@@ -1,0 +1,426 @@
+{
+  "meta": {
+    "track": 5,
+    "slug": "nao-querer-nada",
+    "bpm": 94,
+    "key": "A minor",
+    "qaFlag": "NAO_QUERER_NADA_QA",
+    "_phases": {
+      "VOID": "0:00-1:36 (0-96s)",
+      "AWAKENING": "1:36-3:36 (96-216s)",
+      "WANTING": "3:36-4:41 (216-281s)",
+      "RELEASE": "4:41-7:12 (281-432s)",
+      "ERASURE": "7:12-9:24 (432-564s)"
+    }
+  },
+  "palette": {
+    "primary": "#0c0f16",
+    "secondary": "#151927",
+    "accent": "#32395e",
+    "fog": "#10131d"
+  },
+  "flow": {
+    "type": "void_dust",
+    "params": {
+      "mode": "void_dust",
+      "count": 460,
+      "maxRadius": 18,
+      "velocityJitter": 0.05
+    }
+  },
+  "flowElements": [
+    {
+      "type": "cold_haze",
+      "params": {
+        "palette": {
+          "primary": "#35384b"
+        }
+      }
+    }
+  ],
+  "skybox": {
+    "ambientParticles": 0
+  },
+  "structure": {
+    "elements": [
+      {
+        "type": "track5_hero_model",
+        "params": {
+          "forceEnable": true,
+          "mode": "meshy_model",
+          "modelUrl": "public/assets/models/track5-poc/optimized/track5-relic-blender-chamber-optimized.glb",
+          "fallbackModelUrl": "public/assets/models/track5-poc/optimized/track5-relic-generated-optimized.glb",
+          "legacyModelUrl": "public/assets/models/track5-poc/Meshy_AI_symbol_0307145856_generate.glb",
+          "legacyFallbackModelUrl": "public/assets/models/track5-poc/Meshy_AI_symbol_0307145845_texture.glb",
+          "preserveTextures": true,
+          "opacity": 1,
+          "targetHeight": 3.2,
+                            "specimenScale": 1.72,
+          "centerY": 1.62,
+          "offsetX": 0.18,
+          "offsetY": 0.02,
+          "offsetZ": 0.05,
+          "rotationX": -0.12,
+          "rotationY": 0.16,
+          "rotationZ": -0.05,
+          "baseColor": "#d7ccbf",
+                            "specimenColor": "#d3cec4",
+                            "coreColor": "#cfc9bf",
+          "metalColor": "#69645d",
+          "membraneColor": "#d9d5cb",
+          "roughness": 0.8,
+          "metalness": 0,
+          "clearcoat": 0,
+          "clearcoatRoughness": 0.9,
+          "envMapIntensity": 0.1
+        },
+        "reactivity": {}
+      },
+      {
+        "type": "prototype_chamber",
+        "params": {
+          "darknessMode": "sacristy",
+          "camera": {
+            "xDrift": 0.008,
+            "yDrift": 0.006,
+            "zPush": 0.42,
+            "orbitRadius": 0.0,
+            "orbitSpeed": 0.0,
+            "basePosition": [
+              -2.48,
+              2.56,
+              12.35
+            ],
+            "target": [
+              1.04,
+              2.16,
+              -0.22
+            ],
+            "score": [
+              {
+                "atSeconds": 0,
+                "position": [-2.48, 2.56, 12.35],
+                "target": [1.04, 2.16, -0.22],
+                "driftScale": 0.16
+              },
+              {
+                "atSeconds": 42,
+                "transitionSeconds": 8,
+                "position": [-3.68, 2.56, 12.08],
+                "target": [0.92, 2.05, -0.36],
+                "driftScale": 0.08,
+                "fov": 46
+              },
+              {
+                "atSeconds": 64,
+                "transitionSeconds": 5,
+                "position": [-2.18, 2.42, 9.4],
+                "target": [0.96, 2.12, -0.12],
+                "driftScale": 0.10
+              },
+              {
+                "atSeconds": 135,
+                "transitionSeconds": 10,
+                "position": [-3.6, 2.72, 11.2],
+                "target": [0.7, 2.18, -0.4],
+                "driftScale": 0.08
+              },
+              {
+                "atSeconds": 141,
+                "transitionSeconds": 6,
+                "position": [-4.1, 2.4, 10.8],
+                "target": [0.42, 2.16, -0.58],
+                "driftScale": 0.06
+              },
+              {
+                "atSeconds": 198,
+                "transitionSeconds": 8,
+                "position": [-1.4, 2.18, 7.4],
+                "target": [0.9, 2.2, 0.02],
+                "driftScale": 0.06
+              },
+              {
+                "atSeconds": 246,
+                "transitionSeconds": 8,
+                "position": [-0.4, 1.92, 5.8],
+                "target": [0.66, 2.08, 0.08],
+                "driftScale": 0.04
+              },
+              {
+                "atSeconds": 317,
+                "transitionSeconds": 4,
+                "position": [-0.78, 1.72, 4.6],
+                "target": [0.72, 2.1, 0.02],
+                "driftScale": 0.03
+              },
+              {
+                "atSeconds": 337,
+                "transitionSeconds": 12,
+                "position": [1.6, 2.72, 8.4],
+                "target": [0.58, 2.16, -0.18],
+                "driftScale": 0.08
+              },
+              {
+                "atSeconds": 470,
+                "transitionSeconds": 12,
+                "position": [-2.2, 2.9, 9.1],
+                "target": [0.4, 2.14, -0.34],
+                "driftScale": 0.06
+              },
+              {
+                "atSeconds": 510,
+                "transitionSeconds": 12,
+                "position": [-3.58, 2.52, 12.0],
+                "target": [0.9, 2.04, -0.34],
+                "driftScale": 0.05,
+                "fov": 45
+              },
+              {
+                "atSeconds": 534,
+                "transitionSeconds": 8,
+                "position": [0.6, 2.3, 4.2],
+                "target": [0.18, 2.04, -0.02],
+                "driftScale": 0.03
+              },
+              {
+                "atSeconds": 558,
+                "transitionSeconds": 8,
+                "position": [1.2, 2.25, 6.8],
+                "target": [0.18, 2.02, -0.08],
+                "driftScale": 0.02
+              },
+              {
+                "atSeconds": 564,
+                "transitionSeconds": 3,
+                "position": [1.8, 2.4, 8.6],
+                "target": [0.18, 2.02, -0.08],
+                "driftScale": 0.0
+              }
+            ]
+          },
+          "post": {
+            "bloomStrength": 0.14,
+            "bloomRadius": 0.42,
+            "bloomThreshold": 0.91,
+            "grainIntensity": 0.03,
+            "gradeMix": 0.32,
+            "gradeTint": [0.86, 0.9, 0.98],
+            "gradeSaturation": 0.82,
+            "gradeContrast": 1.16
+          },
+          "ground": {
+            "opacity": 0.42,
+            "airGain": 0.06,
+            "pressureGain": 0.1
+          },
+          "air": {
+            "hazeBase": 0.0,
+            "hazeAirGain": 0.0,
+            "hazePressureGain": 0.0,
+            "hazeAudioGain": 0.0,
+            "accentBase": 0.0,
+            "accentAirGain": 0.0,
+            "accentPressureGain": 0.0,
+            "dustBase": 0.018,
+            "dustAirGain": 0.03,
+            "dustPressureGain": 0.022,
+            "dustAudioGain": 0.006,
+            "dustSize": 0.036,
+            "dustCount": 56
+          },
+          "stage3": {
+            "accentThreshold": 0.19,
+            "accentIntensity": 0.42,
+            "accentDecaySeconds": 0.9,
+            "breathingAmount": 0.34,
+            "reactivityRevealStartSeconds": 15,
+            "reactivityRevealEndSeconds": 55,
+            "reliquaryBreathing": {
+              "autonomous": 0.075,
+              "autonomousRate": 0.17,
+              "shellLead": 1.0,
+              "beamFollow": 0.36,
+              "poolLag": 0.16,
+              "frameLag": 0.08,
+              "memoryEcho": 0.22,
+              "echoDecay": 0.58,
+              "unfurlDuration": 38
+            },
+            "roomPressureBeats": [
+              { "atSeconds": 0, "value": 0.58 },
+              { "atSeconds": 42, "value": 0.66 },
+              { "atSeconds": 64, "value": 0.78 },
+              { "atSeconds": 135, "value": 0.52 },
+              { "atSeconds": 141, "value": 0.72 },
+              { "atSeconds": 198, "value": 0.82 },
+              { "atSeconds": 246, "value": 0.96 },
+              { "atSeconds": 317, "value": 1.0 },
+              { "atSeconds": 337, "value": 0.76 },
+              { "atSeconds": 384, "value": 0.68 },
+              { "atSeconds": 470, "value": 0.82 },
+              { "atSeconds": 534, "value": 0.94 },
+              { "atSeconds": 558, "value": 0.72 },
+              { "atSeconds": 564, "value": 0.10 }
+            ],
+            "musicalAnchors": [
+              { "id": "t5_mvp_witness_measuring", "atSeconds": 42 },
+              { "id": "t5_mvp_weight_arrival", "atSeconds": 64 },
+              { "id": "t5_mvp_false_release_start", "atSeconds": 135 },
+              { "id": "t5_mvp_oxygen_removed", "atSeconds": 141 },
+              { "id": "t5_mvp_bright_fracture", "atSeconds": 198 },
+              { "id": "t5_mvp_pressure_plateau", "atSeconds": 246 },
+              { "id": "t5_mvp_forensic_overexposure", "atSeconds": 317 },
+              { "id": "t5_mvp_dead_air_mass", "atSeconds": 337 },
+              { "id": "t5_mvp_secondary_residue", "atSeconds": 470 },
+              { "id": "t5_mvp_erasure_edges_fail", "atSeconds": 534 },
+              { "id": "t5_mvp_final_residue", "atSeconds": 558 },
+              { "id": "t5_mvp_deletion", "atSeconds": 564 }
+            ],
+            "eventBeats": [
+              {
+                "id": "t5_mvp_weight_arrival_event",
+                "type": "room_tighten",
+                "anchorId": "t5_mvp_weight_arrival",
+                "durationSeconds": 8,
+                "room": {
+                  "supportDelta": 0.12,
+                  "thresholdDelta": 0.08,
+                  "roomPressureDelta": 0.12,
+                  "fillDelta": -0.02,
+                  "backLightDelta": 0.04,
+                  "floorOpacityDelta": 0.06,
+                  "shellOpacityDelta": 0.08
+                },
+                "post": {
+                  "vignetteDarknessDelta": 0.10,
+                  "vignetteOffsetDelta": -0.04,
+                  "vignetteSoftnessDelta": -0.04
+                }
+              },
+              {
+                "id": "t5_mvp_false_release_seal",
+                "type": "post_crush",
+                "anchorId": "t5_mvp_oxygen_removed",
+                "durationSeconds": 10,
+                "post": {
+                  "vignetteDarknessDelta": 0.18,
+                  "vignetteOffsetDelta": -0.08,
+                  "vignetteSoftnessDelta": -0.06,
+                  "grainDelta": 0.018,
+                  "bloomDelta": -0.03
+                },
+                "room": {
+                  "roomPressureDelta": 0.16,
+                  "fillDelta": -0.04,
+                  "backLightDelta": -0.02
+                }
+              },
+              {
+                "id": "t5_mvp_bright_fracture_seam",
+                "type": "material_reveal",
+                "anchorId": "t5_mvp_bright_fracture",
+                "durationSeconds": 12,
+                "material": {
+                  "roughnessDelta": -0.18,
+                  "clearcoatDelta": 0.16,
+                  "clearcoatRoughnessDelta": -0.14,
+                  "envMapIntensityDelta": 0.16,
+                  "sheenDelta": 0.10
+                }
+              },
+              {
+                "id": "t5_mvp_pressure_plateau_lock",
+                "type": "room_tighten",
+                "anchorId": "t5_mvp_pressure_plateau",
+                "durationSeconds": 16,
+                "room": {
+                  "supportDelta": -0.04,
+                  "thresholdDelta": 0.12,
+                  "roomPressureDelta": 0.22,
+                  "shellOpacityDelta": 0.10,
+                  "fillDelta": -0.04,
+                  "backLightDelta": -0.03
+                },
+                "post": {
+                  "vignetteDarknessDelta": 0.20,
+                  "vignetteOffsetDelta": -0.08,
+                  "vignetteSoftnessDelta": -0.07,
+                  "grainDelta": 0.024,
+                  "bloomDelta": 0.01
+                }
+              },
+              {
+                "id": "t5_mvp_forensic_overexposure",
+                "type": "post_crush",
+                "anchorId": "t5_mvp_forensic_overexposure",
+                "durationSeconds": 5,
+                "post": {
+                  "vignetteDarknessDelta": 0.12,
+                  "vignetteOffsetDelta": -0.06,
+                  "grainDelta": 0.035,
+                  "bloomDelta": 0.04
+                },
+                "room": {
+                  "roomPressureDelta": 0.12,
+                  "backLightDelta": 0.10
+                }
+              },
+              {
+                "id": "t5_mvp_dead_air_false_release",
+                "type": "room_tighten",
+                "anchorId": "t5_mvp_dead_air_mass",
+                "durationSeconds": 12,
+                "room": {
+                  "supportDelta": -0.08,
+                  "thresholdDelta": 0.10,
+                  "roomPressureDelta": 0.10,
+                  "fillDelta": -0.06,
+                  "backLightDelta": -0.08,
+                  "shellOpacityDelta": -0.04
+                },
+                "post": {
+                  "vignetteDarknessDelta": 0.16,
+                  "vignetteOffsetDelta": -0.06,
+                  "grainDelta": 0.02,
+                  "bloomDelta": -0.04
+                }
+              },
+              {
+                "id": "t5_mvp_erasure_black_gap",
+                "type": "black_gap",
+                "anchorId": "t5_mvp_erasure_edges_fail",
+                "durationSeconds": 0.42,
+                "reopenSeconds": 0.64
+              },
+              {
+                "id": "t5_mvp_final_residue_gap",
+                "type": "black_gap",
+                "anchorId": "t5_mvp_final_residue",
+                "durationSeconds": 0.28,
+                "reopenSeconds": 0.42
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "void_drift",
+    "start": [
+      1,
+      1.92,
+      9.2
+    ],
+    "target": [
+      0,
+      1.2,
+      0.2
+    ],
+    "speed": 0
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": []
+}

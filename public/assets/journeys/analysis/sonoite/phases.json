@@ -1,0 +1,464 @@
+{
+  "totalPhases": 65,
+  "silent": [
+    {
+      "type": "silent",
+      "startTime": 0,
+      "avgEnergy": 4.737587172411902,
+      "endTime": 81.4,
+      "duration": 81.4
+    },
+    {
+      "type": "silent",
+      "startTime": 316.65,
+      "avgEnergy": 6.123357582945834,
+      "endTime": 346.85,
+      "duration": 30.2
+    },
+    {
+      "type": "silent",
+      "startTime": 347.25,
+      "avgEnergy": 6.080062354836743,
+      "endTime": 350.2,
+      "duration": 2.95
+    },
+    {
+      "type": "silent",
+      "startTime": 350.65,
+      "avgEnergy": 6.0227431388277495,
+      "endTime": 356.6,
+      "duration": 5.95
+    },
+    {
+      "type": "silent",
+      "startTime": 358.35,
+      "avgEnergy": 5.98852410198238,
+      "endTime": 359.9,
+      "duration": 1.55
+    },
+    {
+      "type": "silent",
+      "startTime": 521.6,
+      "avgEnergy": 5.504249006324848,
+      "endTime": 526,
+      "duration": 4.4
+    },
+    {
+      "type": "silent",
+      "startTime": 528.1,
+      "avgEnergy": 5.58430377178586,
+      "endTime": 532.05,
+      "duration": 3.95
+    },
+    {
+      "type": "silent",
+      "startTime": 534.1,
+      "avgEnergy": 0.005018955582667478,
+      "endTime": 538.05,
+      "duration": 3.95
+    }
+  ],
+  "ambient": [
+    {
+      "type": "ambient",
+      "startTime": 81.4,
+      "avgEnergy": 39.97058729797564,
+      "endTime": 152.45,
+      "duration": 71.05
+    },
+    {
+      "type": "ambient",
+      "startTime": 152.8,
+      "avgEnergy": 41.57797330075461,
+      "endTime": 153.4,
+      "duration": 0.6
+    },
+    {
+      "type": "ambient",
+      "startTime": 153.55,
+      "avgEnergy": 40.39461818431074,
+      "endTime": 159.35,
+      "duration": 5.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 159.65,
+      "avgEnergy": 36.016468928619105,
+      "endTime": 169.6,
+      "duration": 9.95
+    },
+    {
+      "type": "ambient",
+      "startTime": 169.95,
+      "avgEnergy": 38.80424061919631,
+      "endTime": 170.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 170.7,
+      "avgEnergy": 40.64607422575465,
+      "endTime": 175.7,
+      "duration": 5
+    },
+    {
+      "type": "ambient",
+      "startTime": 175.95,
+      "avgEnergy": 40.59919788007919,
+      "endTime": 176.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 176.8,
+      "avgEnergy": 40.53913317679743,
+      "endTime": 183.3,
+      "duration": 6.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 183.65,
+      "avgEnergy": 37.87543520425878,
+      "endTime": 187.6,
+      "duration": 3.95
+    },
+    {
+      "type": "ambient",
+      "startTime": 187.9,
+      "avgEnergy": 41.49384589660008,
+      "endTime": 191.2,
+      "duration": 3.3
+    },
+    {
+      "type": "ambient",
+      "startTime": 191.25,
+      "avgEnergy": 40.5160764951994,
+      "endTime": 193.7,
+      "duration": 2.45
+    },
+    {
+      "type": "ambient",
+      "startTime": 193.95,
+      "avgEnergy": 38.91148064022709,
+      "endTime": 194.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 194.65,
+      "avgEnergy": 37.46443567786467,
+      "endTime": 200.45,
+      "duration": 5.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 200.8,
+      "avgEnergy": 40.21888058584686,
+      "endTime": 218.5,
+      "duration": 17.7
+    },
+    {
+      "type": "ambient",
+      "startTime": 218.7,
+      "avgEnergy": 39.89117951071353,
+      "endTime": 222.8,
+      "duration": 4.1
+    },
+    {
+      "type": "ambient",
+      "startTime": 222.9,
+      "avgEnergy": 40.650558516955684,
+      "endTime": 223.7,
+      "duration": 0.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 223.95,
+      "avgEnergy": 39.88163633752285,
+      "endTime": 224.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 224.8,
+      "avgEnergy": 41.26846873826025,
+      "endTime": 225.35,
+      "duration": 0.55
+    },
+    {
+      "type": "ambient",
+      "startTime": 225.65,
+      "avgEnergy": 41.6702451652405,
+      "endTime": 230.6,
+      "duration": 4.95
+    },
+    {
+      "type": "ambient",
+      "startTime": 230.8,
+      "avgEnergy": 40.93279732439893,
+      "endTime": 231.3,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 231.65,
+      "avgEnergy": 40.35448300923626,
+      "endTime": 239.1,
+      "duration": 7.45
+    },
+    {
+      "type": "ambient",
+      "startTime": 239.35,
+      "avgEnergy": 36.512002559609186,
+      "endTime": 241.6,
+      "duration": 2.25
+    },
+    {
+      "type": "ambient",
+      "startTime": 241.95,
+      "avgEnergy": 39.757410383383316,
+      "endTime": 242.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 242.8,
+      "avgEnergy": 40.73080461366378,
+      "endTime": 245.95,
+      "duration": 3.15
+    },
+    {
+      "type": "ambient",
+      "startTime": 246.25,
+      "avgEnergy": 38.42212825021103,
+      "endTime": 246.75,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 246.9,
+      "avgEnergy": 38.16080346166519,
+      "endTime": 248.45,
+      "duration": 1.55
+    },
+    {
+      "type": "ambient",
+      "startTime": 248.8,
+      "avgEnergy": 41.11721289909127,
+      "endTime": 249.35,
+      "duration": 0.55
+    },
+    {
+      "type": "ambient",
+      "startTime": 249.6,
+      "avgEnergy": 41.247994623949296,
+      "endTime": 252.15,
+      "duration": 2.55
+    },
+    {
+      "type": "ambient",
+      "startTime": 252.25,
+      "avgEnergy": 39.072091462855866,
+      "endTime": 252.75,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 253.05,
+      "avgEnergy": 40.63739948941179,
+      "endTime": 255.4,
+      "duration": 2.35
+    },
+    {
+      "type": "ambient",
+      "startTime": 255.65,
+      "avgEnergy": 40.822001454666434,
+      "endTime": 259,
+      "duration": 3.35
+    },
+    {
+      "type": "ambient",
+      "startTime": 259.1,
+      "avgEnergy": 39.794020068167825,
+      "endTime": 259.6,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 259.95,
+      "avgEnergy": 39.68578342437006,
+      "endTime": 260.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 260.8,
+      "avgEnergy": 37.292978022441076,
+      "endTime": 265.6,
+      "duration": 4.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 265.95,
+      "avgEnergy": 39.651156300492644,
+      "endTime": 266.45,
+      "duration": 0.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 266.8,
+      "avgEnergy": 39.98686506966148,
+      "endTime": 271.7,
+      "duration": 4.9
+    },
+    {
+      "type": "ambient",
+      "startTime": 271.85,
+      "avgEnergy": 39.18264162746917,
+      "endTime": 272.45,
+      "duration": 0.6
+    },
+    {
+      "type": "ambient",
+      "startTime": 272.8,
+      "avgEnergy": 41.72772361607816,
+      "endTime": 273.45,
+      "duration": 0.65
+    },
+    {
+      "type": "ambient",
+      "startTime": 273.55,
+      "avgEnergy": 42.02748168189408,
+      "endTime": 278.7,
+      "duration": 5.15
+    },
+    {
+      "type": "ambient",
+      "startTime": 278.8,
+      "avgEnergy": 41.21679062133647,
+      "endTime": 279.35,
+      "duration": 0.55
+    },
+    {
+      "type": "ambient",
+      "startTime": 279.65,
+      "avgEnergy": 41.73183601994921,
+      "endTime": 280.3,
+      "duration": 0.65
+    },
+    {
+      "type": "ambient",
+      "startTime": 280.4,
+      "avgEnergy": 41.03889258602065,
+      "endTime": 283.7,
+      "duration": 3.3
+    },
+    {
+      "type": "ambient",
+      "startTime": 283.75,
+      "avgEnergy": 40.9650333589763,
+      "endTime": 287.15,
+      "duration": 3.4
+    },
+    {
+      "type": "ambient",
+      "startTime": 287.3,
+      "avgEnergy": 40.67856130313531,
+      "endTime": 294,
+      "duration": 6.7
+    },
+    {
+      "type": "ambient",
+      "startTime": 294.1,
+      "avgEnergy": 38.245827146091514,
+      "endTime": 296.45,
+      "duration": 2.35
+    },
+    {
+      "type": "ambient",
+      "startTime": 296.8,
+      "avgEnergy": 41.81814817856106,
+      "endTime": 297.4,
+      "duration": 0.6
+    },
+    {
+      "type": "ambient",
+      "startTime": 297.55,
+      "avgEnergy": 41.34598280016809,
+      "endTime": 300.85,
+      "duration": 3.3
+    },
+    {
+      "type": "ambient",
+      "startTime": 300.9,
+      "avgEnergy": 40.43291958265262,
+      "endTime": 303.4,
+      "duration": 2.5
+    },
+    {
+      "type": "ambient",
+      "startTime": 303.65,
+      "avgEnergy": 37.42667513629564,
+      "endTime": 307.6,
+      "duration": 3.95
+    },
+    {
+      "type": "ambient",
+      "startTime": 307.85,
+      "avgEnergy": 39.419245088544784,
+      "endTime": 313.65,
+      "duration": 5.8
+    },
+    {
+      "type": "ambient",
+      "startTime": 314.8,
+      "avgEnergy": 8.664493705847578,
+      "endTime": 316.65,
+      "duration": 1.85
+    },
+    {
+      "type": "ambient",
+      "startTime": 356.7,
+      "avgEnergy": 6.4763931179868095,
+      "endTime": 358.35,
+      "duration": 1.65
+    },
+    {
+      "type": "ambient",
+      "startTime": 359.9,
+      "avgEnergy": 41.48515567690892,
+      "endTime": 366.8,
+      "duration": 6.9
+    },
+    {
+      "type": "ambient",
+      "startTime": 488.75,
+      "avgEnergy": 6.797128315376092,
+      "endTime": 521.6,
+      "duration": 32.85
+    },
+    {
+      "type": "ambient",
+      "startTime": 526,
+      "avgEnergy": 6.974700095104783,
+      "endTime": 528.1,
+      "duration": 2.1
+    },
+    {
+      "type": "ambient",
+      "startTime": 532.05,
+      "avgEnergy": 7.6865966915546675,
+      "endTime": 534.1,
+      "duration": 2.05
+    }
+  ],
+  "peak": [
+    {
+      "type": "peak",
+      "startTime": 366.8,
+      "avgEnergy": 46.26271489401152,
+      "endTime": 488.75,
+      "duration": 121.95
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "meta": { "track": 1, "slug": "sonoite" },
+  "post": { "preset": "balanced" },
+  "flows": [
+    { "id": "star_dust", "type": "star_dust", "params": { "density": 0.25, "reactivity": { "loudness": { "target": "glow" } } } },
+    { "id": "drifting_wireframes", "type": "drifting_wireframes", "params": { "density": 0.05, "material": "wireGlow" } }
+  ],
+  "structures": [
+    { "id": "egg_crystal", "type": "egg_crystal", "params": { "scale": 1.0 } }
+  ],
+  "moments": [
+    { "id": "t1_long_take", "at": 5.0, "actions": [{ "target": "camera", "type": "camera_path", "duration": 360.0, "easing": "linear", "path": [{ "dolly": -4.0 }] }] },
+    { "id": "t1_minor_shimmer", "at": 50.0, "condition": { "feature": "mid", "threshold": 0.5 }, "actions": [{ "target": "egg_crystal", "type": "shimmer", "amount": 0.3, "duration": 2.0 }] },
+    { "id": "t1_epic_bloom", "at": 371.0, "actions": [
+        { "target": "post", "type": "post", "preset": { "bloom_strength": 0.7 }, "duration": 1.5, "then": { "preset": { "bloom_strength": 0.35 }, "duration": 10.0 } },
+        { "target": "egg_crystal", "type": "shimmer", "amount": 1.0, "duration": 12.0 }
+    ]}
+  ]
+}

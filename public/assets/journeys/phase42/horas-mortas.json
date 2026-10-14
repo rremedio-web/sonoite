@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "track": 4,
+    "slug": "horas-mortas",
+    "title": "Horas Mortas",
+    "bpm": 78,
+    "key": "C major",
+    "qaFlag": "SONOITE_PHASE42_QA"
+  },
+  "palette": {
+    "primary": "#2F261B",
+    "secondary": "#5F5445",
+    "accent": "#D6B47A"
+  },
+  "flow": {
+    "type": "ink_tendrils",
+    "params": {
+      "density": 0.05,
+      "spawnRate": 0.018
+    },
+    "reactivity": {
+      "loudness": "turbulence",
+      "centroid": "color_shift"
+    }
+  },
+  "flowElements": [
+    {
+      "type": "heavy_fog",
+      "params": {
+        "count": 14,
+        "opacity": 0.18,
+        "palette": {
+          "primary": "#06070b"
+        },
+        "darkMode": true
+      },
+      "reactivity": {
+        "loudness": "density"
+      }
+    },
+    {
+      "type": "cold_haze",
+      "params": {
+        "density": 0.1,
+        "opacity": 0.08,
+        "palette": ["#141216", "#342a21"]
+      },
+      "reactivity": {
+        "loudness": "mist_thicken"
+      }
+    }
+  ],
+  "structure": {
+    "elements": [
+      {
+        "type": "streetlight_cone",
+        "params": {
+          "height": 8.6,
+          "radius": 3.2,
+          "groundRadius": 2.5,
+          "positionY": 4.3,
+          "sourceY": 8.6,
+          "opacity": 0.82,
+          "color": "#D3A766",
+          "sourceColor": "#FFF1C8",
+          "poleColor": "#101217",
+          "lightIntensity": 1.2
+        }
+      },
+      {
+        "type": "distant_shards",
+        "params": {
+          "opacity": 0.26
+        },
+        "reactivity": {
+          "bass": "gentle_shudder",
+          "loudness": "appear_disappear"
+        }
+      }
+    ]
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [3.4, 1.8, 9.8],
+    "target": [0, 3.8, 0],
+    "speed": 0
+  },
+  "post": {
+    "preset": "streetlight_noir"
+  },
+  "moments": [
+    {
+      "id": "dead_hours_begin",
+      "at": "0:00",
+      "actions": [
+        { "type": "manifest_in", "target": "flow", "params": { "duration": 4, "delay": 0 } },
+        { "type": "manifest_in", "target": "structure", "params": { "duration": 5, "delay": 0.5 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.42 } }
+      ]
+    },
+    {
+      "id": "first_tendril",
+      "at": "0:20",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 2, "amount": 0.15 } }
+      ]
+    },
+    {
+      "id": "shards_flicker",
+      "at": "0:50",
+      "actions": [
+        { "type": "sparkle", "target": "distant_shards", "params": { "duration": 1.5 } },
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 2, "amount": 0.2 } }
+      ]
+    },
+    {
+      "id": "ink_reach",
+      "at": "1:25",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 2.5, "amount": 0.3 } },
+        { "type": "opacity", "target": "ink_tendrils", "params": { "duration": 2, "value": 0.6 } }
+      ]
+    },
+    {
+      "id": "void_glimpse",
+      "at": "2:00",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "vignetteDarkness": 0.56 } },
+        { "type": "appear_disappear", "target": "distant_shards", "params": { "duration": 2 } }
+      ]
+    },
+    {
+      "id": "tendrils_surge",
+      "at": "2:40",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 3, "amount": 0.45 } },
+        { "type": "opacity", "target": "ink_tendrils", "params": { "duration": 2.5, "value": 0.7 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2, "vignetteDarkness": 0.6 } }
+      ]
+    },
+    {
+      "id": "shards_scatter",
+      "at": "3:20",
+      "actions": [
+        { "type": "sparkle", "target": "distant_shards", "params": { "duration": 2 } },
+        { "type": "appear_disappear", "target": "distant_shards", "params": { "duration": 2.5 } }
+      ]
+    },
+    {
+      "id": "deep_ink",
+      "at": "3:55",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 3, "amount": 0.55 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 2.5, "vignetteDarkness": 0.64 } }
+      ]
+    },
+    {
+      "id": "climax_darkness",
+      "at": "4:30",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 4, "amount": 0.75 } },
+        { "type": "opacity", "target": "ink_tendrils", "params": { "duration": 3, "value": 0.85 } },
+        { "type": "sparkle", "target": "distant_shards", "params": { "duration": 2 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.72 } }
+      ]
+    },
+    {
+      "id": "second_wave",
+      "at": "5:05",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 3.5, "amount": 0.7 } },
+        { "type": "appear_disappear", "target": "distant_shards", "params": { "duration": 2 } }
+      ]
+    },
+    {
+      "id": "subsiding",
+      "at": "5:40",
+      "actions": [
+        { "type": "turbulence", "target": "ink_tendrils", "params": { "duration": 3, "amount": 0.35 } },
+        { "type": "opacity", "target": "ink_tendrils", "params": { "duration": 3, "value": 0.5 } },
+        { "type": "post", "target": "post_processing", "params": { "duration": 3, "vignetteDarkness": 0.54 } }
+      ]
+    },
+    {
+      "id": "dawn_approaches",
+      "at": "6:10",
+      "actions": [
+        { "type": "post", "target": "post_processing", "params": { "duration": 8, "vignetteDarkness": 0.42 } },
+        { "type": "manifest_out", "target": "structure", "params": { "duration": 8, "delay": 1 } },
+        { "type": "manifest_out", "target": "flow", "params": { "duration": 8, "delay": 2 } }
+      ]
+    }
+  ]
+}

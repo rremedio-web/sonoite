@@ -1,0 +1,3767 @@
+{
+  "additionalFlowElements": [
+    {
+      "type": "ink_tendrils",
+      "params": {
+        "count": 4,
+        "palette": {
+          "primary": "#151925",
+          "secondary": "#23283a",
+          "accent": "#3b425a"
+        }
+      },
+      "reactivity": {}
+    }
+  ],
+  "additionalStructureElements": [
+    {
+      "type": "void_veil",
+      "params": {
+        "width": 15,
+        "height": 15,
+        "positionY": 2,
+        "opacity": 0.12,
+        "color": "#1f1d2f"
+      },
+      "reactivity": {}
+    },
+    {
+      "type": "void_compression_ring",
+      "params": {
+        "radius": 4.3,
+        "tube": 0.058,
+        "radialSegments": 72,
+        "tubularSegments": 12,
+        "positionY": 2,
+        "opacity": 0.34,
+        "color": "#2a263d",
+        "rimColor": "#49506a",
+        "rimWarmColor": "#49506a",
+        "rimCoolColor": "#49506a",
+        "accentColor": "#49506a",
+        "rimStrength": 0.72,
+        "rimPower": 1.72,
+        "emissiveIntensity": 0.22,
+        "metalness": 0.42,
+        "roughness": 0.28,
+        "clearcoat": 0.42,
+        "clearcoatRoughness": 0.32,
+        "rimLightIntensity": 0.18,
+        "fillLightIntensity": 0.08,
+        "tilt": 0.58,
+        "roll": 0.24
+      },
+      "reactivity": {}
+    },
+    {
+      "type": "void_eclipse_disc",
+      "params": {
+        "radius": 8,
+        "innerRadius": 3.8,
+        "softness": 0.16,
+        "positionY": 2,
+        "tilt": 0.56,
+        "timeScale": 1.8,
+        "gain": 0.65,
+        "opacity": 0.08,
+        "hotColor": "#586094",
+        "coolColor": "#05070f",
+        "streaks": 6,
+        "swirl": 1.15,
+        "flicker": 0.01
+      },
+      "reactivity": {}
+    },
+    {
+      "type": "void_halo",
+      "params": {
+        "opacity": 0.04,
+        "color": "#383b4c",
+        "positionY": 2
+      },
+      "reactivity": {}
+    },
+    {
+      "type": "distant_shards",
+      "params": {
+        "opacity": 0
+      },
+      "reactivity": {}
+    }
+  ],
+  "enrichedMoments": [
+    {
+      "id": "t5_phase_void",
+      "at": "0:00.000",
+      "_phase": "VOID",
+      "_segment": "Phase trigger: VOID - the reliquary owns the room before the void arrives",
+      "actions": [
+        {
+          "type": "phase",
+          "target": "director",
+          "params": {
+            "phase": "VOID"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 1,
+            "duration": 2,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0,
+            "duration": 3,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.02,
+            "duration": 4,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0,
+            "duration": 3,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0,
+            "duration": 3,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0,
+            "duration": 3,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.06,
+            "duration": 6,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.14,
+            "duration": 8,
+            "easing": "easeOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "drift",
+            "intensity": 0.08,
+            "duration": 8
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.03,
+            "spiralRate": 0.01,
+            "center": {
+              "x": 0,
+              "y": 1.6,
+              "z": 0.2
+            },
+            "radius": 12,
+            "eventHorizon": 4.8
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "preset": "void",
+            "bloom": 0.12,
+            "vignette": 0.18,
+            "vignetteDarkness": 0.46,
+            "brightness": 1.04,
+            "duration": 8,
+            "warmth": 0.76
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_act1_start",
+      "at": "0:00.000",
+      "_phase": "VOID",
+      "_segment": "Begin reliquary hold - camera creeps, sculpture remains the anchor",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT1",
+            "duration": 96,
+            "easing": "easeInOutSine",
+            "lookAt": [
+              0,
+              1.1,
+              0.15
+            ],
+            "lookAhead": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_void_emerge",
+      "at": "0:12.000",
+      "_phase": "VOID",
+      "_segment": "The room acquires depth around the sculpture, but the void still stays dormant",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 1,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "preset": "void",
+            "bloom": 0.14,
+            "vignette": 0.2,
+            "vignetteDarkness": 0.48,
+            "brightness": 1.05,
+            "duration": 12,
+            "warmth": 0.75
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.18,
+            "duration": 14,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.1,
+            "duration": 14,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "drift",
+            "intensity": 0.1,
+            "duration": 14
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.04,
+            "duration": 14,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_void_breathless_cutin",
+      "at": "0:56.000",
+      "_phase": "VOID",
+      "_segment": "A pressure shift: atmosphere thickens without giving the void the frame",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.16,
+            "vignette": 0.24,
+            "brightness": 1.04,
+            "duration": 6,
+            "warmth": 0.74,
+            "vignetteDarkness": 0.52
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.22,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.14,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.06,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_void_threshold_reveal",
+      "at": "0:42.000",
+      "_phase": "VOID",
+      "_segment": "Threshold thickens before AWAKENING, but the sculpture still owns the frame",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0.98,
+            "duration": 16,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.15,
+            "vignette": 0.22,
+            "brightness": 1.02,
+            "vignetteDarkness": 0.52,
+            "duration": 16,
+            "warmth": 0.72
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.2,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.12,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.05,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "drift",
+            "intensity": 0.12,
+            "duration": 18
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.04,
+            "spiralRate": 0.02,
+            "center": {
+              "x": 0,
+              "y": 1.7,
+              "z": 0.2
+            },
+            "radius": 11,
+            "eventHorizon": 4.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_first_shimmer_void",
+      "at": "1:04.000",
+      "_phase": "VOID",
+      "_segment": "MVP threshold: first body-weight arrival, the reliquary acquires gravity and contact",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.18,
+            "vignette": 0.26,
+            "brightness": 1.06,
+            "duration": 8,
+            "warmth": 0.72,
+            "vignetteDarkness": 0.54
+          }
+        },
+        {
+          "type": "glow",
+          "target": "void_halo",
+          "params": {
+            "intensity": 0.08,
+            "duration": 4
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.03,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.08,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.18,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.26,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.12,
+            "spiralRate": 0.05,
+            "center": {
+              "x": 0,
+              "y": 1.8,
+              "z": 0.1
+            },
+            "radius": 10,
+            "eventHorizon": 3.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_phase_awakening",
+      "at": "1:36.000",
+      "_phase": "AWAKENING",
+      "_segment": "Phase trigger: AWAKENING - the void begins as pressure around the sculpture, not as the hero",
+      "actions": [
+        {
+          "type": "phase",
+          "target": "director",
+          "params": {
+            "phase": "AWAKENING"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0.96,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.24,
+            "vignette": 0.24,
+            "brightness": 1.1,
+            "vignetteDarkness": 0.5,
+            "duration": 18,
+            "warmth": 0.74
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.1,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.16,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.08,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.26,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.38,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "drift",
+            "intensity": 0.18,
+            "duration": 18
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.08,
+            "spiralRate": 0.04,
+            "center": {
+              "x": 0,
+              "y": 1.8,
+              "z": 0
+            },
+            "radius": 11,
+            "eventHorizon": 3.8
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0.04,
+            "duration": 18
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_act2_approach",
+      "at": "1:36.000",
+      "_phase": "AWAKENING",
+      "_segment": "Begin infall - camera is being pulled inward (victim)",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT2",
+            "duration": 120,
+            "easing": "easeInOutCubic",
+            "lookAt": [
+              0,
+              1.1,
+              0.1
+            ],
+            "lookAhead": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_particles_stir",
+      "at": "1:44.000",
+      "_phase": "AWAKENING",
+      "_segment": "Residue begins to orbit the reliquary, establishing context before the void takes the room",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.36,
+            "duration": 15,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.14,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.1,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.18,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.44,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_foreground_omen",
+      "at": "2:00.000",
+      "_phase": "AWAKENING",
+      "_segment": "Near-field ash begins crossing the frame while the sculpture remains legible",
+      "actions": [
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "cascade",
+            "intensity": 0.28,
+            "duration": 10
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.4,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.22,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.18,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.12,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_foreground_parallax_wedge",
+      "at": "2:06.000",
+      "_phase": "AWAKENING",
+      "_segment": "Foreground residue shears across the lens as the room starts leaning toward the void",
+      "actions": [
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "cascade",
+            "intensity": 0.42,
+            "duration": 12
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.18,
+            "spiralRate": 0.1,
+            "center": {
+              "x": 0,
+              "y": 1.9,
+              "z": 1.8
+            },
+            "radius": 7.5,
+            "eventHorizon": 2
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.48,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.24,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.48,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_awakening_begin",
+      "at": "2:21.000",
+      "_phase": "AWAKENING",
+      "_segment": "MVP false release: pressure drops into oxygenless suspension, not relief",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0.94,
+            "duration": 24,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.18,
+            "vignette": 0.42,
+            "brightness": 0.96,
+            "duration": 10,
+            "warmth": 0.68,
+            "vignetteDarkness": 0.68,
+            "grain": 0.04
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.24,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.24,
+            "spiralRate": 0.12,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 9.5,
+            "eventHorizon": 2.8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.24,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.16,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "cold_haze",
+          "params": {
+            "value": 0.58,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.48,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_awakening_predator_lens_shift",
+      "at": "2:48.000",
+      "_phase": "AWAKENING",
+      "_segment": "Predator shift: lens pressure rises before WANTING",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 52,
+            "duration": 6,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.42,
+            "eventHorizonGlow": 0.32,
+            "vortexSpeed": 0.16,
+            "infiniteDepth": 0.62,
+            "erosion": 0.12,
+            "vertexDisplacement": 0.12,
+            "duration": 12
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.3,
+            "vignette": 0.34,
+            "brightness": 1.08,
+            "duration": 8,
+            "warmth": 0.78
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.18,
+            "duration": 12,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_awakening_false_mercy_drop",
+      "at": "3:18.000",
+      "_phase": "AWAKENING",
+      "_segment": "MVP bright fracture: a thin seam opens as brightness and density rise together",
+      "actions": [
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              0
+            ],
+            "distance": 1,
+            "fovDelta": -12,
+            "duration": 1.9,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "delta": 0.2,
+            "attack": 0.06,
+            "decay": 1.3
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.22,
+            "duration": 0.28,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.14,
+            "grain": 0.14,
+            "duration": 1.6
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_phase_wanting",
+      "at": "3:36.000",
+      "_phase": "WANTING",
+      "_segment": "Phase trigger: WANTING - pressure closes around the reliquary without erasing it",
+      "actions": [
+        {
+          "type": "phase",
+          "target": "director",
+          "params": {
+            "phase": "WANTING"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0.86,
+            "duration": 8,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.38,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "spiral",
+            "intensity": 0.72,
+            "duration": 6
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.36,
+            "spiralRate": 0.58,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 18,
+            "eventHorizon": 2.8,
+            "spaghettiStrength": 0.18,
+            "spaghettiRadius": 8.5
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0.28,
+            "duration": 8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.08,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "spin",
+          "target": "void_eclipse_disc",
+          "params": {
+            "speed": 0.22,
+            "duration": 12,
+            "axis": "y"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "eventHorizonGlow": 0.22,
+            "vortexSpeed": 0.12,
+            "infiniteDepth": 0.48,
+            "erosion": 0.08,
+            "vertexDisplacement": 0.08,
+            "duration": 10,
+            "lensStrength": 0.32
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.18,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.12,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.12,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.24,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.42,
+            "duration": 10
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.18,
+            "vignette": 0.46,
+            "brightness": 1.04,
+            "duration": 6,
+            "warmth": 0.78,
+            "vignetteDarkness": 0.60,
+            "grain": 0.02
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.16,
+            "duration": 8,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_dust",
+          "params": {
+            "feature": "bass",
+            "uniform": "uGravityStrength",
+            "min": 0.14,
+            "max": 0.34,
+            "invert": false,
+            "smoothing": 0.14,
+            "combine": "modulate",
+            "preset": "punch",
+            "pipeline": {
+              "gate": 0.1,
+              "envelope": {
+                "attack": 0.05,
+                "release": 0.3
+              }
+            },
+            "baseValue": 0.24
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_sphere",
+          "params": {
+            "feature": "loudness",
+            "uniform": "uLensStrength",
+            "min": 0.2,
+            "max": 0.58,
+            "invert": true,
+            "smoothing": 0.14,
+            "combine": "modulate",
+            "preset": "inverse_breath",
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.05,
+                "release": 0.6
+              }
+            },
+            "baseValue": 0.44
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_halo",
+          "params": {
+            "uniform": "emissiveIntensity",
+            "feature": "loudness",
+            "min": 0.22,
+            "max": 0.56,
+            "smoothing": 0.2,
+            "combine": "modulate",
+            "baseValue": 0.32,
+            "preset": "wave",
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.12,
+                "release": 0.8
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_dust",
+          "params": {
+            "uniform": "uSpiralRate",
+            "feature": "centroid_norm",
+            "min": 0.65,
+            "max": 1.45,
+            "smoothing": 0.26,
+            "combine": "replace",
+            "preset": "wave",
+            "pipeline": {
+              "gate": 0.12,
+              "envelope": {
+                "attack": 0.12,
+                "release": 0.9
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_act3_orbit",
+      "at": "3:36.000",
+      "_phase": "WANTING",
+      "_segment": "Beat 1 (3:36-3:58): infall shear - camera loses axis and is dragged across the horizon",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.16,
+            "duration": 0.28,
+            "decay": 0.86
+          }
+        },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT3_WANTING_ENTRY",
+            "duration": 22,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "void_eater",
+            "intensity": 0.52,
+            "duration": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_reality_buckle_loop",
+      "at": "3:43.000",
+      "_phase": "WANTING",
+      "_segment": "Beat 2 accent: compression choke layered over spline-owned framing",
+      "actions": [
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "delta": 0.10,
+            "attack": 0.08,
+            "decay": 1.05
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.12,
+            "duration": 0.24,
+            "decay": 0.9
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.18,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.10,
+            "duration": 2.4,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.32,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.72,
+            "duration": 3
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.28,
+            "vignette": 0.64,
+            "brightness": 0.98,
+            "duration": 2.6,
+            "vignetteDarkness": 0.68
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.008,
+            "grain": 0.018,
+            "duration": 0.1
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "chaos",
+            "intensity": 0.66,
+            "duration": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_shards_wanting_manifest_in",
+      "at": "3:44.500",
+      "_phase": "WANTING",
+      "_segment": "WANTING: distant shards manifest briefly at the horizon (in: 6.0s)",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "distant_shards",
+          "params": {
+            "opacity": 0.06,
+            "duration": 4.5,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_egg_pulse",
+      "at": "3:50.000",
+      "_phase": "WANTING",
+      "_segment": "Pressure chamber: internal rupture starts, pressure spikes without elastic bounce",
+      "actions": [
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "base": 0.54,
+            "peak": 0.78,
+            "attack": 0.2,
+            "decay": 2.4,
+            "attackEasing": "easeOutCubic",
+            "decayEasing": "easeOutExpo"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.13,
+            "duration": 0.22,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "glow",
+          "target": "void_sphere",
+          "params": {
+            "intensity": 0.12,
+            "duration": 6
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.3,
+            "vignette": 0.68,
+            "brightness": 0.98,
+            "duration": 6,
+            "vignetteDarkness": 0.7
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.34,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.68,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.3,
+            "duration": 4,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.38,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "chaos",
+            "intensity": 0.74,
+            "duration": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_turmoil_corridor_snap",
+      "at": "3:58.000",
+      "_phase": "WANTING",
+      "_segment": "Beat 3 (3:58-4:12): corridor crush spline, then impact accent",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT3_WANTING_CRUSH",
+            "duration": 14,
+            "lookAhead": true,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.15,
+            "duration": 0.24,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "void_eater",
+            "intensity": 0.82,
+            "duration": 6
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.3,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.14,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.42,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.84,
+            "duration": 3
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.3,
+            "vignette": 0.7,
+            "brightness": 0.98,
+            "duration": 3,
+            "warmth": 0.82,
+            "vignetteDarkness": 0.7
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.56,
+            "eventHorizonGlow": 0.4,
+            "vortexSpeed": 0.28,
+            "infiniteDepth": 0.8,
+            "erosion": 0.24,
+            "vertexDisplacement": 0.16,
+            "duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_climax_peak",
+      "at": "4:06.000",
+      "_phase": "WANTING",
+      "_segment": "MVP maximum pressure: chamber law turns violent and visible volume compresses",
+      "actions": [
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              0
+            ],
+            "distance": 0.95,
+            "fovDelta": -10,
+            "duration": 2.2,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.2,
+            "duration": 0.28,
+            "decay": 0.86
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.28,
+            "vignette": 0.76,
+            "brightness": 0.96,
+            "duration": 1.8,
+            "warmth": 0.8,
+            "vignetteDarkness": 0.74
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.008,
+            "grain": 0.018,
+            "duration": 0.09
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "chaos",
+            "intensity": 0.88,
+            "duration": 3.2
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.84,
+            "spiralRate": 1.62,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 16,
+            "eventHorizon": 2.4,
+            "spaghettiStrength": 0.48,
+            "spaghettiRadius": 7.6
+          }
+        },
+        {
+          "type": "vortex",
+          "target": "void_dust",
+          "params": {
+            "strength": 1.36,
+            "speed": 2.4,
+            "duration": 3.2,
+            "height": 10,
+            "topRadius": 10,
+            "bottomRadius": 0.8,
+            "riseSpeed": 0,
+            "spiralTightness": 3.6
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0.62,
+            "duration": 2.4
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.68,
+            "eventHorizonGlow": 0.42,
+            "vortexSpeed": 0.42,
+            "infiniteDepth": 0.82,
+            "erosion": 0.29,
+            "vertexDisplacement": 0.18,
+            "duration": 1.6
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.34,
+            "duration": 0.8,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.72,
+            "duration": 1.2,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "base": 0.64,
+            "peak": 0.82,
+            "attack": 0.14,
+            "decay": 2.1,
+            "attackEasing": "easeOutCubic",
+            "decayEasing": "easeOutExpo"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.44,
+            "duration": 2.4,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.92,
+            "duration": 2.4
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_predatory_tilt",
+      "at": "4:12.000",
+      "_phase": "WANTING",
+      "_segment": "Beat 5 (4:12-4:28): cross-axis shear and predatory pressure rise",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT3_WANTING_TILT",
+            "duration": 16,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.28,
+            "vignette": 0.68,
+            "brightness": 0.98,
+            "duration": 8,
+            "warmth": 0.8,
+            "vignetteDarkness": 0.7,
+            "grain": 0.028
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.26,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.1,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.12,
+            "duration": 8,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.11,
+            "duration": 0.26,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "void_eater",
+            "intensity": 0.88,
+            "duration": 10
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.6,
+            "eventHorizonGlow": 0.54,
+            "vortexSpeed": 0.34,
+            "infiniteDepth": 0.84,
+            "erosion": 0.24,
+            "vertexDisplacement": 0.18,
+            "duration": 10
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.4,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.84,
+            "duration": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_internal_rupture",
+      "at": "4:16.000",
+      "_phase": "WANTING",
+      "_segment": "Internal rupture beat: implosion snap before the final choke",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.16,
+            "duration": 0.24,
+            "decay": 0.86
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.24,
+            "vignette": 0.72,
+            "brightness": 0.96,
+            "warmth": 0.8,
+            "vignetteDarkness": 0.74,
+            "grain": 0.024,
+            "duration": 2.2
+          }
+        },
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "base": 0.6,
+            "peak": 0.84,
+            "attack": 0.16,
+            "decay": 2.8,
+            "attackEasing": "easeOutCubic",
+            "decayEasing": "easeOutExpo"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "chaos",
+            "intensity": 0.94,
+            "duration": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_turmoil_pivot",
+      "at": "4:20.000",
+      "_phase": "WANTING",
+      "_segment": "Turmoil pivot: collapse corridor tightens before release handoff",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.17,
+            "duration": 0.28,
+            "decay": 0.86
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.24,
+            "vignette": 0.7,
+            "brightness": 0.96,
+            "warmth": 0.8,
+            "vignetteDarkness": 0.74,
+            "grain": 0.022,
+            "duration": 4
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.006,
+            "grain": 0.014,
+            "duration": 0.08
+          }
+        },
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "base": 0.58,
+            "peak": 0.8,
+            "attack": 0.12,
+            "decay": 2.2,
+            "attackEasing": "easeOutCubic",
+            "decayEasing": "easeOutExpo"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "chaos",
+            "intensity": 0.9,
+            "duration": 4
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.7,
+            "duration": 4,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.32,
+            "duration": 4,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.34,
+            "duration": 3.2,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_release_handoff",
+      "at": "4:28.000",
+      "_phase": "WANTING",
+      "_segment": "Beat 6 (4:28-4:41): exhausted surrender into RELEASE after the choke",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT3_RELEASE_HANDOFF",
+            "duration": 13,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.1,
+            "duration": 0.22,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.22,
+            "vignette": 0.66,
+            "brightness": 0.96,
+            "duration": 8,
+            "warmth": 0.8,
+            "vignetteDarkness": 0.72,
+            "grain": 0.022
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "void_eater",
+            "intensity": 0.58,
+            "duration": 8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.2,
+            "duration": 7,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.34,
+            "duration": 7,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.14,
+            "duration": 7,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.74,
+            "duration": 7,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.48,
+            "eventHorizonGlow": 0.46,
+            "vortexSpeed": 0.22,
+            "infiniteDepth": 0.78,
+            "erosion": 0.18,
+            "duration": 7
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.16,
+            "duration": 7,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.18,
+            "duration": 7
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_shards_wanting_crest",
+      "at": "4:33.000",
+      "_phase": "WANTING",
+      "_segment": "WANTING crest: shards sharpen but stay sparse",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "distant_shards",
+          "params": {
+            "value": 0.07,
+            "duration": 3.2,
+            "easing": "easeOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_phase_release",
+      "at": "4:41.000",
+      "_phase": "RELEASE",
+      "_segment": "Phase trigger: RELEASE - Letting go, gravity relaxes",
+      "actions": [
+        {
+          "type": "phase",
+          "target": "director",
+          "params": {
+            "phase": "RELEASE"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uLensStrength"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_dust",
+          "params": {
+            "uniform": "uGravityStrength"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.08,
+            "duration": 10,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_halo",
+          "params": {
+            "uniform": "emissiveIntensity"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_dust",
+          "params": {
+            "uniform": "uSpiralRate"
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uEventHorizonGlow",
+            "feature": "treble",
+            "min": 0.12,
+            "max": 0.36,
+            "smoothing": 0.26,
+            "combine": "modulate",
+            "baseValue": 0.24,
+            "pipeline": {
+              "gate": 0.06,
+              "envelope": {
+                "attack": 0.08,
+                "release": 0.72
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uInfiniteDepth",
+            "feature": "mid",
+            "min": 0.32,
+            "max": 0.56,
+            "smoothing": 0.24,
+            "combine": "modulate",
+            "baseValue": 0.52,
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.1,
+                "release": 0.78
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_halo",
+          "params": {
+            "uniform": "emissiveIntensity",
+            "feature": "loudness",
+            "min": 0,
+            "max": 0.12,
+            "smoothing": 0.24,
+            "combine": "modulate",
+            "baseValue": 0.02,
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.08,
+                "release": 0.7
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_compression_ring",
+          "params": {
+            "uniform": "emissiveIntensity",
+            "feature": "bass",
+            "min": 0.08,
+            "max": 0.22,
+            "smoothing": 0.2,
+            "combine": "modulate",
+            "baseValue": 0.12,
+            "pipeline": {
+              "gate": 0.08,
+              "envelope": {
+                "attack": 0.06,
+                "release": 0.58
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_wanting_peak",
+      "at": "4:41.000",
+      "_phase": "RELEASE",
+      "_segment": "Peak desire transitioning to release - void recedes",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT4_RELEASE_DECAY_A",
+            "duration": 51,
+            "easing": "easeInOutSine",
+            "lookAhead": true
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.2,
+            "vignette": 0.34,
+            "brightness": 0.98,
+            "godRays": 0,
+            "duration": 18,
+            "warmth": 0.84,
+            "vignetteDarkness": 0.52,
+            "grain": 0.04
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.32,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.7,
+            "duration": 15,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.22,
+            "spiralRate": 0.22,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 16,
+            "eventHorizon": 2.4,
+            "spaghettiStrength": 0,
+            "spaghettiRadius": 10
+          }
+        },
+        {
+          "type": "vortex",
+          "target": "void_dust",
+          "params": {
+            "strength": 0,
+            "speed": 0,
+            "duration": 18
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0.18,
+            "duration": 18
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.34,
+            "vortexSpeed": 0.16,
+            "duration": 18
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.24,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.46,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.28,
+            "duration": 18,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_audio_links",
+      "at": "4:50.000",
+      "_phase": "RELEASE",
+      "_segment": "RELEASE rewiring: unlink stale uniforms, then apply bounded modulation lanes (no replace ownership)",
+      "actions": [
+        {
+          "type": "link_audio",
+          "target": "void_sphere",
+          "params": {
+            "feature": "treble",
+            "uniform": "uEventHorizonGlow",
+            "min": 0.22,
+            "max": 0.56,
+            "smoothing": 0.28,
+            "combine": "modulate",
+            "baseValue": 0.36,
+            "pipeline": {
+              "gate": 0.06,
+              "envelope": {
+                "attack": 0.08,
+                "release": 0.75
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_sphere",
+          "params": {
+            "feature": "mid",
+            "uniform": "uInfiniteDepth",
+            "min": 0.34,
+            "max": 0.58,
+            "smoothing": 0.24,
+            "combine": "modulate",
+            "baseValue": 0.54,
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.1,
+                "release": 0.8
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_halo",
+          "params": {
+            "feature": "loudness",
+            "uniform": "emissiveIntensity",
+            "min": 0.22,
+            "max": 0.6,
+            "smoothing": 0.24,
+            "combine": "modulate",
+            "baseValue": 0.36,
+            "pipeline": {
+              "gate": 0.05,
+              "envelope": {
+                "attack": 0.08,
+                "release": 0.7
+              }
+            }
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "void_compression_ring",
+          "params": {
+            "feature": "bass",
+            "uniform": "emissiveIntensity",
+            "min": 0.14,
+            "max": 0.42,
+            "smoothing": 0.24,
+            "combine": "modulate",
+            "baseValue": 0.24,
+            "pipeline": {
+              "gate": 0.08,
+              "envelope": {
+                "attack": 0.07,
+                "release": 0.62
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_letting_go",
+      "at": "5:00.000",
+      "_phase": "RELEASE",
+      "_segment": "Beat 7 release accent: reverse vertigo away from void while ACT4 remains owner",
+      "actions": [
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              0
+            ],
+            "distance": -0.6,
+            "fovDelta": 4,
+            "duration": 3.2,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_aftershock_1",
+      "at": "5:17.000",
+      "_phase": "RELEASE",
+      "_segment": "MVP serrated peak: forensic overexposure burns the edge, then returns damaged",
+      "actions": [
+        {
+          "type": "void_lens_pulse",
+          "target": "void_sphere",
+          "params": {
+            "delta": 0.12,
+            "attack": 0.08,
+            "decay": 1.8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.56,
+            "duration": 5,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.24,
+            "duration": 5,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.39,
+            "vignette": 0.32,
+            "brightness": 1.3,
+            "duration": 5,
+            "warmth": 0.94,
+            "vignetteDarkness": 0.62
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.09,
+            "duration": 0.32,
+            "decay": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_shards_release_soften",
+      "at": "5:18.000",
+      "_phase": "RELEASE",
+      "_segment": "RELEASE: shards recede with the first exhale",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "distant_shards",
+          "params": {
+            "value": 0.07,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_slowdown",
+      "at": "5:37.000",
+      "_phase": "RELEASE",
+      "_segment": "MVP dead-air false release: brightness collapses while mass remains",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.24,
+            "duration": 18,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.04,
+            "duration": 16,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.18,
+            "vignette": 0.58,
+            "brightness": 0.92,
+            "duration": 16,
+            "easing": "easeInOutQuad",
+            "warmth": 0.72,
+            "vignetteDarkness": 0.76,
+            "grain": 0.05
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.3,
+            "vortexSpeed": 0.16,
+            "duration": 20
+          }
+        },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT4_RELEASE_DECAY_B",
+            "duration": 36,
+            "easing": "easeInOutSine",
+            "lookAhead": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_aftershock_2",
+      "at": "5:46.000",
+      "_phase": "RELEASE",
+      "_segment": "Mid-release tremor: authored instability keeps the arc breathing",
+      "actions": [
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              0
+            ],
+            "distance": -0.35,
+            "fovDelta": 5,
+            "duration": 2.2,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.02,
+            "grain": 0.03,
+            "duration": 0.25
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.5,
+            "duration": 10,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "ink_tendrils",
+          "params": {
+            "value": 0.18,
+            "duration": 8,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "turbulence",
+          "target": "ink_tendrils",
+          "params": {
+            "intensity": 0.22,
+            "duration": 8
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.35,
+            "vignette": 0.36,
+            "brightness": 1.28,
+            "warmth": 0.92,
+            "vignetteDarkness": 0.64,
+            "duration": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_counterpulse_599",
+      "at": "5:59.000",
+      "_phase": "RELEASE",
+      "_segment": "Counter-pulse: false relief cracks with a directed instability beat",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 56,
+            "duration": 4,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.08,
+            "duration": 0.24,
+            "decay": 0.88
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.38,
+            "vignette": 0.34,
+            "brightness": 1.29,
+            "warmth": 0.92,
+            "vignetteDarkness": 0.64,
+            "duration": 6
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.22,
+            "duration": 5,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "spin",
+          "target": "void_eclipse_disc",
+          "params": {
+            "speed": 0.36,
+            "duration": 5,
+            "axis": "y"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_hollow_mercy",
+      "at": "6:08.000",
+      "_phase": "RELEASE",
+      "_segment": "Hollow mercy: outward drift while void pressure persists",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.14,
+            "duration": 24,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.37,
+            "vignette": 0.36,
+            "brightness": 1.3,
+            "duration": 24,
+            "easing": "easeInOutQuad",
+            "warmth": 0.9,
+            "vignetteDarkness": 0.64,
+            "grain": 0.03
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.1,
+            "spiralRate": 0.06,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 13,
+            "eventHorizon": 1.9
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.28,
+            "vortexSpeed": 0.06,
+            "duration": 16
+          }
+        },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT4_RELEASE_DECAY_C",
+            "duration": 38,
+            "easing": "easeInOutSine",
+            "lookAhead": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_aftershock_3",
+      "at": "6:24.000",
+      "_phase": "RELEASE",
+      "_segment": "Last release tremor before handoff to ERASURE",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 58,
+            "duration": 5,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.34,
+            "vortexSpeed": 0.1,
+            "duration": 8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0.12,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "spin",
+          "target": "void_eclipse_disc",
+          "params": {
+            "speed": 0.32,
+            "duration": 10,
+            "axis": "y"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.35,
+            "vignette": 0.38,
+            "brightness": 1.28,
+            "duration": 8,
+            "warmth": 0.9,
+            "vignetteDarkness": 0.64
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_shards_release_thin_out",
+      "at": "6:30.000",
+      "_phase": "RELEASE",
+      "_segment": "RELEASE tail: shard residue thins to near-absence",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "distant_shards",
+          "params": {
+            "value": 0.035,
+            "duration": 8,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_release_begin",
+      "at": "6:46.000",
+      "_phase": "RELEASE",
+      "_segment": "Release handoff: pull back before ERASURE takes over",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 76,
+            "duration": 6,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.37,
+            "vignette": 0.36,
+            "brightness": 1.26,
+            "duration": 24,
+            "warmth": 0.9,
+            "vignetteDarkness": 0.64,
+            "grain": 0.03
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.66,
+            "duration": 24,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.24,
+            "spiralRate": 0.24,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 14,
+            "eventHorizon": 2
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.34,
+            "vortexSpeed": 0.06,
+            "duration": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_unlink_release_links",
+      "at": "7:11.800",
+      "_phase": "RELEASE",
+      "_segment": "Ownership cutover: remove RELEASE audio links before ERASURE authored lens arc",
+      "actions": [
+        {
+          "type": "unlink_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uEventHorizonGlow"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uInfiniteDepth"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_halo",
+          "params": {
+            "uniform": "emissiveIntensity"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_compression_ring",
+          "params": {
+            "uniform": "emissiveIntensity"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_sphere",
+          "params": {
+            "uniform": "uLensStrength"
+          }
+        },
+        {
+          "type": "unlink_audio",
+          "target": "void_dust",
+          "params": {
+            "uniform": "uGravityStrength"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_phase_erasure",
+      "at": "7:12.000",
+      "_phase": "ERASURE",
+      "_segment": "Phase trigger: ERASURE - Dissolution into pure void",
+      "actions": [
+        {
+          "type": "phase",
+          "target": "director",
+          "params": {
+            "phase": "ERASURE"
+          }
+        },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "spline": "ACT5_THROUGH",
+            "duration": 132,
+            "easing": "easeInOutSine",
+            "lookAhead": true,
+            "fovKeyframes": [
+              {
+                "t": 0,
+                "value": 72
+              },
+              {
+                "t": 0.5,
+                "value": 64
+              },
+              {
+                "t": 1,
+                "value": 60
+              }
+            ]
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_eclipse_disc",
+          "params": {
+            "value": 0,
+            "duration": 3,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.12,
+            "duration": 20,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.18,
+            "duration": 20,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.22,
+            "duration": 20,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "erosion": 0.3,
+            "vertexDisplacement": 0.12,
+            "duration": 75,
+            "lensStrength": 0.24,
+            "eventHorizonGlow": 0.32,
+            "vortexSpeed": 0.1,
+            "infiniteDepth": 0.44
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.33,
+            "vignette": 0.4,
+            "brightness": 1.22,
+            "duration": 18,
+            "warmth": 0.9,
+            "vignetteDarkness": 0.62
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_shards_erasure_exit",
+      "at": "7:18.000",
+      "_phase": "ERASURE",
+      "_segment": "ERASURE: shards ghost out and leave frame (out: 5.2s)",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "distant_shards",
+          "params": {
+            "value": 0,
+            "duration": 2.8,
+            "easing": "easeInQuad"
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "distant_shards",
+          "params": {
+            "duration": 5.2
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_aperture_narrow",
+      "at": "7:36.000",
+      "_phase": "ERASURE",
+      "_segment": "Aperture narrows: noose tightens before vortex entry",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 52,
+            "duration": 8,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "spiral",
+            "intensity": 0.8,
+            "duration": 8
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.68,
+            "spiralRate": 1.45,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 11,
+            "eventHorizon": 2,
+            "spaghettiStrength": 0.45,
+            "spaghettiRadius": 6.8
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.24,
+            "vignette": 0.72,
+            "brightness": 0.94,
+            "duration": 8,
+            "warmth": 0.78,
+            "vignetteDarkness": 0.74
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_pre_vortex_null",
+      "at": "7:58.000",
+      "_phase": "ERASURE",
+      "_segment": "Pre-vortex null: dust and light collapse before entry",
+      "actions": [
+        {
+          "type": "freeze",
+          "target": "void_dust",
+          "params": {
+            "value": 0.78,
+            "duration": 3.2,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.12,
+            "duration": 3,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.18,
+            "vignette": 0.78,
+            "grain": 0.04,
+            "brightness": 0.9,
+            "duration": 3,
+            "warmth": 0.76,
+            "vignetteDarkness": 0.78
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.22,
+            "eventHorizonGlow": 0.28,
+            "vortexSpeed": 0.02,
+            "infiniteDepth": 0.38,
+            "duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_vortex",
+      "at": "8:20.000",
+      "_phase": "ERASURE",
+      "_segment": "Event-horizon vortex — brief tunnel before pass-through. 6-AGENT-FIX: Added camera shake + vertigo",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.2,
+            "duration": 0.8,
+            "decay": 0.9
+          }
+        },
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              0
+            ],
+            "distance": 2.6,
+            "fovDelta": 16,
+            "duration": 2.4,
+            "easing": "easeInOutSine"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.38,
+            "duration": 6,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "motion_mode",
+          "target": "void_dust",
+          "params": {
+            "mode": "spiral",
+            "intensity": 1,
+            "duration": 8
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.68,
+            "spiralRate": 1.4,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 14,
+            "eventHorizon": 2.2,
+            "spaghettiStrength": 0.36,
+            "spaghettiRadius": 6.2
+          }
+        },
+        {
+          "type": "vortex",
+          "target": "void_dust",
+          "params": {
+            "strength": 1.35,
+            "speed": 2,
+            "duration": 2.8,
+            "height": 14,
+            "topRadius": 16,
+            "bottomRadius": 0.55,
+            "riseSpeed": 0,
+            "spiralTightness": 3.8
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0.45,
+            "duration": 6
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.46,
+            "eventHorizonGlow": 0.46,
+            "vortexSpeed": 0.34,
+            "infiniteDepth": 0.62,
+            "erosion": 0.2,
+            "vertexDisplacement": 0.12,
+            "duration": 6
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.06,
+            "grain": 0.06,
+            "duration": 0.7
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.22,
+            "vignette": 0.82,
+            "brightness": 0.92,
+            "duration": 6,
+            "warmth": 0.74,
+            "vignetteDarkness": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_through_void",
+      "at": "8:27.000",
+      "_phase": "ERASURE",
+      "_segment": "Final approach - gravity dies, particles freeze. 6-AGENT-FIX: Added gravitational buffeting shake",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.28,
+            "duration": 1.2,
+            "decay": 0.86
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.44,
+            "duration": 40,
+            "easing": "easeInExpo"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.29,
+            "vignette": 0.52,
+            "brightness": 1.26,
+            "duration": 20,
+            "warmth": 0.82,
+            "vignetteDarkness": 0.6
+          }
+        },
+        {
+          "type": "gravity",
+          "target": "void_dust",
+          "params": {
+            "strength": 0.58,
+            "spiralRate": 0.95,
+            "center": {
+              "x": 0,
+              "y": 2,
+              "z": 0
+            },
+            "radius": 20,
+            "eventHorizon": 2.6,
+            "spaghettiStrength": 0.5,
+            "spaghettiRadius": 10
+          }
+        },
+        {
+          "type": "vortex",
+          "target": "void_dust",
+          "params": {
+            "strength": 0,
+            "speed": 0,
+            "duration": 12
+          }
+        },
+        {
+          "type": "void_glow",
+          "target": "void_dust",
+          "params": {
+            "value": 0,
+            "duration": 12
+          }
+        },
+        {
+          "type": "freeze",
+          "target": "void_dust",
+          "params": {
+            "value": 0.92,
+            "duration": 20,
+            "easing": "easeInOutQuad"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.16,
+            "eventHorizonGlow": 0.3,
+            "vortexSpeed": 0.05,
+            "infiniteDepth": 0.34,
+            "erosion": 0.7,
+            "vertexDisplacement": 0.05,
+            "duration": 20
+          }
+        },
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 68,
+            "duration": 20,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_camera_through_void",
+      "at": "8:39.000",
+      "_phase": "ERASURE",
+      "_segment": "6-AGENT-FIX: Camera passes through void center — THE moment. Double vertigo (squeeze through + snap wide)",
+      "actions": [
+        {
+          "type": "camera_vertigo",
+          "target": "camera",
+          "params": {
+            "point": [
+              0,
+              2,
+              -2
+            ],
+            "distance": 2.6,
+            "fovDelta": -10,
+            "duration": 1.4,
+            "easing": "easeInExpo"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.27,
+            "vignette": 0.48,
+            "brightness": 1.28,
+            "duration": 10,
+            "warmth": 0.82,
+            "vignetteDarkness": 0.58
+          }
+        },
+        {
+          "type": "post_glitch",
+          "target": "postprocessing",
+          "params": {
+            "chromatic": 0.05,
+            "grain": 0.05,
+            "duration": 0.8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.72,
+            "duration": 0.9,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.44,
+            "duration": 0.9,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.42,
+            "duration": 1.2,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_membrane_snap_release",
+      "at": "8:40.200",
+      "_phase": "ERASURE",
+      "_segment": "Membrane release after crossing: veil collapses and ring pressure drains",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.08,
+            "duration": 2.2,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.14,
+            "duration": 2.2,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_erasure_black_floor_guard",
+      "at": "8:48.200",
+      "_phase": "ERASURE",
+      "_segment": "Preserve noir black floor before ego-death blackout hit",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.23,
+            "vignette": 0.56,
+            "grain": 0.03,
+            "brightness": 1.28,
+            "duration": 3,
+            "warmth": 0.78,
+            "vignetteDarkness": 0.59
+          }
+        },
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 52,
+            "duration": 3,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.16,
+            "eventHorizonGlow": 0.24,
+            "vortexSpeed": 0.03,
+            "infiniteDepth": 0.32,
+            "duration": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_blackout_ego_death",
+      "at": "8:54.000",
+      "_phase": "ERASURE",
+      "_segment": "MVP erasure begins: object is subtracted from certainty, edges fail first",
+      "actions": [
+        {
+          "type": "camera_shake",
+          "target": "camera",
+          "params": {
+            "intensity": 0.15,
+            "duration": 0.3,
+            "decay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.13,
+            "vignette": 0.6,
+            "grain": 0.02,
+            "brightness": 1.24,
+            "duration": 8,
+            "warmth": 0.72,
+            "vignetteDarkness": 0.59
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0.16,
+            "duration": 10,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0.1,
+            "duration": 8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.32,
+            "duration": 10
+          }
+        },
+        {
+          "type": "void_lens",
+          "target": "void_sphere",
+          "params": {
+            "lensStrength": 0.12,
+            "eventHorizonGlow": 0.18,
+            "vortexSpeed": 0.01,
+            "infiniteDepth": 0.28,
+            "duration": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_ego_afterimage_hold",
+      "at": "9:07.000",
+      "_phase": "ERASURE",
+      "_segment": "MVP residual ending: dead-screen afterimage breathes before final removal",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.19,
+            "vignette": 0.52,
+            "brightness": 1.26,
+            "warmth": 0.76,
+            "vignetteDarkness": 0.57,
+            "grain": 0.015,
+            "duration": 7
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_compression_ring",
+          "params": {
+            "value": 0.24,
+            "duration": 6,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_veil",
+          "params": {
+            "value": 0.14,
+            "duration": 6,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0.26,
+            "duration": 6,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0.12,
+            "duration": 6,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t5_final_fade_to_black",
+      "at": "9:18.000",
+      "_phase": "ERASURE",
+      "_segment": "MVP final residue: afterimage becomes ash/dead-screen residue, then is removed",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "bloom": 0.13,
+            "vignette": 0.86,
+            "grain": 0,
+            "duration": 6,
+            "brightness": 1.16
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "track5_hero_model",
+          "params": {
+            "value": 0,
+            "duration": 5
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_dust",
+          "params": {
+            "value": 0,
+            "duration": 5
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_sphere",
+          "params": {
+            "value": 0,
+            "duration": 5
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "void_halo",
+          "params": {
+            "value": 0,
+            "duration": 5,
+            "easing": "easeInOutQuad"
+          }
+        }
+      ]
+    }
+  ]
+}

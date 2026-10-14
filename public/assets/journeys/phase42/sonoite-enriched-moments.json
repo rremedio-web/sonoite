@@ -1,0 +1,568 @@
+{
+  "_comment": "EXPERT-PLAN: Beat-synced moments (BPM 140, first beat at 35.4s, beat = 428ms)",
+  "_narrative": "ASCEND → FRACTURE → ECLIPSE → MEMORY",
+  "_analysis": "Segments: intro(0-125s), inst(125-178s), solo(178-315s), breakdown(329-370s), climax(384-503s), outro(503-538s)",
+
+  "enrichedMoments": [
+    {
+      "id": "t1_frozen_world",
+      "at": "0:00.00",
+      "_phase": "ASCEND",
+      "_segment": "World exists but is FROZEN - dramatic irony",
+      "actions": [
+        { "type": "freeze", "target": "all", "params": { "freeze": 1.0, "duration": 0.1 } }
+      ]
+    },
+    {
+      "id": "t1_staggered_reveal_skybox",
+      "at": "0:02.33",
+      "_phase": "ASCEND",
+      "_segment": "Skybox fades in while frozen",
+      "actions": [
+        { "type": "opacity", "target": "core", "params": { "value": 0.3, "duration": 4.0, "easing": "easeOutCubic" } }
+      ]
+    },
+    {
+      "id": "t1_staggered_reveal_stars",
+      "at": "0:06.857",
+      "_phase": "ASCEND",
+      "_segment": "Beat 16 - stars emerge (aligned to grid)",
+      "actions": [
+        { "type": "manifest_in", "target": "star_dust", "params": { "opacity": 0.6, "duration": 5.0, "easing": "easeOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_staggered_reveal_egg",
+      "at": "0:12.00",
+      "_phase": "ASCEND",
+      "_segment": "Egg manifests, still frozen",
+      "actions": [
+        { "type": "manifest_in", "target": "egg_crystal", "params": { "opacity": 0.8, "duration": 6.0, "easing": "easeOutCubic" } }
+      ]
+    },
+    {
+      "id": "t1_staggered_reveal_shards",
+      "at": "0:22.97",
+      "_phase": "ASCEND",
+      "_segment": "Distant shards at horizon",
+      "actions": [
+        { "type": "manifest_in", "target": "distant_shards", "params": { "opacity": 0.5, "duration": 8.0, "easing": "easeInOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_THE_UNFREEZE",
+      "at": "0:35.40",
+      "_phase": "ASCEND",
+      "_segment": "FIRST BEAT - World UNFREEZES and begins breathing",
+      "actions": [
+        { "type": "unfreeze", "target": "all", "params": { "duration": 2.0, "burstIntensity": 1.2 } },
+        { "type": "shimmer", "target": "egg_crystal", "params": { "amount": 0.8, "duration": 2.0 } },
+        { "type": "glow", "target": "star_dust", "params": { "intensity": 1.4, "duration": 3.0 } },
+        { "type": "post", "target": "postprocessing", "params": { "vignette": 0.25, "duration": 2.0 } }
+      ]
+    },
+    {
+      "id": "t1_bass_breathing",
+      "at": "0:35.40",
+      "_phase": "ASCEND",
+      "_segment": "Egg emissive linked to bass (normal reactivity)",
+      "loop": true,
+      "actions": [
+        {
+          "type": "link_audio",
+          "target": "egg_crystal",
+          "params": {
+            "uniform": "uEmissiveIntensity",
+            "feature": "bass",
+            "min": 0.8,
+            "max": 2.2,
+            "noiseGate": 0.08,
+            "smoothing": 0.15,
+            "invert": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_star_treble_link",
+      "at": "0:35.40",
+      "_phase": "ASCEND",
+      "_segment": "Star scintillation linked to treble (2.5s effective decay)",
+      "loop": true,
+      "actions": [
+        {
+          "type": "link_audio",
+          "target": "star_dust",
+          "params": {
+            "uniform": "uScintSpeed",
+            "feature": "treble",
+            "min": 0.5,
+            "max": 2.5,
+            "noiseGate": 0.1,
+            "smoothing": 0.08
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_camera_exploration_ascend",
+      "at": "0:36.00",
+      "_phase": "ASCEND",
+      "_segment": "CINEMATIC SPLINE: Fly through particles, orbit egg - discovery mode",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [
+              [20, 8, 20],
+              [15, 6, 12],
+              [8, 4, 8],
+              [5, 3, 10],
+              [3, 2, 6],
+              [-2, 3, 8],
+              [-6, 5, 10],
+              [-8, 4, 6]
+            ],
+            "duration": 85.0,
+            "lookAt": [0, 0, 0],
+            "easing": "easeInOutQuad",
+            "fovKeyframes": [
+              { "t": 0.0, "value": 78 },
+              { "t": 0.35, "value": 70 },
+              { "t": 0.7, "value": 62 },
+              { "t": 1.0, "value": 58 }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_intro_expansion_1",
+      "at": "1:05.55",
+      "_phase": "ASCEND",
+      "_segment": "Intro section 4 - visual field expands",
+      "actions": [
+        { "type": "shimmer", "target": "distant_shards", "params": { "amount": 0.6, "duration": 3.0 } },
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0.7, "duration": 6.0, "easing": "easeOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_intro_build_2",
+      "at": "1:49.73",
+      "_phase": "ASCEND",
+      "_segment": "Intro section 7 - tension building",
+      "actions": [
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 1.3, "duration": 4.0 } }
+      ]
+    },
+    {
+      "id": "t1_inst_transition",
+      "at": "2:05.16",
+      "_phase": "FRACTURE",
+      "_segment": "Inst section begins - vignette tightens + VORTEX STARTS",
+      "actions": [
+        { "type": "shimmer", "target": "star_dust", "params": { "amount": 0.7, "duration": 4.0 } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.5, "vignette": 0.45, "duration": 8.0 } }
+      ]
+    },
+    {
+      "id": "t1_camera_exploration_fracture",
+      "at": "2:05.00",
+      "_phase": "FRACTURE",
+      "_segment": "CINEMATIC SPLINE: Continue orbiting, get closer, explore angles",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [
+              [-8, 4, 6],
+              [-10, 3, 2],
+              [-8, 2, -4],
+              [-4, 1.5, -6],
+              [0, 1.2, -8],
+              [4, 1.5, -6],
+              [8, 2, -4],
+              [10, 3, 0],
+              [8, 4, 6],
+              [4, 5, 10],
+              [0, 6, 12],
+              [-4, 5, 10],
+              [-8, 4, 6]
+            ],
+            "duration": 200.0,
+            "lookAt": [0, 0, 0],
+            "easing": "linear"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_inst_section_2",
+      "at": "2:30.87",
+      "_phase": "FRACTURE",
+      "_segment": "Inst section 2 - sustained energy",
+      "actions": [
+        { "type": "glow", "target": "distant_shards", "params": { "intensity": 1.2, "duration": 5.0 } }
+      ]
+    },
+    {
+      "id": "t1_fracture_glitch_1",
+      "at": "2:45.00",
+      "_phase": "FRACTURE",
+      "_segment": "Micro-moment: subtle chromatic glitch for visual punctuation",
+      "actions": [
+        { "type": "post_glitch", "params": { "intensity": 0.35, "duration": 0.5 } }
+      ]
+    },
+    {
+      "id": "t1_first_solo_SYNCOPATED",
+      "at": "2:58.09",
+      "_phase": "FRACTURE",
+      "_segment": "FIRST SOLO - 214ms EARLY for anticipation",
+      "actions": [
+        { "type": "shimmer", "target": "egg_crystal", "params": { "amount": 1.0, "duration": 2.0 } },
+        { "type": "glow", "target": "star_dust", "params": { "intensity": 1.6, "duration": 3.0 } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.6, "duration": 10.0 } }
+      ]
+    },
+    {
+      "id": "t1_fracture_glitch_2",
+      "at": "3:30.00",
+      "_phase": "FRACTURE",
+      "_segment": "Micro-moment: mid-solo tension glitch",
+      "actions": [
+        { "type": "post_glitch", "params": { "intensity": 0.4, "duration": 0.6 } }
+      ]
+    },
+    {
+      "id": "t1_solo_sustained",
+      "at": "3:53.16",
+      "_phase": "FRACTURE",
+      "_segment": "Solo section - extended expressive moment",
+      "actions": [
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0.85, "duration": 8.0, "easing": "easeInOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_solo_bridge_1",
+      "at": "4:06.80",
+      "_phase": "FRACTURE",
+      "_segment": "Bridge inside solo to avoid dead-air visual plateau",
+      "actions": [
+        { "type": "shimmer", "target": "flow", "params": { "amount": 0.55, "duration": 3.5 } },
+        { "type": "camera_orbit", "target": "camera", "params": { "angle": 9, "duration": 2.5, "easing": "easeOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_solo_peak",
+      "at": "4:20.59",
+      "_phase": "FRACTURE",
+      "_segment": "Solo peak - visual intensity",
+      "actions": [
+        { "type": "shimmer", "target": "flow", "params": { "amount": 0.8, "duration": 4.0 } }
+      ]
+    },
+    {
+      "id": "t1_solo_bridge_2",
+      "at": "4:33.20",
+      "_phase": "FRACTURE",
+      "_segment": "Second solo bridge before pre-breakdown glitch",
+      "actions": [
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 1.45, "duration": 4.0 } },
+        { "type": "post_glitch", "params": { "intensity": 0.3, "duration": 0.45 } }
+      ]
+    },
+    {
+      "id": "t1_fracture_glitch_3",
+      "at": "4:45.00",
+      "_phase": "FRACTURE",
+      "_segment": "Micro-moment: pre-breakdown anticipation glitch",
+      "actions": [
+        { "type": "post_glitch", "params": { "intensity": 0.45, "duration": 0.7 } }
+      ]
+    },
+    {
+      "id": "t1_pre_breakdown",
+      "at": "5:01.73",
+      "_phase": "FRACTURE",
+      "_segment": "Final solo section before breakdown",
+      "actions": [
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 1.5, "duration": 6.0 } }
+      ]
+    },
+    {
+      "id": "t1_fog_preload_INVISIBLE",
+      "at": "5:15.46",
+      "_phase": "ECLIPSE",
+      "_segment": "Pre-load fog with visible=false (Maya optimization)",
+      "actions": [
+        { "type": "manifest_in", "target": "heavy_fog", "params": { "opacity": 0, "duration": 0.1 } }
+      ]
+    },
+    {
+      "id": "t1_breakdown_CLAUSTROPHOBIC",
+      "at": "5:29.18",
+      "_phase": "ECLIPSE",
+      "_segment": "BREAKDOWN - kill everything except egg (Cinematographer demand)",
+      "actions": [
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0, "duration": 8.0, "easing": "easeInQuad" } },
+        { "type": "opacity", "target": "star_dust", "params": { "value": 0.1, "duration": 8.0, "easing": "easeInQuad" } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.4, "vignette": 0.45, "duration": 10.0 } }
+      ]
+    },
+    {
+      "id": "t1_breakdown_egg_stores",
+      "at": "5:29.18",
+      "_phase": "ECLIPSE",
+      "_segment": "Egg brightness RISES when bass DROPS (inverse reactivity)",
+      "loop": true,
+      "actions": [
+        {
+          "type": "link_audio",
+          "target": "egg_crystal",
+          "params": {
+            "uniform": "uEmissiveIntensity",
+            "feature": "bass",
+            "min": 0.15,
+            "max": 0.45,
+            "noiseGate": 0.08,
+            "smoothing": 0.05,
+            "invert": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_breakdown_deep",
+      "at": "5:44.97",
+      "_phase": "ECLIPSE",
+      "_segment": "Deep breakdown - near silence, anticipation",
+      "actions": [
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 0.6, "duration": 5.0 } }
+      ]
+    },
+    {
+      "id": "t1_build_tension",
+      "at": "6:10.34",
+      "_phase": "ECLIPSE",
+      "_segment": "BUILD TENSION - fog visible, grain rises",
+      "actions": [
+        { "type": "opacity", "target": "heavy_fog", "params": { "value": 0.35, "duration": 10.0, "easing": "easeInQuad" } },
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0.4, "duration": 8.0, "easing": "easeOutQuad" } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.5, "grain": 0.08, "duration": 12.0 } },
+
+        { "type": "camera_behavior", "target": "camera", "params": { "behavior": "witness", "radius": 14.0, "height": 3.5, "speed": 0.012, "shake": false } },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "_comment": "P6-DIAMOND: ICARUS DIVE entry (6:10→6:24) — fast descent then recovery; keeps tornado feeling authored",
+            "waypoints": [
+              [14, 3.5, 14],
+              [10, 10, 10],
+              [11, 6, -5],
+              [3, 1.2, -10],
+              [-4, 0.8, 0],
+              [-10, 4, 10],
+              [0, 4, 12]
+            ],
+            "duration": 13.0,
+            "easing": "easeInCubic",
+            "lookAt": [0, 2, 0],
+            "fovKeyframes": [
+              { "t": 0.0, "value": 75 },
+              { "t": 0.55, "value": 92 },
+              { "t": 0.9, "value": 55 },
+              { "t": 1.0, "value": 65 }
+            ]
+          }
+        },
+        {
+          "type": "vortex_transition",
+          "target": "star_dust",
+          "params": {
+            "strength": 0.62,
+            "speed": 1.35,
+            "height": 12.0,
+            "topRadius": 7.0,
+            "bottomRadius": 0.7,
+            "riseSpeed": 0.9,
+            "spiralTightness": 2.2,
+            "duration": 110.0,
+            "easing": "easeInCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_climax_eruption",
+      "at": "6:24.03",
+      "_phase": "ECLIPSE",
+      "_segment": "CLIMAX - DARKNESS LIFTS! Vignette opens, particles explode, fog clears",
+      "actions": [
+        { "type": "shimmer", "target": "egg_crystal", "params": { "amount": 1.0, "duration": 3.0 } },
+        { "type": "glow", "target": "star_dust", "params": { "intensity": 2.0, "duration": 4.0 } },
+        { "type": "opacity", "target": "star_dust", "params": { "value": 0.9, "duration": 3.0, "easing": "easeOutCubic" } },
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0.8, "duration": 4.0, "easing": "easeOutCubic" } },
+        { "type": "opacity", "target": "heavy_fog", "params": { "value": 0.05, "duration": 5.0, "easing": "easeOutQuad" } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.65, "vignette": 0.2, "duration": 5.0 } },
+        { "type": "camera_dolly", "target": "camera", "params": { "amount": -5.0, "duration": 8.0, "easing": "easeOutQuad" } },
+        { "type": "camera_fov", "target": "camera", "params": { "fov": 65, "duration": 1.5, "easing": "easeOutQuad" } },
+        { "type": "climax_burst", "target": "star_dust", "params": { "count": 600, "speed": 10.0 } },
+        { "type": "fog_target", "target": "postprocessing", "params": { "density": 0.05, "duration": 5.0 } }
+      ]
+    },
+    {
+      "id": "t1_climax_fov_stretch",
+      "at": "6:25.50",
+      "_phase": "ECLIPSE",
+      "_segment": "FOV STRETCH - after compression completes, space EXPANDS dramatically",
+      "actions": [
+        { "type": "camera_fov", "target": "camera", "params": { "fov": 92, "duration": 3.5, "easing": "easeOutCubic" } }
+      ]
+    },
+    {
+      "id": "t1_climax_shake_trigger",
+      "at": "6:24.03",
+      "_phase": "ECLIPSE",
+      "_segment": "Conditional shake on bass peaks during climax",
+      "loop": true,
+      "condition": { "feature": "bass", "threshold": 0.65 },
+      "actions": [
+        { "type": "camera_shake", "target": "camera", "params": { "intensity": 0.06, "duration": 0.12 } }
+      ]
+    },
+    {
+      "id": "t1_peak_chromatic_1",
+      "at": "6:39.05",
+      "_phase": "ECLIPSE",
+      "_segment": "FINE-TUNING: Chromatic aberration on peak 1 (energy 208.42)",
+      "actions": [
+        { "type": "chromatic_aberration", "target": "postprocessing", "params": { "intensity": 0.08, "duration": 0.4 } }
+      ]
+    },
+    {
+      "id": "t1_climax_sustained",
+      "at": "6:44.61",
+      "_phase": "ECLIPSE",
+      "_segment": "Sustained climax - maintain intensity",
+      "actions": [
+        { "type": "shimmer", "target": "distant_shards", "params": { "amount": 1.0, "duration": 4.0 } }
+      ]
+    },
+    {
+      "id": "t1_climax_wave_2",
+      "at": "7:05.19",
+      "_phase": "ECLIPSE",
+      "_segment": "Second climax wave + FINE-TUNING: Chromatic peak 2 (energy 199.06)",
+      "actions": [
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 1.8, "duration": 5.0 } },
+        { "type": "chromatic_aberration", "target": "postprocessing", "params": { "intensity": 0.08, "duration": 0.4 } }
+      ]
+    },
+    {
+      "id": "t1_peak_chromatic_3",
+      "at": "7:27.05",
+      "_phase": "ECLIPSE",
+      "_segment": "FINE-TUNING: Chromatic aberration on peak 3 (energy 191.33)",
+      "actions": [
+        { "type": "chromatic_aberration", "target": "postprocessing", "params": { "intensity": 0.08, "duration": 0.4 } }
+      ]
+    },
+    {
+      "id": "t1_climax_wave_3_LATE",
+      "at": "7:33.03",
+      "_phase": "ECLIPSE",
+      "_segment": "Third wave - 428ms LATE for drag/exhaustion",
+      "actions": [
+        { "type": "shimmer", "target": "flow", "params": { "amount": 0.7, "duration": 5.0 } },
+        { "type": "post", "target": "postprocessing", "params": { "bloom": 0.55, "duration": 15.0 } }
+      ]
+    },
+    {
+      "id": "t1_post_climax",
+      "at": "8:00.04",
+      "_phase": "MEMORY",
+      "_segment": "Post-climax resolution - gradual fade begins, MOTION SLOWS FIRST",
+      "actions": [
+        { "type": "opacity", "target": "heavy_fog", "params": { "value": 0.2, "duration": 12.0, "easing": "easeInQuad" } },
+        { "type": "glow", "target": "star_dust", "params": { "intensity": 1.0, "duration": 10.0 } },
+        { "type": "freeze", "target": "star_dust", "params": { "value": 0.6, "duration": 20.0, "easing": "easeInOutQuad" } },
+
+        { "type": "camera_behavior", "target": "camera", "params": { "behavior": "witness", "radius": 10.5, "height": 3.0, "speed": 0.006, "shake": false } },
+        { "type": "camera_fov", "target": "camera", "params": { "fov": 62, "duration": 18.0, "easing": "easeOutCubic" } },
+        {
+          "type": "vortex_transition",
+          "target": "star_dust",
+          "params": {
+            "strength": 0.14,
+            "speed": 0.35,
+            "height": 12.0,
+            "topRadius": 7.0,
+            "bottomRadius": 1.4,
+            "riseSpeed": 0.4,
+            "spiralTightness": 1.2,
+            "duration": 55.0,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t1_outro_start",
+      "at": "8:23.59",
+      "_phase": "MEMORY",
+      "_segment": "OUTRO - CINEMATIC PULL-BACK - motion FROZEN, then opacity fades",
+      "actions": [
+        { "type": "freeze", "target": "star_dust", "params": { "value": 1.0, "duration": 5.0, "easing": "easeOutQuad" } },
+        { "type": "opacity", "target": "distant_shards", "params": { "value": 0, "duration": 15.0, "easing": "easeInQuad" } },
+        { "type": "opacity", "target": "heavy_fog", "params": { "value": 0, "duration": 15.0, "easing": "easeInQuad" } },
+        { "type": "opacity", "target": "star_dust", "params": { "value": 0, "duration": 15.0, "easing": "easeInQuad" } },
+        { "type": "glow", "target": "egg_crystal", "params": { "intensity": 1.8, "duration": 30.0 } },
+        { "type": "post", "target": "postprocessing", "params": { "vignette": 0.95, "bloom": 0.4, "duration": 20.0 } },
+        { "type": "camera_dolly", "target": "camera", "params": { "amount": 8.0, "duration": 25.0, "easing": "easeInQuad" } },
+        { "type": "camera_fov", "target": "camera", "params": { "fov": 68, "duration": 15.0, "easing": "easeInOutQuad" } }
+      ]
+    },
+    {
+      "id": "t1_heartbeat_1",
+      "at": "8:40.00",
+      "_phase": "MEMORY",
+      "_segment": "Heartbeat tail - first pulse, strongest",
+      "actions": [
+        { "type": "heartbeat", "target": "egg_crystal", "params": { "intensity": 0.6, "duration": 0.5, "decayType": "exponential", "cameraShake": false, "bloomPulse": true, "particleShiver": false } }
+      ]
+    },
+    {
+      "id": "t1_heartbeat_2",
+      "at": "8:46.00",
+      "_phase": "MEMORY",
+      "_segment": "Heartbeat tail - second pulse, fading",
+      "actions": [
+        { "type": "heartbeat", "target": "egg_crystal", "params": { "intensity": 0.4, "duration": 0.45, "decayType": "exponential", "cameraShake": false, "bloomPulse": true, "particleShiver": false } }
+      ]
+    },
+    {
+      "id": "t1_heartbeat_3",
+      "at": "8:50.00",
+      "_phase": "MEMORY",
+      "_segment": "Heartbeat tail - final pulse, barely there",
+      "actions": [
+        { "type": "heartbeat", "target": "egg_crystal", "params": { "intensity": 0.2, "duration": 0.35, "decayType": "exponential", "cameraShake": false, "bloomPulse": true, "particleShiver": false } }
+      ]
+    },
+    {
+      "id": "t1_egg_snap_black",
+      "at": "8:55.00",
+      "_phase": "MEMORY",
+      "_segment": "EGG SNAPS TO BLACK - last thing you see, burned into retina",
+      "actions": [
+        { "type": "opacity", "target": "egg_crystal", "params": { "value": 0, "duration": 0.5, "easing": "linear" } },
+        { "type": "opacity", "target": "core", "params": { "value": 0, "duration": 0.5, "easing": "linear" } },
+        { "type": "post", "target": "postprocessing", "params": { "vignette": 1.0, "bloom": 0, "duration": 0.5 } }
+      ]
+    }
+  ]
+}

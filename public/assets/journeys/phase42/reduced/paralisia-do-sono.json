@@ -1,0 +1,467 @@
+{
+  "meta": {
+    "track": 2,
+    "slug": "paralisia-do-sono",
+    "title": "Paralisia do Sono",
+    "bpm": 80,
+    "key": "F# minor",
+    "mood": {
+      "dark": 0.69,
+      "ethereal": 0.64,
+      "scary": 0.42
+    },
+    "qaFlag": "SONOITE_PHASE42_QA",
+    "variant": "reduced_motion"
+  },
+  "palette": {
+    "primary": "#2D132C",
+    "secondary": "#801336",
+    "accent": "#C9ADA7"
+  },
+  "flow": {
+    "type": "heavy_fog",
+    "params": {
+      "density": 0.7,
+      "opacity": 0.3,
+      "palette": [
+        "#0a0a0a",
+        "#1a1a1a"
+      ],
+      "count": 15
+    },
+    "reactivity": {
+      "loudness": "turbulence"
+    }
+  },
+  "flowElements": [
+    {
+      "type": "cold_haze",
+      "params": {
+        "density": 0.12,
+        "opacity": 0.08,
+        "palette": [
+          "#1a1a2e",
+          "#2a2a3e"
+        ]
+      },
+      "reactivity": {
+        "loudness": 0.1
+      }
+    }
+  ],
+  "structure": {
+    "type": "glitching_cage",
+    "params": {
+      "size": 6,
+      "material": "obsidian_glass"
+    },
+    "reactivity": {
+      "bass": "cage_vibrate",
+      "treble": "shimmer"
+    },
+    "elements": [
+      {
+        "type": "monolith",
+        "params": {
+          "scale": 1.8,
+          "position": [
+            3.5,
+            0,
+            -2
+          ]
+        },
+        "reactivity": {
+          "bass": "subtle_scale"
+        }
+      }
+    ]
+  },
+  "structureElements": [
+    {
+      "type": "monolith",
+      "params": {
+        "position": [
+          3.5,
+          0,
+          -2
+        ],
+        "scale": 1.8
+      },
+      "reactivity": {
+        "bass": "pulse",
+        "centroid": "transmission"
+      }
+    },
+    {
+      "type": "legacy_shapes",
+      "params": {
+        "count": 5,
+        "baseScale": 0.8,
+        "spread": 6,
+        "wireframe": false
+      },
+      "reactivity": {
+        "bass": "scale_pulse",
+        "treble": "rotation_speed",
+        "centroid": "structure_influence"
+      }
+    }
+  ],
+  "camera": {
+    "mode": "stationary",
+    "start": [
+      0,
+      1.4,
+      6.5
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ]
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": [
+    {
+      "id": "paralisia-do-sono_intro_rm",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": {
+            "duration": 3.75,
+            "delay": 0
+          }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": {
+            "duration": 3.75,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_22_0_rm",
+      "at": "0:22",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_52_0_rm",
+      "at": "0:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_82_0_rm",
+      "at": "1:22",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_112_0_rm",
+      "at": "1:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_142_0_rm",
+      "at": "2:22",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_172_0_rm",
+      "at": "2:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_pulse_189_336_rm",
+      "at": "3:09",
+      "actions": [
+        {
+          "type": "density",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.7999999999999998,
+            "multiplier": 0.8
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.3
+          }
+        },
+        {
+          "type": "veil",
+          "target": "post_processing",
+          "params": {
+            "duration": 0.8999999999999999,
+            "darken": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_202_0_rm",
+      "at": "3:22",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_pulse_216_364_rm",
+      "at": "3:36",
+      "actions": [
+        {
+          "type": "density",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.7999999999999998,
+            "multiplier": 0.8
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.7999999999999998,
+            "amount": 0.3
+          }
+        },
+        {
+          "type": "veil",
+          "target": "post_processing",
+          "params": {
+            "duration": 0.8999999999999999,
+            "darken": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_232_0_rm",
+      "at": "3:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_262_0_rm",
+      "at": "4:22",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "t2_minor_292_0_rm",
+      "at": "4:52",
+      "actions": [
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": {
+            "duration": 1.5,
+            "amount": 0.1
+          }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": {
+            "duration": 1.2000000000000002,
+            "amount": 0.1
+          }
+        }
+      ]
+    },
+    {
+      "id": "paralisia-do-sono_outro_rm",
+      "at": "5:15",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": {
+            "duration": 9.0,
+            "vignetteDarkness": 0.8
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": {
+            "duration": 9.0,
+            "delay": 0.5
+          }
+        },
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": {
+            "duration": 9.0,
+            "delay": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

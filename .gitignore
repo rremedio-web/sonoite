@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output (run `npm run build`; WordPress serves dist/)
+dist/
+dist-static/
+dist-file/
+
+# Test output
+coverage/
+test-results/
+*.junit.xml
+jest-html-reporters-attach/
+
+# Local audio for the analysis scripts (the album audio is not distributed)
+/audio/
+*.mp3
+*.wav
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Local agent state
+.claude/settings.local.json
+.claude/agent-memory/

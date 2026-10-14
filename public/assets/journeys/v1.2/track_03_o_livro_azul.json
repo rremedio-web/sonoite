@@ -1,0 +1,158 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "03_o_livro_azul",
+  "title": "O Livro Azul",
+  "consciousnessLevel": 0.6,
+  "userControl": true,
+  "camera": {
+    "behavior": "grid_dolly",
+    "speed": 0.06,
+    "shake": 0.03,
+    "fov": 55,
+    "depthOfField": {
+      "enabled": false,
+      "focus": 10,
+      "aperture": 0.015
+    }
+  },
+  "scene": {
+    "scale": "large",
+    "density": "high",
+    "background": "#0a0a12",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": [
+      "reactsToBeat",
+      "asyncPulse"
+    ]
+  },
+  "postProcessing": [
+    "vignette",
+    "film_grain"
+  ],
+  "flow": {
+    "type": "misty_rain",
+    "params": {
+      "density": 0.4,
+      "spawnRate": 0.4,
+      "palette": [
+        "#0a0a12",
+        "#1a244b",
+        "#3a4d80"
+      ]
+    },
+    "reactivity": {
+      "mid": "speed_mod",
+      "bass": "sparkle",
+      "centroid": "color_shift"
+    },
+    "shaders": {
+      "material": "softParticlesBasic",
+      "uniforms": {
+        "uSoftness": 0.8
+      }
+    }
+  },
+  "structure": {
+    "type": "distant_shards",
+    "params": {
+      "complexity": 0.2,
+      "material": "matte_absorbent"
+    },
+    "reactivity": {
+      "bass": "shudder",
+      "loudness": "faint_visibility"
+    },
+    "shaders": {
+      "material": "matteShard",
+      "uniforms": {}
+    }
+  },
+  "core": {
+    "enabled": false
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "understanding_wave",
+      "type": "revelation",
+      "trigger": {
+        "mode": "feature",
+        "feature": "chroma_C",
+        "gt": 0.6,
+        "cooldown": 2.0
+      },
+      "targets": [
+        "structure:planes"
+      ],
+      "action": "understanding_wave",
+      "intensity": 0.7,
+      "duration": 0.8
+    },
+    {
+      "id": "data_glitch_peak",
+      "type": "intensity",
+      "trigger": {
+        "mode": "feature",
+        "feature": "rms",
+        "gt": 0.7,
+        "cooldown": 0.6
+      },
+      "targets": [
+        "structure:planes",
+        "fx:pixelation"
+      ],
+      "action": "sharp_glitch_and_shake",
+      "intensity": 0.8,
+      "duration": 0.5
+    },
+    {
+      "id": "final_truth",
+      "type": "revelation",
+      "trigger": {
+        "mode": "time",
+        "at": 285.0
+      },
+      "targets": [
+        "fx:bloom",
+        "flow:rain"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 1.0,
+      "duration": 1.5
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#1a244b",
+    "accent": "#d7d7e0"
+  }
+}

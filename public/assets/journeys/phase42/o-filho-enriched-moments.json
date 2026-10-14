@@ -1,0 +1,249 @@
+{
+  "_comment": "Enriched moments for Track 6 - O Filho (6:02)",
+  "_analysis": "Audio analysis: 94 BPM (journey meta), with early peak at 0:54 and second peak at 3:55",
+  "_requires": "Base journey has falling_ash flow and monolith structure",
+  "_note": "Immediate power, strong early peak, then sustained confrontation with dramatic fade",
+
+  "enrichedMoments": [
+    {
+      "id": "t6_intro_void",
+      "at": "0:00",
+      "_audio": "Setup: establish the Obsidian Reactor as hero",
+      "actions": [
+        {
+          "type": "camera_mode",
+          "params": { "mode": "cinematic_dolly" }
+        },
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": {
+            "behavior": "stationary",
+            "position": [0, 4.1, 11.2],
+            "lookAt": [0, 5.2, 0],
+            "shake": true
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": { "preset": "inheritance", "grain": 0.12, "bloom": 0.46, "brightness": 1.12, "warmth": 0.96, "duration": 0.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_obsidian_reactivity",
+      "at": "0:01.00",
+      "_audio": "Always-on reactivity: magma + shell polish",
+      "actions": [
+        {
+          "type": "link_audio",
+          "target": "monolith",
+          "params": {
+            "uniform": "emissiveIntensity",
+            "feature": "bass",
+            "min": 0.0,
+            "max": 1.2,
+            "smoothing": 0.82
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "monolith",
+          "params": {
+            "uniform": "roughness",
+            "feature": "treble",
+            "invert": true,
+            "min": 0.03,
+            "max": 0.25,
+            "smoothing": 0.88
+          }
+        },
+        {
+          "type": "link_audio",
+          "target": "monolith",
+          "params": {
+            "uniform": "uEmissiveIntensity",
+            "feature": "loudness",
+            "min": 1.1,
+            "max": 1.9,
+            "smoothing": 0.82
+          }
+        }
+      ]
+    },
+    {
+      "id": "t6_first_bass",
+      "at": "0:14",
+      "_audio": "First bass hit - immediate power",
+      "condition": { "feature": "bass", "threshold": 0.5 },
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith",
+          "params": { "amount": 0.6, "duration": 2.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_presence",
+      "at": "0:18",
+      "_audio": "5% energy (0.2059) - immediate presence",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "falling_ash",
+          "params": { "intensity": 1.3, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_first_climax",
+      "at": "0:54",
+      "_audio": "15% energy - FIRST PEAK at 0.3971",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": { "bloom": 0.7, "duration": 4.0 }
+        },
+        {
+          "type": "camera_mode",
+          "params": { "mode": "handheld_panic" }
+        },
+        {
+          "type": "camera_orbit",
+          "target": "camera",
+          "params": { "angle": 30, "duration": 20, "easing": "easeInOut" }
+        },
+        {
+          "type": "chromatic_aberration",
+          "target": "postprocessing",
+          "params": { "intensity": 0.035, "duration": 0.35 }
+        },
+        {
+          "type": "shimmer",
+          "target": "monolith",
+          "params": { "amount": 0.8, "duration": 3.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_dip_moment",
+      "at": "1:30",
+      "_audio": "25% energy (0.1973) - energy dip",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "falling_ash",
+          "params": { "value": 0.6, "duration": 6.0 }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": { "bloom": 0.4, "duration": 5.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_confrontation",
+      "at": "2:06",
+      "_audio": "35% energy (0.3110) - rising again",
+      "actions": [
+        {
+          "type": "post_glitch",
+          "params": { "intensity": 0.4, "duration": 3.0 }
+        },
+        {
+          "type": "scale",
+          "target": "monolith",
+          "params": { "value": 1.15, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_sustained",
+      "at": "3:01",
+      "_audio": "50% energy (0.2328) - sustained",
+      "actions": [
+        {
+          "type": "glow",
+          "target": "falling_ash",
+          "params": { "intensity": 1.4, "duration": 5.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_second_climax",
+      "at": "3:55",
+      "_audio": "65% energy - SECOND PEAK at 0.4246 (highest)",
+      "actions": [
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": { "bloom": 0.8, "duration": 4.0 }
+        },
+        {
+          "type": "shimmer",
+          "all": true,
+          "params": { "amount": 0.9, "duration": 3.0 }
+        },
+        {
+          "type": "glow",
+          "target": "falling_ash",
+          "params": { "intensity": 1.8, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_departure_begin",
+      "at": "4:32",
+      "_audio": "75% energy (0.2498) - beginning fade",
+      "actions": [
+        {
+          "type": "scale",
+          "target": "monolith",
+          "params": { "value": 1.0, "duration": 8.0 }
+        },
+        {
+          "type": "opacity",
+          "target": "falling_ash",
+          "params": { "value": 0.4, "duration": 10.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_letting_go",
+      "at": "5:08",
+      "_audio": "85% energy (0.1170) - departure",
+      "actions": [
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": { "dolly": 4, "duration": 30, "easing": "linear" }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": { "bloom": 0.3, "duration": 15.0 }
+        }
+      ]
+    },
+    {
+      "id": "t6_absence",
+      "at": "5:26",
+      "_audio": "Approaching final silence",
+      "actions": [
+        {
+          "type": "dissolve_layers",
+          "params": { "duration": 25.0 }
+        },
+        {
+          "type": "glow",
+          "target": "falling_ash",
+          "params": { "intensity": 0.5, "duration": 20.0 }
+        }
+      ]
+    }
+  ]
+}

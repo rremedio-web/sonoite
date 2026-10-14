@@ -1,0 +1,233 @@
+{
+  "_comment": "AI VIDEO BACKGROUND TEST - Track 2: Paralisia do Sono",
+  "_test_instructions": [
+    "1. Place video file at: public/assets/ai-backgrounds/paralisia-do-sono.webm (or .mp4)",
+    "2. Enable test: add ?journey=paralisia-do-sono-ai-test to URL",
+    "3. Or rename this file to paralisia-do-sono.json (backup original first)"
+  ],
+  "meta": {
+    "track": 2,
+    "slug": "paralisia-do-sono",
+    "title": "Paralisia do Sono (AI Test)",
+    "bpm": 80,
+    "key": "F# minor",
+    "mood": {
+      "dark": 0.69,
+      "ethereal": 0.64,
+      "scary": 0.42
+    },
+    "qaFlag": "SONOITE_AI_TEST"
+  },
+  "palette": {
+    "primary": "#2D132C",
+    "secondary": "#801336",
+    "accent": "#C9ADA7"
+  },
+  "background": {
+    "_comment": "AI video plays behind all other layers",
+    "type": "ai_video_background",
+    "params": {
+      "trackSlug": "paralisia-do-sono",
+      "opacity": 0.5,
+      "blendMode": "screen"
+    }
+  },
+  "flow": {
+    "type": "heavy_fog",
+    "params": {
+      "density": 0.5,
+      "opacity": 0.2,
+      "palette": ["#0a0a0a", "#1a1a1a"],
+      "count": 10
+    },
+    "reactivity": {
+      "loudness": "turbulence"
+    }
+  },
+  "structure": {
+    "type": "glitching_cage",
+    "params": {
+      "size": 6,
+      "material": "obsidian_glass"
+    },
+    "reactivity": {
+      "bass": "cage_vibrate",
+      "treble": "shimmer"
+    }
+  },
+  "camera": {
+    "mode": "stationary",
+    "start": [0, 1.4, 6.5],
+    "target": [0, 0, 0]
+  },
+  "post": {
+    "preset": "noir"
+  },
+  "moments": [
+    {
+      "id": "intro_fade_in",
+      "at": "0:00",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "flow",
+          "params": { "duration": 3.0, "delay": 0 }
+        },
+        {
+          "type": "manifest_in",
+          "target": "structure",
+          "params": { "duration": 3.0, "delay": 1.0 }
+        }
+      ]
+    },
+    {
+      "id": "first_breath",
+      "at": "0:16",
+      "condition": { "feature": "bass", "threshold": 0.4 },
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": { "amount": 0.5, "duration": 2.0 }
+        }
+      ]
+    },
+    {
+      "id": "tension_build",
+      "at": "0:48",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": { "bloom": 0.45, "duration": 4.0 }
+        },
+        {
+          "type": "turbulence",
+          "target": "heavy_fog",
+          "params": { "intensity": 0.4, "duration": 3.0 }
+        }
+      ]
+    },
+    {
+      "id": "cage_pulse_1",
+      "at": "1:20",
+      "condition": { "feature": "bass", "threshold": 0.5 },
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": { "amount": 0.7, "duration": 1.5 }
+        },
+        {
+          "type": "post_glitch",
+          "target": "post",
+          "params": { "intensity": 0.3, "duration": 0.2 }
+        }
+      ]
+    },
+    {
+      "id": "mid_section_drift",
+      "at": "2:00",
+      "actions": [
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": {
+            "duration": 30.0,
+            "path": [{ "dolly": -1.0, "yaw": 5 }],
+            "easing": "easeInOutSine"
+          }
+        }
+      ]
+    },
+    {
+      "id": "climax_approach",
+      "at": "2:42",
+      "actions": [
+        {
+          "type": "density",
+          "target": "heavy_fog",
+          "params": { "multiplier": 1.8, "duration": 8.0 }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": { "bloom": 0.6, "vignetteDarkness": 1.6, "duration": 6.0 }
+        }
+      ]
+    },
+    {
+      "id": "climax_peak",
+      "at": "3:14",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": { "amount": 1.0, "duration": 2.0 }
+        },
+        {
+          "type": "post_glitch",
+          "target": "post",
+          "params": { "intensity": 0.6, "duration": 0.4 }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": { "bloom": 0.8, "duration": 1.0 }
+        }
+      ]
+    },
+    {
+      "id": "resolution_begin",
+      "at": "3:45",
+      "actions": [
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": { "bloom": 0.35, "duration": 15.0 }
+        },
+        {
+          "type": "density",
+          "target": "heavy_fog",
+          "params": { "multiplier": 0.6, "duration": 20.0 }
+        }
+      ]
+    },
+    {
+      "id": "fade_to_silence",
+      "at": "4:35",
+      "actions": [
+        {
+          "type": "manifest_out",
+          "target": "structure",
+          "params": { "duration": 12.0 }
+        },
+        {
+          "type": "camera_path",
+          "target": "camera",
+          "params": {
+            "duration": 15.0,
+            "path": [{ "dolly": 2.0 }],
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "outro_dissolve",
+      "at": "5:00",
+      "actions": [
+        {
+          "type": "manifest_out",
+          "target": "flow",
+          "params": { "duration": 15.0 }
+        },
+        {
+          "type": "post",
+          "target": "post_processing",
+          "params": { "vignetteDarkness": 2.0, "duration": 10.0 }
+        }
+      ]
+    }
+  ]
+}

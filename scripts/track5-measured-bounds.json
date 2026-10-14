@@ -1,0 +1,29 @@
+{
+  "height": 7.422308,
+  "center": [
+    0.959854,
+    1.901261,
+    -0.038787
+  ],
+  "flowerHead": [
+    0.959854,
+    5.612414,
+    -0.038787
+  ],
+  "measuredAt": "2026-07-21T21:31:53.398Z",
+  "method": "runtime-headless-box3-from-SonoitePrototype.hero seed=42 track5-cinema-default",
+  "meta": {
+    "boxMin": [
+      -1.0770254320632933,
+      -1.8098932173039224,
+      -1.9518309242403873
+    ],
+    "boxMax": [
+      2.9967340483528293,
+      5.612414285887291,
+      1.8742567294752333
+    ],
+    "targetHeight": 7.42,
+    "chamberVariant": "track5-cinema"
+  }
+}

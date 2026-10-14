@@ -1,0 +1,176 @@
+{
+  "_comment": "Enriched moments for Track 7 - Homem Educado (5:01)",
+  "_analysis": "Librosa: 92.3 BPM (slow), 433 beats, 103 onsets (sparse), peak at 3:15 (0.2451)",
+  "_requires": "Base journey has cold_haze, monolith_grid, glitching_cage",
+  "_note": "Very long sustained section (0:03-4:08) - needs gradual build, measured pacing",
+
+  "enrichedMoments": [
+    {
+      "id": "t7_first_bass",
+      "at": "0:06",
+      "_audio": "First bass hit",
+      "condition": { "feature": "bass", "threshold": 0.5 },
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": { "amount": 0.5, "duration": 2.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_formal_intro",
+      "at": "0:15",
+      "_audio": "5% energy (0.1583) - measured intro",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "monolith_grid",
+          "params": { "opacity": 0, "fade": 5.0 }
+        },
+        {
+          "type": "density",
+          "target": "cold_haze",
+          "params": { "value": 0.25, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_synchronized_lock_in",
+      "at": "0:48",
+      "_audio": "Approaching 15% energy - structure establishes",
+      "actions": [
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": { "amount": 0.4, "duration": 3.5 }
+        }
+      ]
+    },
+    {
+      "id": "t7_confidence_build",
+      "at": "1:45",
+      "_audio": "35% energy (0.2007) - gaining confidence",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "glitching_cage",
+          "params": { "value": 0.7, "duration": 5.0 }
+        },
+        {
+          "type": "shimmer",
+          "target": "glitching_cage",
+          "params": { "amount": 0.6, "duration": 2.5 }
+        }
+      ]
+    },
+    {
+      "id": "t7_build_bloom",
+      "at": "2:00",
+      "_audio": "Energy building toward mid-track",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.4, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_dignified_resolve",
+      "at": "2:30",
+      "_audio": "50% energy (0.2098)",
+      "actions": [
+        {
+          "type": "choreography",
+          "target": "monolith_grid",
+          "params": { "pattern": "row_pulse", "intensity": 0.7, "duration": 5.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_peak_expression",
+      "at": "3:15",
+      "_audio": "65% energy - PEAK at 0.2451",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.6, "duration": 4.0 }
+        },
+        {
+          "type": "shimmer",
+          "all": true,
+          "params": { "amount": 0.7, "duration": 3.0 }
+        },
+        {
+          "type": "density",
+          "target": "cold_haze",
+          "params": { "value": 0.35, "duration": 4.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_sustained_self",
+      "at": "3:45",
+      "_audio": "75% energy (0.2032) - sustained",
+      "actions": [
+        {
+          "type": "opacity",
+          "target": "monolith_grid",
+          "params": { "value": 0.8, "duration": 5.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_final_push",
+      "at": "4:16",
+      "_audio": "85% energy (0.2352) - final push before fade",
+      "actions": [
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.5, "duration": 4.0 }
+        },
+        {
+          "type": "shimmer",
+          "target": "monolith_grid",
+          "params": { "amount": 0.6, "duration": 2.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_education_complete",
+      "at": "4:31",
+      "_audio": "Section 3 - final movement begins",
+      "actions": [
+        {
+          "type": "density",
+          "target": "cold_haze",
+          "params": { "value": 0.1, "duration": 10.0 }
+        },
+        {
+          "type": "opacity",
+          "target": "glitching_cage",
+          "params": { "value": 0.3, "duration": 12.0 }
+        }
+      ]
+    },
+    {
+      "id": "t7_silence",
+      "at": "4:46",
+      "_audio": "95% energy (0.0383) - quick fade to silence",
+      "actions": [
+        {
+          "type": "dissolve_layers",
+          "params": { "duration": 15.0 }
+        },
+        {
+          "type": "post",
+          "target": "bloom",
+          "params": { "value": 0.1, "duration": 12.0 }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sonoite — material study</title>
+<style>
+    *{box-sizing:border-box}body{margin:0;background:#101112;color:#e4e2dc;font:15px/1.5 system-ui,sans-serif}
+    header{padding:24px 28px 18px}h1{font-size:26px;font-weight:500;margin:4px 0 8px}p{margin:8px 0;max-width:860px;color:#aaa}
+    .eyebrow{font-size:11px;letter-spacing:.16em;color:#a9a18f}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:0 28px 20px}
+    button,select{font:inherit;color:#eee;background:#202224;border:1px solid #444;border-radius:4px;padding:8px 12px;cursor:pointer}button:focus-visible,select:focus-visible{outline:2px solid #ded1b4;outline-offset:3px}
+    button[aria-pressed=true]{border-color:#cfc4a9;background:#34332f}label{display:flex;align-items:center;gap:8px}.views{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#383838}
+    .view{position:relative;min-width:0;background:#111}.canvas{height:min(68vh,760px);min-height:340px}canvas{display:block;width:100%;height:100%;touch-action:none}.caption{padding:15px 24px;background:#171819}.caption b{font-weight:500}.caption span{display:block;color:#999;font-size:13px}
+    footer{padding:18px 28px;color:#999;font-size:13px}a{color:#d1c8b5}#status{color:#cfc4a9} .hint{margin-left:auto;font-size:13px;color:#999}
+    @media(max-width:650px){.views{grid-template-columns:1fr}.canvas{height:55vh}.hint{margin-left:0}header,.controls,footer{padding-left:18px;padding-right:18px}}
+</style>
+<header><div class="eyebrow">SONOITE · BLENDER MATERIAL CANDIDATE 01</div><h1>Same sculpture. Four materials.</h1><p>Compare the pale source with separate leather, petals, egg and metal. Both sides share the camera and lighting. Drag either view to rotate; scroll to inspect.</p></header>
+<div class="controls">
+    <button type="button" data-angle="0" aria-pressed="true">Front</button><button type="button" data-angle="45" aria-pressed="false">Three-quarter</button><button type="button" data-angle="90" aria-pressed="false">Side</button><button type="button" data-angle="180" aria-pressed="false">Back</button>
+    <label>Light <select id="lighting"><option value="neutral">Neutral</option><option value="cold">Cold grazing</option><option value="sodium">Sodium</option></select></label>
+    <label><input id="flat" type="checkbox"> Original flat normals on left</label><span class="hint" id="status" role="status">Loading both assets…</span>
+</div>
+<div class="views"><section class="view"><div id="left" class="canvas"></div><div class="caption"><b>Pale source</b><span>Same geometry, smooth normals by default.</span></div></section><section class="view"><div id="right" class="canvas"></div><div class="caption"><b>Material candidate</b><span>Black glove · pale petals · white egg · silver metal.</span></div></section></div>
+<footer><p>First material pass: the silhouette is unchanged. Material boundaries and the back still need inspection. These are look-development rigs, not the films’ authored lighting.</p><p>The current films and accepted Track 5 gestures are unchanged. <a href="/?track=nao-querer-nada&autonext=0" target="_blank" rel="noopener">Open current Track 5</a> · <a href="inventory.json">Asset inventory</a></p></footer>
+<script type="importmap">{"imports":{"three":"../../../../node_modules/three/build/three.module.js","three/addons/":"../../../../node_modules/three/examples/jsm/"}}</script>
+<script type="module" src="./viewer.js"></script>
+</html>

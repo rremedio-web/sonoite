@@ -1,0 +1,291 @@
+{
+  "_comment": "Enriched moments for Track 4 - Horas Mortas (6:31)",
+  "_analysis": "Rebuilt around streetlight corridor readability, walking-pace drift, and late-rain release.",
+  "_requires": "Base journey provides ink_tendrils, heavy_fog, cold_haze, streetlight_cone, and distant_shards.",
+  "additionalFlowElements": [
+    {
+      "type": "misty_rain",
+      "params": {
+        "count": 900,
+        "palette": {
+          "accent": "#B8C2D0"
+        },
+        "opacity": 0.0
+      },
+      "reactivity": {
+        "mid": "waft"
+      }
+    }
+  ],
+  "enrichedMoments": [
+    {
+      "id": "t4_corridor_establish",
+      "at": "0:00",
+      "_segment": "Establish the streetlight as the only safe island in frame.",
+      "actions": [
+        {
+          "type": "camera_mode",
+          "params": { "mode": "cinematic_dolly" }
+        },
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [[3.4, 1.8, 9.8], [2.4, 1.75, 8.0], [1.5, 1.7, 6.8]],
+            "duration": 84,
+            "easing": "easeInOutCubic",
+            "lookAt": [0, 3.8, 0],
+            "lookAhead": false,
+            "fovKeyframes": [
+              { "t": 0.0, "value": 64 },
+              { "t": 0.55, "value": 62 },
+              { "t": 1.0, "value": 60 }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "preset": "streetlight_noir",
+            "brightness": 1.12,
+            "warmth": 1.08,
+            "vignette": 0.24,
+            "duration": 0
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.9,
+            "duration": 6,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_ink_reach_compress",
+      "at": "1:24",
+      "_segment": "The camera loses space as the ink reaches across the light pool.",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [[1.5, 1.7, 6.8], [0.9, 1.62, 5.5], [-0.4, 1.58, 5.1]],
+            "duration": 74,
+            "easing": "easeInOutCubic",
+            "lookAt": [0, 3.7, 0],
+            "lookAhead": false,
+            "fovKeyframes": [
+              { "t": 0.0, "value": 60 },
+              { "t": 0.55, "value": 57 },
+              { "t": 1.0, "value": 55 }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "brightness": 1.08,
+            "warmth": 1.03,
+            "vignette": 0.32,
+            "duration": 10
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.72,
+            "duration": 10,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_pressure_surge_walk",
+      "at": "2:40",
+      "_segment": "Walking pace continues, but the lens starts to compress under pressure.",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [[-0.4, 1.58, 5.1], [0.8, 1.55, 4.8], [0.3, 1.5, 4.2]],
+            "duration": 72,
+            "easing": "easeInOutCubic",
+            "lookAt": [0, 3.6, 0],
+            "lookAhead": false,
+            "fovKeyframes": [
+              { "t": 0.0, "value": 55 },
+              { "t": 0.55, "value": 53 },
+              { "t": 1.0, "value": 52 }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "brightness": 1.04,
+            "warmth": 0.98,
+            "vignette": 0.38,
+            "duration": 12
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.56,
+            "duration": 12,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_deep_ink_hold",
+      "at": "3:55",
+      "_segment": "Hold inside the deepest section. The dark almost wins the frame.",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [[0.3, 1.5, 4.2], [0.16, 1.46, 3.85], [0.08, 1.44, 3.6]],
+            "duration": 36,
+            "easing": "easeInOutCubic",
+            "lookAt": [0, 3.55, 0],
+            "lookAhead": false,
+            "fovKeyframes": [
+              { "t": 0.0, "value": 52 },
+              { "t": 1.0, "value": 51 }
+            ]
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "brightness": 1.0,
+            "warmth": 0.94,
+            "vignette": 0.44,
+            "duration": 8
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.42,
+            "duration": 8,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_maximum_pinch",
+      "at": "4:30",
+      "_segment": "Maximum pinch. Protect silhouette, do not turn this into cosmic spectacle.",
+      "actions": [
+        {
+          "type": "camera_fov",
+          "target": "camera",
+          "params": {
+            "fov": 50,
+            "duration": 6,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "brightness": 0.98,
+            "warmth": 0.92,
+            "vignette": 0.48,
+            "duration": 6
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.34,
+            "duration": 6,
+            "easing": "easeInOutCubic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_release_rain",
+      "at": "5:32",
+      "_segment": "Only now does the frozen rain appear, as decompression rather than spectacle.",
+      "actions": [
+        {
+          "type": "manifest_in",
+          "target": "misty_rain",
+          "params": { "duration": 8, "delay": 0 }
+        },
+        {
+          "type": "opacity",
+          "target": "misty_rain",
+          "params": {
+            "value": 0.22,
+            "duration": 10,
+            "easing": "easeInOutCubic"
+          }
+        },
+        {
+          "type": "post",
+          "target": "postprocessing",
+          "params": {
+            "brightness": 1.08,
+            "warmth": 1.0,
+            "vignette": 0.3,
+            "duration": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "t4_decompression_walkback",
+      "at": "5:40",
+      "_segment": "Walk back out. The light regains some territory without becoming safe again.",
+      "actions": [
+        {
+          "type": "camera_spline",
+          "target": "camera",
+          "params": {
+            "waypoints": [[0.08, 1.44, 3.6], [1.6, 1.72, 6.0], [3.2, 1.95, 9.1]],
+            "duration": 34,
+            "easing": "easeOutCubic",
+            "lookAt": [0, 3.8, 0],
+            "lookAhead": false,
+            "fovKeyframes": [
+              { "t": 0.0, "value": 54 },
+              { "t": 1.0, "value": 62 }
+            ]
+          }
+        },
+        {
+          "type": "opacity",
+          "target": "streetlight_cone",
+          "params": {
+            "value": 0.7,
+            "duration": 12,
+            "easing": "easeOutCubic"
+          }
+        }
+      ]
+    }
+  ]
+}

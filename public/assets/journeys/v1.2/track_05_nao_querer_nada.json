@@ -1,0 +1,146 @@
+{
+  "$schemaVersion": "1.2",
+  "track_id": "05_nao_querer_nada",
+  "title": "N\u00e3o Querer Nada",
+  "consciousnessLevel": 0.3,
+  "userControl": false,
+  "camera": {
+    "behavior": "float",
+    "speed": 0.006,
+    "shake": 0.0,
+    "fov": 55,
+    "depthOfField": {
+      "enabled": true,
+      "focus": 14,
+      "aperture": 0.008
+    }
+  },
+  "scene": {
+    "scale": "vast",
+    "density": "low",
+    "background": "#0a0a12",
+    "coverAesthetic": "nocturnal",
+    "behavioralFlags": [
+      "drifting",
+      "asyncPulse"
+    ]
+  },
+  "postProcessing": [
+    "soft_bloom",
+    "vignette"
+  ],
+  "flow": {
+    "type": "star_dust_field",
+    "params": {
+      "density": 0.9,
+      "spawnRate": 0.05,
+      "palette": [
+        "#4b5563",
+        "#a7bbc7",
+        "#e5e7eb"
+      ]
+    },
+    "reactivity": {
+      "centroid": "color_shift",
+      "loudness": "slow_breathe"
+    },
+    "shaders": {
+      "material": "stardust",
+      "uniforms": {
+        "uTwinkle": 0.1
+      }
+    }
+  },
+  "structure": {
+    "type": "deconstructed_vertices",
+    "params": {
+      "complexity": 0.8,
+      "material": "foggy_crystal"
+    },
+    "reactivity": {
+      "chroma": "spawn_dissolve",
+      "loudness": "fade_in_out"
+    },
+    "shaders": {
+      "material": "vertexGlow",
+      "uniforms": {
+        "uGlow": 0.5
+      }
+    }
+  },
+  "core": {
+    "enabled": true,
+    "morph": "egg_crystal",
+    "reactivity": {
+      "consciousnessLevel": "morph_breathe"
+    }
+  },
+  "phases": [
+    {
+      "name": "opening",
+      "range": [
+        0.0,
+        0.2
+      ]
+    },
+    {
+      "name": "development",
+      "range": [
+        0.2,
+        0.6
+      ]
+    },
+    {
+      "name": "climax",
+      "range": [
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "name": "resolution",
+      "range": [
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "signatureMoments": [
+    {
+      "id": "ego_dissolves",
+      "type": "dissolution",
+      "trigger": {
+        "mode": "time",
+        "at": 180.0
+      },
+      "targets": [
+        "structure:vertices"
+      ],
+      "action": "ego_dissolves",
+      "intensity": 1.0,
+      "duration": 2.0
+    },
+    {
+      "id": "moment_of_clarity",
+      "type": "revelation",
+      "trigger": {
+        "mode": "feature",
+        "feature": "rms",
+        "lt": 0.2,
+        "cooldown": 5.0
+      },
+      "targets": [
+        "fx:bloom",
+        "flow:stardust"
+      ],
+      "action": "wonder_bloom",
+      "intensity": 0.7,
+      "duration": 1.5
+    }
+  ],
+  "palette": {
+    "primary": "#0a0a12",
+    "secondary": "#4b5563",
+    "accent": "#e5e7eb"
+  }
+}

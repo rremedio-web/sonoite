@@ -1,0 +1,24 @@
+{
+  "track": "nao-querer-nada",
+  "file": "05-Nao-querer-nada.mp3",
+  "analysisVersion": "2.1-split",
+  "analysisTimestamp": "2025-12-25T22:40:06.366Z",
+  "duration": 563.93,
+  "sampleRate": 44100,
+  "segmentIntervalMs": 50,
+  "totalSegments": 11278,
+  "tempo": {
+    "bpm": 0,
+    "confidence": 0,
+    "source": "aubio"
+  },
+  "summary": {
+    "avgLoudness": 44.57,
+    "maxLoudness": 72.74,
+    "avgEnergy": 41.98,
+    "maxEnergy": 442.31,
+    "silentPhaseCount": 17,
+    "peakPhaseCount": 18,
+    "ambientPhaseCount": 36
+  }
+}

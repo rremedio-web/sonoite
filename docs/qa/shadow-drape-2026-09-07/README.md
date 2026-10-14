@@ -22,7 +22,7 @@ The first geometry was too rounded and bright; the final trial uses narrower cre
 
 ## Generated ideas
 
-[OpenAI concept sheet](openai-stage-concepts.png): hanging fold, covered volume, gathered hem. Generated with the built-in OpenAI image tool using the actual album artwork and a current stage capture. The tool does not expose an exact model version; no specific latest model ID is claimed. [Exact prompt and input roles](IMAGE_PROMPT.md).
+[OpenAI concept sheet](../../../public/proposals/concepts/openai-stage-concepts.png): hanging fold, covered volume, gathered hem. Generated with the built-in OpenAI image tool using the actual album artwork and a current stage capture. The tool does not expose an exact model version; no specific latest model ID is claimed. [Exact prompt and input roles](IMAGE_PROMPT.md).
 
 The hanging fold is the implemented starting point. The other two remain visual proposals. The generated sheet is not evidence of current browser rendering. A preview copy is served at `/proposals/concepts/openai-stage-concepts.png` and linked beside the drape control.
 

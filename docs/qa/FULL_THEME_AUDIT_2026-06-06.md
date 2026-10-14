@@ -1,5 +1,7 @@
 # Full Theme Audit — Sonoite (2026-06-06)
 
+> **Status at snapshot (Prompt #247):** June baseline, partly superseded. Prompt #231 closed the routing gap (the front page boots the Path B chamber). The dead consciousness code, dead PHP files and `/homem/` fallbacks listed below are not in this public repo (`src/js/modules/consciousness-core.js` is kept). All work that was uncommitted at the time was committed before this snapshot (see CLAUDE.md, Conventions). Latest state: `AUDIT_LAST_2_MONTHS_2026-10-01.md`.
+
 > **Method:** 8 specialist agents auditing in parallel (vision, git, track JSON, architecture, Path B prototype, cinematic look-dev, per-track readiness, theme health). Every finding verified against current code on branch `experiment/path-b-reliquary-proof`; doc claims cross-checked against source. Live-browser capture deliberately out of scope (offered as a separate pass).
 > **Supersedes for "where we at":** `CLAUDE.md` (Dec 25 2025, pre-reset — now stale) and `docs/qa/PATH_B_THEME_AUDIT_SYNTHESIS_2026-05-23.md` (still accurate but Track-5-only).
 

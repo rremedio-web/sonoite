@@ -49,20 +49,22 @@ The shared shadow refresh probe now includes light position. Previously, positio
 
 ## Evidence
 
+The `evidence/` folder stayed in the author's working copy and is not published here.
+
 All evidence here uses `prototype.DoCwlTb4.js`.
 
-- [Normal playback state series and capture times](evidence/normal-playback.json)
-- [Approach at 310 s](evidence/normal-310.jpg)
-- [Concealment near 316.8 s](evidence/normal-316-8.jpg)
-- [Hush near 330.1 s](evidence/normal-330-1.jpg)
-- [Release at 350 s](evidence/normal-350.jpg)
-- [Arrival at 384 s](evidence/normal-384.jpg)
-- [Rest at 402 s](evidence/normal-402.jpg)
-- [Authored close-up at 315 s](evidence/unheld315.jpg)
-- [Ending at 525 s](evidence/diagnostic525.jpg)
-- [Post-processing disabled at 315 s](evidence/postOff315.jpg)
-- [Paused UI comparison checks](evidence/toggle-check.json)
-- [Build log](evidence/build.log), [focused tests](evidence/tests.log), [shared-file lint diagnostics](evidence/experience-lint.json)
+- Normal playback state series and capture times (`evidence/normal-playback.json`)
+- Approach at 310 s (`evidence/normal-310.jpg`)
+- Concealment near 316.8 s (`evidence/normal-316-8.jpg`)
+- Hush near 330.1 s (`evidence/normal-330-1.jpg`)
+- Release at 350 s (`evidence/normal-350.jpg`)
+- Arrival at 384 s (`evidence/normal-384.jpg`)
+- Rest at 402 s (`evidence/normal-402.jpg`)
+- Authored close-up at 315 s (`evidence/unheld315.jpg`)
+- Ending at 525 s (`evidence/diagnostic525.jpg`)
+- Post-processing disabled at 315 s (`evidence/postOff315.jpg`)
+- Paused UI comparison checks (`evidence/toggle-check.json`)
+- Build log (`evidence/build.log`), focused tests (`evidence/tests.log`), shared-file lint diagnostics (`evidence/experience-lint.json`)
 
 The normal-passage frames come from the embedded comparison viewport. Separate full-experience diagnostic frames use a different viewport, so they are not pixel-matched exposure comparisons.
 

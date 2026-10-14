@@ -6,7 +6,7 @@
 
 **Architecture:** All changes live in `src/js/prototype/experience.js` (the Path B chamber runtime, reachable at `?prototype=1`). The per-phase machinery already exists — `getMacroState(elapsed)` resolves the current phase (VOID/AWAKENING/WANTING/RELEASE/ERASURE) and its curves every frame — so Pass 1 is about *wiring image channels to it* (grade) and *retuning channels that exist but don't read* (backlight, HDR clamps, grain, plate). Per-phase parametric grading via the existing `ChamberGradeShader` is the YAGNI realization of the spec's "LUT-style grading"; true LUT textures are deferred.
 
-**Tech Stack:** Three.js (EffectComposer/ShaderPass, AgX via OutputPass), Vite build, MAMP WordPress at `http://localhost/homem/`, chrome-devtools MCP for visual verification.
+**Tech Stack:** Three.js (EffectComposer/ShaderPass, AgX via OutputPass), Vite build, the author's local WordPress at `http://localhost/homem/`, chrome-devtools MCP for visual verification.
 
 **Scope:** Step 0 + Pass 1 only. Passes 2–4 get their own plans after the owner calibrates against this pass's results (spec §4). Spec: `docs/superpowers/specs/2026-06-10-track5-chamber-perceivability-rebuild-design.md`.
 

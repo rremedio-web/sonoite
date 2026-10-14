@@ -1,5 +1,7 @@
 # Fable 5.1 — update for the ongoing experience QA
 
+> **Status at snapshot:** running log up to 6 September 2026. Entries marked "current" are superseded by the October documents (`AUDIT_LAST_2_MONTHS_2026-10-01.md` and the `track4-ledger-2026-10-01/` and `track5-ledger-2026-10-02/` folders). None of the trials below is owner-adopted, except the quiet Track 1 scene, which became the Track 1 default (`?scene=original` restores the earlier look). The navigation and audio-accent fixes from the foundations pass are also part of the default runtime.
+
 **Current — dim cloth and haze trial, 6 September.** Read `TRACK5_CLOTH_STUDY_2026-09-06.md`. Owner requested flowing folds, much dimmer cloth and a hazy vibe after seeing the first cloth render. Bundle `prototype.cqxKXgmA.js`; `room=cloth` on physical Track 5 only, within the existing 246.0–280.794 s wide. Static curved geometry, faint depth fog, retained grey hero and accepted closer tar cut. Build, 105 focused tests, new-file lint and a normal 56-second context playback passed. No default adoption. Interactive review prompt saved in the cloth-study evidence directory; Fable remains reviewer and will run in the owner's visible session, not headlessly. Player: http://127.0.0.1:8765/cloth-review/ .
 
 **Current comparison — Track 5 room reveal.** Read `TRACK5_ROOM_REVEAL_STUDY_2026-09-06.md`. B adds `room=readable` to the physical scene; camera/edit remain fixed over 246.0–280.794 s. Existing side light, wall wash, fog and floor reflectance open over eight seconds. No new elements. Accepted tar cut remains in both arms. Bundle `prototype.Chnk4062.js`; build and 102 focused tests pass; both 56-second context passages completed at normal speed. Owner comparison: http://127.0.0.1:8765/room-review/ . Subject and wall read more clearly; floor contact remains faint. Opt-in, awaiting owner feedback. Fable remains read-only reviewer.
@@ -110,7 +112,7 @@ The recovered implementation notes report:
 - Latest 5x probe: 73 playback samples, exact 5x accent-output ratios and finite values. Pausing restored gain 1 and navigation removed the flag.
 - Successful production build and focused audio/navigation tests. The final unit run reported 577 passed / 1 failed, with an unchanged SignalPipeline timing benchmark exceeding its limit. Earlier full-suite runs also exposed a security-manager heap-test failure. Repository-wide lint was not green and coverage thresholds were not evaluated.
 
-These results were recorded before the crash and were not rerun to prepare this prompt. Do not report a globally passing test gate or full-film acceptance from them. Temporary `/private/tmp/sonoite-foundations.QjunYB/` evidence may no longer exist; check before citing it.
+These results were recorded before the crash and were not rerun to prepare this prompt. Do not report a globally passing test gate or full-film acceptance from them. The temporary local evidence folder from that pass is not published.
 
 ## Requested QA output
 

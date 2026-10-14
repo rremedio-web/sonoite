@@ -1,6 +1,6 @@
 # Track 5 physical ambience trial
 
-Owner requested trying the environment review on a new branch. Active branch: `experiment/physical-ambience`. Previous uncommitted work was preserved, with patch and file copies in `~/Documents/Sonoite Environment Trial/baseline-20260905-233546/`. No commit, merge or push. This branch currently includes that inherited uncommitted work as well as the trial.
+Owner requested trying the environment review on a new branch. Active branch: `experiment/physical-ambience`. Previous uncommitted work was preserved locally as patch and file copies. No commit, merge or push. This branch currently includes that inherited uncommitted work as well as the trial.
 
 Trial: https://sonoite.local/?track=nao-querer-nada&scene=physical&autonext=0&seed=7
 

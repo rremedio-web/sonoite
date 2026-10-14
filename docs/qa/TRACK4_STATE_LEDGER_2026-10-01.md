@@ -1,5 +1,7 @@
 # Track 4 *Horas Mortas* — state ledger (DRAFT for owner markup, 2026-10-01)
 
+> **Status at snapshot:** built (v1, then v2) as an opt-in trial behind `?track=horas-mortas&ledger=f` or `&ledger=a`, not `?ledger=1`; not adopted, and the default film is unchanged. See `track4-ledger-2026-10-01/RESULTS.md`.
+
 **Status: proposal, not approved. Nothing is built.** Mark it up freely: strike states, move times, change sentences. Once approved, it is built behind `?ledger=1` next to the current film, measured, and watched back to back with sound.
 
 ## Why (the problem in numbers)

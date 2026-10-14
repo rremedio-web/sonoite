@@ -35,7 +35,7 @@ Rear-camera inspection at 74 and 350 s confirmed that the camera sits behind the
 
 LocalWP was stopped (connection refused), so the current build was exported to a local static preview using the site's original MP3s and generated Meshy relic.
 
-Open http://127.0.0.1:8765/review/ . It offers A/B selection, a 96-second passage and a 30-second cut check. Keep the tab visible. The server runs from `/tmp/sonoite-tar-preview` on port 8765.
+Open http://127.0.0.1:8765/review/ . It offers A/B selection, a 96-second passage and a 30-second cut check. Keep the tab visible. The server ran from a temporary local folder on port 8765 (not published).
 
 Evidence: `~/Documents/Sonoite Environment Trial/passage-337-433/`:
 - comparison.html: owner player; requires the local preview server.

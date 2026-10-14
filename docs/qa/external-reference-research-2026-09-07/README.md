@@ -156,14 +156,16 @@ For ambience, I would judge each layer by **what spatial information it adds**. 
 
 ## Saved inspection evidence
 
+The `evidence/` folder stayed in the author's working copy and is not published here.
+
 These are browser samples, not complete-playback evidence or a reference montage to copy.
 
-- [The Boat — opening](evidence/the-boat-opening.jpg)
-- [The Boat — storm/panel composition, diagnostic scroll 3200](evidence/the-boat-scroll-3200-diagnostic.jpg)
-- [The Boat — quiet panel composition, diagnostic scroll 18000](evidence/the-boat-scroll-18000-diagnostic.jpg)
-- [Over the Hills — rendered entry](evidence/over-hills-entry.jpg)
-- [Turn of the Screw — Day selected diagnostically](evidence/turn-screw-day-diagnostic.jpg)
-- [Our Time 1x3 — running film sample near 87 seconds](evidence/uva-our-time-sample.jpg)
-- [Our Time 1x3 — paused diagnostic at 24 seconds](evidence/uva-our-time-024-diagnostic.jpg)
+- The Boat — opening (`evidence/the-boat-opening.jpg`)
+- The Boat — storm/panel composition, diagnostic scroll 3200 (`evidence/the-boat-scroll-3200-diagnostic.jpg`)
+- The Boat — quiet panel composition, diagnostic scroll 18000 (`evidence/the-boat-scroll-18000-diagnostic.jpg`)
+- Over the Hills — rendered entry (`evidence/over-hills-entry.jpg`)
+- Turn of the Screw — Day selected diagnostically (`evidence/turn-screw-day-diagnostic.jpg`)
+- Our Time 1x3 — running film sample near 87 seconds (`evidence/uva-our-time-sample.jpg`)
+- Our Time 1x3 — paused diagnostic at 24 seconds (`evidence/uva-our-time-024-diagnostic.jpg`)
 
 Further discovery included NONOTAK's Daydream and Kinkajous's Being Waves. They are not promoted to the shortlist: the available inspection was less complete, and their lattice/particle imagery would require careful separation from the owner's rejected effects.

@@ -6,7 +6,7 @@ Inputs, inspected before generation:
 - `~/Documents/Sonoite Environment Trial/stage-trial-2026-09-07/evidence/t1-held-384.jpg` — edit target / sculpture and stage reference.
 - `~/Documents/Sonoite Listening Review 2026-09-05/album-artwork-reference.png` — album mood and material reference.
 
-Output: [openai-stage-concepts.png](openai-stage-concepts.png). The original generated file remains in the default generated-images directory.
+Output: [openai-stage-concepts.png](../../../public/proposals/concepts/openai-stage-concepts.png). The original generated file remains in the default generated-images directory.
 
 ## Exact prompt
 

@@ -1,12 +1,14 @@
 # Sonoite: aesthetics, mood and experience — archive deep dive
 
+> Most source documents cited below (shown as file names) and the inventory files predate this public snapshot and are not published here.
+
 7 September 2026. Owner requested a deep dive through the Markdown ideas, looking beyond cloth for lighting, effects and additional stage elements. During the review, the owner also authorized a trial of the T1 shadow / T4 fixture / T5 aftermath hybrid. Research below includes a larger reserve; it is not a mandate to implement that reserve.
 
 ## Coverage and evidence limits
 
 Full-text indexed **1,918 Markdown files**, **1,596 unique contents**, across the theme and 13 Sonoite directories in Documents. **1,002 files** matched the broad creative-topic search. The duplicate count matters: copied audit packets and later syntheses often repeat one recommendation; repetition is not independent validation.
 
-The scan includes older root documents, creative bibles, reliquary specifications and critiques, reference boards, album/UX reviews, implementation notes and recent owner-review records. I examined the thematic matches and read the central source chains in depth. This is not a claim to have read every operational Markdown file line by line, replayed every archived experiment, or verified every external reference. The raw scope is available in [markdown-inventory.csv](markdown-inventory.csv); topic/line evidence is in [thematic-source-index.md](thematic-source-index.md).
+The scan includes older root documents, creative bibles, reliquary specifications and critiques, reference boards, album/UX reviews, implementation notes and recent owner-review records. I examined the thematic matches and read the central source chains in depth. This is not a claim to have read every operational Markdown file line by line, replayed every archived experiment, or verified every external reference. The raw scope is available in `markdown-inventory.csv`; topic/line evidence is in `thematic-source-index.md`.
 
 The most relevant chains are: cover-art concepts → March reliquary professional critique → room/album reset → July aesthetic contradictions and parked ideas → August track-specific lighting → September owner reactions, listening corrections, environment reviews and proposal evidence. Source labels such as LIVE, canonical, approved and current are historical assertions, not present authority. Today's owner decisions win.
 
@@ -28,20 +30,20 @@ Translate those relationships into the stage. Do not assume the metal element de
 
 | Source | Useful idea | Qualification now |
 | --- | --- | --- |
-| [Cover-art directions](../COVER_ART_DIRECTION_4_CONCEPTS_2026-03-07.md) | Offered relic; drape, fold and weight; UI recedes | The absolute single-silhouette rule overcorrects a specific old composition. No new HUD or measurement graphics. |
-| [Reliquary direction pass](../RELIQUARY_STAGE2_STAGE3_DIRECTION_PASS_2026-03-07.md) | Grounding, depth, then finish; a visible surface before animation | Its glow sprites and prohibition of physical floors are obsolete for the current stage. |
-| [Professional critique](../RELIQUARY_PHASE23_PRO_REVIEW_2026-03-07.md) | Generic haze/bloom is a recipe, not Sonoite identity; give atmosphere a spatial rule | Exact old material values and claims about early musical silence need current verification. |
-| [Atmosphere second review](../CHAMBER_ATMOSPHERE_SECOND_REVIEW_2026-03-09.md) | Boundary, contact, enclosure, light reach; folds/slit as distinctive room information | Numeric gain fixes refer to an old render path. Raising every sprite is not the answer. |
+| Cover-art directions (`../COVER_ART_DIRECTION_4_CONCEPTS_2026-03-07.md`) | Offered relic; drape, fold and weight; UI recedes | The absolute single-silhouette rule overcorrects a specific old composition. No new HUD or measurement graphics. |
+| Reliquary direction pass (`../RELIQUARY_STAGE2_STAGE3_DIRECTION_PASS_2026-03-07.md`) | Grounding, depth, then finish; a visible surface before animation | Its glow sprites and prohibition of physical floors are obsolete for the current stage. |
+| Professional critique (`../RELIQUARY_PHASE23_PRO_REVIEW_2026-03-07.md`) | Generic haze/bloom is a recipe, not Sonoite identity; give atmosphere a spatial rule | Exact old material values and claims about early musical silence need current verification. |
+| Atmosphere second review (`../CHAMBER_ATMOSPHERE_SECOND_REVIEW_2026-03-09.md`) | Boundary, contact, enclosure, light reach; folds/slit as distinctive room information | Numeric gain fixes refer to an old render path. Raising every sprite is not the answer. |
 | [Product reset](../END_GOAL_AND_PRODUCT_RESET.md) | Browser-native album listener; room as instrument; breathing alone is insufficient | Old roadmap status and claimed completion percentages are historical. |
-| [Nine-minute directions](../THREE_9MIN_EXPERIENCE_DIRECTIONS.md) | Held states, returning memories, different kinds of events, aftermath | Reject fixed 10/30/60-second quotas and automatic black interruptions. |
-| [Unified direction](../UNIFIED_CREATIVE_DIRECTION_2026-03-11.md) | Spatial context, material detail, persistent visual change | Fill percentages and reference attributions/timings were later corrected. They are not acceptance thresholds. |
+| Nine-minute directions (`../THREE_9MIN_EXPERIENCE_DIRECTIONS.md`) | Held states, returning memories, different kinds of events, aftermath | Reject fixed 10/30/60-second quotas and automatic black interruptions. |
+| Unified direction (`../UNIFIED_CREATIVE_DIRECTION_2026-03-11.md`) | Spatial context, material detail, persistent visual change | Fill percentages and reference attributions/timings were later corrected. They are not acceptance thresholds. |
 | [Music interaction matrix](../MUSIC_INTERACTION_MATRIX.md) | Separate authored structure from continuous response and punctuation | It mixes older runtimes; sub-perceptual-only response conflicts with the owner's desire for visible musical connection. |
-| [Old elements audit](../OLD_SITE_SHAPES_AND_ELEMENTS_AUDIT_2026-03-10.md) | Manifest, withhold, compress, veil, settle, dissolve, transfer | Recover verbs, not the rejected spheres, grids, particles and primitive graphics. |
-| [Aesthetic/UX synthesis](../AESTHETIC_UX_SYNTHESIS_2026-07-20.md) | Useful contradiction registry; nominal values are not visible effects | No black quota, universal opacity threshold, compulsory motion quota or blanket T4 haze rule. |
+| Old elements audit (`../OLD_SITE_SHAPES_AND_ELEMENTS_AUDIT_2026-03-10.md`) | Manifest, withhold, compress, veil, settle, dissolve, transfer | Recover verbs, not the rejected spheres, grids, particles and primitive graphics. |
+| Aesthetic/UX synthesis (`../AESTHETIC_UX_SYNTHESIS_2026-07-20.md`) | Useful contradiction registry; nominal values are not visible effects | No black quota, universal opacity threshold, compulsory motion quota or blanket T4 haze rule. |
 | [Parked ideas](../perceivability/IDEAS_PARKED_2026-07-04.md) | Delayed physical settling, shadow flinch, light collapse, lasting after-state | Needs phrase/listening validation. Old material-damage work is partly superseded by existing tar. |
-| [Motion/life proposal](../KIMI_MOTION_LIFE_PROPOSAL_2026-07-20.md) | Off-screen occlusion, soft gobo weather, rack focus | Stronger stage ideas than another orbit. Old dust/bokeh population proposals conflict with owner feedback. |
-| [Album plan](../../creative/SONOITE_ALBUM_PLAN_ONE_CHAMBER_SEVEN_STATES_2026-07-24.md) | One distinct physical premise per track; consequences across time | It is a proposal. T1 candles, T4 bare plinth/frozen rain and T7 exhibit grid are not current instructions. |
-| [Track 4 v2](../TRACK4_V2_SPEC_2026-08-14.md), [v4](../TRACK4_V4_SPEC_2026-08-15.md) | The dark exceeds the lamp's reach; light is a protagonist; fixture must be photographed | Preserve current authored sodium timings. Historical haze instructions do not override current zero-added-fog direction. |
+| Motion/life proposal (`../KIMI_MOTION_LIFE_PROPOSAL_2026-07-20.md`) | Off-screen occlusion, soft gobo weather, rack focus | Stronger stage ideas than another orbit. Old dust/bokeh population proposals conflict with owner feedback. |
+| Album plan (`../../creative/SONOITE_ALBUM_PLAN_ONE_CHAMBER_SEVEN_STATES_2026-07-24.md`) | One distinct physical premise per track; consequences across time | It is a proposal. T1 candles, T4 bare plinth/frozen rain and T7 exhibit grid are not current instructions. |
+| Track 4 v2 (`../TRACK4_V2_SPEC_2026-08-14.md`), [v4](../TRACK4_V4_SPEC_2026-08-15.md) | The dark exceeds the lamp's reach; light is a protagonist; fixture must be photographed | Preserve current authored sodium timings. Historical haze instructions do not override current zero-added-fog direction. |
 | [Fable's latest recommendation](../FABLE51_DIRECTION_RECOMMENDATION_2026-09-07.md) | Track-specific lighting and physical aftermath | Advisory still/source review, not new listening or full-film QA; technical corrections recorded beside it. |
 
 September Documents evidence also read: Elements Review/REVIEW.md; reliquary-ideas-review/CODEX_REVIEW_SYNTHESIS.md and FABLE51_SECOND_OPINION.md; cloth-study/CODEX_FABLE_REVIEW_RESPONSE.md and interactive review; Reference Review/CROSS_REVIEW_SYNTHESIS.md; the supplied listening reports and timing corrections. Their absolute paths are in the inventory and thematic index.

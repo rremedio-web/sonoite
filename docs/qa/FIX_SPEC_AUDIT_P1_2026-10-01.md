@@ -1,6 +1,8 @@
 # Fix spec — audit P1 engineering batch (2026-10-01)
 
-Source: `docs/qa/AUDIT_LAST_2_MONTHS_2026-10-01.md`. Branch `experiment/physical-ambience` (September work is uncommitted; backed up at `~/Backups/sonoite-*-20261001.*`). Implementer: Codex. Reviewer: Claude.
+> **Status at snapshot:** F1–F10 landed in Prompt #236; F1–F8 have tests in `tests/unit/audit-p1-*.test.js`.
+
+Source: `docs/qa/AUDIT_LAST_2_MONTHS_2026-10-01.md`. Branch `experiment/physical-ambience` (September work was uncommitted at the time). Implementer: Codex. Reviewer: Claude.
 
 ## Ground rules
 

@@ -74,9 +74,9 @@ Do not reintroduce the heavier track-4 fog: the August 15 history includes two e
 
 Changes are local and uncommitted; nothing was pushed. WordPress serves ignored `dist/`, which was rebuilt for this branch. Switching Git branches alone does not switch the served bundle: rebuild the selected branch before judging it.
 
-Pre-change served bundle backup and the full recorded track-5 spectrum probe are in `/private/tmp/sonoite-foundations.QjunYB/`. The saved bundle is `dist-before/`; the probe is `track5-audio-after.json`. Temporary evidence may be cleaned by the OS; retain it elsewhere if needed for long-term archival.
+The pre-change served bundle (`dist-before/`) and the full recorded track-5 spectrum probe (`track5-audio-after.json`) were kept in a temporary local folder that is not published.
 
-Free disk space after dependency restoration/build was approximately 6.9 GiB. Avoid large texture batches until there is more headroom. No existing source data or experiments were deleted.
+No existing source data or experiments were deleted.
 
 ## Owner follow-up — slightly stronger track-5 accents
 
@@ -84,7 +84,7 @@ Raised track 5's film-local `accentIntensity` from the previous shared 0.483 to 
 
 The new cross-track response test caught that Track 1/4 variants deep-merge the Track 5 timeline. Each now explicitly owns its original 0.483 accent intensity, preventing Track 5 tuning from leaking through that inheritance. Verified the actual browser-loaded values on all three tracks, not only exported constants.
 
-Verification for this follow-up: 569 unit tests across 32 suites passed, production build passed, all three changed film modules lint clean, and `git diff --check` passed. Full-suite security heap and repository-wide lint caveats above still apply. A five-second live track-5 probe around 232.8 seconds reached a sampled accent peak of 0.546; screenshot captured at `/private/tmp/sonoite-foundations.QjunYB/track5-accent-boost.png`. Owner listening/visual acceptance remains pending.
+Verification for this follow-up: 569 unit tests across 32 suites passed, production build passed, all three changed film modules lint clean, and `git diff --check` passed. Full-suite security heap and repository-wide lint caveats above still apply. A five-second live track-5 probe around 232.8 seconds reached a sampled accent peak of 0.546; a screenshot was captured locally (not published). Owner listening/visual acceptance remains pending.
 
 ### Temporary 200% diagnostic preview
 

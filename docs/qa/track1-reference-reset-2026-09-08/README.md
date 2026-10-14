@@ -1,5 +1,7 @@
 # Track 1 — return to the references
 
+> The `evidence/` files cited below stayed in the author's working copy and are not published here.
+
 8 September 2026. Owner rejected the new background, asked for a darker reliquary focus, subtle differentiated musical responses, and a return to the Sleep Token / external project references. These directions supersede the earlier decision to hold the opening camera until 125 seconds.
 
 ## Finding
@@ -10,7 +12,7 @@ The reference lesson is selective disclosure: show a contour, its support and th
 
 ## What I revisited
 
-- Decoded and visually inspected **32 fresh frames** from the four local official Sleep Token video copies. Times and paths are in [samples.json](evidence/samples.json); four new sheets below. These are diagnostic samples, not a new uninterrupted viewing or an audio audition.
+- Decoded and visually inspected **32 fresh frames** from the four local official Sleep Token video copies. Times and paths are in `evidence/samples.json`; four new sheets below. These are diagnostic samples, not a new uninterrupted viewing or an audio audition.
 - Re-read the September 6 independent visual notes and reconciled review, including the corrections to Gemini's timings and unsupported implementation claims.
 - Re-opened primary creator documentation for UVA, KID A MNESIA, Max Cooper and Lusion. Re-inspected the saved September 7 UVA and Opera North browser captures. This does not constitute a new native exhibition visit or full browser-experience playback.
 - Compared the owner screenshots, the actual generated concept sheet, the current Stage camera mapping, and the final lighting override in `experience.js`.
@@ -19,7 +21,7 @@ The reference lesson is selective disclosure: show a contour, its support and th
 
 ### The Summoning
 
-[Official video](https://www.youtube.com/watch?v=wJNbtYdr-Hg) · [fresh opening samples](evidence/summoning.jpg)
+[Official video](https://www.youtube.com/watch?v=wJNbtYdr-Hg) · fresh opening samples (`evidence/summoning.jpg`)
 
 At 5 seconds the figure, rear source and platform establish depth; 15/35 seconds offer much closer material/edge views; 45–75 seconds disclose front detail under a different light direction. The sampled opening visibly changes scale and information.
 
@@ -27,7 +29,7 @@ At 5 seconds the figure, rear source and platform establish depth; 15/35 seconds
 
 ### Granite
 
-[Official video](https://www.youtube.com/watch?v=om4dEGKnEmw) · [fresh detail/return samples](evidence/granite.jpg)
+[Official video](https://www.youtube.com/watch?v=om4dEGKnEmw) · fresh detail/return samples (`evidence/granite.jpg`)
 
 The 157-second insert exposes engraved metal and irregular glossy coating; the 169–182-second sequence makes changes in surface and angle useful. The wider return at 190 seconds keeps a support and surrounding light. These samples show material information, not proof of a fluid solver or live analyser mapping.
 
@@ -35,7 +37,7 @@ The 157-second insert exposes engraved metal and irregular glossy coating; the 1
 
 ### Chokehold
 
-[Official video](https://www.youtube.com/watch?v=-UUSUrr6zyo) · [fresh opening samples](evidence/chokehold.jpg)
+[Official video](https://www.youtube.com/watch?v=-UUSUrr6zyo) · fresh opening samples (`evidence/chokehold.jpg`)
 
 The 20/35-second images show a foreground edge and distant light. Tips become visible by the 47/60-second samples; substantially more silhouette appears by 75/90 seconds. The opening is patient but the occlusion relationship progresses.
 
@@ -43,7 +45,7 @@ The 20/35-second images show a foreground edge and distant light. Tips become vi
 
 ### Take Me Back to Eden
 
-[Official video](https://www.youtube.com/watch?v=vFHBOKa_ZG0) · [fresh state samples](evidence/eden.jpg)
+[Official video](https://www.youtube.com/watch?v=vFHBOKa_ZG0) · fresh state samples (`evidence/eden.jpg`)
 
 The wing silhouette visibly shapes the light around it. Close and wider views retain that connection; later surface definition and the elevated patterned form establish further states. The particles remain a poor literal match for the owner's preferences.
 

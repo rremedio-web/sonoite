@@ -1,10 +1,12 @@
 # Audit — last two months of work (2026-08-01 → 2026-10-01)
 
+> **Status at snapshot (Prompt #247):** P0-1 is resolved (the September tree was committed in #236). The `FIX_SPEC_AUDIT_P1_2026-10-01.md` batch (F1–F10, covering P1-1..6, P1-9 and P2-1/2/5/6) landed in #236; F1–F8 have tests in `tests/unit/audit-p1-*.test.js`. P1-7, P1-10 and the "Committed claims the code does not do" list were outside that batch and remain as written.
+
 Branch `experiment/physical-ambience` · HEAD `84cc225` · audited 2026-10-01 · read-only (no source, test, asset, dist or git-state changes; `node_modules` was reinstalled via `npm ci` because the checkout had none).
 
 **Scope.** Path B chamber only (old runtime excluded per CLAUDE.md). Tracks 2/3/6/7 have no built film and received no work in the window. Visual taste and musical fit are **owner-gated and not assessed** — no auditor in this pass could hear the audio.
 
-**Seats.** Mechanical gates by Claude (Opus 5.5). Every P1 and every item in the "claims the code does not do" section was re-read in current code by Claude; numeric results (probe values, sample counts) are the reviewers' and attributed inline. P2 items are reviewer findings unless marked confirmed. Reviewers: Codex (`codex exec --sandbox read-only`) ×3 — September conformance, August films, August engine/routing/shell; cursor-agent (ask mode) — September correctness (its August run hit the Cursor usage limit and was replaced by Codex). A parallel independent audit (`/private/tmp/sonoite-audit-2026-10-01/REPORT.md`, browser-driven) was cross-checked; its unique findings were confirmed in source and are folded in, marked **[B]**.
+**Seats.** Mechanical gates by Claude (Opus 5.5). Every P1 and every item in the "claims the code does not do" section was re-read in current code by Claude; numeric results (probe values, sample counts) are the reviewers' and attributed inline. P2 items are reviewer findings unless marked confirmed. Reviewers: Codex (`codex exec --sandbox read-only`) ×3 — September conformance, August films, August engine/routing/shell; cursor-agent (ask mode) — September correctness (its August run hit the Cursor usage limit and was replaced by Codex). A parallel independent browser-driven audit (local report, not published) was cross-checked; its unique findings were confirmed in source and are folded in, marked **[B]**.
 
 ## What the window contains
 
@@ -22,8 +24,7 @@ The engineering is careful and the September docs are unusually honest (they cla
 
 ## P0 — process
 
-**P0-1. 24 days of work exist in exactly one place.** `experiment/physical-ambience` is the same commit as `experiment/track1-chamber`; all September source/tests/assets are uncommitted. Newest backup: `~/Backups/sonoite-all-20260822.bundle` (predates all of it). Time Machine: "Failed to mount destination". `~/Documents/Sonoite Environment Trial/` holds built bundles and evidence, not source. This repo has lost uncommitted work before (#234 recovered a 788-file wipe).
-**Action, before anything else:** commit the September tree on this branch (or at minimum `git bundle` + copy the untracked assets/`.blend` sources off-disk).
+**P0-1. September work existed only as uncommitted changes.** At audit time all September source, tests and assets were uncommitted on `experiment/physical-ambience`. They were committed in #236.
 
 ## P1 — wrong behavior on default routes (all confirmed in current code)
 

@@ -169,20 +169,6 @@
         description: 'Chamber variant — solid vertex/material color, no texture.',
         textured: false,
       },
-      {
-        id: 'legacy-generate',
-        label: 'Meshy legacy generate (untextured)',
-        path: 'Meshy_AI_symbol_0307145856_generate.glb',
-        description: 'Original Meshy AI generate export — untextured.',
-        textured: false,
-      },
-      {
-        id: 'legacy-texture',
-        label: 'Meshy legacy texture',
-        path: 'Meshy_AI_symbol_0307145845_texture.glb',
-        description: 'Original Meshy AI texture export.',
-        textured: true,
-      },
     ];
 
     const ALIASES = {
@@ -193,10 +179,6 @@
       texture: 'textured',
       chamber: 'chamber',
       blender: 'chamber',
-      'legacy-generate': 'legacy-generate',
-      legacy: 'legacy-generate',
-      generate: 'legacy-generate',
-      'legacy-texture': 'legacy-texture',
     };
 
     const select = document.getElementById('model-select');

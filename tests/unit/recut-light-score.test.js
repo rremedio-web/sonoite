@@ -7,8 +7,8 @@ import {
 } from '../../src/js/prototype/recut-light-score.js';
 
 function loadRecutCutTimeline() {
-    const experiencePath = path.join(process.cwd(), 'src/js/prototype/films/nao-querer-nada.js');
-    const src = fs.readFileSync(experiencePath, 'utf8');
+    const filmPath = path.join(process.cwd(), 'src/js/prototype/films/nao-querer-nada.js');
+    const src = fs.readFileSync(filmPath, 'utf8');
     const startToken = 'const TRACK5_RECUT_DIRECTOR_CAMERA = ';
     const endToken = '\nconst TRACK5_RECUT_FILM_TIMELINE =';
     const start = src.indexOf(startToken);

@@ -27,7 +27,6 @@ export class SecurityManager {
         
         // Enhanced security properties
         this.isDevMode = process.env.NODE_ENV === 'development';
-        this.integrityHashes = new Map();
         this.devtoolsDetected = false;
         this.securityViolations = 0;
         this.maxViolations = 5;
@@ -67,7 +66,6 @@ export class SecurityManager {
         
         // Enhanced security initialization
         if (!this.isDevMode) {
-            this.setupCDNIntegrityChecks();
             this.setupAdvancedSecurityMonitoring();
         }
 
@@ -1060,92 +1058,6 @@ export class SecurityManager {
     }
 
     /**
-     * Setup CDN integrity verification with real hashes
-     */
-    setupCDNIntegrityChecks() {
-        // Get integrity hashes from WordPress backend
-        const integrityHashes = window.sonoiteSecurityConfig?.cdnIntegrityHashes || {};
-
-        // Store hashes for verification
-        if (integrityHashes.three) {
-            this.integrityHashes.set('three', integrityHashes.three);
-        } else {
-            console.warn('🔒 Three.js CDN integrity hash not configured');
-            this.reportSecurityViolation('cdn_integrity_missing', {
-                resource: 'three.js',
-                timestamp: new Date().toISOString()
-            });
-        }
-
-        // Monitor script loading for integrity verification
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.nodeName === 'SCRIPT' && node.src) {
-                        this.verifyScriptIntegrity(node);
-                    }
-                });
-            });
-        });
-
-        observer.observe(document.head, {
-            childList: true,
-            subtree: true
-        });
-        this.registerObserver(observer);
-    }
-
-    /**
-     * Verify script integrity
-     *
-     * SEC-01: CDN integrity checks removed (Dec 3, 2025)
-     * Three.js is now bundled locally via Vite - no external CDN dependencies.
-     * Local bundles are integrity-verified via manifest hashing.
-     */
-    verifyScriptIntegrity(scriptElement) {
-        // No-op: CDN scripts no longer used, local bundles verified via manifest
-    }
-
-    /**
-     * Verify external resource integrity
-     */
-    verifyExternalResource(url, expectedHash) {
-        return fetch(url)
-            .then(response => response.text())
-            .then(content => {
-                return crypto.subtle.digest('SHA-384', new TextEncoder().encode(content))
-                    .then(hashBuffer => {
-                        const hashArray = Array.from(new Uint8Array(hashBuffer));
-                        const hashBase64 = btoa(String.fromCharCode.apply(null, hashArray));
-                        const computedHash = 'sha384-' + hashBase64;
-
-                        if (computedHash === expectedHash) {
-                            if (this.isDebugLoggingEnabled()) {
-                                console.log('✅ CDN resource integrity verified:', url);
-                            }
-                            return true;
-                        }
-
-                        this.reportSecurityViolation('cdn_resource_integrity_failed', {
-                            url: url,
-                            expected: expectedHash,
-                            computed: computedHash,
-                            timestamp: new Date().toISOString()
-                        });
-                        return false;
-                    });
-            })
-            .catch(error => {
-                this.reportSecurityViolation('cdn_resource_verification_error', {
-                    url: url,
-                    error: error.message,
-                    timestamp: new Date().toISOString()
-                });
-                return false;
-            });
-    }
-
-    /**
      * Advanced devtools detection
      */
     setupAdvancedDevtoolsDetection() {
@@ -1490,9 +1402,6 @@ export class SecurityManager {
 
         // Clear audit log to release memory
         this.auditLog = [];
-
-        // Clear any stored hashes
-        this.integrityHashes.clear();
 
         if (this.isDebugLoggingEnabled()) {
             console.log('[SecurityManager] Disposed - all listeners removed');

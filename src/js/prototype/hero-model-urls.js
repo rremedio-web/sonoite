@@ -11,11 +11,7 @@ export const MATERIAL_STUDY_MODEL_PATH = 'public/assets/models/material-study/ma
 export const DEFAULT_HERO_MODEL_PATHS = {
     modelUrl: 'public/assets/models/track5-poc/optimized/track5-relic-generated-optimized.glb',
     fallbackModelUrl: 'public/assets/models/track5-poc/optimized/track5-relic-textured-optimized.glb',
-    texturedModelUrl: TEXTURED_HERO_MODEL_PATH,
-    // Last-resort raw Meshy exports, requested only if every optimized GLB fails.
-    // Not shipped in this public snapshot, so these candidates would 404.
-    legacyModelUrl: 'public/assets/models/track5-poc/Meshy_AI_symbol_0307145856_generate.glb',
-    legacyFallbackModelUrl: 'public/assets/models/track5-poc/Meshy_AI_symbol_0307145845_texture.glb'
+    texturedModelUrl: TEXTURED_HERO_MODEL_PATH
 };
 
 /**
@@ -148,8 +144,6 @@ export function resolveHeroModelCandidates({
     const primaryModelUrl = heroConfig.modelUrl || defaultConfig.modelUrl;
     const fallbackModelUrl = heroConfig.fallbackModelUrl || defaultConfig.fallbackModelUrl;
     const texturedModelUrl = heroConfig.texturedModelUrl || defaultConfig.texturedModelUrl;
-    const legacyModelUrl = heroConfig.legacyModelUrl || defaultConfig.legacyModelUrl;
-    const legacyFallbackModelUrl = heroConfig.legacyFallbackModelUrl || defaultConfig.legacyFallbackModelUrl;
 
     let preferredModelUrl;
     let secondaryModelUrl;
@@ -161,12 +155,9 @@ export function resolveHeroModelCandidates({
         secondaryModelUrl = artifactMode === 'textured' ? primaryModelUrl : fallbackModelUrl;
     }
 
-    const preferredLegacyUrl = artifactMode === 'textured' ? legacyFallbackModelUrl : legacyModelUrl;
-    const secondaryLegacyUrl = artifactMode === 'textured' ? legacyModelUrl : legacyFallbackModelUrl;
-
     const relativeUrls = texturedModelEnabled
-        ? [texturedModelUrl, preferredModelUrl, secondaryModelUrl, preferredLegacyUrl, secondaryLegacyUrl]
-        : [preferredModelUrl, secondaryModelUrl, preferredLegacyUrl, secondaryLegacyUrl];
+        ? [texturedModelUrl, preferredModelUrl, secondaryModelUrl]
+        : [preferredModelUrl, secondaryModelUrl];
 
     return [...new Set(
         relativeUrls

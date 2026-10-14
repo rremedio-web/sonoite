@@ -716,6 +716,12 @@ function formatTrackLabel(track, journey) {
         : 'Track';
 }
 
+/**
+ * DOM shell for one prototype instance. The constructor injects the styles and builds the markup inside
+ * `root`; user input is reported through `callbacks` (onPrimaryAction, onSeek, onRetry, onVolume, and
+ * onNavigate via configureIndex()). experience.js drives it with setTrack(), updateTime(), setPlaying(),
+ * setStatus() and setReady(), and calls destroy() on teardown.
+ */
 export class ReliquaryShell {
     static TITLE_CARD_CLEAR_SECONDS = 23.0;
 
@@ -1335,10 +1341,6 @@ export class ReliquaryShell {
         }
 
         this.syncTitleCard(currentTime);
-    }
-
-    setPhases() {
-        // Phase tick marks removed; seek rail and setPhaseLabel unchanged.
     }
 
     setPhaseLabel(name) {

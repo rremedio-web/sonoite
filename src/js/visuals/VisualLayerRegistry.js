@@ -452,43 +452,6 @@ export class VisualLayerRegistry {
             performance: 'high'
         });
 
-        this.register('OrganicShapes', {
-            className: 'OrganicShapes',
-            module: './flows/OrganicShapes.js',
-            category: 'flow',
-            description: 'Blob-like geometries with organic distortion',
-            dependencies: ['audioManager'],
-            performance: 'medium'
-        });
-
-        this.register('ParticleField', {
-            className: 'ParticleField',
-            module: './flows/ParticleField.js',
-            category: 'flow',
-            description: 'Audio-reactive particle system with custom shaders',
-            dependencies: ['audioManager', 'webgl'],
-            performance: 'high'
-        });
-
-        this.register('WaveForm', {
-            className: 'WaveForm',
-            module: './flows/WaveForm.js',
-            category: 'flow',
-            description: '3D audio waveform visualization',
-            dependencies: ['audioManager'],
-            performance: 'medium'
-        });
-
-        // Structure layers
-        this.register('GeometricGrid', {
-            className: 'GeometricGrid',
-            module: './structure/GeometricGrid.js',
-            category: 'structure',
-            description: 'Grid of geometric shapes with radial frequency distribution',
-            dependencies: ['audioManager'],
-            performance: 'medium'
-        });
-
         dlog('🎨 Default visual layers registered');
     }
 }

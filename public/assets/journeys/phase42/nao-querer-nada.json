@@ -50,8 +50,6 @@
           "mode": "meshy_model",
           "modelUrl": "public/assets/models/track5-poc/optimized/track5-relic-blender-chamber-optimized.glb",
           "fallbackModelUrl": "public/assets/models/track5-poc/optimized/track5-relic-generated-optimized.glb",
-          "legacyModelUrl": "public/assets/models/track5-poc/Meshy_AI_symbol_0307145856_generate.glb",
-          "legacyFallbackModelUrl": "public/assets/models/track5-poc/Meshy_AI_symbol_0307145845_texture.glb",
           "preserveTextures": true,
           "opacity": 1,
           "targetHeight": 3.2,

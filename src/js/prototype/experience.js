@@ -6,7 +6,9 @@
  * event defaults, inline shaders, helpers, then the class. buildChamberConfig() deep-merges the
  * variant timeline over the journey JSON's prototype_chamber params and replaces arrays wholesale,
  * so the code timeline wins unless the variant's timelineTrackSlugs exclude the loaded track.
- * Start reading at init() and render() in the class.
+ * Start reading at init() and render() in the class. "Build spec §N" is the Track 5 recut build spec,
+ * which is not in this repo; docs/superpowers/specs/2026-07-23-track5-recut-creative-layer-design.md
+ * restates its owner choices.
  */
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -3061,7 +3063,6 @@ export class ReliquaryPrototypeExperience {
             currentSlug: this.track?.slug,
             onNavigate: (slug) => this.navigateToTrack(slug)
         });
-        this.shell.setPhases?.(this.phaseWindows, this.getPlaybackEndTime());
         this.shell.setStatus('loading object');
         this.shell.updateTime(0, this.proofDuration);
         this.shell.setReady(false);
@@ -3660,7 +3661,6 @@ export class ReliquaryPrototypeExperience {
         const primaryUrl = this.resolveShotDirectorBeatGridUrl(trackSlug);
         const fallbackPaths = [
             primaryUrl,
-            `/homem/wp-content/themes/sonoite-theme/public/assets/journeys/analysis/${trackSlug}/beats.json`,
             `/wp-content/themes/sonoite-theme/public/assets/journeys/analysis/${trackSlug}/beats.json`
         ];
         for (const url of fallbackPaths) {
@@ -4977,7 +4977,7 @@ export class ReliquaryPrototypeExperience {
             console.info('[Prototype] SODIUM kill — steady dim run (?sodium=0)');
         } else {
             // eslint-disable-next-line no-console -- owner persist surface
-            console.info('[Prototype] SODIUM on — single fixture (Track 4 PERSIST v1)');
+            console.info('[Prototype] SODIUM on — single fixture (Track 4 PERSIST v2)');
         }
     }
 
@@ -7387,7 +7387,6 @@ export class ReliquaryPrototypeExperience {
         const establish = this.state.started ? smoothstep(0.0, 3.5, elapsed) : 0;
         const claim = this.state.started ? smoothstep(12.0, 38.0, elapsed) : 0;
         const introMix = this.state.started ? lerp(0.66, 1.0, establish) : 0.74;
-        const roomPulse = clamp(pressureState * 0.75 + effectiveBreathing * 0.28 + effectiveAccent * 0.42, 0, 1);
         const roomPressure = roomState.roomPressure;
         const pressureTransition = roomState.pressureTransition;
         const punctuation = roomState.punctuation;
@@ -7954,7 +7953,6 @@ export class ReliquaryPrototypeExperience {
         const pressureState = roomState.roomPressure;
         const average = dynamicState.audioAverage;
         const accent = roomState.listeningAccent;
-        const warmth = roomState.warmthBias;
         const temperature = clamp(
             roomState.temperature
             + (this.livingChamber?.outputs.tempShift ?? 0)

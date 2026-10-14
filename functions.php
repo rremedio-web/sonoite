@@ -247,10 +247,8 @@ function sonoite_enqueue_scripts() {
             break;
         }
     }
-    
-    // The legacy consciousness bundle is still built (vite.config.js) but intentionally not enqueued.
 
-    // Load entry point scripts. The service worker (src/js/service-worker-manager.js) is built but intentionally not registered.
+    // Load entry point scripts.
     $js_modules = array(
         'src/js/security-manager.js' => array(
             'deps' => array(),
@@ -343,14 +341,6 @@ function sonoite_enqueue_scripts() {
         'isDebug' => $is_debug,
         'reportingEndpoint' => esc_url(home_url('/wp-json/sonoite/v1/security-report')),
         'particleCounts' => get_option('sonoite_particle_counts', sonoite_get_default_particle_counts()),
-        'trackLoaderConfig' => array(
-            'maxRetries' => 3,
-            'retryDelay' => 1000,
-            'timeoutDuration' => 30000,
-            'maxCacheSize' => 5,
-            'preloadNext' => true,
-            'enableCrossfade' => false
-        ),
         'audioConfig' => array(
             'maxFileSize' => SONOITE_MAX_UPLOAD_SIZE,
             'allowedMimeTypes' => array('audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/mp4', 'audio/x-m4a', 'audio/flac', 'audio/aac'),

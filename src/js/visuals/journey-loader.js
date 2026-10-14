@@ -25,7 +25,6 @@ export async function loadJourneyJson(trackFile) {
   } else {
     // Fallback: try to detect the correct path
     const paths = [
-      `/homem/wp-content/themes/sonoite-theme/public/assets/journeys/phase42/${trackFile}`,
       `/wp-content/themes/sonoite-theme/public/assets/journeys/phase42/${trackFile}`,
       `./public/assets/journeys/phase42/${trackFile}`
     ];

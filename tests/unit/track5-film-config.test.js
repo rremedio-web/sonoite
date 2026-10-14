@@ -4,14 +4,14 @@ import path from 'path';
 import { createShotDirector } from '../../src/js/prototype/shot-director.js';
 
 function loadTrack5FilmDirectorCamera() {
-    const experiencePath = path.join(process.cwd(), 'src/js/prototype/films/nao-querer-nada.js');
-    const src = fs.readFileSync(experiencePath, 'utf8');
+    const filmPath = path.join(process.cwd(), 'src/js/prototype/films/nao-querer-nada.js');
+    const src = fs.readFileSync(filmPath, 'utf8');
     const startToken = 'const TRACK5_FILM_DIRECTOR_CAMERA = ';
     const endToken = '\nconst TRACK5_CHAMBER_FILM_TIMELINE =';
     const start = src.indexOf(startToken);
     const end = src.indexOf(endToken);
     if (start < 0 || end < 0) {
-        throw new Error('TRACK5_FILM_DIRECTOR_CAMERA block not found in experience.js');
+        throw new Error('TRACK5_FILM_DIRECTOR_CAMERA block not found in films/nao-querer-nada.js');
     }
     let body = src.slice(start + startToken.length, end).trim();
     body = body.replace(/target: TRACK5_FILM_TARGET/g, 'target: [0.959854, 1.901261, -0.038787]');

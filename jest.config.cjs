@@ -25,7 +25,6 @@ module.exports = {
       testEnvironment: 'jsdom',
       setupFilesAfterEnv: ['<rootDir>/tests/setup/jest.setup.js'],
       moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
         '^three$': '<rootDir>/node_modules/three/build/three.module.js',
         '^three/addons/(.*)$': '<rootDir>/node_modules/three/examples/jsm/$1',
         '^three/examples/jsm/(.*)$': '<rootDir>/node_modules/three/examples/jsm/$1'

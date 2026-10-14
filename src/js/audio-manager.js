@@ -423,27 +423,7 @@ export class AudioManager {
     }
     
     /**
-     * Unused: no callers. Fetches and decodes without loadTrack()'s validation.
-     */
-    async loadAudioBuffer(url) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch audio: ${response.status}`);
-            }
-
-            const arrayBuffer = await response.arrayBuffer();
-            const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
-
-            return audioBuffer;
-        } catch (error) {
-            derr('Error loading audio buffer:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Load audio buffer directly (for track loader integration)
+     * Load an already-decoded audio buffer (playFromBuffer() passes one through)
      * Enhances existing audio manager with buffer loading capabilities
      */
     async loadAudioBufferDirect(audioBuffer) {
@@ -486,7 +466,7 @@ export class AudioManager {
 
     /**
      * Play from loaded audio buffer
-     * Enhanced playback method for track loader integration
+     * Enhanced playback method; play() delegates here
      */
     async playFromBuffer(audioBuffer = null) {
         // BUG-FIX: Prevent concurrent play operations
@@ -901,65 +881,6 @@ export class AudioManager {
                 derr(`Callback error for ${event}:`, error);
             }
         }
-    }
-
-    /**
-     * Set volume with security checks (0.0 to 1.0) - Enhanced version
-     */
-    setVolumeSecure(volume) {
-        this.setVolume(volume);
-        this.logAuditEvent('Volume changed', { volume: this.volume });
-    }
-    
-    /**
-     * Unused: no callers. Live analysis is startFrequencyAnalysis() (started by play()/seekTo());
-     * Path B subscribes via onFrequencyUpdate(), the legacy runtime polls getAudioData()/getAudioAnalysis().
-     */
-    setupFrequencyAnalysis() {
-        if (!this.audioContext || !this.source) return;
-
-        this.analyser = this.audioContext.createAnalyser();
-        this.analyser.fftSize = 2048;
-        this.analyser.smoothingTimeConstant = 0.8;
-
-        this.frequencyData = new Uint8Array(this.analyser.frequencyBinCount);
-        this.source.connect(this.analyser);
-
-        // Start analysis loop
-        this.startAudioAnalysis();
-    }
-
-    /**
-     * Unused: only setupFrequencyAnalysis() calls it, and no listener exists for 'audioAnalysisUpdate'.
-     */
-    startAudioAnalysis() {
-        const analyzeAudio = () => {
-            if (!this.analyser || !this.isPlaying) return;
-
-            this.analyser.getByteFrequencyData(this.frequencyData);
-
-            // Calculate audio intensity
-            let sum = 0;
-            for (let i = 0; i < this.frequencyData.length; i++) {
-                sum += this.frequencyData[i];
-            }
-            const intensity = sum / (this.frequencyData.length * 255);
-
-            // Dispatch event for consciousness visualization
-            document.dispatchEvent(new CustomEvent('audioAnalysisUpdate', {
-                detail: {
-                    frequencyData: this.frequencyData,
-                    intensity: intensity,
-                    timestamp: performance.now()
-                }
-            }));
-
-            if (this.isPlaying) {
-                requestAnimationFrame(analyzeAudio);
-            }
-        };
-
-        analyzeAudio();
     }
 
     /**

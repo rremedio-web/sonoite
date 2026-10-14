@@ -616,7 +616,7 @@ class SonoitePreviewExperience {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-WP-Nonce': this.data.previewEmailNonce || this.data.restNonce || this.data.nonce
+                    'X-WP-Nonce': this.data.nonce
                 },
                 body: JSON.stringify({
                     email: emailInput.value

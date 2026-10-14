@@ -12,8 +12,6 @@ const THEME_URL = 'http://localhost/wp-content/themes/sonoite-theme';
 const JOURNEY_HERO_CONFIG = {
     modelUrl: 'public/assets/models/track5-poc/optimized/track5-relic-blender-chamber-optimized.glb',
     fallbackModelUrl: DEFAULT_HERO_MODEL_PATHS.modelUrl,
-    legacyModelUrl: DEFAULT_HERO_MODEL_PATHS.legacyModelUrl,
-    legacyFallbackModelUrl: DEFAULT_HERO_MODEL_PATHS.legacyFallbackModelUrl,
     preserveTextures: true
 };
 
@@ -33,9 +31,7 @@ describe('hero textured flag URL ordering', () => {
             },
             [
                 DEFAULT_HERO_MODEL_PATHS.modelUrl,
-                JOURNEY_HERO_CONFIG.modelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyFallbackModelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyModelUrl
+                JOURNEY_HERO_CONFIG.modelUrl
             ]
         ],
         [
@@ -49,9 +45,7 @@ describe('hero textured flag URL ordering', () => {
             [
                 DEFAULT_HERO_MODEL_PATHS.texturedModelUrl,
                 DEFAULT_HERO_MODEL_PATHS.modelUrl,
-                JOURNEY_HERO_CONFIG.modelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyFallbackModelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyModelUrl
+                JOURNEY_HERO_CONFIG.modelUrl
             ]
         ],
         [
@@ -65,9 +59,7 @@ describe('hero textured flag URL ordering', () => {
             [
                 DEFAULT_HERO_MODEL_PATHS.texturedModelUrl,
                 JOURNEY_HERO_CONFIG.modelUrl,
-                DEFAULT_HERO_MODEL_PATHS.modelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyFallbackModelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyModelUrl
+                DEFAULT_HERO_MODEL_PATHS.modelUrl
             ]
         ],
         [
@@ -80,9 +72,7 @@ describe('hero textured flag URL ordering', () => {
             },
             [
                 DEFAULT_HERO_MODEL_PATHS.modelUrl,
-                DEFAULT_HERO_MODEL_PATHS.fallbackModelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyFallbackModelUrl,
-                DEFAULT_HERO_MODEL_PATHS.legacyModelUrl
+                DEFAULT_HERO_MODEL_PATHS.fallbackModelUrl
             ]
         ]
     ])('%s', (_label, input, expectedRelativePaths) => {

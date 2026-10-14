@@ -139,22 +139,9 @@ export class AccessibilityManager {
 
             // Layer-specific modifications
             switch (layerType) {
-                case 'ParticleField':
-                    modified.particleSpeed = (modified.particleSpeed || 1.0) * this.motionReduction.particles;
-                    modified.turbulence = (modified.turbulence || 1.0) * 0.5;
-                    break;
-
                 case 'CameraManager':
                     modified.autoRotate = false; // Disable auto rotation
                     modified.shakeIntensity = (modified.shakeIntensity || 1.0) * this.motionReduction.camera;
-                    break;
-
-                case 'OrganicShapes':
-                    modified.morphSpeed = (modified.morphSpeed || 1.0) * 0.3;
-                    break;
-
-                case 'WaveForm':
-                    modified.waveAmplitude = (modified.waveAmplitude || 1.0) * 0.6;
                     break;
             }
         }
@@ -222,18 +209,6 @@ export class AccessibilityManager {
         let description = '';
 
         switch (layerType) {
-            case 'ParticleField':
-                description = `Particle field with ${intensity} movement responding to audio`;
-                break;
-            case 'OrganicShapes':
-                description = `Organic shapes with ${intensity} morphing and color changes`;
-                break;
-            case 'WaveForm':
-                description = `Audio waveform visualization with ${intensity} amplitude`;
-                break;
-            case 'GeometricGrid':
-                description = `Geometric grid with ${intensity} audio-reactive animations`;
-                break;
             case 'AudioReactiveSkybox':
                 description = `Background environment with ${intensity} color shifts`;
                 break;

@@ -122,7 +122,7 @@ module.exports = {
                 'src/js/visuals/structures/*.js',
                 'src/js/visuals/core/{CameraManager,AudioReactiveSkybox,LightField}.js',
                 'src/js/visuals/utils/{signalPipeline,action-validator,audioResponse}.js',
-                'src/js/visuals/{journey-controller,journey-loader,consciousness-adapter,placeholders,register-defaults,layer-api,registry}.js',
+                'src/js/visuals/{journey-controller,journey-loader,placeholders,register-defaults,layer-api,registry}.js',
                 'src/js/schemas/action-schema.js',
                 'src/js/audio/BeatDetector.js',
                 'src/js/utils/{devlog,dispose3d}.js',

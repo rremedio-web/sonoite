@@ -4,8 +4,8 @@
  * auto-hiding chrome, the track index and the `?tweak=1` live-trim panel. injectPrototypeStyles() adds
  * all CSS as one style tag, carrying sonoiteData.cspNonce when present. BUILT_TRACK_CYCLE is the ordered
  * list of tracks with a chamber film (entry routing, index, next track). Status text renders only in debug
- * mode (`?debug=1` or sonoiteData.isDebug); window.__sonoiteStaticLoader is defined only by the static
- * export (scripts/build-static-prototype.mjs).
+ * mode (`?debug=1` or sonoiteData.isDebug); window.__sonoiteStaticLoader (the full-screen loader in
+ * index.html) is defined by src/js/site/site-data.js.
  */
 
 const STYLE_ID = 'sonoite-prototype-styles';

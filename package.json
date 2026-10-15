@@ -1,13 +1,12 @@
 {
   "name": "sonoite-theme",
   "version": "1.0.0",
-  "description": "WordPress theme that performs a 7-track album as an audio-reactive Three.js chamber film",
+  "description": "Standalone Vite site that performs the 7-track album Sonoite as audio-reactive Three.js chamber films",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:watch": "vite build --watch",
     "preview": "vite preview",
     "clean": "rimraf dist",
     "lint": "eslint src --ext .js,.jsx",
@@ -17,7 +16,9 @@
     "test:full": "cross-env TMPDIR=/tmp jest --config jest.config.cjs",
     "test:watch": "cross-env TMPDIR=/tmp jest --watch --config jest.config.cjs",
     "test:coverage": "cross-env TMPDIR=/tmp jest --coverage --config jest.config.cjs",
-    "deploy": "npm run clean && npm run build",
+    "audio:import": "node scripts/import-audio.mjs",
+    "audio:check": "node scripts/check-audio.mjs",
+    "deploy": "npm run audio:check && npm run build && npx netlify-cli deploy --prod --dir dist",
     "analyze:audio": "node scripts/analyze-audio.js",
     "analyze:merge": "node scripts/merge-analysis.js",
     "assets:track5:degold": "node scripts/clean-textured-glb.mjs --in public/assets/models/track5-poc/optimized/track5-relic-textured-optimized.glb --out public/assets/models/track5-poc/optimized/track5-relic-textured-clean.glb",
@@ -27,13 +28,11 @@
     "validate": "npm run lint:check && npm run test && npm run security:audit",
     "validate:journeys": "node scripts/validate-journeys.cjs",
     "validate:journeys:strict": "node scripts/validate-journeys.cjs --strict",
-    "validate:journeys:ci": "node scripts/validate-journeys.cjs --fail-on-unknown",
-    "export:static": "npm run build && node scripts/build-static-prototype.mjs"
+    "validate:journeys:ci": "node scripts/validate-journeys.cjs --fail-on-unknown"
   },
   "keywords": [
     "three.js",
     "webgl",
-    "wordpress-theme",
     "web-audio",
     "audio-reactive",
     "music",

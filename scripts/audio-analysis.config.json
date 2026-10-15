@@ -1,9 +1,9 @@
 [
-  { "slug": "sonoite", "file": "audio/01 - sonoite.mp3" },
-  { "slug": "paralisia-do-sono", "file": "audio/02 - Paralisia do sono.mp3" },
-  { "slug": "o-livro-azul", "file": "audio/03 - O livro azul.mp3" },
-  { "slug": "horas-mortas", "file": "audio/04 - Horas mortas.mp3" },
-  { "slug": "nao-querer-nada", "file": "audio/05 - Não querer nada.mp3" },
-  { "slug": "o-filho", "file": "audio/06 - O Filho.mp3" },
-  { "slug": "homem-educado", "file": "audio/07 - Homem educado.mp3" }
+  { "slug": "sonoite", "file": "audio/01-sonoite.mp3" },
+  { "slug": "paralisia-do-sono", "file": "audio/02-paralisia-do-sono.mp3" },
+  { "slug": "o-livro-azul", "file": "audio/03-o-livro-azul.mp3" },
+  { "slug": "horas-mortas", "file": "audio/04-horas-mortas.mp3" },
+  { "slug": "nao-querer-nada", "file": "audio/05-nao-querer-nada.mp3" },
+  { "slug": "o-filho", "file": "audio/06-o-filho.mp3" },
+  { "slug": "homem-educado", "file": "audio/07-homem-educado.mp3" }
 ]

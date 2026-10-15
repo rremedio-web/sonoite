@@ -16,16 +16,15 @@ import { dlog, dwarn, derr } from '../utils/devlog.js';
  * @throws {Error} If the file cannot be loaded or parsed
  */
 export async function loadJourneyJson(trackFile) {
-  // Get the base URL from WordPress data or construct it
+  // Resolve the journey URL from sonoiteData.themeUrl (set by src/js/site/site-data.js)
   let baseUrl = '';
 
-  // Check if WordPress has provided the theme URL (best practice)
+  // themeUrl is the site's base directory
   if (typeof window.sonoiteData !== 'undefined' && window.sonoiteData.themeUrl) {
     baseUrl = `${window.sonoiteData.themeUrl}/public/assets/journeys/phase42/${trackFile}`;
   } else {
     // Fallback: try to detect the correct path
     const paths = [
-      `/wp-content/themes/sonoite-theme/public/assets/journeys/phase42/${trackFile}`,
       `./public/assets/journeys/phase42/${trackFile}`
     ];
     
@@ -46,7 +45,7 @@ export async function loadJourneyJson(trackFile) {
     throw new Error(`Journey load failed: ${trackFile} (tried ${paths.length} paths)`);
   }
   
-  // Load from WordPress-provided URL
+  // Load from the themeUrl-based URL
   const res = await fetch(baseUrl);
   if (!res.ok) {
     throw new Error(`Journey load failed: ${trackFile}`);

@@ -12,8 +12,8 @@
  * - midrange.json - mid-range for Monolith (Track 6 only)
  *
  * Usage: node scripts/deep-audio-analysis.cjs [track1|track2|...|track7|all]
- * Needs ffmpeg and aubio on PATH. Reads the album MP3s from $SONOITE_UPLOADS_DIR (default: the
- * WordPress uploads/2025/08 dir) and writes public/assets/journeys/analysis/<slug>/.
+ * Needs ffmpeg and aubio on PATH. Reads the album MP3s from audio/ (fill it with npm run audio:import;
+ * override with $SONOITE_AUDIO_DIR) and writes public/assets/journeys/analysis/<slug>/.
  * Re-running track1 or track5 overwrites their authored beats.json; regenerate those with
  * build-sonoite-beats.mjs / build-track5-beats.cjs afterwards.
  */
@@ -22,19 +22,17 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Audio file paths
-// Default assumes the theme sits in a WordPress install (wp-content/themes/<theme>).
-const AUDIO_DIR = process.env.SONOITE_UPLOADS_DIR || path.resolve(__dirname, '../../../uploads/2025/08');
+const AUDIO_DIR = process.env.SONOITE_AUDIO_DIR || path.resolve(__dirname, '../audio');
 const OUTPUT_BASE = path.join(__dirname, '../public/assets/journeys/analysis');
 
 const TRACKS = {
   track1: { file: '01-sonoite.mp3', slug: 'sonoite' },
-  track2: { file: '02-Paralisia-do-sono.mp3', slug: 'paralisia-do-sono' },
-  track3: { file: '03-O-livro-azul.mp3', slug: 'o-livro-azul' },
-  track4: { file: '04-Horas-mortas.mp3', slug: 'horas-mortas' },
-  track5: { file: '05-Nao-querer-nada.mp3', slug: 'nao-querer-nada' },
-  track6: { file: '06-O-Filho.mp3', slug: 'o-filho' },
-  track7: { file: '07-Homem-educado.mp3', slug: 'homem-educado' }
+  track2: { file: '02-paralisia-do-sono.mp3', slug: 'paralisia-do-sono' },
+  track3: { file: '03-o-livro-azul.mp3', slug: 'o-livro-azul' },
+  track4: { file: '04-horas-mortas.mp3', slug: 'horas-mortas' },
+  track5: { file: '05-nao-querer-nada.mp3', slug: 'nao-querer-nada' },
+  track6: { file: '06-o-filho.mp3', slug: 'o-filho' },
+  track7: { file: '07-homem-educado.mp3', slug: 'homem-educado' }
 };
 
 // Analysis parameters

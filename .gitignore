@@ -1,15 +1,14 @@
 # Dependencies
 node_modules/
 
-# Build output (run `npm run build`; WordPress serves dist/)
+# Build output (npm run build → dist/; npm run deploy uploads it)
 dist/
-dist-static/
 
 # Test output
 coverage/
 test-results/
 
-# Local audio for the analysis scripts (the album audio is not distributed)
+# Album audio: local only, filled by `npm run audio:import -- <dir>` (the album audio is not distributed)
 /audio/
 *.mp3
 *.wav
@@ -23,3 +22,6 @@ test-results/
 # Local agent state
 .claude/settings.local.json
 .claude/agent-memory/
+
+# Netlify CLI link state (created by npx netlify-cli deploy)
+.netlify/

@@ -3658,25 +3658,16 @@ export class ReliquaryPrototypeExperience {
     }
 
     async fetchShotDirectorBeatGrid(trackSlug) {
-        const primaryUrl = this.resolveShotDirectorBeatGridUrl(trackSlug);
-        const fallbackPaths = [
-            primaryUrl,
-            `/wp-content/themes/sonoite-theme/public/assets/journeys/analysis/${trackSlug}/beats.json`
-        ];
-        for (const url of fallbackPaths) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    continue;
-                }
-                return await response.json();
-            } catch (error) {
-                if (window.SONOITE_DEBUG) {
-                    console.warn('[Prototype] ShotDirector beat grid fetch failed', url, error);
-                }
+        const url = this.resolveShotDirectorBeatGridUrl(trackSlug);
+        try {
+            const response = await fetch(url);
+            return response.ok ? await response.json() : null;
+        } catch (error) {
+            if (window.SONOITE_DEBUG) {
+                console.warn('[Prototype] ShotDirector beat grid fetch failed', url, error);
             }
+            return null;
         }
-        return null;
     }
 
     async bootstrapShotDirector() {
@@ -4332,7 +4323,7 @@ export class ReliquaryPrototypeExperience {
         return this.isCinemaQuality() || this.isTrack5CinemaVariant(requestedVariant) ? 'textured' : 'untextured';
     }
 
-    // Static export seeds sonoiteData.relic; ?relic= overrides. WP payloads omit the field — null keeps legacy textured/fallback swap.
+    // site-data.js seeds sonoiteData.relic; ?relic= overrides. A payload without the field (null) keeps the legacy textured/fallback swap.
     resolveRelicChoice() {
         const param = (this.urlParams.get('relic') || '').trim().toLowerCase();
         if (param === 'meshy' || param === 'blender' || param === 'materials') {

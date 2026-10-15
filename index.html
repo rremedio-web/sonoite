@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sonoite</title>
+<link rel="icon" href="data:,">
+<link rel="preload" href="./assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin vite-ignore>
+<link rel="preload" href="./assets/fonts/ibm-plex-mono-latin.woff2" as="font" type="font/woff2" crossorigin vite-ignore>
+<style>
+  html,body{margin:0;padding:0;background:#000;height:100%;overflow:hidden}
+  #sonoite-prototype-root{position:fixed;inset:0;overflow:hidden;background:#000;color:rgba(240,236,230,.9)}
+  .prototype-first-paint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .prototype-first-paint-line{margin:0;max-width:min(92vw,720px);padding:0 24px;font-family:'Cormorant Garamond','Times New Roman',serif;font-size:clamp(20px,3.2vw,34px);letter-spacing:.12em;text-align:center;color:rgba(240,236,230,.9)}
+  #sonoite-static-loader{position:fixed;inset:0;display:grid;place-items:center;background:#000;pointer-events:none;z-index:9999;opacity:1;transition:opacity 420ms ease}
+  #sonoite-static-loader.is-ready{opacity:0}
+</style>
+</head>
+<body>
+<noscript>
+  <div style="position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#000;color:rgba(240,236,230,.9);font:400 clamp(20px,3.2vw,34px)/1.4 'Cormorant Garamond','Times New Roman',serif;letter-spacing:.12em;text-align:center;padding:24px;">
+    <div>
+      <p style="margin:0 0 12px;">Sonoite</p>
+      <p style="margin:0;font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;color:rgba(240,236,230,.64);">Enable JavaScript to enter the room.</p>
+    </div>
+  </div>
+</noscript>
+<div id="sonoite-static-loader" aria-live="polite" aria-busy="true"></div>
+<div id="sonoite-prototype-root" aria-label="Sonoite album experience">
+  <div class="prototype-first-paint" aria-hidden="true">
+    <p class="prototype-first-paint-line">Sonoite · Track 01</p>
+  </div>
+</div>
+<script type="module" src="./src/js/site/boot.js"></script>
+</body>
+</html>

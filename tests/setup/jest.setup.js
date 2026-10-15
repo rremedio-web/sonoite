@@ -2,7 +2,8 @@
  * Shared Jest setup for both projects in jest.config.cjs (Unit Tests and Security Tests),
  * run before every test file. Polyfills TextEncoder/TextDecoder; stubs crypto, fetch,
  * performance (now() is Date.now(), so millisecond resolution), AudioContext and a minimal
- * global THREE; seeds the WordPress-localized globals (sonoiteData, sonoiteSecurityConfig);
+ * global THREE; seeds the page globals (sonoiteData, sonoiteSecurityConfig) in the shape the legacy
+ * runtime's WordPress payload had;
  * and registers the SecurityTestUtils helpers and custom matchers for tests/security.
  */
 
@@ -362,7 +363,9 @@ expect.extend({
   }
 });
 
-// Globals that WordPress normally injects via wp_localize_script
+// Page globals in the shape WordPress's wp_localize_script payload had (the theme layer was removed in
+// Prompt #249). The legacy runtime and the security suites read these; Path B now gets sonoiteData from
+// src/js/site/site-data.js, and tests that need its shape build it there.
 global.window.sonoiteSecurityConfig = {
   enableCSPReporting: true,
   enableIntegrityChecks: true,
